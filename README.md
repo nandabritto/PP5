@@ -1,108 +1,322 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align=center> </h1>
 
-Welcome USER_NAME,
+<p align=center>
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+</p>
+<p align="center">
+<img src="">
+</p>
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+Live app link [here]()
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## User Experience
 
-`python3 -m http.server`
+### User Stories
 
-A blue button should appear to click: _Make Public_,
+1. As a user, I would like to be able to …
 
-Another blue button should appear to click: _Open Browser_.
+    1.1 Register on the website using my username, email and password;
+    
+    1.2. 
+    
+    1.3 
+    
+    1.4   
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+2. As a logged user, I would like to be able to …
 
-A blue button should appear to click: _Make Public_,
+    2.1 
 
-Another blue button should appear to click: _Open Browser_.
+    2.2 
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+    2.3 
 
-To log into the Heroku toolbelt CLI:
+    2.4 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### 1. Strategy
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+  + **Project Goal**
 
-------
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### 2. Scope
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+ * A simple, straightforward, intuitive UX experience;
+ * An explicit content; 
+ * An easy navigation for the user through all the features;
+ * A site that is visually appealing on most devices.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## Functional Scope 
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+**Flowchart**
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+<img height= "" src="">
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+**DER - Diagram Entity Relationship**
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+<img width= "" src="">
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+**Agile Methodology**
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+All functionality and development of this project were managed using Jira (https://bestbeer.atlassian.net)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+* Credentials to this management tool will be provided during submission.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+<details>
+<summary>All sprints are described here.</summary>
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Test cases were linked with every User story presented above, and can be found in TESTING.md(TESTING.md) - Automated testing section. 
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+* Sprint 1
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+  + 
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+<img width= "800" src="">
 
-------
+* Sprint 2
 
-## FAQ about the uptime script
+  + 
+  
+<img width= "800" src="">
 
-**Why have you added this script?**
+* Sprint 3
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+  + 
 
-**How will this affect me?**
+<img width= "800" src="">
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+* Sprint 4
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+  + 
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+<img width= "800" src="">
 
-**So….?**
+* Sprint 5
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+  + 
 
-**Can I opt out?**
+<img width= "800" src="">
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+* Sprint 6
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+  + 
 
-**Anything more?**
+<img width= "800" src="">
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+* Sprint 7
 
----
+  + 
 
-Happy coding!
+<img width= "800" src="">
+
+</details>
+
+
+### 3. Structure
+
+* A clear and straightforward layout is in place to ensure users can navigate intuitively and have a leisurely experience.
+* Navbar is fixed on top to facilitate users to navigate through pages easily. Small navigation is the same on all pages to ensure easy navigation.
+* 
+
+### 4. Skeleton
+
+Wireframes created with Balsamiq. The project was developed from initial wireframes, and some modifications were made during the development process in respose to user feedbacks and to assure the best usability. 
+
+Click to see wireframes:
+
+[HomePage](media/Readme/wireframes/homepage.png) <br>
+[Register Page](media/Readme/wireframes/register_page.png) <br>
+[Login Page](media/Readme/wireframes/Login.png) <br>
+[Reginal items Page](media/Readme/wireframes/region_items_available.png) <br>
+[Bag Page](media/Readme/wireframes/Bag.png) <br>
+[Payment Page](media/Readme/wireframes/payment_page.png) <br>
+[Order Placed Page](media/Readme/wireframes/order_placed_page.png) <br>
+[Site Map Page](media/Readme/wireframes/site_map.png) <br>
+
+### 5. Surface
+
+* Colours
+
+The Colour scheme was generated using the eyedropper plugin to get one colour from the logo image and [colours](https://coolors.co/) to create the colour palette.
+
+  <img width="300" src="">
+
+* Font Selection
+ 
+Two complimentary fonts were chosen with [Google Fonts](https://fonts.google.com/) to be used across the website.
+
+The chosen fonts were **PLACEHOLDER** for headings and navbar and **PLACEHOLDER** for lists, buttons and paragraphs.
+
+  <img width="300" src="">
+
+## Existing Features
+
+### **Navbar** 
+
++ Fixed Navbar allow the user easy access to all pages. 
+
+1. Login and  Register User buttons are present on the navbar if the user is not logged. 
+
+<img width="800" src="">
+
+2. Logout is present if the user is logged. 
+
+<img width="800" src="">
+
+3. 
+
+4.  
+
+<img width="400" src="">
+
+5. Collapsed navbar on smaller devices to wrap in all options and assure better navbar design.
+
+  <img width="400" src="">
+
+## Future Features
+
+I would like to ...
+
+1. 
+
+
+## Languages Used
+
+Python 3.0
+
+## Frameworks, Libraries & Programs Used
+
++ Balsamiq: Balsamiq was used to create the wireframes during the design process.
++ Favicon Generator: Used to create favicon used on the website.
++ Font Awesome: Font Awesome was used on all pages to add icons for aesthetic and UX purposes.
++ Grammarly: Used to correct any spell mistakes on readme and app text.
++ Git: Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
++ GitHub: GitHub is used to store the project's code after being pushed from Git.
++ Google Fonts: Google fonts are used to add fonts for aesthetic and UX purposes.
++ Django: Framework used to add structure to the platform. 
++ PGAdmin: Used to administer Database and generate DER.
++ Multi Device Website Mockup Generator: Used to generate mockup image.
+
+
+## Testing and Code validation 
+
+All testing and code validation details are described in a separate file called TESTING.md and can be found [here](TESTING.md).
+
+## Project Bugs and Solutions:
+
+| Bugs              | Solutions |
+| ---               | --------- |
+|                   |           |
+
+## Deployment 
+
+This App is deployed using Heroku.
+
+<details>
+<summary>Heroku Deployment steps </summary>
+ 
+ 1. Ensure all dependencies are listed on requirements.txt. 
+ 
+ Write on python terminal ` pip3 freeze > requirements.txt`, and a list with all requirements will be created to be read by Heroku. 
+ 
+ 2. Setting up your Heroku
+
+    2.1 Go to Heroku website (https://www.heroku.com/). 
+    2.2 Login to Heroku and go to Create App.
+    
+    <img src="media/readme/deployment/heroku_login.png">
+    
+    <img src="media/readme/deployment/heroku_login2.png">
+    
+    2.3 Click in New and Create a new app
+    
+    <img src="media/readme/deployment/heroku_newapp.png">
+    
+    2.4 Choose a name and set your location
+    
+    <img src="media/readme/deployment/heroku_createnewapp.png">
+
+    2.5. Navigate to the Resources tab 
+
+    <img src="media/readme/deployment/heroku_resoursces_tab.png">
+
+    2.6. Click on Resources and Seach for Heroku Postgres and select it on the list.
+    
+    <img src="media/readme/deployment/heroku-postgres.png">
+    
+    2.7. Navigate to the deploy tab
+    
+    <img src="media/readme/deployment/heroku_dashboard_deploy.png">
+    
+    2.8. Click in Connect to Github and search for 'nandabritto' GitHub account and 'search_your_brand' repository
+    
+    <img src="media/readme/deployment/heroku_github_deploy.png">
+    
+    2.9.  Navigate to the settings tab
+    
+    <img src="media/readme/deployment/heroku_dashboard_settings.png">
+    
+    2.10.  Click on Config Vars, and add your Cloudinary, Database URL (from Heroku-Postgres) and Secret key.    
+    <img src="media/readme/deployment/heroku_vars_settings.png">
+    
+ 
+
+3. Deployment on Heroku
+
+    3.1.  Navigate to the Deploy tab.
+    
+    <img src="media/readme/deployment/heroku_dashboard_deploy.png">
+    
+    3.2.  Choose the main branch to deploy and enable automatic deployment to build Heroku every time any changes are pushed on the repository.
+    
+    <img src="media/readme/deployment/heroku_automatic_deploys.png">
+    
+    3.3 Click on manual deploy to build the App.  When complete, click on View to redirect to the live site. 
+    
+    <img src="media/readme/deployment/heroku_view.png">
+</details>
+
+<details>
+<summary>Forking the GitHub Repository </summary>
+
+* By forking the GitHub Repository, you will be able to make a copy of the original repository on your own GitHub account, allowing you to view and/or make changes without affecting the original repository by using the following steps:
+
+    Log in to GitHub and locate the GitHub Repository
+    At the top of the Repository (not top of page), just above the "Settings" button on the menu, locate the "Fork" button.
+    You should now have a copy of the original repository in your GitHub account.
+
+* Making a Local Clone
+
+    Log in to GitHub and locate the GitHub Repository
+    Under the repository name, click "Clone or download".
+    To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+    Open Git Bash
+    Change the current working directory to the location where you want the cloned directory to be made.
+    Type git clone, and then paste the URL you copied in Step 3.
+
+$ git clone https://github.com/nandabritto/PP5
+
+Press Enter. Your local clone will be created.
+</details>
+
+
+# Credits
+
+## Media
+
++ All pictures and images used in this project are from [Depositphotos](https://depositphotos.com).
+
+## Work based on other code
+
+[**PLACEHOLDER**]() - Used as a base to develop **PLACEHOLDER** <br>
+
+# Acknowledgements
+
++ Stack Overflow is a valuable resource for solving lots of issues.
++ W3schools and Django documentation for general reference.
+
+I would also like to thank:
+
++ My husband Guilherme for all the support on stressful moments, helping to figure out lots of bugs and for reviewing everything.
++ Code institute tutors and my CI Mentor Daisy Mcgirr for the guidance and help with several issues and bugs.
