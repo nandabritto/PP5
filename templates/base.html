@@ -21,8 +21,7 @@
     <!-- Google fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
     <!-- Customizable CSS -->
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% endblock %}
+      {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
@@ -59,7 +58,8 @@
 
     {% block postloadjs %}
     {% endblock %}
-
+    
+    {% include 'includes/footer.html' %}
 </body>
 
 </html>
