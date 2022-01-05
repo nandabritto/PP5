@@ -1,0 +1,16 @@
+html {
+    height: 100%;
+}
+
+body {
+    padding-bottom: 100px !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    body {
+        padding-bottom: 150px !important;
+    }
+
+}
