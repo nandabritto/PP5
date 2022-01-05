@@ -1,6 +1,8 @@
 """ System Module """
 import os
 from pathlib import Path
+import logging
+import dj_database_url
 if os.path.isfile("env.py"):
     import env
 
@@ -18,7 +20,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEVELOPMENT")
 
-ALLOWED_HOSTS = []
+# For debugging
+if DEBUG:
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='%(asctime)s %(levelname)s %(message)s',
+    )
+
+ALLOWED_HOSTS = ["theregionaltaste.herokuapp.com", "localhost"]
 
 
 # Application definition
@@ -97,12 +106,14 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+if DEBUG:
+    DATABASES = {
+        'default': dj_database_url.parse(
+            os.environ.get("DEV_DATABASE_URL"))}
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(
+            os.environ.get("DATABASE_URL"))}
 
 
 # Password validation
