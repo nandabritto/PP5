@@ -15,6 +15,12 @@ p, a {
 }
 
 
+input:focus {
+    outline: none!important;
+    border-color: none!important;
+    box-shadow: 0 0 0 1px gray!important; /*change this color */ 
+ }
+
 @media only screen and (max-width: 600px) {
 
     body {
