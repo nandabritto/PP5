@@ -1,6 +1,0 @@
-
-input:focus {
-    outline: none!important;
-    border-color: none!important;
-    box-shadow: 0 0 0 2px yellow!important; /*change this color */ 
- }
