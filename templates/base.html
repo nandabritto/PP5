@@ -48,7 +48,12 @@
 <body>
     
     <header class= "container-fluid fixed-top"></header>
+    {% include 'includes/navbar_account.html' %}
+    {% block jumbotron %}
+        {% include 'includes/jumbotron.html' %}
+    {% endblock %}
     {% include 'includes/navbar.html' %}
+
     {% if messages %} 
         <div class= "message-container">
 
