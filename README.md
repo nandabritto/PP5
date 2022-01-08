@@ -140,15 +140,17 @@ Click to see wireframes:
 
 The Colour scheme was generated using the eyedropper plugin to get one colour from the logo image and [colours](https://coolors.co/) to create the colour palette.
 
-  <img width="300" src="">
+<img width="300" src="">
+
 
 * Font Selection
  
 Two complimentary fonts were chosen with [Google Fonts](https://fonts.google.com/) to be used across the website.
 
-The chosen fonts were **PLACEHOLDER** for headings and navbar and **PLACEHOLDER** for lists, buttons and paragraphs.
+The chosen fonts were Roboto for headings and navbar and Lato for links, buttons and paragraphs.
 
-  <img width="300" src="">
+<img width="200" src="media/readme/googlefonts_roboto.jpg">
+<img width="200" src="media/readme/googlefonts_lato.jpg">
 
 ## Existing Features
 
