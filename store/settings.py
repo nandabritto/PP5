@@ -47,8 +47,10 @@ INSTALLED_APPS = [
     # other apps
     'storages',
     'crispy_forms',
+    'django_countries',
     'crispy_bootstrap5',
     'home',
+    'user_profile',
 
 ]
 
