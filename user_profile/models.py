@@ -4,11 +4,11 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django_countries.fields import CountryField
 
-class User_Profile(models.Model):
+class UserProfile(models.Model):
     """
     User profile model for store all user preferences
     """
-    profile_user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_img = models.ImageField()
     street_adress = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(max_length=20, null=True, blank=False)
