@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # other apps
     'storages',
     'home',
+    'products',
 
 ]
 

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block extra_title %}Products{% endblock %}
+
+
+{% block content %}
+<h1> Products </h1>
+{% for box in boxes %}
+<div class="card col-10 d-flex mx-auto">
+    <div class="row g-0 ">
+      <div class="col-md-4">
+        <img src="{{ box.image }}" class="img-fluid rounded-start" alt="{{ box.image }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ box.boxname }}</h5>
+          <p class="card-text">{{ box.description }}</p>
+          <p class="card-text"><small class="text-muted">{{ box.price }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endfor %}
+
+{% endblock %}
