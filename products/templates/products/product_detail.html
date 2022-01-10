@@ -31,9 +31,9 @@
             <div>
                 <form class= "product_options" action="" method="post">
                     {% csrf_token %}
-                    {{form|crispy }}
+                    {{form }}
 
-                    <input id="but1" type="submit" value="Display Records" onclick="getvalues()">
+                    <input id="but1" value="Your box" onsubmit="return false" onclick="getvalues()">
 
                 </form>
                 <b id="displayvalues"></b>
