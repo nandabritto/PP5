@@ -23,11 +23,11 @@
       <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3 col-10 gy-4">
           <div class="card border-1">
               {% if box.image %}
-              <a href="">
+              <a href="{% url 'product_details' box.id%}">
                   <img class="card-img-top img-fluid" src="{{ box.image.url }}" alt="{{ box.boxname }}">
               </a>
               {% else %}
-              <a href="">
+              <a href="{% url 'product_details' %}">
                   <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ box.boxname }}">
               </a>
               {% endif %}
@@ -38,7 +38,8 @@
               <div class="card-footer bg-white pt-0 border-0 text-left">
                   <div class="row">
                       <div class="col">
-                          <p class="lead mb-0 text-left font-weight-bold">{{ box.price }}</p>
+                          <p class="lead mb-0 text-left font-weight-bold"><i class="fa fa-eur text-muted" aria-hidden="true"></i>
+                            {{ box.price }}</p>
                           
                           <p class="small mt-1 mb-0">
                               <a class="text-muted" href="">
