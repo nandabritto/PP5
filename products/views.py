@@ -8,8 +8,10 @@ def products(request):
     return render(request, 'products/products.html', {'boxes':boxes})
 
 def product_detail(request, pk):
-    context = {
 
+    box = get_object_or_404(Product, pk=pk)
+    context = {
+        'box': box,
     }
     context['form']= UserForm()
     return render(request, 'products/product_detail.html', context)
