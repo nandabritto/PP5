@@ -6,3 +6,4 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.TextField()
     image = models.ImageField(null=True)
+

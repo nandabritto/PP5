@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block extra_css %}
-
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
 {% endblock %}
 
 {% block extra_title %}Products{% endblock %}
@@ -15,25 +15,42 @@
 
 {% block content %}
 
-<h1 class= "text-center m-3 p-3"> Regional Boxes availabe this month </h1>
+<h1 class="text-center m-3 p-3"> Regional Boxes availabe this month </h1>
 
-{% for box in boxes %}
-<div class="card col-10 d-flex mx-auto">
-    <div class="row g-0 ">
-      <div class="col-md-5">
-        <img src="{{ box.image.url }}" class="img-fluid rounded-start w-100" alt="{{ box.image }}">
-      </div>
-      <div class="col-md-7">
-        <h2 class="card-title text-center w-100"><strong>{{ box.boxname }}</strong></h2>
-        <div class="card-body">
-          
-          <p class="card-text">{{ box.description }}</p>
 
-          <p class="card-text"><small class="text-muted">{{ box.price }}</small></p>
-        </div>
+<div class="row d-flex justify-content-center text-center">
+  {% for box in boxes %}
+      <div class="col-sm-6 col-md-5 col-lg-4 col-xl-3 col-10 gy-4">
+          <div class="card border-1">
+              {% if box.image %}
+              <a href="">
+                  <img class="card-img-top img-fluid" src="{{ box.image.url }}" alt="{{ box.boxname }}">
+              </a>
+              {% else %}
+              <a href="">
+                  <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ box.boxname }}">
+              </a>
+              {% endif %}
+              <div class="card-body pb-0">
+                  <p class="mb-0">{{ box.boxname }}</p>
+                  <p class="mb-0">{{ box.description }}</p>
+              </div>
+              <div class="card-footer bg-white pt-0 border-0 text-left">
+                  <div class="row">
+                      <div class="col">
+                          <p class="lead mb-0 text-left font-weight-bold">{{ box.price }}</p>
+                          
+                          <p class="small mt-1 mb-0">
+                              <a class="text-muted" href="">
+                                  
+                              </a>
+                          </p>
+                         
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-  </div>
 
 {% endfor %}
 

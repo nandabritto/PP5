@@ -14,4 +14,4 @@ PRODUCT_CHOICES= [
     ]
 
 class UserForm(forms.Form):
-    favorite_fruit= forms.MultipleChoiceField(label='Choose the products for your box', widget=forms.CheckboxSelectMultiple,choices=PRODUCT_CHOICES)
+    selected_product= forms.MultipleChoiceField(label='Choose the products for your box', widget=forms.CheckboxSelectMultiple,choices=PRODUCT_CHOICES)

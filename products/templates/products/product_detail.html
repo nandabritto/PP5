@@ -16,28 +16,33 @@
 {% block content %}
 
 <div class="card col-10 d-flex mx-auto">
-    <div class="row g-0 ">
-      <div class="col-md-5">
-        <img src="{{ box.image.url }}" class="img-fluid rounded-start w-100" alt="{{ box.image }}">
-      </div>
-      <div class="col-md-7">
-        <h2 class="card-title text-center w-100"><strong>{{ box.boxname }}</strong></h2>
-        <div class="card-body">
-          
-          <p class="card-text">{{ box.description }}</p>
-          <form action = "" method = "post">
-            {% csrf_token %}
-            {{form }}
-            <input type="submit" value="Submit">
-        </form>
+  <div class="row g-0 ">
+    <div class="col-md-5">
+      <img src="{{ box.image.url }}" class="img-fluid rounded-start w-100" alt="{{ box.image }}">
+    </div>
+    <div class="col-md-7">
+      <h2 class="card-title text-center w-100"><strong>{{ box.boxname }}</strong></h2>
+      <div class="card-body">
 
-          <p class="card-text"><small class="text-muted">{{ box.price }}</small></p>
-        </div>
+        <p class="card-text">{{ box.description }}</p>
+        <form action="" method="post">
+          {% csrf_token %}
+                {{form.as_table }}
+            
+          <input id="but1" type="submit" value="Display Records" onclick="getvalues()">
+
+        </form>
+        <b id="displayvalues"></b>
+
+
+        <p class="card-text"><small class="text-muted">{{ box.price }}</small></p>
       </div>
     </div>
   </div>
+</div>
 
+{% endblock %}
 
-
-
+{% block postloadjs %}
+<script src="{% static 'js/product_detail.js' %}" type="text/javascript"></script>
 {% endblock %}
