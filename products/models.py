@@ -3,15 +3,22 @@ from django.db import models
 
 class Product(models.Model):
     product_name = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=5, decimal_places=2, null=True)
-    category = models.ForeignKey(
-        Box, on_delete=models.CASCADE)
-    description = models.TextField()
-    image = models.ImageField(null=True)
+    product_price = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    product_description = models.TextField()
+    product_image = models.ImageField(null=True)
 
     def __str__(self):
         """ Return product name string """
         return str(self.product_name).lower()
 
 
+class Box(models.Model):
+    box_name = models.CharField(max_length=200)
+    box_price = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    category = models.CharField(max_length=50, unique=True)
+    box_description = models.TextField()
+    box_image = models.ImageField(null=True)
 
+    def __str__(self):
+        """ Return box name string """
+        return str(self.box_name).lower()
