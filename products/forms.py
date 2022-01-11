@@ -1,13 +1,5 @@
 from django import forms
+from .models import Product
 
-PRODUCT_CHOICES= [
-    ('product1', 'PLACEHOLDER1'),
-    (' product2', 'PLACEHOLDER2'),
-    (' product3', 'PLACEHOLDER3'),
-    (' product4', 'PLACEHOLDER4'),
-    (' product5', 'PLACEHOLDER5'),
-    
-    ]
-
-class UserForm(forms.Form):
-    selected_product= forms.MultipleChoiceField(label='Choose the products for your box', widget=forms.CheckboxSelectMultiple,choices=PRODUCT_CHOICES)
+class ProductChoicesForm(forms.Form):
+    selected_product = forms.ModelChoiceField(queryset=Product.objects.all(),widget=forms.CheckboxSelectMultiple)

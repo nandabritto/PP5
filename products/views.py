@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product
-from .forms import UserForm
+from .forms import ProductChoicesForm
 
 def products(request):
     boxes = Product.objects.all()
@@ -13,5 +13,6 @@ def product_detail(request, pk):
     context = {
         'box': box,
     }
+    context['form']= ProductChoicesForm()
     
     return render(request, 'products/product_detail.html', context)
