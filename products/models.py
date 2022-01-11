@@ -25,19 +25,9 @@ class Box(models.Model):
 
 
 class Product_On_Box(models.Model):
-    product_name = models.ForeignKey(
+    product = models.ForeignKey(
         Product, on_delete=models.CASCADE)
-    product_description = models.ForeignKey(
-        Product, on_delete=models.CASCADE)
-    product_image = models.ForeignKey(
-        Product, on_delete=models.CASCADE)
-    box_name = models.ForeignKey(
-        Box, on_delete=models.CASCADE)
-    category = models.ForeignKey(
-        Box, on_delete=models.CASCADE)
-    box_description = models.ForeignKey(
-        Box, on_delete=models.CASCADE)
-    box_image = models.ForeignKey(
+    box = models.ForeignKey(
         Box, on_delete=models.CASCADE)
     product_selectable = models.BooleanField()
-    
+
