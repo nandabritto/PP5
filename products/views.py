@@ -13,5 +13,5 @@ def product_detail(request, pk):
     context = {
         'box': box,
     }
-    context['form']= UserForm()
+    
     return render(request, 'products/product_detail.html', context)
