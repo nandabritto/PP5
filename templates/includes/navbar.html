@@ -25,9 +25,9 @@
                         Products
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{% url 'products' %}">All</a></li>
-                        <li><a class="dropdown-item" href="{% url 'product_details' 2 %}">Brazilian Box</a></li>
-                        <li><a class="dropdown-item" href="{% url 'product_details' 1%}">Spanish Box</a></li>
+                        <li><a class="dropdown-item" href="{% url 'boxes' %}">All</a></li>
+                        <li><a class="dropdown-item" href="{% url 'product_details' 1 %}">Brazilian Box</a></li>
+                        <li><a class="dropdown-item" href="{% url 'product_details' 2  %}">Spanish Box</a></li>
                         <li><a class="dropdown-item" href="#">Asian Box</a></li>
                     </ul>
                 </li>
@@ -37,7 +37,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-lg text-dark "></i>
-                        
+                        Account
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         {% if request.user.is_authenticated %}
