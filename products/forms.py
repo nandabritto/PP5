@@ -1,18 +1,18 @@
+""" System Module """
 from django import forms
-from .models import Product,Product_On_Box
-from django.shortcuts import render, get_object_or_404
-import logging 
+from .models import Product
+
 
 class ProductChoicesForm(forms.Form):
+    """
+    Create checkboxes to add products on box
+    """
     def __init__(self, pk, *args, **kwargs):
+        """
+        Get objects on prooducts model, filter by box and create checkboxes
+        """
         super(ProductChoicesForm, self).__init__(*args, **kwargs)
-        # self.fields['selected_product'].queryset = Product_On_Box.objects.filter(pk=pk)
-        # Boxqs = Box.objects.filter(pk=pk)
-        PoB = Product_On_Box.objects.filter(box_id=pk)
-        Productqs = Product.objects.filter(product_on_box__box_id=pk)
-        query = Productqs
-        # logging.debug(query)
-        # logging.debug(dir(query))
-        # # logging.debug(latest(query))
-        # logging.debug(query.values())
-        self.fields['selected_product'] = forms.ModelChoiceField(queryset=query.all(),widget=forms.CheckboxSelectMultiple)
+        query = Product.objects.filter(product_on_box__box_id=pk)
+        self.fields['selected_product'] = forms.ModelChoiceField(
+            queryset=query.all(), widget=forms.CheckboxSelectMultiple, empty_label=None)
+        self.fields['selected_product'].label = False
