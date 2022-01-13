@@ -41,3 +41,7 @@ class Product_On_Box(models.Model):
     box = models.ForeignKey(
         Box, on_delete=models.CASCADE)
     product_selectable = models.BooleanField()
+
+    def __str__(self):
+        """ Return product name string """
+        return f"{self.box.box_name} | {self.product.product_name}"

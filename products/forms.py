@@ -13,6 +13,8 @@ class ProductChoicesForm(forms.Form):
         """
         super(ProductChoicesForm, self).__init__(*args, **kwargs)
         query = Product.objects.filter(product_on_box__box_id=pk)
+        selectables_query = query.filter(product_on_box__product_selectable=True)
         self.fields['selected_product'] = forms.ModelChoiceField(
-            queryset=query.all(), widget=forms.CheckboxSelectMultiple, empty_label=None)
+            queryset=selectables_query.all(), widget=forms.CheckboxSelectMultiple, empty_label=None)
         self.fields['selected_product'].label = False
+
