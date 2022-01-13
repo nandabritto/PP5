@@ -1,17 +1,17 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">  
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 {% endblock %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">The regional Taste</a>
+        <a class="navbar-brand" href="{% url 'home' %}">The regional Taste</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse flot-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">How it works</a>
@@ -25,28 +25,36 @@
                         Products
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Brazilian Box</a></li>
-                        <li><a class="dropdown-item" href="#">Spanish Box</a></li>
+                        <li><a class="dropdown-item" href="{% url 'boxes' %}">All</a></li>
+                        <li><a class="dropdown-item" href="{% url 'product_details' 1 %}">Brazilian Box</a></li>
+                        <li><a class="dropdown-item" href="{% url 'product_details' 2  %}">Spanish Box</a></li>
                         <li><a class="dropdown-item" href="#">Asian Box</a></li>
                     </ul>
                 </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-lg text-dark "></i>
+                        Account
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                        <a href="" class="dropdown-item">Product Management</a>
+                        {% endif %}
+                        <a href="" class="dropdown-item">My Profile</a>
+                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                        {% else %}
+                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+
         </div>
+        
     </div>
-
-
-
-</nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </nav>

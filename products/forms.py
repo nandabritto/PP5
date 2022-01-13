@@ -1,17 +1,20 @@
+""" System Module """
 from django import forms
+from .models import Product
 
-PRODUCT_CHOICES= [
-    ('product1', 'PLACEHOLDER1'),
-    ('Product2', 'PLACEHOLDER2'),
-    ('product3', 'PLACEHOLDER3'),
-    ('product4', 'PLACEHOLDER4'),
-    ('product5', 'PLACEHOLDER5'),
-    ('Product6', 'PLACEHOLDER6'),
-    ('product7', 'PLACEHOLDER7'),
-    ('product8', 'PLACEHOLDER8'),
-    ('produc9', 'PLACEHOLDER9'),
-    ('Product10', 'PLACEHOLDER10'),    
-    ]
 
-class UserForm(forms.Form):
-    selected_product= forms.MultipleChoiceField(label='Choose the products for your box', widget=forms.CheckboxSelectMultiple,choices=PRODUCT_CHOICES)
+class ProductChoicesForm(forms.Form):
+    """
+    Create checkboxes to add products on box
+    """
+    def __init__(self, pk, *args, **kwargs):
+        """
+        Get objects on prooducts model, filter by box and create checkboxes
+        """
+        super(ProductChoicesForm, self).__init__(*args, **kwargs)
+        query = Product.objects.filter(product_on_box__box_id=pk)
+        selectables_query = query.filter(product_on_box__product_selectable=True)
+        self.fields['selected_product'] = forms.ModelChoiceField(
+            queryset=selectables_query.all(), widget=forms.CheckboxSelectMultiple, empty_label=None)
+        self.fields['selected_product'].label = False
+
