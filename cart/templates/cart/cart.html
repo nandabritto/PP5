@@ -1,1 +1,58 @@
-<h1> My cart</h1>
+{% extends "base.html" %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% load static %}
+
+<!-- Customizible CSS -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+<!-- Page title -->
+{% block extra_title %}Cart{% endblock %}
+
+
+{% block content %}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row"></th>
+            <td class="item"> 2 </td>
+            <td class="quantity">
+                <div>
+                    <p class="quantity">4</p>
+                    <div class="quantity">
+                        <img data-product="" data-action="add" class="chg-quantity update-cart"
+                            src="{{ MEDIA_URL }}arrow-up.png">
+
+                        <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart"
+                            src="{{ MEDIA_URL }}arrow-down.png"></div>
+                </div>
+            </td>
+            <td class="price">3</td>
+            <td class="total">5</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}
+<!-- Customizible JS -->
+{% block postloadjs %}
+
+{% endblock %}
