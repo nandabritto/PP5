@@ -5,4 +5,4 @@ def order(request):
     """
     A view to return order page 
     """
-    return render(request, 'home/order.html')
+    return render(request, 'order/order.html')

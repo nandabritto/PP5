@@ -5,3 +5,8 @@
 	margin-top: 5px;
 	transition:.1s;
 }
+
+.box_image {
+	height: 150px!important;
+	width:150px!important;
+}
