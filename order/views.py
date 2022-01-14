@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def order(request):
+    """
+    A view to return order page 
+    """
+    return render(request, 'home/order.html')

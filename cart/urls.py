@@ -3,4 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.boxes, name='cart'),
+    path('', views.cart, name='cart'),
+]

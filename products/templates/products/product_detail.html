@@ -48,9 +48,13 @@
                     <p id="displayvalues" class="text-start"> Your choices for the box are: </p>
                 </div>
                 <!-- Box price -->
+                
                 <p class="card-text text-center">
-                    <bold><i class="fa fa-eur text-muted" aria-hidden="true"></i> {{ box.box_price }}</bold>
+                    <bold><i class="fa fa-eur text-muted" aria-hidden="true"></i> {{ box.box_price }}
+                   }</bold>
                 </p>
+                
+                <button data-box="{{box.id}}" data-action="add" type="button" class="btn btn-secondary update-cart">Add to cart</button>           
             </div>
         </div>
     </div>
@@ -61,4 +65,5 @@
 <!-- Customizible JS -->
 {% block postloadjs %}
 <script src="{% static 'js/product_detail.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
 {% endblock %}
