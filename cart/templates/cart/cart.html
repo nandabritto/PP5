@@ -16,6 +16,15 @@
 
 {% block content %}
 
+<table class="table">
+    <tr>
+        <th scope="col"><h5>Items: <strong>{{order.get_cart_items}}</strong></h5></th>
+        <th scope="col" ><h5>Total:<strong> {{order.get_cart_total|floatformat:2}}</strong></h5></th>
+        <th>
+            <a class="btn btn-success" href="">Checkout</a>
+        </th>
+    </tr>
+</table>
 
 <table class="table">
     <thead>
@@ -29,7 +38,7 @@
         </tr>
     </thead>
     <tbody>
-{{ order.get_cart_items }}
+
 
         {% for item in items %}
         <tr>            
