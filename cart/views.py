@@ -21,6 +21,5 @@ def cart(request):
 
     return render(request, 'cart/cart.html', context)
 
-
-def updateBox(request):
-    pass
+def updateCart(request):
+    return JsonResponse('Item was added', safe=False)
