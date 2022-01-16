@@ -1,3 +1,7 @@
+body{
+	background: url(/media/background-secondary.jpg) no-repeat center center fixed;
+}
+
 .chg-quantity{
 	width: 12px;
 	cursor: pointer;
@@ -14,3 +18,7 @@
 .cart-item-quantity{
 	flex:1!important;
 }
+
+
+
+
