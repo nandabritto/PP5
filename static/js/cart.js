@@ -35,7 +35,8 @@ function updateUserOrder(boxId, action) {
     })
 
     .then((data)=>{
-        console.log('data', data)
+        console.log('data',data)
+        location.reload()
     })
 }
 
