@@ -10,7 +10,20 @@ for (var i = 0; i < updateBtns.length; i++) {
         if(user == 'AnonymousUser'){
             console.log('Not logged in')
         } else{
-            console.log('User is logged in, sending data...' )
+            updateUserOrder(boxId, action)
         }
     })
 }
+
+
+
+
+
+
+
+
+
+// function decreasequantity() {
+//     this.parentNode.querySelector('input[type=number]').stepDown()
+// }
+

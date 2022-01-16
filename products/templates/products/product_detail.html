@@ -53,8 +53,11 @@
                     <bold><i class="fa fa-eur text-muted" aria-hidden="true"></i> {{ box.box_price }}
                    }</bold>
                 </p>
-                
-                <button data-box="{{box.id}}" data-action="add" type="button" class="btn btn-secondary update-cart">Add to cart</button>           
+                <form method="POST">
+                {% csrf_token %}
+                        {{form|crispy}}
+                <button data-box="{{box.id}}" data-action="add" type="button" class="btn btn-secondary update-cart">Add to cart</button>      
+            </form>     
             </div>
         </div>
     </div>
