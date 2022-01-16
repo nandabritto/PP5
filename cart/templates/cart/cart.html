@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% load static %}
+{% load mathfilters %}
 
 <!-- Customizible CSS -->
 {% block extra_css %}
@@ -36,23 +37,26 @@
 
                                     <div class="row mb-4 d-flex justify-content-between align-items-center">
                                         <div class="col-md-2 col-lg-2 col-xl-2">
-                                            <img src="{{ item.box.box_image.url }}" class="rounded-3 w-100 " alt="{{ item.box_image }}">
-                                                
+                                            <img src="{{ item.box.box_image.url }}" class="rounded-3 w-100 "
+                                                alt="{{ item.box_image }}">
+
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-3">
                                             <h6 class="text-black">{{ item.box}}</h6>
                                             <p class="small text-muted mb-0">{{ item.box.box_description}}</p>
                                         </div>
-                                        <div style="flex:1">
-                                            <p class="quantity">{{item.quantity}}</p>
-                                            <div class="quantity">
-                                                <img data-box="{{item.box.id}}" data-action="add" class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-up.png">
-                                        
-                                                <img data-box="{{item.box.id}}" data-action="remove" class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-down.png">
-                                            </div>
+                                        <div class="cart-item-quantity">
+                                            
+                                            <p class="text-center">Quantity</p>
+                                            <img data-box="{{item.box.id}}" data-action="add"
+                                                class="chg-quantity update-cart mx-auto" src="{{MEDIA_URL}}arrow-up.png">
+                                                <p class="quantity cart-item-quantity mt-2 text-center">{{item.quantity}}</p>
+                                            <img data-box="{{item.box.id}}" data-action="remove"
+                                                class="chg-quantity update-cart mx-auto" src="{{MEDIA_URL}}arrow-down.png">
+
                                         </div>
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                            <h6 class="mb-0"> € {{item.box.box_price}}</h6>
+                                            <h6 class="mb-0"> € {{item.quantity | mul:item.box.box_price}}</h6>
                                         </div>
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                             <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
@@ -83,7 +87,7 @@
                                     <div class="mb-4 pb-2">
                                         <select class="select">
                                             <option value="1">Standard-Delivery- €5.00</option>
-                                            <option value="2">Two</option>                                            
+                                            <option value="2">Two</option>
                                         </select>
                                     </div>
 
@@ -111,58 +115,6 @@
 
 
 
-
-<table class="table">
-    <tr>
-        <th scope="col">
-            <h5>Items: <strong>{{order.get_cart_items}}</strong></h5>
-        </th>
-        <th scope="col">
-            <h5>Total:<strong> {{order.get_cart_total|floatformat:2}}</strong></h5>
-        </th>
-        <th>
-            <a class="btn btn-success" href="">Checkout</a>
-        </th>
-    </tr>
-</table>
-
-<table class="table">
-    <thead>
-        <tr>
-
-            <th scope="col"></th>
-            <th scope="col">Box</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price Box</th>
-            <th scope="col">Total</th>
-        </tr>
-    </thead>
-    <tbody>
-
-
-        {% for item in items %}
-        <tr>
-            <td class="box_image">
-                <img src="{{ item.box.box_image.url }}" class="rounded-3 w-100 " alt="{{ item.box_image }}">
-            </td>
-            <td class="item"> {{ item.box}} </td>
-            <td class="quantity">
-                <div>
-                    <p class="quantity">{{ item.quantity}}</p>
-                    <div class="quantity">
-                        <img data-product={{item.box.id}} data-action="add" class="chg-quantity update-cart"
-                            src="{{ MEDIA_URL }}arrow-up.png">
-
-                        <img data-product={{item.box.id}} data-action="remove" class="chg-quantity update-cart"
-                            src="{{ MEDIA_URL }}arrow-down.png"></div>
-                </div>
-            </td>
-            <td class="price">{{item.box.box_price}}</td>
-            <td class="total">{{item.get_total}}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
 
 
 

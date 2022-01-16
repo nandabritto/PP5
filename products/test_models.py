@@ -53,4 +53,11 @@ class TestProductOnBox(TestCase):
         self.product = self.product_name
         self.box = self.box_name
 
+    # def test__str__(self):
+    #     """
+    #     Test if Box is returning lower string
+    #     """
+    #     self.box_name = Box.objects.create(box_name='BoxName')
+    #     self.product_name = Product.objects.create(product_name='ProductTest')
+    #     self.assertContains( 'BoxName|ProductTest')
     

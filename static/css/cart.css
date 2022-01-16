@@ -10,3 +10,7 @@
 	height: 150px!important;
 	width:150px!important;
 }
+
+.cart-item-quantity{
+	flex:1!important;
+}
