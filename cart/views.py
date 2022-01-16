@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from order.models import Order
 from django.http import JsonResponse
+import json
 
 
 def cart(request):
@@ -22,4 +23,10 @@ def cart(request):
     return render(request, 'cart/cart.html', context)
 
 def updateCart(request):
+    print(request)
+    data = json.loads(request.body)
+    boxId = data['boxId']
+    action = data['action']
+    print('Action:', action)
+    print('boxId:', boxId) 
     return JsonResponse('Item was added', safe=False)

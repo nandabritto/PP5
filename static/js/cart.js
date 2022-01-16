@@ -10,7 +10,7 @@ for (var i = 0; i < updateBtns.length; i++) {
         if (user == 'AnonymousUser') {
             console.log('Not logged in')
         } else {
-            updateUserOder(boxId, action)
+            updateUserOrder(boxId, action)
         }
     })
 }
@@ -19,25 +19,64 @@ for (var i = 0; i < updateBtns.length; i++) {
 function updateUserOrder(boxId, action) {
     console.log('User is logged in, sending data...')
 
-    const request = new Request(
-        '/cart/update_cart/', {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': csrftoken
-            },
-            mode: 'same-origin' // Do not send CSRF token to another domain.
+    var url = '/cart/update_cart/'
+
+    fetch(url, {
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+                'X-CSRFToken': csrftoken,
         },
-        JSON.stringify({
-            'boxId': boxId,
-            'action': action
-        })
-    );
+        body:JSON.stringify({'boxId': boxId, 'action':action})
+    })
 
-    fetch(request).then(function (response) {
-        return response.json;
-    });
-    fetch(request).then(function (data) {
-        console.log('data', data);
-    });
+    .then((response)=>{
+        return response.json()
+    })
 
+    .then((data)=>{
+        console.log('data', data)
+    })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     const request = new Request(
+//         '/cart/update_cart/', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type':'application/json',
+//                 'X-CSRFToken': csrftoken
+//             },
+            
+//             body: JSON.stringify({
+//                 'boxId': boxId,
+//                 'action': action
+//             })
+//         },
+        
+//     );
+
+//     fetch(request).then(function (response) {
+//         return response.json();
+//     });
+//     fetch(request).then(function (data) {
+//         console.log('data', data);
+//     });
+
+// }
