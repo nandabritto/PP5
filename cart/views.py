@@ -1,6 +1,7 @@
 """ System Module """
 from django.shortcuts import render
-from order.models import Order
+from order.models import Order, OrderBox
+from products.models import Box
 from django.http import JsonResponse
 import json
 
@@ -23,10 +24,26 @@ def cart(request):
     return render(request, 'cart/cart.html', context)
 
 def updateCart(request):
-    print(request)
     data = json.loads(request.body)
     boxId = data['boxId']
     action = data['action']
-    print('Action:', action)
-    print('boxId:', boxId) 
+
+
+    customer = request.user
+    box = Box.objects.get(id=boxId)
+    order, created = Order.objects.get_or_create(
+            customer=customer, complete=False)
+
+    orderBox, created = OrderBox.objects.get_or_create(order_box=order, box=box)
+
+    if action == 'add':
+        orderBox.quantity = (orderBox.quantity + 1 )
+    elif action == 'remove':
+        orderBox.quantity = (orderBox.quantity - 1)
+
+    orderBox.save()
+
+    if orderBox.quantity <= 0:
+        orderBox.delete()
+
     return JsonResponse('Item was added', safe=False)
