@@ -2,10 +2,6 @@
     height: 30vh;
 }
 
-body {
-    background: url(/media/background-secondary.jpg) no-repeat center center fixed;
-}
-
 .products-container {
     padding-bottom: 2vh !important;
 }
