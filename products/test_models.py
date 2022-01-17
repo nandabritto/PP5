@@ -1,6 +1,6 @@
 from django.test import TestCase
 from .models import Product, Box, Product_On_Box
-
+import logging
 
 class TestProduct(TestCase):
     """
@@ -53,4 +53,15 @@ class TestProductOnBox(TestCase):
         self.product = self.product_name
         self.box = self.box_name
 
+    def test__str__(self):
+        """
+        Test if Box is returning lower string
+        """
+        self.box = Box.objects.create(box_name='BoxName')
+        self.product = Product.objects.create(product_name='ProductTest')
+        self.product_on_box = Product_On_Box.objects.create(
+            product=self.product, box=self.box, product_selectable=True)
+        self.assertEqual(str(str(self.product_on_box)), f"{self.box.box_name} | {self.product.product_name}")
+        # self.assertEqual(str(self.box,self.box_name.box_name.lower())
+        # self.assertEqual(str(self.box_name), self.box_name.box_name.lower())
     

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_countries',
     'crispy_bootstrap5',
+    'mathfilters',
     'home',
     'products',
     'user_profile',

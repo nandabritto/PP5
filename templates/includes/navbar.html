@@ -53,6 +53,18 @@
                     </ul>
                 </li>
             </ul>
+            <div>
+            <ul class="navbar-nav mx-1 my-2">
+                <a href="{% url 'cart' %}"> <li class="btn position-relative">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {{cartItems}}
+                      <span class="visually-hidden">Cart Items</span>
+                    </span>
+                </li></a>
+            </ul>
+        </div>
+            
 
         </div>
         

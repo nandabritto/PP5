@@ -1,9 +1,13 @@
+""" System Module """
 from django.db import models
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 from products.models import Box
 
 
 class Order(models.Model):
+    """
+    Create order details and link it to the user
+    """
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True)
@@ -11,36 +15,57 @@ class Order(models.Model):
     transactional_id = models.CharField(max_length=200, null=True)
 
     def __str__(self):
+        """
+        Return a user string
+        """
         return str(self.customer)
 
     @property
     def get_cart_total(self):
-        orderitems = self.orderbox_set.all
+        """
+        Get items and in the cart and sum to create cart total price
+        """
+        orderitems = self.orderbox_set.all()
         total = sum([item.get_total for item in orderitems])
         return total
 
     @property
     def get_cart_items(self):
-        orderitems = self.orderbox_set.all
+        """
+        Get items and in the cart and sum to create cart total items
+        """
+        orderitems = self.orderbox_set.all()
         total = sum([item.quantity for item in orderitems])
         return total
 
 
 class OrderBox(models.Model):
-    box = models.ForeignKey(Box, on_delete=models.SET_NULL, blank=True, null=True)
-    order_box = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
+    """
+    Create orderbox details and quantity to add to the cart
+    """
+    box = models.ForeignKey(
+        Box, on_delete=models.SET_NULL, blank=True, null=True)
+    order_box = models.ForeignKey(
+        Order, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
     @property
     def get_total(self):
+        """
+        Multiply number of item to the box price to get total
+        """
         total = self.box.box_price * self.quantity
         return total
 
 
 class ShippingAddress(models.Model):
+    """
+    Create shipping details and link to the user and order
+    """
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
+    order = models.ForeignKey(
+        Order, on_delete=models.SET_NULL, blank=True, null=True)
     address1 = models.CharField(max_length=100, null=True)
     addres2 = models.CharField(max_length=100, null=True)
     county = models.CharField(max_length=20, null=True)
@@ -49,4 +74,7 @@ class ShippingAddress(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-            return str(self.address1)
+        """
+        Return a string to shipping address
+        """
+        return str(self.address1)
