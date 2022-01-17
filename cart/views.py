@@ -31,7 +31,6 @@ def updateCart(request):
     boxId = data['boxId']
     action = data['action']
 
-
     customer = request.user
     box = Box.objects.get(id=boxId)
     order, created = Order.objects.get_or_create(

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import auth
 from products.models import Box
+import json
 import logging
 
 
@@ -29,6 +30,9 @@ class SetupViewTestCase(TestCase):
              
     
 class TestCart(SetupViewTestCase):
+    """
+    Test cart function
+    """
     def test_if_user_is_autheticated(self):
         self.client.login(username='joe', password='12345')
         user = auth.get_user(self.client)
@@ -47,4 +51,21 @@ class TestCart(SetupViewTestCase):
         """
         self.client.logout()
         response = self.client.get(reverse('cart'))
+        self.assertEqual(response.status_code, 200)
+
+
+class TestUpdateCart(SetupViewTestCase):
+    """
+    Test updatecart function
+    """
+    def test_update_cart_add(self):
+        payload = {'boxId': self.box.id, 'action': 'add'}
+        response = self.client.post(reverse('update_cart'), data=payload, content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+
+    def test_add_or_remove_item_to_cart(self):
+        payload = {'boxId': self.box.id, 'action': 'add'}
+        response = self.client.post(reverse('update_cart'), data=payload, content_type='application/json')
+        payload = {'boxId': self.box.id, 'action': 'remove'}
+        response = self.client.post(reverse('update_cart'), data=payload, content_type='application/json')
         self.assertEqual(response.status_code, 200)
