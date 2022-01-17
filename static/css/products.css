@@ -1,5 +1,18 @@
-.card-img-top{
+.card-img-top {
     height: 30vh;
+}
+
+body {
+    background: url(/media/background-secondary.jpg) no-repeat center center fixed;
+}
+
+.products-container {
+    padding-bottom: 2vh !important;
+}
+
+@media only screen and (max-width: 400px) {
+
+    .products-container {
+        padding-bottom: 20vh!important;
     }
-
-
+}
