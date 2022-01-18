@@ -2,6 +2,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from products.models import Box
+from django_countries.fields import CountryField
+
 
 
 class Order(models.Model):
@@ -13,6 +15,9 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False, null=True, blank=False)
     transactional_id = models.CharField(max_length=200, null=True)
+    billing_address = models.ForeignKey(
+        'BillingAddress', on_delete=models.SET_NULL,blank=True, null=True)
+    
 
     def __str__(self):
         """
@@ -67,22 +72,41 @@ class OrderBox(models.Model):
         return total
 
 
-class ShippingAddress(models.Model):
+# class ShippingAddress(models.Model):
+#     """
+#     Create shipping details and link to the user and order
+#     """
+#     customer = models.ForeignKey(User, on_delete=models.CASCADE)
+#     order = models.ForeignKey(
+#         Order, on_delete=models.SET_NULL, blank=True, null=True)
+#     address1 = models.CharField(max_length=100, null=True)
+#     addres2 = models.CharField(max_length=100, null=True)
+#     county = models.CharField(max_length=20, null=True)
+#     country = models.CharField(max_length=30, null=True)
+#     eircode = models.CharField(max_length=7, null=True)
+#     date_added = models.DateTimeField(auto_now_add=True)
+
+#     def __str__(self):
+#         """
+#         Return a string to shipping address
+#         """
+#         return str(self.address1)
+
+
+
+class BillingAddress(models.Model):
     """
-    Create shipping details and link to the user and order
+    Create billing details and link to the user and order
     """
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    order = models.ForeignKey(
-        Order, on_delete=models.SET_NULL, blank=True, null=True)
-    address1 = models.CharField(max_length=100, null=True)
-    addres2 = models.CharField(max_length=100, null=True)
-    county = models.CharField(max_length=20, null=True)
-    country = models.CharField(max_length=30, null=True)
-    eircode = models.CharField(max_length=7, null=True)
-    date_added = models.DateTimeField(auto_now_add=True)
+    address1 = models.CharField(max_length=100)
+    address2 = models.CharField(max_length=100)
+    county = models.CharField(max_length=20)
+    country = CountryField(multiple=False)
+    eircode = models.CharField(max_length=6)
 
     def __str__(self):
         """
         Return a string to shipping address
         """
-        return str(self.address1)
+        return str(self.customer)
