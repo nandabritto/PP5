@@ -5,7 +5,6 @@ from products.models import Box
 from django_countries.fields import CountryField
 
 
-
 class Order(models.Model):
     """
     Create order details and link it to the user
@@ -107,6 +106,6 @@ class BillingAddress(models.Model):
 
     def __str__(self):
         """
-        Return a string to shipping address
+        Return a string to billing address
         """
         return str(self.customer)

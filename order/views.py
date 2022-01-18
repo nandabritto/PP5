@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from .forms import CheckoutForm
-from .models import Order, BillingAddress
+from .models import Order, BillingAddress, OrderBox
 from django.core.exceptions import ObjectDoesNotExist
 
 
@@ -16,10 +16,19 @@ def order(request):
 class CheckoutView(View):
     def get(self, *args, **kwargs):
         form = CheckoutForm()
-        context = {
-            'form': form
-        }
-        return render(self.request, 'order/checkout.html', context)
+        if self.request.user.is_authenticated:
+            customer = self.request.user
+            order, created = Order.objects.get_or_create(
+                customer=customer, complete=False)
+            items = order.orderbox_set.all()
+            cartItems = order.get_cart_items
+            context = {
+                'form': form,
+                'items': items, 
+                'order': order, 
+                'cartItems': cartItems
+            }
+            return render(self.request, 'order/checkout.html', context)
 
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
