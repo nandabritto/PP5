@@ -1,3 +1,4 @@
+""" System Module """
 from django.test import TestCase
 from .models import Product, Box, Product_On_Box
 import logging
@@ -62,6 +63,5 @@ class TestProductOnBox(TestCase):
         self.product_on_box = Product_On_Box.objects.create(
             product=self.product, box=self.box, product_selectable=True)
         self.assertEqual(str(str(self.product_on_box)), f"{self.box.box_name} | {self.product.product_name}")
-        # self.assertEqual(str(self.box,self.box_name.box_name.lower())
-        # self.assertEqual(str(self.box_name), self.box_name.box_name.lower())
+       
     
