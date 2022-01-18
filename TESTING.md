@@ -6,7 +6,55 @@ During the code development of each function, tests were in place to be sure tha
 
 Testing will be conducted regularly alongside development of this project. Each User Story will include Unit testing of the code being developed and a manual exploratory test session.
 
-## Sprint 1 - 4/01/2021 to 11/01/2021
+### Sprint 1 - 04/01/2022 - 11/01/2022 (Finished at 09/01/2022)
+
+Unittest were done to ensure all home app functionality were working as expected. 
+
+<img width= "800" src="media/readme/unittests/sprint1/unittest_home_url.jpg">
+
+### Sprint 2 - 09/11/2022 - 16/01/2022
+
+Unittest were done to ensure all products, bag an order functionality developed until this point were working as expected.
+
++ Functions tested: 
+
+| App | File | Class/Function Name |
+|:---:|:---:|:---:|
+| Product | Views | boxes |
+| Product | Views | product_details |
+| Product | Models | Product |
+| Product | Models | Box |
+| Product | Models | Product_On_Box |
+| Cart | Models | cart |
+| Cart | Models | updateCart |
+
++ Products View
+
+<img width= "800" src="media/readme/unittests/sprint2/unittest_views_products.jpg">
+
++ Products Models Initial
+
+<img width= "800" src="media/readme/unittests/sprint2/unittest_models_products.jpg">
+
++ Products Models Final
+
+<img width= "800" src="media/readme/unittests/sprint2/unittest_models_products_2.jpg">
+
++ Products Final All
+
+<img width= "800" src="media/readme/unittests/sprint2/coverage_products_all.jpg">
+
++ Cart Views
+
+<img width= "800" src="media/readme/unittests/sprint2/unittest_views_cart.jpg">
+
++ Cart Final All
+
+<img width= "800" src="media/readme/unittests/sprint2/coverage_cart_all.jpg">
+
++ Sprint 2 Unittest Coverage
+
+<img width= "800" src="media/readme/unittests/sprint2/coverage_all_sprint2.jpg">
 
 ### User Stories
 

@@ -59,26 +59,36 @@ Live app link [here]()
 
 **Agile Methodology**
 
-All functionality and development of this project were managed using Jira (https://bestbeer.atlassian.net)
+All functionality and development of this project were managed using [Jira](https://bestbeer.atlassian.net)
 
 * Credentials to this management tool will be provided during submission.
 
 <details>
 <summary>All sprints are described here.</summary>
 
-Test cases were linked with every User story presented above, and can be found in TESTING.md(TESTING.md) - Automated testing section. 
+Test cases were linked with every User story presented above, and can be found in [TESTING.md](TESTING.md)- Automated testing section. 
 
-* Sprint 1
+* Sprint 1 - 04/01/2022 - 11/01/2022 (Finished at 09/01/2022)
 
-  + 
+  + Initial setup
+    - As a developer, I want to setup django templates
+  + Create Database and Deployment on Heroku
+    - As a developer, I want to set up a Database to store all data 
+    - As a developer, I want to deploy website on Heroku
+  + Create user registration and login/logout features
+    - As a user I want to register on website
+    - As a user I want to login on website
+    - As a user I want to logout on website
+    - As a site admin I want to have admin privileges 
 
-<img width= "800" src="">
+* Sprint 2 - 09/11/2022 - 16/01/2022
 
-* Sprint 2
+  + Create products page
+    - As a shopper I want to to see details about each available box
+    - As a shopper I want to add product on my bag 
+    - As a shopper I want to check all available products 
+    - As a shopper I want to sort a list of products by region (Not done on this sprint. Will be add in future sprints)
 
-  + 
-  
-<img width= "800" src="">
 
 * Sprint 3
 
@@ -125,14 +135,14 @@ Wireframes created with Balsamiq. The project was developed from initial wirefra
 
 Click to see wireframes:
 
-[HomePage](media/Readme/wireframes/homepage.png) <br>
-[Register Page](media/Readme/wireframes/register_page.png) <br>
-[Login Page](media/Readme/wireframes/Login.png) <br>
-[Reginal items Page](media/Readme/wireframes/region_items_available.png) <br>
-[Bag Page](media/Readme/wireframes/Bag.png) <br>
-[Payment Page](media/Readme/wireframes/payment_page.png) <br>
-[Order Placed Page](media/Readme/wireframes/order_placed_page.png) <br>
-[Site Map Page](media/Readme/wireframes/site_map.png) <br>
+[HomePage](media/readme/wireframes/homepage.png) <br>
+[Register Page](media/readme/wireframes/register_page.png) <br>
+[Login Page](media/readme/wireframes/login.png) <br>
+[Reginal items Page](media/readme/wireframes/region_items_available.png) <br>
+[Bag Page](media/readme/wireframes/bag.png) <br>
+[Payment Page](media/readme/wireframes/payment_page.png) <br>
+[Order Placed Page](media/readme/wireframes/order_placed_page.png) <br>
+[Site Map Page](media/readme/wireframes/site_map.png) <br>
 
 ### 5. Surface
 
