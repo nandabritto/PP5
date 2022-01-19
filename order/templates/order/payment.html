@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load mathfilters %}
+<!-- Customizible CSS -->
+
+{% block extra_css %}
+
+{% endblock %}
+
+<!-- Page title -->
+{% block extra_title %}Checkout{% endblock %}
+
+{% block content %}
+
+<!-- bbbootstrap.com template -->
+<div class="container mt-5 px-5">
+    <div class="mb-4">
+        <h2>Confirm your order and pay</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card p-3">
+               
+                <!-- Payment details -->
+                
+                <div class="mt-4 mb-4">
+                    <h6 class="text-uppercase">Payment details</h6>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required">
+                                <span>Name on card</span> </div>
+
+                            <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
+                                    required="required"> <i class="fa fa-credit-card"></i> <span>Card Number</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex flex-row">
+                                <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
+                                        required="required"> <span>Expiry</span> </div>
+                                <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
+                                        required="required"> <span>CVV</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mt-4 mb-4 d-flex justify-content-between"> <button class="btn btn-success px-3">Confirm</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- Order details -->
+            <div class="card card-blue p-3 text-black mb-3"> <span>
+                    <p class=" lead fw-bolder mb-0 text-muted p-3">Order Summary</p>
+                    <p class=" text-end mb-0 text-muted">{{order.get_cart_items}} item(s)</p>
+                    <ul class="list-group mb-3">
+                        {% for item in items %}
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Box: {{ item.box.box_name}}</h6>
+                                <small class="text-muted">Quantity: {{ item.quantity}}</small>
+                            </div>
+                            <span class="text-muted">€ {{item.quantity | mul:item.box.box_price}}</span>
+                        </li>
+                        {% endfor %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Delivery</span>
+                            € PLACEHOLDER
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total</span>
+                            <strong>€ {{order.get_cart_total|floatformat:2}}</strong>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+
+            {% endblock %}

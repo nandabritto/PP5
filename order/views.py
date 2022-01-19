@@ -60,3 +60,8 @@ class CheckoutView(View):
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order" )
             return redirect("cart")
+
+
+class PaymentView(View):
+    def get(self, *args, **kwargs):
+        return render(self.request, 'order/payment.html')
