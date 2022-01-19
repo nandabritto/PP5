@@ -4,6 +4,9 @@ from django.views.generic import View
 from .forms import CheckoutForm
 from .models import Order, BillingAddress, OrderBox
 from django.core.exceptions import ObjectDoesNotExist
+import stripe 
+from django.conf import settings
+
 
 
 def order(request):
@@ -26,7 +29,9 @@ class CheckoutView(View):
                 'form': form,
                 'items': items, 
                 'order': order, 
-                'cartItems': cartItems
+                'cartItems': cartItems,
+                'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+                'client_secret' : settings.CLIENT_SECRET
             }
             return render(self.request, 'order/checkout.html', context)
 
@@ -62,6 +67,3 @@ class CheckoutView(View):
             return redirect("cart")
 
 
-class PaymentView(View):
-    def get(self, *args, **kwargs):
-        return render(self.request, 'order/payment.html')

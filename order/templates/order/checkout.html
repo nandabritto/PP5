@@ -9,7 +9,7 @@
 <!-- Customizible CSS -->
 
 {% block extra_css %}
-
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
 {% endblock %}
 
 <!-- Page title -->
@@ -20,7 +20,7 @@
 <!-- bbbootstrap.com template -->
 <div class="container mt-5 px-5">
     <div class="mb-4">
-        <h2>Confirm your order and pay</h2>
+        <h2>Confirm your order</h2>
     </div>
     <div class="row">
         <div class="col-md-8">
@@ -32,26 +32,16 @@
                     {{ form|crispy }}
                     <button class="btn btn-primary" type="submit">Checkout</button>
                 </form>
-
-                <!-- Payment details -->
-                <div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required">
-                    <span>Name on card</span> </div>
-
                 <div class="mt-4 mb-4">
                     <h6 class="text-uppercase">Payment details</h6>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
-                                    required="required"> <i class="fa fa-credit-card"></i> <span>Card Number</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex flex-row">
-                                <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
-                                        required="required"> <span>Expiry</span> </div>
-                                <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
-                                        required="required"> <span>CVV</span> </div>
-                            </div>
+                        <div class="col-md-12">
+                            <fieldset class="px-3">
+                                <!-- A Stripe card element will go here -->
+                                <div class="mb-3" id="card-element"></div>
+                                <!-- Used to display form errors -->
+                                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
@@ -59,7 +49,11 @@
             </div>
             <div class="mt-4 mb-4 d-flex justify-content-between"> <button class="btn btn-success px-3">Confirm</button>
             </div>
+
+
         </div>
+
+
         <div class="col-md-4">
             <!-- Order details -->
             <div class="card card-blue p-3 text-black mb-3"> <span>
@@ -87,4 +81,12 @@
             </div>
         </div>
 
-            {% endblock %}
+        {% endblock %}
+
+
+        {% block postloadjs %}
+        {{ block.super }}
+        {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+        {{ client_secret|json_script:"id_client_secret" }}
+        <script src="{% static 'js/stripe_elements.js' %}"></script>
+        {% endblock %}
