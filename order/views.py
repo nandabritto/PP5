@@ -9,9 +9,7 @@ import stripe
 from django.conf import settings
 import logging
 
-stripe_public_key = settings.STRIPE_PUBLIC_KEY
-stripe_secret_key = settings.STRIPE_SECRET_KEY
-logging.debug(stripe_secret_key)
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def order(request):
     """
@@ -72,6 +70,7 @@ class CheckoutView(View):
 
 
 class PaymentView(View):
+
     def get (self, *args, **kwargs):
         return render(self.request, "order/payment.html")
 

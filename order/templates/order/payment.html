@@ -44,7 +44,7 @@
             <div class="new-card-form">
               <form action="." method="post" class="stripe-form" id="stripe-form">
                   {% csrf_token %}
-                  <div class="stripe-form-row" id="creditCard" data-payment={{stripe_secret_key}}>
+                  <div class="stripe-form-row" id="creditCard">
                       <label for="card-element" id="stripeBtnLabel">
                           Credit or debit card
                       </label>

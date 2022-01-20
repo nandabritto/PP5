@@ -91,16 +91,22 @@
     {% endblock %}
     {% include 'includes/navbar.html' %}
 
-    {% if messages %}
-    <div class="message-container">
-
+<!-- Alert messages -->
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert">
+        <strong> {{ message }} </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    {% endif %}
+{% endfor %}
+{% endif %}
+
 
     {% block page_header %}
     {% endblock %}
 
     {% block content %}
+
     {% endblock %}
 
     {% block postloadjs %}
