@@ -1,5 +1,4 @@
-var stripe = Stripe('{{STRIPE_PUBLIC_KEY}}');
-
+var stripe = Stripe('pk_test_51K75GAG6kIgu2TAlxJkRLrcFkmAOeJFZUpLb3Q5Ok32oWot4xTuDWOfMBPkzLSwFZBCRO0XQ8nhXZdDUq4JvRw3z00MPFQuV1C')
 // Create an instance of Elements.
 var elements = stripe.elements();
 
@@ -70,15 +69,15 @@ function stripeTokenHandler(token) {
     form.submit();
 }
 
-var currentCardForm = $('.current-card-form');
-var newCardForm = $('.new-card-form');
-var use_default_card = document.querySelector("input[name=use_default_card]");
-use_default_card.addEventListener('change', function () {
-    if (this.checked) {
-        newCardForm.hide();
-        currentCardForm.show()
-    } else {
-        newCardForm.show();
-        currentCardForm.hide()
-    }
-})
+// var currentCardForm = $('.current-card-form');
+// var newCardForm = $('.new-card-form');
+// var use_default_card = document.querySelector("input[name=use_default_card]");
+// use_default_card.addEventListener('change', function () {
+//     if (this.checked) {
+//         newCardForm.hide();
+//         currentCardForm.show()
+//     } else {
+//         newCardForm.show();
+//         currentCardForm.hide()
+//     }
+// })

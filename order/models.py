@@ -12,7 +12,7 @@ class Order(models.Model):
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False, null=True, blank=False)
+    ordered = models.BooleanField(default=False, null=True, blank=False)
     transactional_id = models.CharField(max_length=200, null=True)
     billing_address = models.ForeignKey(
         'BillingAddress', on_delete=models.SET_NULL,blank=True, null=True)

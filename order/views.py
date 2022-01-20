@@ -1,16 +1,17 @@
 """ System Module """
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.views.generic import View
 from .forms import CheckoutForm
-from .models import Order, BillingAddress, OrderBox
+from .models import Order, BillingAddress, OrderBox, Payment
 from django.core.exceptions import ObjectDoesNotExist
 import stripe 
 from django.conf import settings
+import logging
 
-
-
-stripe.api_key = settings.CLIENT_SECRET
-
+stripe_public_key = settings.STRIPE_PUBLIC_KEY
+stripe_secret_key = settings.STRIPE_SECRET_KEY
+logging.debug(stripe_secret_key)
 
 def order(request):
     """
@@ -25,7 +26,7 @@ class CheckoutView(View):
         if self.request.user.is_authenticated:
             customer = self.request.user
             order, created = Order.objects.get_or_create(
-                customer=customer, complete=False)
+                customer=customer, ordered=False)
             items = order.orderbox_set.all()
             cartItems = order.get_cart_items
             context = {
@@ -41,7 +42,7 @@ class CheckoutView(View):
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
         try:
-            order = Order.objects.get(customer=self.request.user, complete=False)
+            order = Order.objects.get(customer=self.request.user, ordered=False)
             if form.is_valid():
                 address1 = form.cleaned_data.get('address1')
                 address2 = form.cleaned_data.get('address2')
@@ -78,10 +79,77 @@ class PaymentView(View):
         order = Order.objects.get(customer=self.request.user, ordered=False)
 
         token = self.request.POST.get('stripeToken')
-        stripe.Charge.create(
-            amount = order.get_total() * 100,
+        amount = int(order.get_cart_total * 100)
+
+
+        try:
+            charge = stripe.Charge.create(
+            amount = amount,
             currency = "eur",
             source=token,
         )
 
-        order.ordered = True
+
+            payment = Payment()
+            payment.stripe_charge_id = charge['id']
+            payment.customer = self.request.user
+            payment.amount = order.get_cart_total
+            payment.save()
+
+
+            order.ordered = True
+            order.payment = payment
+            order.save()
+
+            messages.success(self.request, "Your order was successful")
+            return redirect("/")
+
+
+
+        except stripe.error.CardError as e:
+            body = e.json_body
+            err = body.get('error', {})
+            messages.error(self.request, f"{err.get('message')}") 
+            return redirect("/")
+
+        except stripe.error.RateLimitError as e:
+        # Too many requests made to the API too quickly
+            messages.error(self.request, "Rate Limited Error") 
+            return redirect("/")
+
+        except stripe.error.InvalidRequestError as e:
+        # Invalid parameters were supplied to Stripe's API
+            messages.error(self.request, "Invalid parameter") 
+            return redirect("/")
+
+        except stripe.error.AuthenticationError as e:
+        # Authentication with Stripe's API failed
+        # (maybe you changed API keys recently)
+            messages.error(self.request, "Not authenticated") 
+            return redirect("/")
+
+        except stripe.error.APIConnectionError as e:
+        # Network communication with Stripe failed
+            messages.error(self.request, "Network error") 
+            return redirect("/")
+
+        except stripe.error.StripeError as e:
+        # Display a very generic error to the user, and maybe send
+        # yourself an email
+            messages.error(self.request, "Something went wrong, you were not charged. Try again.") 
+            return redirect("/")
+
+        except Exception as e:
+        # Something else happened, completely unrelated to Stripe
+            messages.error(self.request, "A serious error occurred.") 
+            return redirect("/")
+
+
+       
+        
+
+
+
+
+
+        
