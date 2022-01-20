@@ -30,8 +30,8 @@ class CheckoutView(View):
                 'items': items, 
                 'order': order, 
                 'cartItems': cartItems,
-                'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
-                'client_secret' : settings.CLIENT_SECRET
+                # 'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+                # 'client_secret' : settings.CLIENT_SECRET
             }
             return render(self.request, 'order/checkout.html', context)
 
@@ -67,3 +67,6 @@ class CheckoutView(View):
             return redirect("cart")
 
 
+class PaymentView(View):
+    def get (self, *args, **kwargs):
+        return render(self.request, "order/payment.html")
