@@ -9,6 +9,9 @@ from django.conf import settings
 
 
 
+stripe.api_key = settings.CLIENT_SECRET
+
+
 def order(request):
     """
     A view to return order page
@@ -70,3 +73,14 @@ class CheckoutView(View):
 class PaymentView(View):
     def get (self, *args, **kwargs):
         return render(self.request, "order/payment.html")
+
+    def post(self, *args, **kwargs):
+        order = Order.objects.get(user=self.request.user, ordered=False)
+
+        token = self.request.POST.get('stripeToken')
+        stripe.Charge.create(
+            amount=order.get_total() * 100,
+            currency="eur",
+            source=token,
+            description="Charge for someone"
+        )
