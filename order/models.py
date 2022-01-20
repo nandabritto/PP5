@@ -16,7 +16,8 @@ class Order(models.Model):
     transactional_id = models.CharField(max_length=200, null=True)
     billing_address = models.ForeignKey(
         'BillingAddress', on_delete=models.SET_NULL,blank=True, null=True)
-    
+    payment = models.ForeignKey(
+        'Payment', on_delete=models.SET_NULL,blank=True, null=True)
 
     def __str__(self):
         """
@@ -109,3 +110,13 @@ class BillingAddress(models.Model):
         Return a string to billing address
         """
         return str(self.customer)
+
+
+class Payment(models.Model):
+    stripe_charge_id = models.CharField(max_length=50)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    amount = models.FloatField()
+    timestamp = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.customer.username
