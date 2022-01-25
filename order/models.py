@@ -1,8 +1,8 @@
 """ System Module """
 from django.db import models
 from django.contrib.auth.models import User
-from products.models import Box
 from django_countries.fields import CountryField
+from products.models import Box
 
 
 ADDRESS_CHOICES = (
@@ -21,11 +21,13 @@ class Order(models.Model):
     ordered = models.BooleanField(default=False, null=True, blank=False)
     transactional_id = models.CharField(max_length=200, null=True)
     billing_address = models.ForeignKey(
-        'Address', related_name='billing_address', on_delete=models.SET_NULL,blank=True, null=True)
+        'Address', related_name='billing_address',
+        on_delete=models.SET_NULL, blank=True, null=True)
     shipping_address = models.ForeignKey(
-        'Address', related_name='shipping_address', on_delete=models.SET_NULL,blank=True, null=True)
+        'Address', related_name='shipping_address',
+        on_delete=models.SET_NULL, blank=True, null=True)
     payment = models.ForeignKey(
-        'Payment', on_delete=models.SET_NULL,blank=True, null=True)
+        'Payment', on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         """
@@ -33,13 +35,14 @@ class Order(models.Model):
         """
         return str(self.customer)
 
-
-    @property 
+    @property
     def shipping(self):
+        """
+        Add shipping on order
+        """
         shipping = True
         # orderbox = self.orderbox_set.all()
         return shipping
-
 
     @property
     def get_cart_total(self):
@@ -101,7 +104,6 @@ class OrderBox(models.Model):
 #         return str(self.address1)
 
 
-
 class Address(models.Model):
     """
     Create address details and link to the user and order
@@ -122,13 +124,24 @@ class Address(models.Model):
         return str(self.customer)
 
     class Meta:
-        verbose_name_plural =  'adresses' 
+        """
+        Add correct plural name on Adress
+        """
+        verbose_name_plural = 'adresses'
+
 
 class Payment(models.Model):
+    """
+    Create stripe payment
+    """
     stripe_charge_id = models.CharField(max_length=50)
-    customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    customer = models.ForeignKey(
+        User, on_delete=models.SET_NULL, blank=True, null=True)
     amount = models.FloatField()
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        """
+        Return a string to payment
+        """
         return self.customer.username

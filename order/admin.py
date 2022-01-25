@@ -1,3 +1,4 @@
+""" System Module """
 from django.contrib import admin
 from .models import Order, OrderBox, Address, Payment
 
@@ -34,9 +35,8 @@ class AddressAdmin(admin.ModelAdmin):
         'default'
     ]
 
-    list_filter = [ 'country', 'default', 'address_type']
-    search_fields = [ 'customer', 'address1', 'eircode']
-
+    list_filter = ['country', 'default', 'address_type']
+    search_fields = ['customer', 'address1', 'eircode']
 
 
 admin.site.register(Order, OrderAdmin)
