@@ -5,6 +5,12 @@ from products.models import Box
 from django_countries.fields import CountryField
 
 
+ADDRESS_CHOICES = (
+    ('B', 'Billing'),
+    ('S', 'Shipping'),
+)
+
+
 class Order(models.Model):
     """
     Create order details and link it to the user
@@ -15,7 +21,9 @@ class Order(models.Model):
     ordered = models.BooleanField(default=False, null=True, blank=False)
     transactional_id = models.CharField(max_length=200, null=True)
     billing_address = models.ForeignKey(
-        'BillingAddress', on_delete=models.SET_NULL,blank=True, null=True)
+        'Address', related_name='billing_address', on_delete=models.SET_NULL,blank=True, null=True)
+    shipping_address = models.ForeignKey(
+        'Address', related_name='shipping_address', on_delete=models.SET_NULL,blank=True, null=True)
     payment = models.ForeignKey(
         'Payment', on_delete=models.SET_NULL,blank=True, null=True)
 
@@ -94,9 +102,9 @@ class OrderBox(models.Model):
 
 
 
-class BillingAddress(models.Model):
+class Address(models.Model):
     """
-    Create billing details and link to the user and order
+    Create address details and link to the user and order
     """
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     address1 = models.CharField(max_length=100)
@@ -104,6 +112,8 @@ class BillingAddress(models.Model):
     county = models.CharField(max_length=20)
     country = CountryField(multiple=False)
     eircode = models.CharField(max_length=6)
+    address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES)
+    default = models.BooleanField(default=False)
 
     def __str__(self):
         """
@@ -111,7 +121,9 @@ class BillingAddress(models.Model):
         """
         return str(self.customer)
 
-
+    class Meta:
+        verbose_name_plural =  'adresses' 
+        
 class Payment(models.Model):
     stripe_charge_id = models.CharField(max_length=50)
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)

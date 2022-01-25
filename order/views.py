@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.generic import View
 from .forms import CheckoutForm
-from .models import Order, BillingAddress, OrderBox, Payment
+from .models import Order, Address, OrderBox, Payment
 from django.core.exceptions import ObjectDoesNotExist
 import stripe 
 from django.conf import settings
@@ -49,13 +49,14 @@ class CheckoutView(View):
                 eircode = form.cleaned_data.get('eircode')
                 # same_shipping_address = form.cleaned_data.get('same_shipping_address')
                 # save_info = form.cleaned_data.get('save_info')
-                billing_address = BillingAddress(
+                billing_address = Address(
                     customer = self.request.user,
                     address1 = address1,
                     address2 = address2,
                     county = county,
                     country = country,
-                    eircode = eircode                
+                    eircode = eircode,
+                    address_type = 'B'                
                 )
                 print(billing_address)
                 billing_address.save()
