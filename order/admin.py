@@ -2,6 +2,26 @@ from django.contrib import admin
 from .models import Order, OrderBox, Address, Payment
 
 
+class OrderBoxAdmin(admin.ModelAdmin):
+    list_display = [
+        'box',
+        'order_box',
+        'quantity',
+        'date_added'
+    ]
+
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = [
+        'customer',
+        'date_ordered',
+        'ordered',
+        'billing_address',
+        'shipping_address',
+        'payment'
+    ]
+
+
 class AddressAdmin(admin.ModelAdmin):
     list_display = [
         'customer',
@@ -19,7 +39,7 @@ class AddressAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(Order)
-admin.site.register(OrderBox)
+admin.site.register(Order, OrderAdmin)
+admin.site.register(OrderBox, OrderBoxAdmin)
 admin.site.register(Address, AddressAdmin)
 admin.site.register(Payment)
