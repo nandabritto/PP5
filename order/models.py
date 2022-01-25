@@ -111,7 +111,7 @@ class Address(models.Model):
     address2 = models.CharField(max_length=100)
     county = models.CharField(max_length=20)
     country = CountryField(multiple=False)
-    eircode = models.CharField(max_length=6)
+    eircode = models.CharField(max_length=7)
     address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES)
     default = models.BooleanField(default=False)
 
@@ -123,7 +123,7 @@ class Address(models.Model):
 
     class Meta:
         verbose_name_plural =  'adresses' 
-        
+
 class Payment(models.Model):
     stripe_charge_id = models.CharField(max_length=50)
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)

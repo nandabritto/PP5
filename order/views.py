@@ -49,18 +49,19 @@ class CheckoutView(View):
                 eircode = form.cleaned_data.get('eircode')
                 # same_shipping_address = form.cleaned_data.get('same_shipping_address')
                 # save_info = form.cleaned_data.get('save_info')
-                billing_address = Address(
+                shipping_address = Address(
                     customer = self.request.user,
                     address1 = address1,
                     address2 = address2,
                     county = county,
                     country = country,
                     eircode = eircode,
-                    address_type = 'B'                
+                    address_type = 'S'                
                 )
-                print(billing_address)
-                billing_address.save()
-                order.billing_address = billing_address
+                print(shipping_address)
+                shipping_address.save()
+                order.shipping_address = shipping_address
+                # order.billing_address = shipping_address
                 order.save()
                 return redirect('checkout')
             messages.warning(self.request, "Failed checkout")

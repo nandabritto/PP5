@@ -29,7 +29,15 @@
                 <h6 class="text-uppercase">Shipping Address</h6>
                 <form method="POST">
                     {% csrf_token %}
-                    {{ form|crispy }}
+
+                    <h3>Shipping Address</h3>
+                    <div class='hideable_shipping_form'>
+                        {{ form|crispy }}
+                    </div>
+                    
+                   
+
+
                     <button class="btn btn-primary" type="submit">Checkout</button>
                 </form>
                 <div class="mt-4 mb-4">
