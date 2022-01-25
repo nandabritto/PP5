@@ -118,7 +118,7 @@ class PaymentView(View):
             order.payment = payment
             order.save()
             messages.success(self.request, "Your order was successful")
-            return redirect("/")
+            return redirect("/success")
 
         except stripe.error.CardError as e:
             body = e.json_body

@@ -1,8 +1,10 @@
 """ System Module """
 from django.db import models
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from products.models import Box
+import uuid
 
 
 ADDRESS_CHOICES = (
@@ -19,7 +21,7 @@ class Order(models.Model):
         User, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True)
     ordered = models.BooleanField(default=False, null=True, blank=False)
-    transactional_id = models.CharField(max_length=200, null=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, db_index=True, editable=False)
     billing_address = models.ForeignKey(
         'Address', related_name='billing_address',
         on_delete=models.SET_NULL, blank=True, null=True)
@@ -82,6 +84,16 @@ class OrderBox(models.Model):
         total = self.box.box_price * self.quantity
         return total
 
+    @property
+    def get_order_admin(self):
+        """
+        """
+        from django.urls import reverse
+        from django.utils.html import format_html
+        order = self.order_box.id
+        url = reverse(f'admin:order_order_change',  args=[order] )
+        # return f'<a href="{url}">Edit </a>'
+        return format_html("<a href='{}'>{}</a>", url, order)
 
 # class ShippingAddress(models.Model):
 #     """
