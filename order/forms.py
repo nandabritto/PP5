@@ -7,6 +7,7 @@ class CheckoutForm(forms.Form):
     """
     Create a shipping address form
     """
+    # Shipping address fields
     shipping_address1 = forms.CharField(
         label="Address 1",
         required=False,
@@ -20,15 +21,19 @@ class CheckoutForm(forms.Form):
         label="County",
         required=False,
         widget=forms.TextInput(attrs={'placeholder': 'Dublin'}))
-    shipping_country = CountryField(blank_label='(select country)').formfield(required=False)
+    shipping_country = CountryField(
+        blank_label='(select country)'
+        ).formfield(required=False)
     shipping_eircode = forms.CharField(
         label="EirCode",
         required=False)
 
+    # Billing address fields
     billing_address1 = forms.CharField(
         label="Address 1",
         required=False,
-        widget=forms.TextInput(attrs={'placeholder': 'Apartment 1'})
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Apartment 1'})
         )
     billing_address2 = forms.CharField(
         label="Address 2",
@@ -37,23 +42,21 @@ class CheckoutForm(forms.Form):
     billing_county = forms.CharField(
         required=False,
         widget=forms.TextInput(attrs={'placeholder': 'Dublin'}))
-    billing_country = CountryField(blank_label='(select country)').formfield(required=False,)
+    billing_country = CountryField(
+        blank_label='(select country)'
+        ).formfield(required=False,)
     billing_eircode = forms.CharField(required=False,)
 
-
-
+    # Options fields
     same_billing_address = forms.BooleanField(
         label="Billing address is the same as my shipping address",
         widget=forms.CheckboxInput(), required=False)
-
     set_default_shipping = forms.BooleanField(
         label="Save default shipping address",
         required=False)
     use_default_shipping = forms.BooleanField(
         label="Use default shipping address",
         required=False)
-
-    
     set_default_billing = forms.BooleanField(
         label="Set default billing address",
         required=False)

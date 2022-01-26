@@ -1,26 +1,35 @@
 """ System Module """
 from django.contrib import admin
+from django.urls import reverse
+from django.utils.html import format_html
 from .models import Order, OrderBox, Address, Payment
 
 
 class OrderBoxAdmin(admin.ModelAdmin):
-    def Order_Number(self, obj):
-        from django.urls import reverse
-        from django.utils.html import format_html
+    """
+    Create Order box option on admin
+    """
+    def order_number(self, obj):
+        """
+        Add id number to order
+        """
         url = reverse('admin:order_order_change', args=(obj.order_box.id,))
         return format_html("<a href='{}'>{}</a>", url, obj.order_box.id)
-        
+
     list_display = [
         'box',
         'order_box',
         'quantity',
         'date_added',
         # 'get_order_admin',
-        'Order_Number'
+        'order_number'
     ]
 
 
 class OrderAdmin(admin.ModelAdmin):
+    """
+    Create Order option on admin
+    """
     list_display = [
         'customer',
         'date_ordered',
@@ -29,11 +38,13 @@ class OrderAdmin(admin.ModelAdmin):
         'shipping_address',
         'payment',
         'id'
-
     ]
 
 
 class AddressAdmin(admin.ModelAdmin):
+    """
+    Create Address option on admin
+    """
     list_display = [
         'customer',
         'address1',

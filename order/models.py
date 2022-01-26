@@ -1,6 +1,5 @@
 """ System Module """
 from django.db import models
-from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from products.models import Box
@@ -21,7 +20,6 @@ class Order(models.Model):
         User, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True)
     ordered = models.BooleanField(default=False, null=True, blank=False)
-    # uuid = models.UUIDField(default=uuid.uuid4, unique=True, db_index=True, editable=False)
     billing_address = models.ForeignKey(
         'Address', related_name='billing_address',
         on_delete=models.SET_NULL, blank=True, null=True)
@@ -132,7 +130,10 @@ class Address(models.Model):
     county = models.CharField(max_length=20)
     country = CountryField(multiple=False)
     eircode = models.CharField(max_length=7)
-    address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES, default='S')
+    address_type = models.CharField(
+        max_length=1,
+        choices=ADDRESS_CHOICES,
+        default='S')
     default = models.BooleanField(default=False)
 
     def __str__(self):
