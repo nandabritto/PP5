@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from products.models import Box
-import uuid
+# import uuid
 
 
 ADDRESS_CHOICES = (
@@ -21,7 +21,7 @@ class Order(models.Model):
         User, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True)
     ordered = models.BooleanField(default=False, null=True, blank=False)
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True, db_index=True, editable=False)
+    # uuid = models.UUIDField(default=uuid.uuid4, unique=True, db_index=True, editable=False)
     billing_address = models.ForeignKey(
         'Address', related_name='billing_address',
         on_delete=models.SET_NULL, blank=True, null=True)
@@ -76,6 +76,12 @@ class OrderBox(models.Model):
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        """
+        Add correct plural name on Adress
+        """
+        verbose_name_plural = 'Ordered boxes'
+
     @property
     def get_total(self):
         """
@@ -84,16 +90,16 @@ class OrderBox(models.Model):
         total = self.box.box_price * self.quantity
         return total
 
-    @property
-    def get_order_admin(self):
-        """
-        """
-        from django.urls import reverse
-        from django.utils.html import format_html
-        order = self.order_box.id
-        url = reverse(f'admin:order_order_change',  args=[order] )
-        # return f'<a href="{url}">Edit </a>'
-        return format_html("<a href='{}'>{}</a>", url, order)
+    # @property
+    # def get_order_admin(self):
+    #     """
+    #     """
+    #     from django.urls import reverse
+    #     from django.utils.html import format_html
+    #     order = self.order_box.id
+    #     url = reverse(f'admin:order_order_change',  args=[order] )
+    #     # return f'<a href="{url}">Edit </a>'
+    #     return format_html("<a href='{}'>{}</a>", url, order)
 
 # class ShippingAddress(models.Model):
 #     """
@@ -120,7 +126,7 @@ class Address(models.Model):
     """
     Create address details and link to the user and order
     """
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100)
     county = models.CharField(max_length=20)

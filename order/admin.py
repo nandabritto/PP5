@@ -4,17 +4,18 @@ from .models import Order, OrderBox, Address, Payment
 
 
 class OrderBoxAdmin(admin.ModelAdmin):
-    # def Order_Number(self, obj):
-    #     from django.urls import reverse
-    #     from django.utils.html import format_html
-    #     url = reverse('admin:order_order_change', args=(obj.order_box.id,))
-    #     return format_html("<a href='{}'>{}</a>", url, obj.order_box.id)
+    def Order_Number(self, obj):
+        from django.urls import reverse
+        from django.utils.html import format_html
+        url = reverse('admin:order_order_change', args=(obj.order_box.id,))
+        return format_html("<a href='{}'>{}</a>", url, obj.order_box.id)
+        
     list_display = [
         'box',
         'order_box',
         'quantity',
         'date_added',
-        'get_order_admin',
+        # 'get_order_admin',
         'Order_Number'
     ]
 
@@ -27,7 +28,7 @@ class OrderAdmin(admin.ModelAdmin):
         'billing_address',
         'shipping_address',
         'payment',
-        'uuid'
+        'id'
 
     ]
 
