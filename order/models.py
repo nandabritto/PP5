@@ -1,8 +1,15 @@
 """ System Module """
 from django.db import models
 from django.contrib.auth.models import User
-from products.models import Box
 from django_countries.fields import CountryField
+from products.models import Box
+# import uuid
+
+
+ADDRESS_CHOICES = (
+    ('B', 'Billing'),
+    ('S', 'Shipping'),
+)
 
 
 class Order(models.Model):
@@ -12,11 +19,15 @@ class Order(models.Model):
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False, null=True, blank=False)
-    transactional_id = models.CharField(max_length=200, null=True)
+    ordered = models.BooleanField(default=False, null=True, blank=False)
     billing_address = models.ForeignKey(
-        'BillingAddress', on_delete=models.SET_NULL,blank=True, null=True)
-    
+        'Address', related_name='billing_address',
+        on_delete=models.SET_NULL, blank=True, null=True)
+    shipping_address = models.ForeignKey(
+        'Address', related_name='shipping_address',
+        on_delete=models.SET_NULL, blank=True, null=True)
+    payment = models.ForeignKey(
+        'Payment', on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         """
@@ -24,13 +35,14 @@ class Order(models.Model):
         """
         return str(self.customer)
 
-
-    @property 
+    @property
     def shipping(self):
+        """
+        Add shipping on order
+        """
         shipping = True
         # orderbox = self.orderbox_set.all()
         return shipping
-
 
     @property
     def get_cart_total(self):
@@ -62,6 +74,12 @@ class OrderBox(models.Model):
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        """
+        Add correct plural name on Adress
+        """
+        verbose_name_plural = 'Ordered boxes'
+
     @property
     def get_total(self):
         """
@@ -70,6 +88,16 @@ class OrderBox(models.Model):
         total = self.box.box_price * self.quantity
         return total
 
+    # @property
+    # def get_order_admin(self):
+    #     """
+    #     """
+    #     from django.urls import reverse
+    #     from django.utils.html import format_html
+    #     order = self.order_box.id
+    #     url = reverse(f'admin:order_order_change',  args=[order] )
+    #     # return f'<a href="{url}">Edit </a>'
+    #     return format_html("<a href='{}'>{}</a>", url, order)
 
 # class ShippingAddress(models.Model):
 #     """
@@ -92,20 +120,47 @@ class OrderBox(models.Model):
 #         return str(self.address1)
 
 
-
-class BillingAddress(models.Model):
+class Address(models.Model):
     """
-    Create billing details and link to the user and order
+    Create address details and link to the user and order
     """
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100)
     county = models.CharField(max_length=20)
     country = CountryField(multiple=False)
-    eircode = models.CharField(max_length=6)
+    eircode = models.CharField(max_length=7)
+    address_type = models.CharField(
+        max_length=1,
+        choices=ADDRESS_CHOICES,
+        default='S')
+    default = models.BooleanField(default=False)
 
     def __str__(self):
         """
         Return a string to billing address
         """
         return str(self.customer)
+
+    class Meta:
+        """
+        Add correct plural name on Adress
+        """
+        verbose_name_plural = 'adresses'
+
+
+class Payment(models.Model):
+    """
+    Create stripe payment
+    """
+    stripe_charge_id = models.CharField(max_length=50)
+    customer = models.ForeignKey(
+        User, on_delete=models.SET_NULL, blank=True, null=True)
+    amount = models.FloatField()
+    timestamp = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """
+        Return a string to payment
+        """
+        return self.customer.username

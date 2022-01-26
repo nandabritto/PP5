@@ -321,8 +321,8 @@ Press Enter. Your local clone will be created.
 
 ## Work based on other code
 
-[**PLACEHOLDER**]() - Used as a base to develop **PLACEHOLDER** <br>
-
+[**JustDjango Youtube Channel**](https://www.youtube.com/channel/UCRM1gWNTDx0SHIqUJygD-kQ) and [**Dennis Ivy Youtube Channel**](https://www.youtube.com/channel/UCTZRcDjjkVajGL6wd76UnGg)- Used as a base to develop cart and checkout features<br>
+ 
 # Acknowledgements
 
 + Stack Overflow is a valuable resource for solving lots of issues.

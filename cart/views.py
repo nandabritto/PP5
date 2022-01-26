@@ -13,7 +13,7 @@ def cart(request):
     if request.user.is_authenticated:
         customer = request.user
         order, created = Order.objects.get_or_create(
-            customer=customer, complete=False)
+            customer=customer, ordered=False)
         items = order.orderbox_set.all()
         cartItems = order.get_cart_items
 
@@ -38,7 +38,7 @@ def updateCart(request):
     customer = request.user
     box = Box.objects.get(id=boxId)
     order, created = Order.objects.get_or_create(
-            customer=customer, complete=False)
+            customer=customer, ordered=False)
 
     orderBox, created = OrderBox.objects.get_or_create(
         order_box=order, box=box)

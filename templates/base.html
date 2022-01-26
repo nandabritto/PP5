@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     {% endblock %}
 
     <!-- Favicon link -->
@@ -72,7 +73,7 @@
 
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>;
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     {% endblock %}
 
@@ -90,16 +91,22 @@
     {% endblock %}
     {% include 'includes/navbar.html' %}
 
-    {% if messages %}
-    <div class="message-container">
-
+<!-- Alert messages -->
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert">
+        <strong> {{ message }} </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    {% endif %}
+{% endfor %}
+{% endif %}
+
 
     {% block page_header %}
     {% endblock %}
 
     {% block content %}
+
     {% endblock %}
 
     {% block postloadjs %}
