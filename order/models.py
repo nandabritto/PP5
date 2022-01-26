@@ -126,13 +126,13 @@ class Address(models.Model):
     """
     Create address details and link to the user and order
     """
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100)
     county = models.CharField(max_length=20)
     country = CountryField(multiple=False)
     eircode = models.CharField(max_length=7)
-    address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES)
+    address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES, default='S')
     default = models.BooleanField(default=False)
 
     def __str__(self):

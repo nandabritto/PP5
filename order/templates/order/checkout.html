@@ -37,6 +37,10 @@
                         {{ form.shipping_country|as_crispy_field  }}
                         {{ form.shipping_eircode|as_crispy_field  }}
 
+                        {% if default_shipping_address %}
+                            {{ form.use_default_shipping|as_crispy_field  }}
+                        {% endif %}
+
                     </div>
                     <h3>Billing Address</h3>
                     <div>
@@ -47,9 +51,14 @@
                         {{ form.billing_eircode|as_crispy_field  }}
                     </div>
 
+                    {% if default_billing_address %}
+                        {{ form.use_default_billing|as_crispy_field  }}
+                    {% endif %}
+
+
                     {{ form.same_billing_address|as_crispy_field  }}
-                    {{ form.set_default_shipping|as_crispy_field  }}
-                    {{ form.use_default_shipping|as_crispy_field  }}
+                    {{ form.set_default_billing|as_crispy_field  }}
+                    
 
 
                     <button class="btn btn-primary" type="submit">Checkout</button>
