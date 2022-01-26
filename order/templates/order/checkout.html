@@ -36,29 +36,35 @@
                         {{ form.shipping_county|as_crispy_field  }}
                         {{ form.shipping_country|as_crispy_field  }}
                         {{ form.shipping_eircode|as_crispy_field  }}
+                                           
 
-                        {% if default_shipping_address %}
+                    </div>
+                    {% if default_shipping_address %}
                             {{ form.use_default_shipping|as_crispy_field  }}
                         {% endif %}
 
-                    </div>
+                        {% if not default_shipping_address %}
+                            {{ form.set_default_shipping|as_crispy_field  }}
+                        {% endif %}
+                        {{ form.same_billing_address|as_crispy_field  }}
+
                     <h3>Billing Address</h3>
-                    <div>
+                    <div class='hideable_billing_form'>
                         {{ form.billing_address1|as_crispy_field  }}
                         {{ form.billing_address2|as_crispy_field  }}
                         {{ form.billing_county|as_crispy_field  }}
                         {{ form.billing_country|as_crispy_field  }}
                         {{ form.billing_eircode|as_crispy_field  }}
                     </div>
-
+                    
+                    <div class='hideable_user_default_billing'>
                     {% if default_billing_address %}
                         {{ form.use_default_billing|as_crispy_field  }}
                     {% endif %}
-
-
-                    {{ form.same_billing_address|as_crispy_field  }}
-                    {{ form.set_default_billing|as_crispy_field  }}
-                    
+                    {% if not default_billing_address %}
+                        {{ form.set_default_billing|as_crispy_field  }}
+                    {% endif %}
+                    </div>
 
 
                     <button class="btn btn-primary" type="submit">Checkout</button>
@@ -102,4 +108,5 @@
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'js/stripe_elements.js' %}"></script>
+    <script src="{% static 'js/checkout.js' %}"></script>
 {% endblock %}
