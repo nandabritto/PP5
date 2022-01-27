@@ -278,7 +278,7 @@ class PaymentView(View):
             order.save()
             messages.success(
                 self.request, "Your order was successful")
-            return redirect("/success")
+            return redirect("success", order.pk)
 
         except stripe.error.CardError as e:
             body = e.json_body
@@ -318,3 +318,16 @@ class PaymentView(View):
             # Something else happened, completely unrelated to Stripe
             messages.error(self.request, "A serious error occurred.")
             return redirect("/")
+
+
+def success(request, pk):
+    order = Order.objects.get(pk=pk)
+
+    if order.customer == request.user:
+        context = {'order': order}
+
+        return render(request, 'order/success.html', context)
+
+    else:
+        messages.error(request, "Sorry, you cannot access this data.")
+        return redirect("/")
