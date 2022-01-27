@@ -7,20 +7,34 @@ html {
     background: url(/media/background-secondary.jpg) no-repeat center center fixed;
 }
 
-h1, h2, h3, h4, h5 {
-    font-family: 'Roboto Slab', serif!important;
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Roboto Slab', serif !important;
 }
 
-p, a {
-    font-family: 'Lato', sans-serif!important;
+p,
+a {
+    font-family: 'Lato', sans-serif !important;
 }
 
 
 input:focus {
-    outline: none!important;
-    border-color: none!important;
-    box-shadow: 0 0 0 1px gray!important; /*change this color */ 
- }
+    outline: none !important;
+    border-color: none !important;
+    box-shadow: 0 0 0 1px gray !important;
+    /*change this color */
+}
+
+.alert-box {
+    width: 30% !important;
+    margin: 0 auto;
+    float:right;
+    border-left-color: darkorange;
+    border-left-width: 10px;
+}
 
 @media only screen and (max-width: 600px) {
 

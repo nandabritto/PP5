@@ -94,8 +94,8 @@
 <!-- Alert messages -->
 {% if messages %}
 {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert">
-        <strong> {{ message }} </strong>
+    <div class="alert-box  alert alert-warning alert-dismissible fade show" id="alert" role="alert">
+        <p class="text-center"><strong> {{ message }} </strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 {% endfor %}
