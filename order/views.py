@@ -2,11 +2,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 import stripe
 from .forms import CheckoutForm
 from .models import Order, Address, Payment
+
+from django.contrib.auth.decorators import login_required
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -320,10 +324,27 @@ class PaymentView(View):
             return redirect("/")
 
 
+
+
+
+@login_required
 def success(request, pk):
+    """
+    Render a success page and send a purchase confirmation email
+    """
     order = Order.objects.get(pk=pk)
 
     if order.customer == request.user:
+        template = render_to_string('order/email_template.html', {'name': request.user})
+        email = EmailMessage(
+            'Thanks for your purchase on The Regional Taste',
+            template,
+            settings.EMAIL_HOST_USER,
+            [request.user.email]
+        )
+        email.fail_silently=False
+        email.send()
+
         context = {'order': order}
 
         return render(request, 'order/success.html', context)
