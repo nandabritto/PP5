@@ -1,5 +1,10 @@
-.card-img-top {
-    height: 30vh;
+.product-img-box{
+    height:20vh;
+}
+
+.product-image{
+    width:200px;
+    height:200px;
 }
 
 .products-container {
