@@ -21,9 +21,8 @@
         <h1 class="text-center m-3 p-3" item-prop="available products"><strong> Regional Boxes availabe this
                 month</strong>
         </h1>
-
         <!-- Boxes container -->
-        <div class="row d-flex justify-content-center text-center mx-auto test" >
+        <div class="row d-flex justify-content-center text-center mx-auto test">
 
             {% for box in boxes %}
             <div class="col-lg-6 col-xl-4 col-md-6 col-sm-11">
@@ -35,23 +34,24 @@
                     </div>
                     <!-- Box image -->
                     {% if box.box_image %}
-                    <div class="product-img-box m-2">
+                    <figure class="product-img-box m-2">
                         <a href="{% url 'product_details' box.id %}">
                             <img class="rounded-circle product-image" itemprop="image" src="{{ box.box_image.url }}"
                                 alt="{{ box.box_name }}">
-                        </a></div>
+                        </a>
+                    </figure>
                     {% else %}
-                    <div class="product-image">
+                    <figure class="product-image">
                         <a href="">
                             <img class="card-img-top img-fluid" itemprop="image" src="{{ MEDIA_URL }}noimage.png"
                                 alt="{{ box.box_name }}">
                         </a>
-                    </div>
+                    </figure>
                     {% endif %}
                     <div class="card-body pb-0">
-
                         <!-- Box description -->
                         <p class="mb-0" itemprop="description">{{ box.box_description }}</p>
+                       
                         <hr class="text-dark">
                     </div>
                     <div class="card-footer bg-white pt-0 border-0 text-left">
@@ -65,12 +65,17 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Buttons -->
                     <span class="m-2 p-3">
-                        <button class="btn btn-success fw-bold mx-1 update-cart" itemprop="url" data-box="{{box.id}}"
-                            data-action="add" type="button"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        <button class="btn btn-success fw-bold mx-1 my-2 update-cart" itemprop="url"
+                            data-box="{{box.id}}" data-action="add" type="button"><i class="fas fa-cart-plus"></i> Add
+                            to cart
+                        </button>
                         <a class="btn btn-warning fw-bold mx-1" itemprop="url"
                             href="{% url 'product_details' box.id %}"><i class="fas fa-info-circle"></i>
-                            Details</a></span>
+                            Details
+                        </a>
+                    </span>
                 </div>
             </div>
             {% endfor %}

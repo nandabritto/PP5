@@ -1,10 +1,12 @@
-.product-img-box {
+/*Producs container */
+
+.product-image {
     height: 20vh;
 }
 
 .products-container {
     width: 70%;
-    margin-top:5%;
+    margin-top:2%;
 }
 
 .product-image {
@@ -16,17 +18,17 @@
     padding-bottom: 2vh !important;
 }
 
+/* Media query medium screen*/
 @media only screen and (max-width: 900px) {
     .products-container {
         width: 90%;
     }
 }
 
-
-
+/* Media query xs screen*/
 @media only screen and (max-width: 400px) {
 
     .products-container {
-        padding-bottom: 20vh !important;
+        margin-bottom: 15vh !important;
     }
 }
