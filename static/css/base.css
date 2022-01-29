@@ -4,7 +4,8 @@ html {
 
 .body {
     padding-bottom: 20vh !important;
-    background: url(/media/background-secondary.jpg) no-repeat center center fixed;
+    background-image:url(/media/background-index.jpg)!important;
+    background-size:cover;
 }
 
 h1,
@@ -37,10 +38,20 @@ input:focus {
     background-color:white!important;
 }
 
+
+@media only screen and (max-width: 900px) {
+
+    body {
+        background-position: center;
+    }
+
+}
+
 @media only screen and (max-width: 600px) {
 
     body {
         padding-bottom: 1000px !important;
+        background-position: center;
     }
 
 }
