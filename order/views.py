@@ -2,11 +2,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 import stripe
 from .forms import CheckoutForm
 from .models import Order, Address, Payment
+
+from django.contrib.auth.decorators import login_required
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -278,7 +282,7 @@ class PaymentView(View):
             order.save()
             messages.success(
                 self.request, "Your order was successful")
-            return redirect("/success")
+            return redirect("success", order.pk)
 
         except stripe.error.CardError as e:
             body = e.json_body
@@ -318,3 +322,33 @@ class PaymentView(View):
             # Something else happened, completely unrelated to Stripe
             messages.error(self.request, "A serious error occurred.")
             return redirect("/")
+
+
+
+
+
+@login_required
+def success(request, pk):
+    """
+    Render a success page and send a purchase confirmation email
+    """
+    order = Order.objects.get(pk=pk)
+
+    if order.customer == request.user:
+        template = render_to_string('order/email_template.html', {'name': request.user})
+        email = EmailMessage(
+            'Thanks for your purchase on The Regional Taste',
+            template,
+            settings.EMAIL_HOST_USER,
+            [request.user.email]
+        )
+        email.fail_silently=False
+        email.send()
+
+        context = {'order': order}
+
+        return render(request, 'order/success.html', context)
+
+    else:
+        messages.error(request, "Sorry, you cannot access this data.")
+        return redirect("/")

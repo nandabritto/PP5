@@ -35,14 +35,14 @@ class Order(models.Model):
         """
         return str(self.customer)
 
-    @property
-    def shipping(self):
-        """
-        Add shipping on order
-        """
-        shipping = True
-        # orderbox = self.orderbox_set.all()
-        return shipping
+    # @property
+    # def shipping(self):
+    #     """
+    #     Add shipping on order
+    #     """
+    #     shipping = True
+    #     # orderbox = self.orderbox_set.all()
+    #     return shipping
 
     @property
     def get_cart_total(self):

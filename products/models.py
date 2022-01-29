@@ -10,6 +10,8 @@ class Product(models.Model):
     product_price = models.DecimalField(
         max_digits=5, decimal_places=2, null=True)
     product_description = models.TextField()
+    product_note1 = models.TextField(null=True)
+    product_note2 = models.TextField(null=True)
     product_image = models.ImageField(null=True)
 
     def __str__(self):
@@ -26,6 +28,8 @@ class Box(models.Model):
     category = models.CharField(max_length=50, unique=True)
     box_description = models.TextField()
     box_image = models.ImageField(null=True)
+    box_note1 = models.TextField(null=True)
+    box_note2 = models.TextField(null=True)
 
     def __str__(self):
         """ Return box name string """

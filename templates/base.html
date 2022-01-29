@@ -84,17 +84,13 @@
 </head>
 
 <body class= "body">
-
-
-    {% block jumbotron %}
-    {% include 'includes/jumbotron.html' %}
-    {% endblock %}
+ 
     {% include 'includes/navbar.html' %}
 
 <!-- Alert messages -->
 {% if messages %}
 {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert">
+    <div class="alert-box  alert alert-warning alert-dismissible fade show" id="alert" role="alert">
         <strong> {{ message }} </strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
