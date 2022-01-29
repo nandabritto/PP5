@@ -1,19 +1,32 @@
-.product-img-box{
-    height:20vh;
+.product-img-box {
+    height: 20vh;
 }
 
-.product-image{
-    width:200px;
-    height:200px;
+.products-container {
+    width: 60%;
+    margin-top:5%;
+}
+
+.product-image {
+    width: 200px;
+    height: 200px;
 }
 
 .products-container {
     padding-bottom: 2vh !important;
 }
 
+@media only screen and (max-width: 900px) {
+    .products-container {
+        width: 90%;
+    }
+}
+
+
+
 @media only screen and (max-width: 400px) {
 
     .products-container {
-        padding-bottom: 20vh!important;
+        padding-bottom: 20vh !important;
     }
 }
