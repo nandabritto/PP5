@@ -209,3 +209,13 @@ class TestCheckoutView(SetupModelTestCase):
         payload = self.checkout        
         response = self.client.post(reverse('checkout'), payload)
         self.assertEqual(response.status_code, 302)
+
+    def test_post_with_no_order_valid(self):
+        """
+        Check exception if post without order valid
+        """
+        self.order1.ordered = True
+        self.order1.save()
+        payload = self.checkout        
+        response = self.client.post(reverse('checkout'), payload)
+        self.assertEqual(response.status_code, 302)
