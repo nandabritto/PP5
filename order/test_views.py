@@ -1,10 +1,11 @@
 """ System Module """
+from unittest.mock import patch
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.urls import reverse
 from products.models import Box
 from .models import Order, OrderBox, Address, Payment
-from unittest.mock import patch, Mock
+
 
 class SetupModelTestCase(TestCase):
     """
@@ -44,12 +45,14 @@ class SetupModelTestCase(TestCase):
             address_type='S',
             default='True'
         )
+        # Payment creation
         self.payment1 = Payment.objects.create(
             stripe_charge_id='123456789',
             customer=self.user,
             amount='900',
             timestamp='1643316725'
         )
+        # Order creation
         self.order1 = Order.objects.create(
             customer=self.user,
             date_ordered='Oct. 24, 2021, 8:52 p.m.',
@@ -57,9 +60,7 @@ class SetupModelTestCase(TestCase):
             shipping_address=self.shipping_address1
             )
         self.shipping = True
-        """
-        Box creation
-        """
+        # Box creation
         self.box1 = Box.objects.create(
             box_name='testBox1',
             box_price=float('49.99'),
@@ -71,7 +72,6 @@ class SetupModelTestCase(TestCase):
             order_box=self.order1,
             quantity=int('2')
             )
-
         self.checkout = {
                     'shipping_address1': self.shipping_address1.address1,
                     'shipping_address2': self.shipping_address1.address2,
@@ -216,8 +216,12 @@ class TestCheckoutView(SetupModelTestCase):
         payload = self.checkout
         response = self.client.post(reverse('checkout'), payload)
         self.assertEqual(response.status_code, 302)
-        
+
+
 class TestPaymentView(SetupModelTestCase):
+    """
+    Test all payment functions
+    """
     def test_payment_view(self):
         """
         Test response on payment view page by url
@@ -227,25 +231,36 @@ class TestPaymentView(SetupModelTestCase):
         self.assertEqual(response.status_code, 200)
 
     @patch("stripe.Charge.create")
-    def test_payment_post(self,ChargeMock):
+    def test_payment_post(self, charge_mock):
         """
-        Check set default billing address when form is not valid
+        Create a mock payment and check if redirect to correct url
         """
-        ChargeMock.return_value = {'id':"ch_XXXXX"}
-
+        charge_mock.return_value = {'id': "ch_XXXXX"}
         response = self.client.post(reverse('payment'))
-
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/order/success/' + str(self.order1.id), status_code=302, 
-        target_status_code=200, fetch_redirect_response=True)
+        self.assertRedirects(
+            response,
+            '/order/success/' + str(self.order1.id),
+            status_code=302,
+            target_status_code=200,
+            fetch_redirect_response=True)
 
 
 class TestSuccessView(SetupModelTestCase):
+    """
+    Test success view function
+    """
     def test_get_success_payment(self):
+        """
+        Check if payment is successfull
+        """
         response = self.client.get(reverse('success', args=[self.order1.id]))
         self.assertEqual(response.status_code, 200)
 
     def test_get_success_payment_not_logged(self):
+        """
+        Check is client attemp to pay logged out
+        """
         self.client.logout()
         self.client.login(username='joe2', password='12345')
         response = self.client.get(reverse('success', args=[self.order1.id]))
@@ -256,7 +271,6 @@ class TestGetCheckoutView(SetupModelTestCase):
     """
     Checkout test class using payload from setup model class
     """
-
     def test_get_if_form_is_valid(self):
         """
         Check if checkout data is correct and
