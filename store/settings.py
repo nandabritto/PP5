@@ -29,7 +29,7 @@ if DEBUG:
         format='%(asctime)s %(levelname)s %(message)s',
     )
 
-ALLOWED_HOSTS = ["theregionaltaste.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["theregionaltaste.herokuapp.com", "localhost", 'testserver']
 
 
 # Application definition
