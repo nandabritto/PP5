@@ -7,20 +7,11 @@ from django.template.loader import render_to_string
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 import stripe
+from django.contrib.auth.decorators import login_required
 from .forms import CheckoutForm
 from .models import Order, Address, Payment
 
-from django.contrib.auth.decorators import login_required
-
-
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
-
-# def order(request):
-#     """
-#     A view to return order page
-#     """
-#     return render(request, 'order/order.html')
 
 
 def is_valid_form(values):
@@ -54,8 +45,6 @@ class CheckoutView(View):
                 'items': items,
                 'order': order,
                 'cart_items': cart_items,
-                # 'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
-                # 'client_secret' : settings.CLIENT_SECRET
             }
 
             shipping_address_qs = Address.objects.filter(
@@ -96,15 +85,12 @@ class CheckoutView(View):
 
                 # if default shipping address checked
                 if use_default_shipping:
-                    print('Using default printing address')
-
                     # creates shipping address queryset
                     address_qs = Address.objects.filter(
                         customer=self.request.user,
                         address_type='S',
                         default=True
                     )
-                    print(address_qs)
                     if address_qs.exists():
                         shipping_address = address_qs[0]
                         order.shipping_address = shipping_address
@@ -114,8 +100,6 @@ class CheckoutView(View):
                             self.request, 'No default shipping address')
                         return redirect('checkout')
                 else:
-                    print('User is entering a new user address')
-
                     shipping_address1 = form.cleaned_data.get(
                         'shipping_address1')
                     shipping_address2 = form.cleaned_data.get(
@@ -175,8 +159,6 @@ class CheckoutView(View):
 
                 # if default billing address checked
                 elif use_default_billing:
-                    print('Using default billing address')
-
                     # creates billing address queryset
                     address_qs = Address.objects.filter(
                         customer=self.request.user,
@@ -192,8 +174,6 @@ class CheckoutView(View):
                             self.request, 'No default billing address')
                         return redirect('checkout')
                 else:
-                    print('User is entering a new user address')
-
                     billing_address1 = form.cleaned_data.get(
                         'billing_address1')
                     billing_address2 = form.cleaned_data.get(
@@ -204,9 +184,6 @@ class CheckoutView(View):
                         'billing_country')
                     billing_eircode = form.cleaned_data.get(
                         'billing_eircode')
-                    # same_billing_address = form.cleaned_data.get(
-                    # 'same_billing_address')
-                    # save_info = form.cleaned_data.get('save_info')
 
                     if is_valid_form([
                         billing_address1,
@@ -222,10 +199,11 @@ class CheckoutView(View):
                             address_type='B'
                         )
                         billing_address.save()
-
+                        # Set billing address to order
                         order.billing_address = billing_address
                         order.save()
-
+                        
+                        # Set default billing address
                         set_default_billing = form.cleaned_data.get(
                             'set_default_billing')
                         if set_default_billing:
@@ -238,8 +216,7 @@ class CheckoutView(View):
                         return redirect('checkout')
 
                 return redirect('payment')
-            # messages.warning(self.request, "Failed checkout")
-            # return redirect("cart")
+
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
             return redirect("cart")
@@ -325,9 +302,6 @@ class PaymentView(View):
             return redirect("/")
 
 
-
-
-
 @login_required
 def success(request, pk):
     """
@@ -336,7 +310,8 @@ def success(request, pk):
     order = Order.objects.get(pk=pk)
 
     if order.customer == request.user:
-        template = render_to_string('order/email_template.html', {'name': request.user})
+        template = render_to_string(
+            'order/email_template.html', {'name': request.user})
         email = EmailMessage(
             'Thanks for your purchase on The Regional Taste',
             template,
