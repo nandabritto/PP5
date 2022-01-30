@@ -131,3 +131,81 @@ class TestCheckoutView(SetupModelTestCase):
 
         response = self.client.post(reverse('checkout'), payload)
         self.assertEqual(response.status_code, 302)
+
+
+    def test_post_if_form_is_valid_set_default_shipping(self):
+        """
+        Check if checkout data is correct and
+        user set default shipping address
+        """     
+        self.checkout['set_default_shipping'] = True
+        # self.checkout['use_default_shipping'] = False
+        payload = self.checkout        
+        response = self.client.post(reverse('checkout'), payload)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_if_form_is_not_valid(self):
+        """
+        Check if checkout data is not correct
+        """
+        self.checkout['use_default_shipping'] = False
+        self.checkout['shipping_address1'] = ''
+        payload = self.checkout        
+        response = self.client.post(reverse('checkout'), payload)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_if_form_is_valid_and_use_same_billing_address(self):
+        """
+        Check if form is valid and use the same billing and 
+        shipping address
+        """
+        self.checkout['same_billing_address'] = True
+        payload = self.checkout
+        response = self.client.post(reverse('checkout'), payload)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_if_form_is_valid_set_default_billing(self):
+        """
+        Check if checkout data is correct and
+        user set default billing address
+        """
+        self.checkout['use_default_shipping'] = False
+        self.checkout['same_billing_address'] = False
+        self.checkout['use_default_billing'] = True
+        payload = self.checkout        
+        response = self.client.post(reverse('checkout'), payload)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_if_form_is_not_valid_set_default_billing(self):
+        """
+        Check if checkout data is not correct and
+        user set default billing address
+        """
+        self.checkout['use_default_shipping'] = False
+        self.checkout['same_billing_address'] = False
+        self.checkout['use_default_billing'] = True
+        self.billing_address1.default = False
+        self.billing_address1.save()
+
+        payload = self.checkout        
+        response = self.client.post(reverse('checkout'), payload)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_set_default_billing(self):
+        """
+        Check set default billing address
+        """
+        self.checkout['set_default_billing'] = True
+        payload = self.checkout        
+        response = self.client.post(reverse('checkout'), payload)
+        self.assertEqual(response.status_code, 302)
+
+    def test_post_set_default_billing_not_valid(self):
+        """
+        Check set default billing address when form is not valid
+        """
+        self.checkout['use_default_billing'] = False
+        self.checkout['billing_address1'] = ''
+        payload = self.checkout        
+        response = self.client.post(reverse('checkout'), payload)
+        self.assertEqual(response.status_code, 302)

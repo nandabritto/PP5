@@ -148,7 +148,7 @@ class CheckoutView(View):
                         order.save()
 
                         set_default_shipping = form.cleaned_data.get(
-                            'set_default_shiping')
+                            'set_default_shipping')
                         if set_default_shipping:
                             shipping_address.default = True
                             shipping_address.save()
