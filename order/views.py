@@ -16,11 +16,11 @@ from django.contrib.auth.decorators import login_required
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-def order(request):
-    """
-    A view to return order page
-    """
-    return render(request, 'order/order.html')
+# def order(request):
+#     """
+#     A view to return order page
+#     """
+#     return render(request, 'order/order.html')
 
 
 def is_valid_form(values):
@@ -104,6 +104,7 @@ class CheckoutView(View):
                         address_type='S',
                         default=True
                     )
+                    print(address_qs)
                     if address_qs.exists():
                         shipping_address = address_qs[0]
                         order.shipping_address = shipping_address
