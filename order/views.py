@@ -10,6 +10,7 @@ import stripe
 from django.contrib.auth.decorators import login_required
 from .forms import CheckoutForm
 from .models import Order, Address, Payment
+import logging
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
