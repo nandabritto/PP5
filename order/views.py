@@ -1,13 +1,13 @@
 """ System Module """
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 import stripe
-from django.contrib.auth.decorators import login_required
 from .forms import CheckoutForm
 from .models import Order, Address, Payment
 
@@ -202,7 +202,6 @@ class CheckoutView(View):
                         # Set billing address to order
                         order.billing_address = billing_address
                         order.save()
-                        
                         # Set default billing address
                         set_default_billing = form.cleaned_data.get(
                             'set_default_billing')
@@ -318,7 +317,7 @@ def success(request, pk):
             settings.EMAIL_HOST_USER,
             [request.user.email]
         )
-        email.fail_silently=False
+        email.fail_silently = False
         email.send()
 
         context = {'order': order}

@@ -49,13 +49,9 @@ class SetupModelTestCase(TestCase):
             shipping_address = self.shipping_address1
             )
         self.shipping = True
-        """
-        Box creation
-        """
+        # Box creation
         self.box1 = Box.objects.create(box_name='testBox1', box_price=float('49.99'),  category='Countries', box_description='test Box 1')
-        # self.order1 = Order.objects.create(customer,date_ordered,billing_address,shipping_address,payment)
         self.orderbox1 = OrderBox.objects.create(box=self.box1,order_box=self.order1,quantity=int('2'))
-
 
     
 class OrderTestCase(SetupModelTestCase):
@@ -91,13 +87,4 @@ class PaymentTestCase(SetupModelTestCase):
 
 class OrderBoxGetTotalTestCase(SetupModelTestCase):
     def test_get_total(self):
-        # print(f'{self.box1.box_price} - {self.orderbox1.quantity}')
-        # total = float(self.box1.box_price) * float(self.orderbox1.quantity)
-        # print(total)
         self.assertEqual(self.orderbox1.get_total, float('99.98'))
-
-
-# class OrderTest(SetupModelTestCase):
-#     def test_shipping(self):
-#         print(shipping)
-#         self.assertEqual(self.shipping, True)
