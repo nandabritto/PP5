@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from order.models import Order
+from order.models import Order, OrderBox
 from .forms import UserProfileForm
 from .models import UserProfile
 
@@ -19,11 +19,11 @@ def profile(request):
             messages.error(request, ' Form invalid')
     
     form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+    ordered_boxes = profile.ordered_boxes.all()
     template = 'user_profile/profiles.html'
     context = {
         'form': form,
-        'orders': orders,
+        'ordered_boxes': ordered_boxes,
     }
     return render(request, template, context)
 

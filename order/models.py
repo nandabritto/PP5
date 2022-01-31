@@ -75,6 +75,13 @@ class OrderBox(models.Model):
     """
     Create orderbox details and quantity to add to the cart
     """
+    user_profile = models.ForeignKey(
+        UserProfile,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='ordered_boxes'
+        )
     box = models.ForeignKey(
         Box, on_delete=models.SET_NULL, blank=True, null=True)
     order_box = models.ForeignKey(

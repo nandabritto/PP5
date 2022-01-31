@@ -27,16 +27,56 @@
 
                 <form class="mt-3 text-center" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
-                    <p class= "lead fw-bolder">My Default Address</p>
+                    <p class="lead fw-bolder">My Default Address</p>
                     {{ form|crispy}}
                     <button class="btn btn-success ">Update Information</button>
                 </form>
-
-                {{ orders }}
             </div>
         </div>
     </div>
 </div>
+
+<div class="container mt-5 px-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card p-3">
+                <p> My previous orders</p>
+                <hr>
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Quantity</th>
+                            <th>Order Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in ordered_boxes %}
+                        <tr>
+                            <td>{{ order.date_added }}</td>
+                            <td>
+                                <ul class="list-unstyled">
+
+                                    <li class="small">
+                                        {{ order.box.box_name }}
+                                    </li>
+
+                                </ul>
+                            <td>{{ order.quantity }}</td>
+                            </td>
+                            <td>{{ order.get_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 {% endblock %}
 
 {% block postloadjs %}
