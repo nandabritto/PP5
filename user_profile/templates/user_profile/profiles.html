@@ -21,11 +21,20 @@
             <hr>
             <h2 class="logo-font mb-4">My Profile</h2>
             <hr>
+            {{profile}}
+
+            <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn btn-black rounded-0 text-uppercase float-right">Update Information</button>
+            </form>
+
+            {{ orders }}
         </div>
     </div>
 </div>
 {% endblock %}
 
 {% block postloadjs %}
-
+<script type="text/javascript" src="{% static 'js/countryfield.js' %}"></script>
 {% endblock %}
