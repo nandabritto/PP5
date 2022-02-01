@@ -3,14 +3,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from products.models import Box
-from user_profile.models import UserProfile
+from user_profile.models import UserProfile, Address
 # import uuid
 
 
-ADDRESS_CHOICES = (
-    ('B', 'Billing'),
-    ('S', 'Shipping'),
-)
+
 
 
 class Order(models.Model):
@@ -29,10 +26,10 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     ordered = models.BooleanField(default=False, null=True, blank=False)
     billing_address = models.ForeignKey(
-        'Address', related_name='billing_address',
+        'user_profile.Address', related_name='billing_address',
         on_delete=models.SET_NULL, blank=True, null=True)
     shipping_address = models.ForeignKey(
-        'Address', related_name='shipping_address',
+        'user_profile.Address', related_name='shipping_address',
         on_delete=models.SET_NULL, blank=True, null=True)
     payment = models.ForeignKey(
         'Payment', on_delete=models.SET_NULL, blank=True, null=True)
@@ -135,49 +132,7 @@ class OrderBox(models.Model):
 #         return str(self.address1)
 
 
-class Address(models.Model):
-    """
-    Create address details and link to the user and order
-    """
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    address1 = models.CharField(max_length=100)
-    address2 = models.CharField(max_length=100)
-    county = models.CharField(max_length=20)
-    country = CountryField(multiple=False)
-    eircode = models.CharField(max_length=7)
-    address_type = models.CharField(
-        max_length=1,
-        choices=ADDRESS_CHOICES,
-        default='S')
-    default = models.BooleanField(default=False)
 
-    # def save(self, *args, **kwargs):
-    #     previous_address = self.objects.filter(
-    #         customer=self.customer,
-    #         address1 = self.address1,
-    #         address2 = self.address2,
-    #         county = self.county,
-    #         country = self.country,
-    #         eircode = self.eircode,
-    #         address_type = self.address_type
-    #         )
-    #     if previous_address.exists():
-    #         previous_address = self.default
-    #         super(Address, previous_address).update(*args, **kwargs)
-    #     else:
-    #         super(Address, self).save(*args, **kwargs)
-
-    def __str__(self):
-        """
-        Return a string to billing address
-        """
-        return str(self.customer)
-
-    class Meta:
-        """
-        Add correct plural name on Adress
-        """
-        verbose_name_plural = 'adresses'
 
 
 class Payment(models.Model):

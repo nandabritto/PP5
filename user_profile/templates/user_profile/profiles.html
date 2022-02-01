@@ -19,16 +19,18 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card p-3">
-
+                  
 
                 <h2 class="logo-font mb-4">My Profile</h2>
                 <hr>
-                {{profile}}
+                {{ profile }}
 
                 <form class="mt-3 text-center" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
-                    <p class="lead fw-bolder">My Default Address</p>
-                    {{ form|crispy}}
+                    <p class="lead fw-bolder">My Default Shipping Address</p>
+                    {{ shippingAddressForm|crispy}}
+                    <p class="lead fw-bolder">My Default Billing Address</p>
+                    {{ billingAddressForm|crispy}}
                     <button class="btn btn-success ">Update Information</button>
                 </form>
             </div>

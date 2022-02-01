@@ -9,7 +9,8 @@ from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 import stripe
 from .forms import CheckoutForm
-from .models import Order, Address, Payment
+from .models import Order, Payment
+from user_profile.models import Address
 
 from user_profile.models import UserProfile
 
