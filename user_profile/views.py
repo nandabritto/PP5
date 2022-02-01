@@ -2,13 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from order.models import Order, OrderBox, Address
-from .forms import UserShippingAddressForm,UserBillingAddressForm
+from .forms import UserAddressForm
 from .models import UserProfile
 
 
 
 def profile(request):
     customer = get_object_or_404(UserProfile, customer=request.user)
+    cust_shipping_address = Address()
+    cust_billing_address = Address()
 
     if request.method == 'GET':
         def get_customer_address(customer,address_type):
@@ -28,19 +30,20 @@ def profile(request):
         cust_billing_address = get_customer_address(customer,'B')
 
     if request.method == 'POST':
-        form = UserBillingAddressForm(request.POST, profile)
+        form = UserAddressForm(request.POST, instance=Address())
+        # billingAddressForm = UserBillingAddressForm(request.POST, instance=address)
 
         if form.is_valid():
             # form.save()
-            print(form.__dict__)
+            # print(form.__dict__)
             default_address=Address(
                             customer=customer.customer,
-                            address1=form.cleaned_data.get('default_address1'),
-                            address2=form.cleaned_data.get('default_address2'),
-                            county=form.cleaned_data.get('default_county'),
-                            country=form.cleaned_data.get('default_country'),
-                            eircode=form.cleaned_data.get('default_eircode'),
-                            address_type='B',
+                            address1=form.cleaned_data.get('address1'),
+                            address2=form.cleaned_data.get('address2'),
+                            county=form.cleaned_data.get('county'),
+                            country=form.cleaned_data.get('country'),
+                            eircode=form.cleaned_data.get('eircode'),
+                            address_type=form.cleaned_data.get('address_type'),
                             default= True
                         )
             print(default_address.__dict__)
@@ -54,6 +57,14 @@ def profile(request):
                 address_type=default_address.address_type,
             )
             if not default_address_qs.exists():
+                
+                address_qs = Address.objects.filter(
+                    customer=default_address.customer,
+                    address_type=default_address.address_type,
+                    default= True)
+
+                address_qs.update(default= False)
+
                 default_address.save()
                 messages.success(request, 'Profile was updated.')
             else:
@@ -62,8 +73,8 @@ def profile(request):
         else:
             messages.error(request, ' Form invalid')
     
-    shippingAddressForm = UserShippingAddressForm(instance=cust_shipping_address)
-    billingAddressForm = UserBillingAddressForm(instance=cust_billing_address)
+    shippingAddressForm = UserAddressForm(instance=cust_shipping_address)
+    billingAddressForm = UserAddressForm(instance=cust_billing_address)
     ordered_boxes = customer.ordered_boxes.all()
     template = 'user_profile/profiles.html'
     context = {
