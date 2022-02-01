@@ -1,7 +1,7 @@
 """ System Module """
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django_countries.fields import CountryField
 
@@ -11,11 +11,11 @@ ADDRESS_CHOICES = (
     ('S', 'Shipping'),
 )
 
+
 class UserProfile(models.Model):
     """
-    Create user profile with dfaul info
+    Create user profile with default info
     """
-
     customer = models.OneToOneField(User, on_delete=models.CASCADE)
     billing_address = models.ForeignKey(
         'Address', related_name='billing_address1',
@@ -23,11 +23,6 @@ class UserProfile(models.Model):
     shipping_address = models.ForeignKey(
         'Address', related_name='shipping_address2',
         on_delete=models.SET_NULL, blank=True, null=True)
-    # default_address1 = models.CharField(max_length=100, null=True, blank=True)
-    # default_address2 = models.CharField(max_length=100, null=True, blank=True)
-    # default_county = models.CharField(max_length=20, null=True, blank=True)
-    # default_country = CountryField(multiple=False, null=True, blank=True)
-    # default_eircode = models.CharField(max_length=7, null=True, blank=True)
 
     def __str__(self):
         """
@@ -80,9 +75,9 @@ class Address(models.Model):
         """
         verbose_name_plural = 'adresses'
 
+
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(customer=instance)
     instance.userprofile.save()
-

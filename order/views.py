@@ -7,12 +7,12 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
-import stripe
+from user_profile.models import Address
+from user_profile.models import UserProfile
 from .forms import CheckoutForm
 from .models import Order, Payment
-from user_profile.models import Address
+import stripe
 
-from user_profile.models import UserProfile
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -129,7 +129,7 @@ class CheckoutView(View):
                             country=shipping_country,
                             eircode=shipping_eircode,
                             address_type='S'
-                        )
+                            )
                         shipping_address.save()
                         order.shipping_address = shipping_address
                         order.save()
@@ -322,7 +322,7 @@ def success(request, pk):
     #             'default_address2': order.shipping_address.address2,
     #             'default_county': order.shipping_address.county,
     #             'default_country': order.shipping_address.country,
-    #             'default_eircode': order.shipping_address.eircode,                
+    #             'default_eircode': order.shipping_address.eircode,
     #         }
 
     #         user_profile_form = UserProfileForm(profile_data, instance=profile)

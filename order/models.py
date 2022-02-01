@@ -1,13 +1,9 @@
 """ System Module """
 from django.db import models
 from django.contrib.auth.models import User
-from django_countries.fields import CountryField
+# from django_countries.fields import CountryField
 from products.models import Box
 from user_profile.models import UserProfile, Address
-# import uuid
-
-
-
 
 
 class Order(models.Model):
@@ -99,40 +95,6 @@ class OrderBox(models.Model):
         """
         total = self.box.box_price * self.quantity
         return total
-
-    # @property
-    # def get_order_admin(self):
-    #     """
-    #     """
-    #     from django.urls import reverse
-    #     from django.utils.html import format_html
-    #     order = self.order_box.id
-    #     url = reverse(f'admin:order_order_change',  args=[order] )
-    #     # return f'<a href="{url}">Edit </a>'
-    #     return format_html("<a href='{}'>{}</a>", url, order)
-
-# class ShippingAddress(models.Model):
-#     """
-#     Create shipping details and link to the user and order
-#     """
-#     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-#     order = models.ForeignKey(
-#         Order, on_delete=models.SET_NULL, blank=True, null=True)
-#     address1 = models.CharField(max_length=100, null=True)
-#     addres2 = models.CharField(max_length=100, null=True)
-#     county = models.CharField(max_length=20, null=True)
-#     country = models.CharField(max_length=30, null=True)
-#     eircode = models.CharField(max_length=7, null=True)
-#     date_added = models.DateTimeField(auto_now_add=True)
-
-#     def __str__(self):
-#         """
-#         Return a string to shipping address
-#         """
-#         return str(self.address1)
-
-
-
 
 
 class Payment(models.Model):
