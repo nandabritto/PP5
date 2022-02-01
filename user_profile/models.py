@@ -9,6 +9,7 @@ class UserProfile(models.Model):
     """
     Create user profile with dfaul info
     """
+
     customer = models.OneToOneField(User, on_delete=models.CASCADE)
     default_address1 = models.CharField(max_length=100, null=True, blank=True)
     default_address2 = models.CharField(max_length=100, null=True, blank=True)
