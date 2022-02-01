@@ -7,9 +7,12 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
-import stripe
+from user_profile.models import Address
+from user_profile.models import UserProfile
 from .forms import CheckoutForm
-from .models import Order, Address, Payment
+from .models import Order, Payment
+import stripe
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -126,7 +129,7 @@ class CheckoutView(View):
                             country=shipping_country,
                             eircode=shipping_eircode,
                             address_type='S'
-                        )
+                            )
                         shipping_address.save()
                         order.shipping_address = shipping_address
                         order.save()
@@ -308,6 +311,25 @@ def success(request, pk):
     """
     order = Order.objects.get(pk=pk)
 
+    # if request.user.is_authenticated:
+    #     profile = UserProfile.objects.get(customer=request.user)
+    #     order.user_profile = profile
+    #     order.save()
+
+    #     if save_info:
+    #         profile_data = {
+    #             'default_address1': order.shipping_address.address1,
+    #             'default_address2': order.shipping_address.address2,
+    #             'default_county': order.shipping_address.county,
+    #             'default_country': order.shipping_address.country,
+    #             'default_eircode': order.shipping_address.eircode,
+    #         }
+
+    #         user_profile_form = UserProfileForm(profile_data, instance=profile)
+
+    #         if user_profile_form.is_valid():
+    #             user_profile_form.save()
+
     if order.customer == request.user:
         template = render_to_string(
             'order/email_template.html', {'name': request.user})
@@ -322,7 +344,7 @@ def success(request, pk):
 
         context = {'order': order}
 
-        return render(request, 'order/success.html', context)
+        return render(request, 'profile/', context)
 
     else:
         messages.error(request, "Sorry, you cannot access this data.")
