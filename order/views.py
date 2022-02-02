@@ -344,7 +344,7 @@ def success(request, pk):
 
         context = {'order': order}
 
-        return render(request, 'profile/', context)
+        return render(request, 'home', context)
 
     else:
         messages.error(request, "Sorry, you cannot access this data.")

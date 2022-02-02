@@ -31,4 +31,5 @@ class UserAddressForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'col-md-6'
             self.fields[field].label = False

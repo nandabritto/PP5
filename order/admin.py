@@ -13,8 +13,8 @@ class OrderBoxAdmin(admin.ModelAdmin):
         """
         Add id number to order
         """
-        url = reverse('admin:order_order_change', args=(obj.order_box.id,))
-        return format_html("<a href='{}'>{}</a>", url, obj.order_box.id)
+        url = reverse('admin:order_order_change', args=[obj.order_box])
+        return format_html("<a href='{}'>{}</a>", url, obj.order_box)
 
     list_display = [
         'box',
