@@ -11,6 +11,14 @@ from django.contrib.auth.models import User
 @login_required()
 def profile(request):
     """
+    A view to return profile page 
+    """
+    return render(request, 'user_profile/profiles.html')
+
+
+@login_required()
+def update_profile(request):
+    """
     Get customer, shipping and billing address and update
     """
     customer = get_object_or_404(UserProfile, customer=request.user)
@@ -19,6 +27,7 @@ def profile(request):
 
     if request.method == 'GET':
         def get_customer_address(customer, address_type):
+            user_address = Address()
             address_qs = Address.objects.filter(
                 customer=customer.customer,
                 address_type=address_type,
@@ -36,7 +45,7 @@ def profile(request):
 
     if request.method == 'POST':
         form = UserAddressForm(request.POST, instance=Address())
-
+        print(request.POST.__dict__)
         if form.is_valid():
             default_address=Address(
                             customer=customer.customer,
@@ -48,6 +57,7 @@ def profile(request):
                             address_type=form.cleaned_data.get('address_type'),
                             default= True
                         )
+            print('testeeee')
             print(default_address.__dict__)
             default_address_qs = Address.objects.filter(
                 customer=default_address.customer,
@@ -70,7 +80,7 @@ def profile(request):
                 messages.success(request, 'Profile was updated.')
             else:
                 messages.success(request, 'Profile address unchanged.')
-
+             
         else:
             messages.error(request, ' Form invalid')
 
