@@ -44,7 +44,6 @@ def profile(request):
         'billing_address': billing_address,
         # 'ordered_boxes': ordered_boxes,
     }
-    print(context)
     return render(request, template, context)
 
 
@@ -89,8 +88,6 @@ def update_profile(request):
                             address_type=form.cleaned_data.get('address_type'),
                             default= True
                         )
-            print('testeeee')
-            print(default_address.__dict__)
             default_address_qs = Address.objects.filter(
                 customer=default_address.customer,
                 address1=default_address.address1,
