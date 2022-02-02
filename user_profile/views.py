@@ -5,6 +5,7 @@ from django.contrib import messages
 from order.models import Order, OrderBox, Address
 from .forms import UserAddressForm
 from .models import UserProfile
+from django.contrib.auth.models import User
 
 
 @login_required()
@@ -75,11 +76,14 @@ def profile(request):
 
     shipping_address_form = UserAddressForm(instance=cust_shipping_address)
     billing_address_form = UserAddressForm(instance=cust_billing_address)
-    ordered_boxes = customer.ordered_boxes.all()
-    template = 'user_profile/profiles.html'
+    customer = request.user
+    # ordered_boxes = order.ordered_boxes  
+
+    template = 'user_profile/update_profile.html'
     context = {
         'shipping_address_form': shipping_address_form,
         'billing_address_form': billing_address_form,
-        'ordered_boxes': ordered_boxes,
+        'customer': customer,
+        # 'ordered_boxes': ordered_boxes,
     }
     return render(request, template, context)

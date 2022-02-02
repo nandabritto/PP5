@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 px-1">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card p-3">
+                <h2 class="logo-font mb-4">Update Profile</h2>
+                <hr>
+                <div>
+                    <p class="lead fw-bolder">My personal details</p>
+                    <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
+                    <p>First Name: {{ customer.first_name }} | Last Name: {{ customer.first_name }}</p>
+                    
+                </div>
+                <form class="row g-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    <p class="lead fw-bolder">My Default Shipping Address</p>
+                    <div class="col-12">
+                        {{ shipping_address_form.address1|as_crispy_field }}
+                        {{ shipping_address_form.address2|as_crispy_field }}
+                    </div>
+
+                    <div class="col-md-5 my-0">
+                        {{ shipping_address_form.county|as_crispy_field }}
+                    </div>
+                    <div class="col-md-5 my-0">
+                        {{ shipping_address_form.country|as_crispy_field }}
+                    </div>
+                    <div class="col-md-2 my-0">
+                        {{ shipping_address_form.eircode|as_crispy_field }}
+                    </div>
+                    <div class="col-md-5 my-0">
+                        {{ shipping_address_form.address_type|as_crispy_field }}
+                    </div>
+                    <div class="col-12 text-center">
+                        <button class="btn btn-warning">Update Shipping Address</button>
+                    </div>
+
+
+                    <p class="lead fw-bolder">My Default Billing Address</p>
+
+                    <div class="col-12">
+                        {{ billing_address_form.address1|as_crispy_field }}
+                        {{ billing_address_form.address2|as_crispy_field }}
+                    </div>
+
+                    <div class="col-md-5 my-0">
+                        {{ billing_address_form.county|as_crispy_field }}
+                    </div>
+                    <div class="col-md-5 my-0">
+                        {{ billing_address_form.country|as_crispy_field }}
+                    </div>
+                    <div class="col-md-2 my-0">
+                        {{ billing_address_form.eircode|as_crispy_field }}
+                    </div>
+                    <div class="col-md-5 my-0">
+                        {{ billing_address_form.address_type|as_crispy_field }}
+                    </div>
+                    <div class="col-12 text-center">
+                        <button class="btn btn-warning ">Update Billing Address</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="card p-3">
+                <p> My previous orders</p>
+                <hr>
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Quantity</th>
+                            <th>Order Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order }}</td>
+                            <td>
+                                <ul class="list-unstyled">
+
+                                    <li class="small">
+                                        {{ order.box.box_name }}
+                                    </li>
+
+                                </ul>
+                            <td>{{ order.quantity }}</td>
+                            </td>
+                            <td>{{ order.get_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block postloadjs %}
+<script type="text/javascript" src="{% static 'js/countryfield.js' %}"></script>
+{% endblock %}

@@ -21,7 +21,7 @@
             <div class="card p-3">
                 <h2 class="logo-font mb-4">My Profile</h2>
                 <hr>
-                {{ profile }}
+                {{ customer }}
                 <form class="mt-3 text-center" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     <p class="lead fw-bolder">My Default Shipping Address</p>
@@ -55,9 +55,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for order in ordered_boxes %}
+                        {% for order in orders %}
                         <tr>
-                            <td>{{ order.date_added }}</td>
+                            <td>{{ order }}</td>
                             <td>
                                 <ul class="list-unstyled">
 
