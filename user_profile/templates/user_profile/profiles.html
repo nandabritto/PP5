@@ -25,15 +25,15 @@
                         <div class="col-md-5 mx-auto">
                             <p class="lead fw-bolder"><i class="fas fa-truck"></i> Default Shipping Address <a href=""><i class="fas fa-edit"></i></a></p>
                             <p>{{shipping_address.address1}}, <p>{{shipping_address.address2}}</p>
-                                <p>County:{{shipping_address.county}}, Country: {{shipping_address.country}}</p>
+                                <p>{{shipping_address.county}}, {{shipping_address.country}}</p>
                                 <p>EirCode:{{shipping_address.eircode}}</p>
                             
                         </div>
                         <div class="col-md-5 mx-auto">
                             <p class="lead fw-bolder"><i class="fas fa-file-invoice"></i> Default Billing Address <a href=""><i class="fas fa-edit"></i></a></p>
-                            <p>{{shipping_address.address1}}, <p>{{shipping_address.address2}}</p>
-                                <p>County:{{shipping_address.county}}, Country: {{shipping_address.country}}</p>
-                                <p>EirCode:{{shipping_address.eircode}}</p>
+                            <p>{{billing_address.address1}}, <p>{{billing_address.address2}}</p>
+                                <p>{{billing_address.county}}, {{billing_address.country}}</p>
+                                <p>EirCode:{{billing_address.eircode}}</p>
                         </div>
                     </div>
                 </div>

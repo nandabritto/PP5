@@ -35,12 +35,13 @@ def profile(request):
     cust_shipping_address = get_customer_address(customer, 'S')
     cust_billing_address = get_customer_address(customer, 'B')
     shipping_address = cust_shipping_address
-    # billing_address_form = UserAddressForm(instance=cust_billing_address)
+    billing_address = cust_billing_address
     customer = request.user
     template = 'user_profile/profiles.html'
     context = {       
         'customer': customer,
         'shipping_address': shipping_address,
+        'billing_address': billing_address,
         # 'ordered_boxes': ordered_boxes,
     }
     print(context)
