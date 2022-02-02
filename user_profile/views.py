@@ -116,13 +116,29 @@ def update_profile(request):
     shipping_address_form = UserAddressForm(instance=cust_shipping_address)
     billing_address_form = UserAddressForm(instance=cust_billing_address)
     customer = request.user
-    # ordered_boxes = order.ordered_boxes  
+    # orders = Order.objects.filter(customer=request.user)
+    ordered_boxes = Order.objects.filter(customer=request.user)
+    # print(ordered_boxes.orders)
 
     template = 'user_profile/update_profile.html'
     context = {
         'shipping_address_form': shipping_address_form,
         'billing_address_form': billing_address_form,
         'customer': customer,
-        # 'ordered_boxes': ordered_boxes,
+        # 'orders': orders,
+        'ordered_boxes': ordered_boxes,
+
     }
     return render(request, template, context)
+
+
+# def update_shipping(request):
+#     update_profile(customer)
+#     template = 'user_profile/update_shipping.html'
+#     context = {
+#         'shipping_address_form': shipping_address_form,
+#         'billing_address_form': billing_address_form,
+#         'customer': customer,
+#         # 'ordered_boxes': ordered_boxes,
+#     }
+#     return render(request, template, context)

@@ -12,13 +12,14 @@ class Order(models.Model):
     """
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE)
-    user_profile = models.ForeignKey(
-        UserProfile,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name='orders'
-        )
+    # user_profile = models.ForeignKey(
+    #     UserProfile,
+    #     on_delete=models.SET_NULL,
+    #     null=True,
+    #     blank=True,
+    #     related_name='orders'
+    #     )
+  
     date_ordered = models.DateTimeField(auto_now_add=True)
     ordered = models.BooleanField(default=False, null=True, blank=False)
     billing_address = models.ForeignKey(

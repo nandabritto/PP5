@@ -102,14 +102,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for order in orders %}
+                        {% for order in ordered_boxes %}
                         <tr>
-                            <td>{{ order }}</td>
+                            <td>{{ order.date_ordered }}</td>
+                            
                             <td>
                                 <ul class="list-unstyled">
 
                                     <li class="small">
-                                        {{ order.box.box_name }}
+                                        {{ order.id }}
                                     </li>
 
                                 </ul>

@@ -81,9 +81,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for order in orders %}
+                        {% for order in ordered_boxes %}
                         <tr>
-                            <td>{{ order }}</td>
+                            <td>{{ order.date_ordered }}</td>
                             <td>
                                 <ul class="list-unstyled">
                                     <li class="small">
@@ -91,7 +91,7 @@
                                     </li>
                                 </ul>
                             </td>
-                            <td>{{ order.quantity }}</td>
+                            <td>{{ order.orderbox.box_name }}</td>
                             <td>{{ order.get_total }}</td>
                         </tr>
                         {% endfor %}
