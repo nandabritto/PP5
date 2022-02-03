@@ -12,23 +12,23 @@ def newsletter_signup(request):
 
     if form.is_valid():
         instance = form.save(commit=False)
-        if NewsletterUser.objects.filter(email=instance.email).exist():
+        if NewsletterUser.objects.filter(email=instance.email).exists():
             messages.warning(request, 'You have already signed up')
         else:
             instance.save()
+            messages.success(request, 'You have signed up.')
 
     context = {
-        'form: form',
+        'form': form,
     }
-    template = 'newsletters/signup.html'
-    return render(request, template, context)
+    return render(request, 'newsletter/signup.html', context)
 
 
 def newsletter_unsubscribe(request):
     """
     Creates newsletter unsubscribe view and get the form
     """
-    form = NewsLetterUserSignUpForm(request.POST or None):
+    form = NewsLetterUserSignUpForm(request.POST or None)
 
     if form.is_valid():
         instance = form.save(commit=False)
@@ -38,8 +38,7 @@ def newsletter_unsubscribe(request):
             messages.warning(request, 'Sorry, We did not find your email.')
 
     context = {
-        'form: form',
+        'form': form,
     }
-    template = 'newsletters/unsubscribe.html'
-    return render(request, template, context)
+    return render(request, 'newsletter/unsubscribe.html', context)
 
