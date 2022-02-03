@@ -1,5 +1,6 @@
 """ System Module """
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .models import Box
 from .forms import ProductChoicesForm, BoxForm
 
@@ -28,9 +29,19 @@ def add_product(request):
     """
     Add product to the store
     """
-    form = BoxForm()
-    template = products/add_product.html
+    if request.method == 'POST':
+        form = BoxForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your product was added')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'Error adding your product. Please ensure your form is valid')
+    
+    else:
+        form = BoxForm
+
     context = {
         'form': form,
     }
-    return render(request, template, context)
+    return render(request, 'products/add_products.html', context)
