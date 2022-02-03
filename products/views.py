@@ -1,5 +1,6 @@
 """ System Module """
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib import messages
 from .models import Box
 from .forms import ProductChoicesForm, BoxForm
@@ -35,9 +36,9 @@ def add_product(request):
         if request.method == 'POST':
             form = BoxForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
+                box = form.save()
                 messages.success(request, 'Your product was added')
-                return redirect(reverse('add_product'))
+                return redirect(reverse('product_details', args=[box.id]))
             else:
                 messages.error(request, 'Error adding your product. Please, ensure your form is valid')
         
@@ -61,8 +62,24 @@ def edit_product(request, pk):
     """
     if request.user.is_superuser:
         box = get_object_or_404(Box, pk=pk)
-        form = BoxForm(instance=box)
-        messages.info(request, f'You are editing Box {box.box_name}')
+        if request.method == 'POST':
+            form = BoxForm(request.POST, request.FILES, instance=box)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your product was edited')
+                box = get_object_or_404(Box, pk=pk)
+                context = {
+                    'box': box,
+                }
+                return render(request, 'products/product_detail.html', context)
+
+             
+            else:
+                messages.error(request, 'Failed to edit your product. Please, ensure your form is valid')
+
+        else:
+            form = BoxForm(instance=box)
+            messages.info(request, f'You are editing Box {box.box_name}')
 
         context = {
             'form': form,
@@ -72,3 +89,17 @@ def edit_product(request, pk):
     else:
         messages.error(request, 'Sorry, you do not have permittion to access this page')
         return render(request, 'home/index1.html')
+
+
+@login_required
+def delete_product(request, pk):
+    """
+    Delete product on the store
+    """
+    if request.user.is_superuser:
+        box = get_object_or_404(Box, pk=pk)
+        box.delete()
+        messages.success(request, 'Product was deleted')
+        return redirect(reverse('boxes'))
+    else:
+        messages.error(request, 'Something went wrong. Your product was not deleted.')
