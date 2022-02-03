@@ -4,8 +4,8 @@ html {
 
 .body {
     padding-bottom: 20vh !important;
-    background-image:url(/media/background-index.jpg)!important;
-    background-size:cover;
+    background-image: url(/media/background-index.jpg) !important;
+    background-size: cover;
 }
 
 h1,
@@ -31,11 +31,13 @@ input:focus {
 
 .alert-box {
     width: 30% !important;
-    margin: 0 auto;
-    float:right;
     border-left-color: darkorange;
     border-left-width: 10px;
-    background-color:white!important;
+    background-color: white !important;
+    z-index: 90000;
+    position: absolute;
+    opacity: 0.95;
+    right: 0;
 }
 
 
@@ -45,6 +47,10 @@ input:focus {
         background-position: center;
     }
 
+.alert-box {
+    width: 50% !important;
+}
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -52,6 +58,9 @@ input:focus {
     body {
         padding-bottom: 1000px !important;
         background-position: center;
+    }
+    .alert-box {
+        width: 100% !important;
     }
 
 }
