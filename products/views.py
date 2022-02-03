@@ -1,7 +1,7 @@
 """ System Module """
 from django.shortcuts import render, get_object_or_404
 from .models import Box
-from .forms import ProductChoicesForm
+from .forms import ProductChoicesForm, BoxForm
 
 
 def boxes(request):
@@ -22,3 +22,15 @@ def product_detail(request, pk):
     }
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/product_detail.html', context)
+
+
+def add_product(request):
+    """
+    Add product to the store
+    """
+    form = BoxForm()
+    template = products/add_product.html
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
