@@ -18,3 +18,10 @@ class ProductChoicesForm(forms.Form):
             queryset=selectables_query.all(), widget=forms.CheckboxSelectMultiple, empty_label=None)
         self.fields['selected_product'].label = False
 
+
+class BoxForm(forms.ModelForm):
+    model = BoxForm()
+    fields = '__all__'
+    
+
+        
