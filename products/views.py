@@ -52,3 +52,23 @@ def add_product(request):
     else:
         messages.error(request, 'Sorry, you do not have permittion to access this page')
         return render(request, 'home/index1.html')
+
+
+@login_required
+def edit_product(request, pk):
+    """
+    Edit product on the store
+    """
+    if request.user.is_superuser:
+        box = get_object_or_404(Box, pk=pk)
+        form = BoxForm(instance=box)
+        messages.info(request, f'You are editing Box {box.box_name}')
+
+        context = {
+            'form': form,
+            'box': box,
+        }
+        return render(request, 'products/edit_products.html', context)
+    else:
+        messages.error(request, 'Sorry, you do not have permittion to access this page')
+        return render(request, 'home/index1.html')
