@@ -23,3 +23,8 @@ class BoxForm(forms.ModelForm):
     class Meta:
         model = Box
         fields = '__all__'
+        widgets = {
+          'box_description': forms.Textarea(attrs={'rows':4}),
+          'box_note2': forms.Textarea(attrs={'rows':2}),
+          'box_note1': forms.Textarea(attrs={'rows':2}),
+        }
