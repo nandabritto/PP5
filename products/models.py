@@ -1,5 +1,6 @@
 """ System Module """
 from django.db import models
+from PIL import Image
 
 
 class Product(models.Model):
@@ -25,15 +26,25 @@ class Box(models.Model):
     """
     box_name = models.CharField(max_length=200)
     box_price = models.DecimalField(max_digits=5, decimal_places=2, null=True)
-    category = models.CharField(max_length=50, unique=True)
+    category = models.CharField(max_length=50)
     box_description = models.TextField()
-    box_image = models.ImageField(null=True)
-    box_note1 = models.TextField(null=True)
-    box_note2 = models.TextField(null=True)
+    box_image = models.ImageField(null=True, blank=True)
+    box_note1 = models.TextField(null=True, blank=True)
+    box_note2 = models.TextField(null=True, blank=True)
 
     def __str__(self):
         """ Return box name string """
         return str(self.box_name).lower()
+
+    def save(self):
+        super().save()
+
+        img = Image.open(self.box_image.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.box_image.path)
 
 
 class Product_On_Box(models.Model):

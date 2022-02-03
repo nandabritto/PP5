@@ -11,19 +11,20 @@
 {% block content %}
 <div class="container mt-5 px-1">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10 col-lg-10 col-11 mx-auto">
             <div class="card p-3">
-                <h2 class="logo-font mb-4">Update Profile</h2>
+                <h2 class="logo-font mb-2 text-center">Update Profile</h2>
                 <hr>
                 <div>
                     <p class="lead fw-bolder">My personal details</p>
                     <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
-                    <p>First Name: {{ customer.first_name }} | Last Name: {{ customer.first_name }}</p>
-
+                    <p>Name: {{ customer.first_name }} {{ customer.last_name }}</p>
                 </div>
+                <hr>
                 <form class="row g-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     <p class="lead fw-bolder">My Default Shipping Address</p>
+                    
                     <div class="col-12">
                         {{ shipping_address_form.address1|as_crispy_field }}
                         {{ shipping_address_form.address2|as_crispy_field }}
@@ -46,12 +47,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-12 text-center">
+                    <div class="col-12 text-center m-3">
                         <button class="btn btn-warning">Update Shipping Address</button>
                     </div>
-
                 </form>
-
+                <hr>
                 <p class="lead fw-bolder">My Default Billing Address</p>
                 <form class="row g-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
 
@@ -79,47 +79,11 @@
 
                             </select>
                         </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-warning ">Update Billing Address</button>
-                        </div>
+                    </div>
+                    <div class="col-12 text-center m-3">
+                        <button class="btn btn-warning">Update Billing Address</button>
                     </div>
                 </form>
-            </div>
-        </div>
-
-
-        <div class="col-md-4">
-            <div class="card p-3">
-                <p> My previous orders</p>
-                <hr>
-                <table class="table table-sm table-borderless">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Items</th>
-                            <th>Quantity</th>
-                            <th>Order Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for order in orders %}
-                        <tr>
-                            <td>{{ order }}</td>
-                            <td>
-                                <ul class="list-unstyled">
-
-                                    <li class="small">
-                                        {{ order.box.box_name }}
-                                    </li>
-
-                                </ul>
-                            <td>{{ order.quantity }}</td>
-                            </td>
-                            <td>{{ order.get_total }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>

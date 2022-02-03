@@ -1,6 +1,6 @@
 """ System Module """
 from django import forms
-from .models import Product
+from .models import Product, Box
 
 
 class ProductChoicesForm(forms.Form):
@@ -18,3 +18,13 @@ class ProductChoicesForm(forms.Form):
             queryset=selectables_query.all(), widget=forms.CheckboxSelectMultiple, empty_label=None)
         self.fields['selected_product'].label = False
 
+
+class BoxForm(forms.ModelForm):
+    class Meta:
+        model = Box
+        fields = '__all__'
+        widgets = {
+          'box_description': forms.Textarea(attrs={'rows':4}),
+          'box_note2': forms.Textarea(attrs={'rows':2}),
+          'box_note1': forms.Textarea(attrs={'rows':2}),
+        }
