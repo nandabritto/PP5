@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Box
 from .forms import ProductChoicesForm, BoxForm
+from django.contrib.auth.decorators import login_required
 
 
 def boxes(request):
@@ -25,23 +26,29 @@ def product_detail(request, pk):
     return render(request, 'products/product_detail.html', context)
 
 
+@login_required
 def add_product(request):
     """
     Add product to the store
     """
-    if request.method == 'POST':
-        form = BoxForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your product was added')
-            return redirect(reverse('add_product'))
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = BoxForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your product was added')
+                return redirect(reverse('add_product'))
+            else:
+                messages.error(request, 'Error adding your product. Please, ensure your form is valid')
+        
         else:
-            messages.error(request, 'Error adding your product. Please ensure your form is valid')
-    
-    else:
-        form = BoxForm
+            form = BoxForm
 
-    context = {
-        'form': form,
-    }
-    return render(request, 'products/add_products.html', context)
+        context = {
+            'form': form,
+        }
+        return render(request, 'products/add_products.html', context)
+
+    else:
+        messages.error(request, 'Sorry, you do not have permittion to access this page')
+        return render(request, 'home/index1.html')
