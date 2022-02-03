@@ -76,7 +76,6 @@ def update_profile(request):
 
     if request.method == 'POST':
         form = UserAddressForm(request.POST, instance=Address())
-        print(request.POST.__dict__)
         if form.is_valid():
             default_address=Address(
                             customer=customer.customer,
