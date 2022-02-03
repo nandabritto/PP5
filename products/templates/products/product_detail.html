@@ -26,11 +26,11 @@
                     {{ box.box_name|title}}</strong></h1>
             <hr>
             <!-- Box image -->
-            
-            <figure class="col-md-5 col-lg-5 d-flex align-items-center p-2 ">                
+
+            <figure class="col-md-5 col-lg-5 d-flex align-items-center p-2 ">
                 <img src="{{ box.box_image.url }}" class="rounded-3 w-100 " alt="{{ box.box_image }}" itemprop="image">
             </figure>
-            
+
             <div class="col-md-7 col-lg-7">
                 <div class="card-body ">
                     <!-- Box description -->
@@ -59,7 +59,7 @@
                         </bold>
                     </p>
                 </div>
-
+               
                 <div class="text-center">
                     <button class="btn btn-success fw-bold mx-1 update-cart" itemprop="url" data-box="{{box.id}}"
                         data-action="add" type="button"><i class="fas fa-cart-plus"></i> Add to cart</button>
@@ -67,6 +67,20 @@
                             class="fas fa-arrow-circle-left"></i>
                         Back</a>
                 </div>
+                <!-- Product Management buttons-->
+                {% if request.user.is_superuser %}
+                <span class="float-end">
+                    <a href="{% url 'edit_product' box.pk %}" class="text-decoration-none text-black shadow-none"
+                        aria-label="Edit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
+                        <i class="fas fa-lg fa-edit px-2"></i>
+                    </a>
+                    <a href="{% url 'delete_product' box.pk %}" class="text-decoration-none text-black shadow-none"
+                        aria-label="Delete" id="edit" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Delete">
+                        <i class="fas fa-lg fa-trash px-2 pb-2 "></i>
+                    </a>
+                </span>
+                {% endif %}
             </div>
         </div>
     </div>

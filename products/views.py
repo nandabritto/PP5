@@ -41,7 +41,6 @@ def add_product(request):
                 return redirect(reverse('product_details', args=[box.id]))
             else:
                 messages.error(request, 'Error adding your product. Please, ensure your form is valid')
-        
         else:
             form = BoxForm
 
@@ -97,9 +96,14 @@ def delete_product(request, pk):
     Delete product on the store
     """
     if request.user.is_superuser:
-        box = get_object_or_404(Box, pk=pk)
-        box.delete()
-        messages.success(request, 'Product was deleted')
-        return redirect(reverse('boxes'))
+        try:
+            box = get_object_or_404(Box, pk=pk)
+            box.delete()
+            messages.success(request, 'Product was deleted')
+            return redirect(reverse('boxes'))
+        except:
+            messages.error(request, 'Something went wrong. Your product was not deleted.')
+            return redirect(reverse('product_details', args=[pk]))
     else:
-        messages.error(request, 'Something went wrong. Your product was not deleted.')
+        messages.error(request, 'Sorry, you do not have permittion to access this page')
+        return render(request, 'home/index1.html')
