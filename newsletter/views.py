@@ -21,7 +21,7 @@ def newsletter_signup(request):
     context = {
         'form': form,
     }
-    return render(request, 'newsletter/signup.html', context)
+    return render(request, 'newsletter/subscribe.html', context)
 
 
 def newsletter_unsubscribe(request):
@@ -32,8 +32,9 @@ def newsletter_unsubscribe(request):
 
     if form.is_valid():
         instance = form.save(commit=False)
-        if NewsletterUser.objects.filter(email=instance.email).exist():
+        if NewsletterUser.objects.filter(email=instance.email).exists():
             NewsletterUser.objects.filter(email=instance.email).delete()
+            messages.warning(request, 'Unsubscription completed.')
         else:
             messages.warning(request, 'Sorry, We did not find your email.')
 
@@ -41,4 +42,3 @@ def newsletter_unsubscribe(request):
         'form': form,
     }
     return render(request, 'newsletter/unsubscribe.html', context)
-

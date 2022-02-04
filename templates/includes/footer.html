@@ -1,53 +1,23 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/footer.css' %}">  
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
 {% endblock %}
 
 <footer class="bg-light bg-gradient text-center fixed-bottom">
-    <!-- Grid container -->
-    <div class="container p-1 pb-0">
-      <!-- Section: Form -->
-      <section class="">
-        <form action="">
-          <!--Grid row-->
-          <div class="row d-flex justify-content-center pt-1">
-            <!--Grid column-->
-            <div class="col-auto">
-              <p class="text-dark pt-2">
-                <strong>Sign up for our newsletter</strong>
-              </p>
-            </div>
-            <!--Grid column-->
-  
-            <!--Grid column-->
-            <div class="col-md-5 col-12">
-              <!-- Email input -->
-              <div class="form-outline">
-                <input type="email" id="form5Example27" class="form-control border-0" placeholder= "Add your email here"/>                
-              </div>
-            </div>
-            <!--Grid column-->
-  
-            <!--Grid column-->
-            <div class="col-auto">
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-outline-secondary btn-light">
-                Subscribe
-              </button>
-            </div>
-            <!--Grid column-->
-          </div>
-          <!--Grid row-->
-        </form>
-      </section>
-      <!-- Section: Form -->
+  <!-- Grid container -->
+  <div class="container p-1 pb-0">
+    <div class="row d-flex justify-content-center pt-1">
+      <div class="col-auto">
+        <p class="text-dark pt-2">
+          <a href="{% url 'subscribe'%}"><strong>Sign up for our newsletter</strong></a>
+        </p>
+      </div>
     </div>
-    <!-- Grid container -->
-  
-    <!-- Copyright -->
-    <div class="text-center pb-2 text-dark small copyright">
-      © 2021 Copyright
-    </div>
-    <!-- Copyright -->
-  </footer>
+  </div>
+  <!-- Copyright -->
+  <div class="text-center pb-2 text-dark small copyright">
+    © 2021 Copyright
+  </div>
+
+</footer>
