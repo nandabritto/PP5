@@ -14,14 +14,14 @@
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
             <div class="card p-3" itemscope itemtype="newsletter">
                 <h2 class="text-center m-4">
-                    <bold>Unsubscribe from The Regional Taste Newsletter</bold>
+                    <bold>Sign Up to The Regional Taste Newsletter</bold>
                 </h2>
                 <div class="text-center m-4">
                     <!-- Subscribe form -->
                     <form method='POST'>
                         {% csrf_token %}
                         {{ form|crispy }}
-                        <button class="btn btn-warning">Unsubscribe</button>
+                        <button class="btn btn-warning">Subscribe</button>
                     </form>
                 </div>
             </div>
