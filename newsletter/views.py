@@ -16,8 +16,6 @@ def newsletter_signup(request):
     if form.is_valid():
         instance = form.save(commit=False)
         if NewsletterUser.objects.filter(email=instance.email).exists():
-            
-
             subject = "Thank you for joining our newsletter"
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
@@ -28,7 +26,6 @@ def newsletter_signup(request):
             message.attach_alternative(html_template, "text/html")
             message.send()
             messages.warning(request, 'You have already signed up')
-            
         else:
             instance.save()
             messages.success(request, 'You have signed up.')
@@ -49,15 +46,16 @@ def newsletter_unsubscribe(request):
         instance = form.save(commit=False)
         if NewsletterUser.objects.filter(email=instance.email).exists():
             NewsletterUser.objects.filter(email=instance.email).delete()
-            messages.warning(request, 'Unsubscription completed.')
-
             subject = "You have been unsubscribe."
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
-            subscribe_message = "Sorry to see you go. Bye Bye."
-            send_mail(subject=subject,
-            from_email=from_email, recipient_list=to_email, message=subscribe_message, fail_silently=False)
-
+            with open("newsletter/templates/newsletter/unsubscribe_email.txt" ) as f:
+                subscribe_message = f.read()
+            message = EmailMultiAlternatives(subject=subject, body=subscribe_message, from_email=from_email, to=to_email)
+            html_template = get_template("newsletter/unsubscribe_email.html").render()
+            message.attach_alternative(html_template, "text/html")
+            message.send()
+            messages.warning(request, 'Unsubscription completed.')     
         else:
             messages.warning(request, 'Sorry, We did not find your email.')
 

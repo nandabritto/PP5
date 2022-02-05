@@ -20,7 +20,8 @@ STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEVELOPMENT = 'DEVELOPMENT' in os.environ
+DEBUG = 'DEBUG' in os.environ
 
 # For debugging
 if DEBUG:
@@ -119,7 +120,7 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if DEBUG:
+if 'DEVELOPMENT' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(
             os.environ.get("DEV_DATABASE_URL"))}
@@ -178,7 +179,7 @@ if 'USE_AWS' in os.environ:
    
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'theregionaltaste'
-    AWS_S3_REGION_NAME = 'us-east-1'
+    AWS_S3_REGION_NAME = 'eu-west-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
