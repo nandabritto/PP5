@@ -20,7 +20,8 @@ STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEVELOPMENT = 'DEVELOPMENT' in os.environ
+DEBUG = 'DEBUG' in os.environ
 # For debugging
 if DEBUG:
     logging.basicConfig(
@@ -120,7 +121,7 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if DEBUG:
+if 'DEVELOPMENT' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(
             os.environ.get("DEV_DATABASE_URL"))}
