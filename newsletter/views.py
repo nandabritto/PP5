@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.contrib import messages
-from .models import NewsletterUser
-from .forms import NewsLetterUserSignUpForm
+from .models import NewsletterUser, Newsletter
+from .forms import NewsLetterUserSignUpForm, NewsletterCreationForm
 
 def newsletter_signup(request):
     """
@@ -16,6 +16,8 @@ def newsletter_signup(request):
     if form.is_valid():
         instance = form.save(commit=False)
         if NewsletterUser.objects.filter(email=instance.email).exists():
+            
+
             subject = "Thank you for joining our newsletter"
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
@@ -26,6 +28,7 @@ def newsletter_signup(request):
             message.attach_alternative(html_template, "text/html")
             message.send()
             messages.warning(request, 'You have already signed up')
+            
         else:
             instance.save()
             messages.success(request, 'You have signed up.')
@@ -46,16 +49,15 @@ def newsletter_unsubscribe(request):
         instance = form.save(commit=False)
         if NewsletterUser.objects.filter(email=instance.email).exists():
             NewsletterUser.objects.filter(email=instance.email).delete()
+            messages.warning(request, 'Unsubscription completed.')
+
             subject = "You have been unsubscribe."
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
-            with open("newsletter/templates/newsletter/unsubscribe_email.txt" ) as f:
-                subscribe_message = f.read()
-            message = EmailMultiAlternatives(subject=subject, body=subscribe_message, from_email=from_email, to=to_email)
-            html_template = get_template("newsletter/unsubscribe_email.html").render()
-            message.attach_alternative(html_template, "text/html")
-            message.send()
-            messages.warning(request, 'Unsubscription completed.')     
+            subscribe_message = "Sorry to see you go. Bye Bye."
+            send_mail(subject=subject,
+            from_email=from_email, recipient_list=to_email, message=subscribe_message, fail_silently=False)
+
         else:
             messages.warning(request, 'Sorry, We did not find your email.')
 
@@ -63,3 +65,34 @@ def newsletter_unsubscribe(request):
         'form': form,
     }
     return render(request, 'newsletter/unsubscribe.html', context)
+
+
+def send_newsletter(request):
+    """
+    Create newsletter creation view 
+    """
+    form = NewsletterCreationForm(request.POST or None)
+
+    if form.is_valid():
+        """
+        Send newsletter email if form is valid
+        """
+        instance = form.save()
+        newsletter = Newsletter.objects.get(id=instance.id)
+        if newsletter.status == 'Publish':
+            subject = newsletter.subject
+            body = newsletter.body
+            from_email = settings.EMAIL_HOST_USER
+            for email in newsletter.email.all():
+                send_mail(
+                    subject=subject,
+                    from_email=from_email,
+                    recipient_list=[email],
+                    message=body,
+                    fail_silently=True
+                    )
+        context = {
+            'form': form,
+        }
+        return render(request, 'newsletter/newsletter_admin', context)
+
