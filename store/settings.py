@@ -22,6 +22,7 @@ STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEVELOPMENT = 'DEVELOPMENT' in os.environ
 DEBUG = 'DEBUG' in os.environ
+
 # For debugging
 if DEBUG:
     logging.basicConfig(
