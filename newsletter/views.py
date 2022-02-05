@@ -29,9 +29,6 @@ def newsletter_signup(request):
             message.send()
             messages.warning(request, 'You have already signed up')
             
-            # subscribe_message = "Welcome to The Regional Taste Newsletter. If you want to subscribe click on this link:"
-            # send_mail(subject=subject,
-            # from_email=from_email, recipient_list=to_email, message=subscribe_message, fail_silently=False)
         else:
             instance.save()
             messages.success(request, 'You have signed up.')
