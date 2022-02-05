@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.contrib import messages
-from .models import NewsletterUser
-from .forms import NewsLetterUserSignUpForm
+from .models import NewsletterUser, Newsletter
+from .forms import NewsLetterUserSignUpForm, NewsletterCreationForm
 
 def newsletter_signup(request):
     """
@@ -65,3 +65,34 @@ def newsletter_unsubscribe(request):
         'form': form,
     }
     return render(request, 'newsletter/unsubscribe.html', context)
+
+
+def send_newsletter(request):
+    """
+    Create newsletter creation view 
+    """
+    form = NewsletterCreationForm(request.POST or None)
+
+    if form.is_valid():
+        """
+        Send newsletter email if form is valid
+        """
+        instance = form.save()
+        newsletter = Newsletter.objects.get(id=instance.id)
+        if newsletter.status == 'Publish':
+            subject = newsletter.subject
+            body = newsletter.body
+            from_email = settings.EMAIL_HOST_USER
+            for email in newsletter.email.all():
+                send_mail(
+                    subject=subject,
+                    from_email=from_email,
+                    recipient_list=[email],
+                    message=body,
+                    fail_silently=True
+                    )
+        context = {
+            'form': form,
+        }
+        return render(request, 'newsletter/newsletter_admin', context)
+

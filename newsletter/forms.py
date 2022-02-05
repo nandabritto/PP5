@@ -1,6 +1,6 @@
 """ System Module """
 from django import forms
-from .models import NewsletterUser
+from .models import NewsletterUser, Newsletter
 
 class NewsLetterUserSignUpForm(forms.ModelForm):
     """
@@ -8,8 +8,22 @@ class NewsLetterUserSignUpForm(forms.ModelForm):
     """
     class Meta:
         model = NewsletterUser
-        fields = [ 'email']
+        fields = ['email']
 
         def clean_email(self):
             email = self.cleaned_data.get('email')
             return email
+
+class NewsletterCreationForm(forms.ModelForm):
+    """
+    Creates a newsletter form 
+    """
+    class Meta:
+        model = Newsletter
+        fields = [
+            'subject',
+            'body',
+            'email',
+            'status'
+        ]
+    
