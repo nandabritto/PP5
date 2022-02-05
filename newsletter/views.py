@@ -5,6 +5,7 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template
 from django.contrib import messages
+from django.views.generic import ListView
 from .models import NewsletterUser, Newsletter
 from .forms import NewsLetterUserSignUpForm, NewsletterCreationForm
 
@@ -105,7 +106,27 @@ def send_newsletter(request):
         form = NewsletterCreationForm()
     return render(request, 'newsletter/send_newsletter.html', {'form': form})
 
-def newsletter_list(request):
-    """
-    Create a list of sent newsletter
-    """
+
+class NewsletterList(ListView):
+    model = Newsletter
+    template_name = 'newsletters_list.html'
+    paginate_by = 10
+    ordering = ['-created']
+
+
+# def newsletter_list(request):
+#     """
+#     Create a list of sent newsletter
+#     """
+#     newsletter = Newsletter.objects.all()
+#     paginator = Paginator(newsletters, 10)
+#     page = request.GET.get('page')
+
+#     try:
+#         items = paginator.page(page)
+#     except PageNotAnInteger:
+#         items = paginator.page(1)
+#     except EmptyPage:
+#         items = paginator.page(paginator.num_pages)
+
+    
