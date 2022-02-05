@@ -5,7 +5,7 @@
 {% endblock %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <a class="navbar-brand" href="{% url 'home' %}">The regional Taste</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
                 <a href="{% url 'cart' %}"> <li class="btn position-relative">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {{cartItems}}
+                      {{request.session.cartItems}}
                       <span class="visually-hidden">Cart Items</span>
                     </span>
                 </li></a>
