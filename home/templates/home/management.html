@@ -4,22 +4,25 @@
 {% block extra_title %}Managment{% endblock %}
 
 {% block content %}
-<div class="container mt-5 mb-0">
+<!--Management container -->
+<div class="container mt-5 mb-0" itemscope itemtype="management">
     <div class="bg-warning">
         <h2 class="col text-center p-3"><strong><i class="fas fa-cog"></i> Managment</strong></h2>
     </div>
-
     <div class="row row-cols-2 row-cols-lg-3 bg-light text-center justify-content-center my-0 mx-1">
+        <!--Send newsletter container -->
         <div class="col-10  col-lg-3 p-3 m-3">
             <h2 class="lead text-center fw-bolder">Send newsletter</h2>
             <a class="p-3 fw-bold text-black" itemprop="url" href="{% url 'send' %}"><i
                     class="fas fa-4x fa-envelope "></i></a>
         </div>
+        <!--See newsletter list container -->
         <div class="col-10 col-lg-3 p-3 m-3">
             <h2 class="lead text-center fw-bolder">See newsletter's list</h2>
             <a class="p-3 fw-bold text-black" itemprop="url" href="{% url 'newsletters' %}"><i
                     class="fas fa-4x fa-list-alt"></i></a>
         </div>
+        <!--Add products container -->
         <div class="col-10 col-lg-3 p-3 m-3">
             <h2 class="lead text-center fw-bolder">Add product</h2>
             <a class="p-3 fw-bold text-black" itemprop="url" href="{% url 'add_product' %}"><i
@@ -27,8 +30,5 @@
         </div>
     </div>
 </div>
-
-
-
 
 {% endblock %}

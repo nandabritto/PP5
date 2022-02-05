@@ -1,5 +1,7 @@
 /*Producs container */
-
+.card-body-list{
+    height:100px;
+}
 .product-image {
     height: 20vh;
 }
@@ -22,6 +24,13 @@
 @media only screen and (max-width: 900px) {
     .products-container {
         width: 90%;
+    }
+}
+
+/* Media query small screen*/
+@media only screen and (max-width: 600px) {
+    .card-body-list{
+        height:fit-content;
     }
 }
 
