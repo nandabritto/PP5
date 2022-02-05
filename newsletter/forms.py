@@ -2,6 +2,7 @@
 from django import forms
 from .models import NewsletterUser, Newsletter
 
+
 class NewsLetterUserSignUpForm(forms.ModelForm):
     """
     Creates newsletter signup form
@@ -11,7 +12,7 @@ class NewsLetterUserSignUpForm(forms.ModelForm):
         Get Newsletter user model to create form
         """
         model = NewsletterUser
-        fields = [ 'email']
+        fields = ['email']
 
         def clean_email(self):
             """"

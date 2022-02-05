@@ -1,4 +1,4 @@
-from django.contrib import admin
+""" System Module """
 from django.urls import path
 from .views import NewsletterList
 from . import views

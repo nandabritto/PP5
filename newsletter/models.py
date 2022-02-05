@@ -1,4 +1,6 @@
+""" System Module """
 from django.db import models
+
 
 class NewsletterUser(models.Model):
     """
@@ -28,4 +30,4 @@ class Newsletter(models.Model):
     updated = models.DateField(auto_now=True)
 
     def __str__(self):
-            return self.subject
+        return self.subject
