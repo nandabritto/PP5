@@ -121,7 +121,7 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if DEVELOPMENT:
+if 'DEVELOPMENT' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(
             os.environ.get("DEV_DATABASE_URL"))}
