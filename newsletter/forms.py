@@ -1,6 +1,6 @@
 """ System Module """
 from django import forms
-from .models import NewsletterUser
+from .models import NewsletterUser, Newsletter
 
 class NewsLetterUserSignUpForm(forms.ModelForm):
     """
