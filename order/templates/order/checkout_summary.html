@@ -28,46 +28,30 @@
                 <hr>
                 <!-- Shipping address details form -->
 
-                <form method="POST">
-                    {% csrf_token %}
-                    <h3>Shipping Address</h3>
-                    <div class='hideable_shipping_form'>
-                        {{ form.shipping_address1|as_crispy_field  }}
-                        {{ form.shipping_address2|as_crispy_field  }}
-                        {{ form.shipping_county|as_crispy_field  }}
-                        {{ form.shipping_country|as_crispy_field  }}
-                        {{ form.shipping_eircode|as_crispy_field  }}
+                <h3>Shipping Address</h3>
+                    <div>
+                        <p>{{order.shipping_address.address1 }}</p>
+                        <p>{{order.shipping_address.address2 }}</p>
+                        <p>{{order.shipping_address.county }}</p>
+                        <p>{{order.shipping_address.country }}</p>
+                        <p>{{order.shipping_address.eircode }}</p>
                     </div>
-                    {% if default_shipping_address %}
-                    {{ form.use_default_shipping|as_crispy_field  }}
-                    {% endif %}
-
-                    {% if not default_shipping_address %}
-                    {{ form.set_default_shipping|as_crispy_field  }}
-                    {% endif %}
-                    {{ form.same_billing_address|as_crispy_field  }}
-
+                  
                     <h3>Billing Address</h3>
-                    <div class='hideable_billing_form'>
-                        {{ form.billing_address1|as_crispy_field  }}
-                        {{ form.billing_address2|as_crispy_field  }}
-                        {{ form.billing_county|as_crispy_field  }}
-                        {{ form.billing_country|as_crispy_field  }}
-                        {{ form.billing_eircode|as_crispy_field  }}
+                    <div>
+                        <p>{{order.billing_address.address1 }}</p>
+                        <p>{{order.billing_address.address2 }}</p>
+                        <p>{{order.billing_address.county }}</p>
+                        <p>{{order.billing_address.country }}</p>
+                        <p>{{order.billing_address.eircode }}</p>
+                    
                     </div>
 
-                    <div class='hideable_user_default_billing'>
-                        {% if default_billing_address %}
-                        {{ form.use_default_billing|as_crispy_field  }}
-                        {% endif %}
-                        {% if not default_billing_address %}
-                        {{ form.set_default_billing|as_crispy_field  }}
-                        {% endif %}
-                    </div>
+                    
                     <div class="text-center">
-                        <button class="btn btn-lg btn-success" type="submit"><i class="fas fa-credit-card p-2"></i>Next</button>
+                        <a class="btn btn-lg btn-success" a href="{%url 'payment'%}"><i class="fas fa-credit-card p-2"></i>Proceed to Payment</a>
                     </div>
-                </form>
+            
             </div>
         </div>
         <div class="col-md-4">
@@ -87,7 +71,7 @@
                     {% endfor %}
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Delivery</span>
-                        € 0
+                        € {{order.shipping}}
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total</span>

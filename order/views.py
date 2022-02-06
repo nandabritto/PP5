@@ -217,11 +217,27 @@ class CheckoutView(View):
                                 required billing address fields")
                         return redirect('checkout')
 
-                return redirect('payment')
+                return redirect('checkout_summary')
 
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
             return redirect("cart")
+
+
+def checkout_summary(request):
+    order = Order.objects.get(
+        customer= request.user, ordered=False)
+    items = order.orderbox_set.all()
+    cart_items = order.get_cart_items
+    shipping = order.shipping()
+
+    context = {
+        'items': items,
+        'order': order,
+        'cart_items': cart_items,
+        'shipping':shipping,
+    }
+    return render(request, "order/checkout_summary.html",context )
 
 
 class PaymentView(View):

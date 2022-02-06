@@ -1,6 +1,8 @@
 """ System Module """
 from django.db import models
 from django.contrib.auth.models import User
+from decimal import Decimal
+from django.conf import settings
 # from django_countries.fields import CountryField
 from products.models import Box
 from user_profile.models import UserProfile, Address
@@ -12,14 +14,7 @@ class Order(models.Model):
     """
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE)
-    # user_profile = models.ForeignKey(
-    #     UserProfile,
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True,
-    #     related_name='orders'
-    #     )
-  
+     
     date_ordered = models.DateTimeField(auto_now_add=True)
     ordered = models.BooleanField(default=False, null=True, blank=False)
     billing_address = models.ForeignKey(
@@ -37,23 +32,34 @@ class Order(models.Model):
         """
         return str(self.customer)
 
-    # @property
-    # def shipping(self):
-    #     """
-    #     Add shipping on order
-    #     """
-    #     shipping = True
-    #     # orderbox = self.orderbox_set.all()
-    #     return shipping
+    def shipping(self):
+        national_shipping = settings.STANDART_SHIPPING_NATIONAL
+        international_shipping = settings.STANDART_SHIPPING_NATIONAL
+
+        if self.shipping_address is not None:
+            shipping_address = self.shipping_address
+            print('shipping nao nulo')
+                        
+            if shipping_address.country == 'IE':
+                shipping = national_shipping
+            else:
+                shipping = international_shipping
+            return shipping
+        else:
+            shipping = 0
+            return shipping
 
     @property
     def get_cart_total(self):
         """
         Get items and in the cart and sum to create cart total price
         """
+        
         orderitems = self.orderbox_set.all()
-        total = sum([item.get_total for item in orderitems])
+        shipping = self.shipping()
+        total = sum([item.get_total for item in orderitems], shipping)
         return total
+        
 
     @property
     def get_cart_items(self):
