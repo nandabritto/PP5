@@ -24,7 +24,7 @@
         <div class="col-md-8">
             <div class="card p-3">
 
-                <h2>Confirm your order</h2>
+                <h2>Confirm your order and address</h2>
                 <hr>
                 <!-- Shipping address details form -->
 
@@ -37,8 +37,6 @@
                         {{ form.shipping_county|as_crispy_field  }}
                         {{ form.shipping_country|as_crispy_field  }}
                         {{ form.shipping_eircode|as_crispy_field  }}
-
-
                     </div>
                     {% if default_shipping_address %}
                     {{ form.use_default_shipping|as_crispy_field  }}
@@ -66,9 +64,9 @@
                         {{ form.set_default_billing|as_crispy_field  }}
                         {% endif %}
                     </div>
-
-
-                    <button class="btn btn-primary" type="submit">Checkout</button>
+                    <div class="text-center">
+                        <button class="btn btn-lg btn-success" type="submit"><i class="fas fa-credit-card p-2"></i>Checkout</button>
+                    </div>
                 </form>
             </div>
         </div>
