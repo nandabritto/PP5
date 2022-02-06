@@ -82,27 +82,33 @@
                 </span>
                 {% endif %}
             </div>
+            <hr>
+            <h2 class="text-center">Users reviews</h2>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col">
+                        {% for review in reviews %}
+                        <div class="bg-light m-3">
+                            <p class="text-center pt-3">{{review.review_text}}</p>
+                            <p class="text-muted text-end mx-3"><small>{{review.date_added}}, {{review.customer|title}}</small></p>
+                        </div>
+                        {% endfor %}
+                    </div>
 
-            <h2>Reviews</h2>
-            <div>
-                {% for review in box.reviews.all %}
-                {{ review}}
-
-                {% empty %}
-                <h2>No reviews yet</h2>
+                    <div class="col m-3">
+                        {% if user.is_authenticated %}
+                        <form method="POST" action="">
+                            {%csrf_token%}
+                            {{review_form|crispy}}
+                            <button type="submit">Submit</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            {% endfor %}
-
-            {% if user.is_authenticated %}
-            <form method="POST" action="">
-                {%csrf_token%}
-                <p> review</p>
-                {{review_form}}
-                <button type="submit">Submit</button>
-            </form>
-            {% endif %}
         </div>
     </div>
+
 </section>
 {% endblock %}
 

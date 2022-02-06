@@ -36,9 +36,13 @@ def product_detail(request, pk):
         return redirect(reverse('product_details', args=[box.id]))
 
     review_form = AddReviewForm
+    reviews = BoxReview.objects.all()
+
+
     context = {
         'box': box,
-        'review_form': review_form
+        'review_form': review_form,
+        'reviews':reviews
     }
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/product_detail.html', context)
