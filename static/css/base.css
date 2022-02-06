@@ -1,12 +1,23 @@
+:root {
+    --red: #cc272e;
+    --white: #f7F7F1;
+    --black: #09090b;
+    --green: #465214;
+    --orange: #f38427;
+    --yellow: #ffce0a;
+}
+
 html {
     height: 100%;
 }
 
 .body {
     padding-bottom: 20vh !important;
-    background-image: url(/media/background-index.jpg) !important;
+    background-image: url(/media/background-index.jpg);
     background-size: cover;
 }
+
+/*Typograph*/
 
 h1,
 h2,
@@ -21,6 +32,41 @@ a {
     font-family: 'Lato', sans-serif !important;
 }
 
+.text-green {
+    color: var(--green) !important;
+}
+
+.text-yellow {
+    color: var(--yellow) !important;
+}
+
+.text-red {
+    color: var(--red) !important;
+}
+
+/* Buttons */
+
+.btn-danger {
+    background-color: var(--red) !important;
+    border-color: var(--red) !important;
+}
+
+
+.btn-success {
+    background-color: var(--green) !important;
+    border-color: var(--green) !important;
+}
+
+.btn-warning {
+    background-color: var(--yellow) !important;
+    border-color: var(--yellow) !important;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+    transition: transform 330ms ease-in-out;
+    font-weight: 600;
+}
 
 input:focus {
     outline: none !important;
@@ -28,6 +74,8 @@ input:focus {
     box-shadow: 0 0 0 1px gray !important;
     /*change this color */
 }
+
+/* Alerts */
 
 .alert-box {
     width: 30% !important;
@@ -40,6 +88,7 @@ input:focus {
     right: 0;
 }
 
+/*Media queries*/
 
 @media only screen and (max-width: 900px) {
 
@@ -47,9 +96,9 @@ input:focus {
         background-position: center;
     }
 
-.alert-box {
-    width: 50% !important;
-}
+    .alert-box {
+        width: 50% !important;
+    }
 
 }
 
@@ -59,6 +108,7 @@ input:focus {
         padding-bottom: 1000px !important;
         background-position: center;
     }
+
     .alert-box {
         width: 100% !important;
     }

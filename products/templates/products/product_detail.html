@@ -1,10 +1,5 @@
 {% extends "base.html" %}
-
-{% block jumbotron %}
-{% endblock %}
-
 {% load static %}
-
 {% load crispy_forms_tags %}
 
 <!-- Customizible CSS -->
@@ -15,30 +10,28 @@
 <!-- Page title -->
 {% block extra_title %}Products{% endblock %}
 
-
 {% block content %}
 <section>
     <!-- Details page card -->
     <div class="card col-11 col-md-8 d-flex mx-auto products-container" itemscope>
         <!-- Box title -->
         <div class="row g-0">
-            <h1 class="card-title text-center w-100 m-2 text-primary" item-prop="name"><strong>Box
-                    {{ box.box_name|title}}</strong></h1>
+            <h1 class="card-title text-center text-green w-100 m-2 fw-bolder" item-prop="name"><strong>
+                    Box {{ box.box_name|title}}</strong>
+            </h1>
             <hr>
             <!-- Box image -->
-
             <figure class="col-md-5 col-lg-5 d-flex align-items-center p-2 ">
                 <img src="{{ box.box_image.url }}" class="rounded-3 w-100 " alt="{{ box.box_image }}" itemprop="image">
             </figure>
-
-            <div class="col-md-7 col-lg-7">
+            <div class="col-md-7 col-lg-7" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                 <div class="card-body ">
                     <!-- Box description -->
                     <p class="card-text text-center lead px-5" itemprop="description">{{ box.box_description }}</p>
                     <p class="card-text text-center mb-0" itemprop="note"><small>{{ box.box_note1 }}</small></p>
                     <p class="card-text text-center" itemprop="note"><small>{{ box.box_note2 }}</small></p>
                     <!-- Products options -->
-                    <h2 class="text-center">Select your products here:</h2>
+                    <p class="lead text-center">Select your products here:</p>
                     <div class="d-flex justify-content-center">
                         <form class="product_options p-4" action="" method="post" itemprop="product choices">
                             {% csrf_token %}
@@ -51,66 +44,69 @@
                     <!-- Submited box products options -->
                     <p id="displayvalues" class="text-start"> Your choices for the box are: </p>
                 </div>
-                <!-- Box price -->
-                <div class="m-2 p-3">
-                    <p class="card-text text-center">
-                        <bold><i class="fa fa-eur text-muted" aria-hidden="true" item-prop="price"></i>
-                            {{ box.box_price }}
-                        </bold>
-                    </p>
-                </div>
-
-                <div class="text-center">
-                    <button class="btn btn-success btn-lg fw-bold mx-1 update-cart" itemprop="url" data-box="{{box.id}}"
-                        data-action="add" type="button"><i class="fas fa-cart-plus"></i> Add to cart</button>
-                    <a class="btn btn-lg btn-dark fw-bold mx-1" itemprop="url" href="javascript:history.back()"><i
-                            class="fas fa-arrow-circle-left"></i>
-                        Back</a>
-                </div>
-                <!-- Product Management buttons-->
-                {% if request.user.is_superuser %}
-                <span class="float-end">
-                    <a href="{% url 'edit_product' box.pk %}" class="text-decoration-none text-black shadow-none"
-                        aria-label="Edit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
-                        <i class="fas fa-lg fa-edit px-2"></i>
-                    </a>
-                    <a href="{% url 'delete_product' box.pk %}" class="text-decoration-none text-black shadow-none"
-                        aria-label="Delete" id="edit" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        title="Delete">
-                        <i class="fas fa-lg fa-trash px-2 pb-2 "></i>
-                    </a>
-                </span>
-                {% endif %}
             </div>
+            <!-- Box price -->
+            <div class="m-2 p-3">
+                <h3 class="card-text text-center" itemprop="price">
+                    <bold><i class="fa fa-eur text-muted" aria-hidden="true" itemprop="priceCurrency" content="EU"></i>
+                        {{ box.box_price }}
+                    </bold>
+                </h3>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-success btn-lg fw-bold m-2 update-cart" itemprop="url" data-box="{{box.id}}"
+                    data-action="add" type="button"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                <a class="btn btn-lg btn-dark fw-bold m-2" itemprop="url" href="javascript:history.back()"><i
+                        class="fas fa-arrow-circle-left"></i>
+                    Back</a>
+            </div>
+            <!-- Product Management buttons-->
+            {% if request.user.is_superuser %}
+            <span class="float-end">
+                <a href="{% url 'edit_product' box.pk %}" class="text-decoration-none text-black shadow-none"
+                    aria-label="Edit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
+                    <i class="fas fa-lg fa-edit px-2"></i>
+                </a>
+                <a href="{% url 'delete_product' box.pk %}" class="text-decoration-none text-black shadow-none"
+                    aria-label="Delete" id="edit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete">
+                    <i class="fas fa-lg fa-trash px-2 pb-2 "></i>
+                </a>
+            </span>
+            {% endif %}
         </div>
     </div>
 
+
     <!-- User's review container-->
-    <div class="card col-11 col-md-8 d-flex mx-auto products-container" itemscope>
+    <div class="card col-11 col-md-8 d-flex mx-auto products-container mx-0" itemscope itemprop="review"
+        itemtype="https://schema.org/Review">
         <div class="row">
-            <div class="col-md-3 col-lg-3 col-12 d-flex align-items-center">
+            <div class="col-md-4 col-lg-4 col-12 d-flex align-items-center">
                 <!-- Button trigger modal -->
                 {% if user.is_authenticated %}
-                <div class="text-center mx-auto">
+                <div class="text-center mx-auto p-3">
                     <h3> Add your review</h3>
                     <div>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal"
                             data-bs-target="#add_review">
                             Add product review
-                        </button></div>
+                        </button>
+                    </div>
                 </div>
                 {% endif %}
             </div>
             <!-- User reviews list -->
-            <div class="col-md-9 col-lg-9 col-12">
-                <h2 class="text-center my-2">Users reviews</h2>
+            <div class="col-md-8 col-lg-8 col-12 mx-0">
+                <h2 class="text-center my-2 mx-0" itemprop="review" itemscope itemtype="https://schema.org/Review">Users
+                    reviews</h2>
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             {% for review in reviews %}
-                            <div class="bg-light border rounded border-dark m-3">
-                                <p class="text-center my-0">{{review.review_text}}</p>
-                                <p class="text-center my-0">
+                            <div class="bg-light border rounded border-dark my-3">
+                                <p class="text-center my-0" itemprop="reviewBody">{{review.review_text}}</p>
+                                <p class="text-center my-0" itemprop="reviewRating">
                                     <span
                                         class="fa fa-star {% if review.review_rating > 0 %} checked {% endif %}"></span>
                                     <span
@@ -122,7 +118,8 @@
                                     <span
                                         class="fa fa-star {% if review.review_rating > 4 %} checked {% endif %}"></span>
                                 </p>
-                                <p class="text-muted text-end mx-3 my-0"><small>{{review.date_added}} -
+                                <p class="text-muted text-end mx-3 my-0" itemprop="datePublished">
+                                    <small>{{review.date_added}} -
                                         {{review.customer|title}}</small></p>
                             </div>
                             {% endfor %}
