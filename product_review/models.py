@@ -9,7 +9,7 @@ RATING=(
     ('5','5')
 )
 
-class ProductReview(models.Model):
+class BoxReview(models.Model):
     """"
     Creates box review
     """
@@ -19,4 +19,7 @@ class ProductReview(models.Model):
     review_rating = models.CharField(choices=RATING)
 
     def get_review_rating(self):
+        """
+        Return box review rating on admin panel
+        """
         return self.review_rating
