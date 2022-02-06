@@ -20,6 +20,12 @@
     padding-bottom: 2vh !important;
 }
 
+.checked {
+    color: rgb(214, 125, 62);
+}
+
+
+
 /* Media query medium screen*/
 @media only screen and (max-width: 900px) {
     .products-container {

@@ -17,7 +17,7 @@ class BoxReview(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     box = models.ForeignKey(Box, on_delete=models.CASCADE)
     review_text = models.TextField()
-    review_rating = models.CharField(choices=RATING, max_length=10)
+    review_rating = models.IntegerField(choices=RATING, default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
 

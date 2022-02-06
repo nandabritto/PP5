@@ -36,7 +36,7 @@ def product_detail(request, pk):
         return redirect(reverse('product_details', args=[box.id]))
 
     review_form = AddReviewForm
-    reviews = BoxReview.objects.all()
+    reviews = BoxReview.objects.filter(box=box.id).order_by('-date_added')[:2]
 
 
     context = {
