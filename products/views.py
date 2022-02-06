@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Box
 from .forms import ProductChoicesForm, BoxForm
+from product_review.forms import AddReviewForm
 
 
 def boxes(request):
@@ -20,8 +21,10 @@ def product_detail(request, pk):
     Get and filter objects from Box model and render box detail view
     """
     box = get_object_or_404(Box, pk=pk)
+    review_form = AddReviewForm
     context = {
         'box': box,
+        'review_form': review_form
     }
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/product_detail.html', context)

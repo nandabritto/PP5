@@ -1,5 +1,6 @@
 from django.db import models
-from .products.models import Box
+from django.contrib.auth.models import User
+from products.models import Box
 
 RATING=(
     ('1', '1'),
@@ -16,7 +17,7 @@ class BoxReview(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     box = models.ForeignKey(Box, on_delete=models.CASCADE)
     review_text = models.TextField()
-    review_rating = models.CharField(choices=RATING)
+    review_rating = models.CharField(choices=RATING, max_length=10)
 
     def get_review_rating(self):
         """

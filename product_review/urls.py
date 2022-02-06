@@ -4,5 +4,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('my_review/', views.my_review, name='my_review'),
+    path('', views.add_review, name='reviews'),
 ]

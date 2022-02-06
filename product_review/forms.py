@@ -3,10 +3,10 @@ from django import forms
 from .models import BoxReview
 
 
-class AddReview(forms.ModelForm):
+class AddReviewForm(forms.ModelForm):
     """
     Creates Add review form
     """
-	class Meta:
-		model = BoxReview
-		fields = ('review_text','review_rating')
+    class Meta:
+        model = BoxReview
+        fields = ('review_text','review_rating')
