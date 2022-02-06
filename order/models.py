@@ -89,6 +89,7 @@ class OrderBox(models.Model):
         """
         verbose_name_plural = 'Ordered boxes'
 
+
     @property
     def get_total(self):
         """

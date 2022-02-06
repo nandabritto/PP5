@@ -1,9 +1,11 @@
-from django.contrib import admin
+""" System Module """
 from django.urls import path
-from .views import newsletter_signup, newsletter_unsubscribe, send_newsletter
+from .views import NewsletterList
+from . import views
 
 urlpatterns = [
     path('subscribe/', views.newsletter_signup, name='subscribe'),
     path('unsubscribe/', views.newsletter_unsubscribe, name='unsubscribe'),
-    path('send_newsletter/', views.send_newsletter, name='send_newsletter'),
+    path('send/', views.send_newsletter, name='send'),
+    path('list', NewsletterList.as_view(), name="newsletters"),
 ]

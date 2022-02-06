@@ -19,14 +19,15 @@
 
 <!-- bbbootstrap.com inspirated template -->
 <div class="container mt-5 px-5">
-    <div class="mb-4">
-        <h2>Confirm your order</h2>
-    </div>
+
     <div class="row">
         <div class="col-md-8">
             <div class="card p-3">
+
+                <h2>Confirm your order</h2>
+                <hr>
                 <!-- Shipping address details form -->
-                
+
                 <form method="POST">
                     {% csrf_token %}
                     <h3>Shipping Address</h3>
@@ -36,17 +37,17 @@
                         {{ form.shipping_county|as_crispy_field  }}
                         {{ form.shipping_country|as_crispy_field  }}
                         {{ form.shipping_eircode|as_crispy_field  }}
-                                           
+
 
                     </div>
                     {% if default_shipping_address %}
-                            {{ form.use_default_shipping|as_crispy_field  }}
-                        {% endif %}
+                    {{ form.use_default_shipping|as_crispy_field  }}
+                    {% endif %}
 
-                        {% if not default_shipping_address %}
-                            {{ form.set_default_shipping|as_crispy_field  }}
-                        {% endif %}
-                        {{ form.same_billing_address|as_crispy_field  }}
+                    {% if not default_shipping_address %}
+                    {{ form.set_default_shipping|as_crispy_field  }}
+                    {% endif %}
+                    {{ form.same_billing_address|as_crispy_field  }}
 
                     <h3>Billing Address</h3>
                     <div class='hideable_billing_form'>
@@ -56,14 +57,14 @@
                         {{ form.billing_country|as_crispy_field  }}
                         {{ form.billing_eircode|as_crispy_field  }}
                     </div>
-                    
+
                     <div class='hideable_user_default_billing'>
-                    {% if default_billing_address %}
+                        {% if default_billing_address %}
                         {{ form.use_default_billing|as_crispy_field  }}
-                    {% endif %}
-                    {% if not default_billing_address %}
+                        {% endif %}
+                        {% if not default_billing_address %}
                         {{ form.set_default_billing|as_crispy_field  }}
-                    {% endif %}
+                        {% endif %}
                     </div>
 
 
@@ -104,9 +105,9 @@
 
 
 {% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'js/stripe_elements.js' %}"></script>
-    <script src="{% static 'js/checkout.js' %}"></script>
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'js/stripe_elements.js' %}"></script>
+<script src="{% static 'js/checkout.js' %}"></script>
 {% endblock %}

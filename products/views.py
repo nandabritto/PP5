@@ -2,9 +2,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Box
 from .forms import ProductChoicesForm, BoxForm
-from django.contrib.auth.decorators import login_required
 
 
 def boxes(request):
@@ -40,7 +40,8 @@ def add_product(request):
                 messages.success(request, 'Your product was added')
                 return redirect(reverse('product_details', args=[box.id]))
             else:
-                messages.error(request, 'Error adding your product. Please, ensure your form is valid')
+                messages.error(request, 'Error adding your product.\
+                    Please, ensure your form is valid')
         else:
             form = BoxForm
 
@@ -50,7 +51,8 @@ def add_product(request):
         return render(request, 'products/add_products.html', context)
 
     else:
-        messages.error(request, 'Sorry, you do not have permittion to access this page')
+        messages.error(request, 'Sorry, you do not have permittion \
+            to access this page')
         return render(request, 'home/index1.html')
 
 
@@ -71,11 +73,9 @@ def edit_product(request, pk):
                     'box': box,
                 }
                 return render(request, 'products/product_detail.html', context)
-
-             
             else:
-                messages.error(request, 'Failed to edit your product. Please, ensure your form is valid')
-
+                messages.error(request, 'Failed to edit your product.\
+                    Please, ensure your form is valid')
         else:
             form = BoxForm(instance=box)
             messages.info(request, f'You are editing Box {box.box_name}')
@@ -86,7 +86,8 @@ def edit_product(request, pk):
         }
         return render(request, 'products/edit_products.html', context)
     else:
-        messages.error(request, 'Sorry, you do not have permittion to access this page')
+        messages.error(request, 'Sorry, you do not have permition \
+            to access this page')
         return render(request, 'home/index1.html')
 
 
@@ -102,8 +103,10 @@ def delete_product(request, pk):
             messages.success(request, 'Product was deleted')
             return redirect(reverse('boxes'))
         except:
-            messages.error(request, 'Something went wrong. Your product was not deleted.')
+            messages.error(request, 'Something went wrong.\
+                Your product was not deleted.')
             return redirect(reverse('product_details', args=[pk]))
     else:
-        messages.error(request, 'Sorry, you do not have permittion to access this page')
+        messages.error(request, 'Sorry, you do not have permittion \
+            to access this page')
         return render(request, 'home/index1.html')

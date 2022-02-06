@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block extra_title %}Newsletter List{% endblock %}
+
+{% block content %}
+<div class="container mt-5 px-1" itemscope>
+    <div class="row">
+        <div class="col-md-10 col-lg-10 col-11 mx-auto">
+            <div class="card p-3" itemscope itemtype=" send newsletter">
+                <h2 class="text-center"><strong>Sent Newsletter List</strong></h2>
+                <ul>
+                    {% for newsletter in object_list %}
+                    <li>
+                        {{ newsletter.subject }} , {{ newsletter.created}}                      
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

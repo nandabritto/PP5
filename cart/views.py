@@ -16,6 +16,7 @@ def cart(request):
             customer=customer, ordered=False)
         items = order.orderbox_set.all()
         cartItems = order.get_cart_items
+        request.session['cartItems'] = cartItems
 
     else:
         items = []
@@ -54,3 +55,13 @@ def updateCart(request):
         orderBox.delete()
 
     return JsonResponse('Item was added', safe=False)
+
+
+
+def cart_number_on_all_pages(_request):
+    """ Add cart items numbemin all pages """
+    customer = request.user
+    order = Order.objects.filter(
+        customer=customer, ordered=False)
+    cartItems = order.get_cart_items
+    return {'cartItems': cartItems}
