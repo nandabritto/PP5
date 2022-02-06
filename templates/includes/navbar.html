@@ -26,24 +26,21 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{% url 'boxes' %}">All</a></li>
-                        <li><a class="dropdown-item" href="{% url 'product_details' 1 %}">Brazilian Box</a></li>
-                        <li><a class="dropdown-item" href="{% url 'product_details' 2  %}">Spanish Box</a></li>
-                        <li><a class="dropdown-item" href="#">Asian Box</a></li>
                     </ul>
                 </li>
             </ul>
 
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-lg text-dark "></i>
+                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-user fa-lg text-dark "></i>
                         Account
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                            <a href="{% url 'management' %}" class="dropdown-item">Product Management</a>
-                            {% endif %}
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'management' %}" class="dropdown-item">Product Management</a>
+                        {% endif %}
                         <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                         {% else %}
@@ -54,19 +51,22 @@
                 </li>
             </ul>
             <div>
-            <ul class="navbar-nav mx-1 my-2">
-                <a href="{% url 'cart' %}"> <li class="btn position-relative">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {{request.session.cartItems}}
-                      <span class="visually-hidden">Cart Items</span>
-                    </span>
-                </li></a>
-            </ul>
-        </div>
-            
+                <ul class="navbar-nav mx-1 my-2">
+                    <a href="{% url 'cart' %}">
+                        <li class="btn position-relative">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{request.session.cartItems}}
+                                <span class="visually-hidden">Cart Items</span>
+                            </span>
+                        </li>
+                    </a>
+                </ul>
+            </div>
+
 
         </div>
-        
+
     </div>
 </nav>

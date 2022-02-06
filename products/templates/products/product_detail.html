@@ -133,7 +133,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="add_reviewLabel">Add review</h5>
+                                <h2 class="modal-title text-green fw-bolder" id="add_reviewLabel">Add review</h2>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -141,7 +141,9 @@
                                 <form method="POST" action="">
                                     {%csrf_token%}
                                     {{review_form|crispy}}
-                                    <button type="submit">Submit</button>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-lg btn-success">Submit</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

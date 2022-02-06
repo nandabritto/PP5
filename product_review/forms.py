@@ -10,3 +10,10 @@ class AddReviewForm(forms.ModelForm):
     class Meta:
         model = BoxReview
         fields = ('review_text','review_rating')
+        labels = {
+        "review_text": "Review",
+        "review_rating" : "Rating"
+        }
+        widgets = {
+            'review_text': forms.Textarea(attrs={'rows':3})
+            }
