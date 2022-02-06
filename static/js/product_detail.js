@@ -11,3 +11,8 @@ function getvalues() {
     document.getElementById("displayvalues").innerHTML = selected;
   }
 }
+
+
+// produt review save
+
+

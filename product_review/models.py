@@ -18,9 +18,11 @@ class BoxReview(models.Model):
     box = models.ForeignKey(Box, on_delete=models.CASCADE)
     review_text = models.TextField()
     review_rating = models.CharField(choices=RATING, max_length=10)
+    date_added = models.DateTimeField(auto_now_add=True)
 
-    def get_review_rating(self):
+
+    def __str__(self):
         """
-        Return box review rating on admin panel
+        Return box name rating on admin panel
         """
-        return self.review_rating
+        return self.box.box_name

@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Box
 from .forms import ProductChoicesForm, BoxForm
 from product_review.forms import AddReviewForm
+from product_review.models import BoxReview
 
 
 def boxes(request):
@@ -21,6 +22,19 @@ def product_detail(request, pk):
     Get and filter objects from Box model and render box detail view
     """
     box = get_object_or_404(Box, pk=pk)
+
+    if request.method == "POST" and request.user.is_authenticated:
+        review_rating = request.POST.get('review_rating', 5)
+        review_text = request.POST.get('review_text','')
+
+        review = BoxReview.objects.create(
+            box=box,
+            customer=request.user,
+            review_rating=review_rating,
+            review_text=review_text
+            )
+        return redirect(reverse('product_details', args=[box.id]))
+
     review_form = AddReviewForm
     context = {
         'box': box,

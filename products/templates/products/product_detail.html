@@ -59,7 +59,7 @@
                         </bold>
                     </p>
                 </div>
-               
+
                 <div class="text-center">
                     <button class="btn btn-success btn-lg fw-bold mx-1 update-cart" itemprop="url" data-box="{{box.id}}"
                         data-action="add" type="button"><i class="fas fa-cart-plus"></i> Add to cart</button>
@@ -83,32 +83,24 @@
                 {% endif %}
             </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addreview">
-    Add review
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="addreview" tabindex="-1" aria-labelledby="addreviewLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addreviewLabel">Add your review here</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          {{review_form}}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+            <h2>Reviews</h2>
+            <div>
+                {% for review in box.reviews.all %}
+                {{ review}}
 
-              
+                {% empty %}
+                <h2>No reviews yet</h2>
+            </div>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+            <form method="POST" action="">
+                {%csrf_token%}
+                <p> review</p>
+                {{review_form}}
+                <button type="submit">Submit</button>
+            </form>
+            {% endif %}
         </div>
     </div>
 </section>
