@@ -81,20 +81,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for order in ordered_boxes %}
-                        <tr>
-                            <td>{{ order.date_ordered }}</td>
-                            <td>
-                                <ul class="list-unstyled">
-                                    <li class="small">
-                                        {{ order.box.box_name }}
-                                    </li>
-                                </ul>
-                            </td>
-                            <td>{{ order.orderbox.box_name }}</td>
-                            <td>{{ order.get_total }}</td>
-                        </tr>
+                        {% for order in order_ctxt %}
+                            <tr>
+                                <td>{{ order.order_id }}
+                                {{ order.itemsCount }}
+                                {{order.get_cart_total}}
+                                {{order.shipping}}</td>
+                            </tr>
+                            {% for item in order.items %}
+                            <td>{{item.box}} {{order.shipping}}</td>
+                            {% endfor %} 
                         {% endfor %}
+
+                        </tr>
                     </tbody>
                 </table>
             </div>
