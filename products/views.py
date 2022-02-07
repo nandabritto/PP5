@@ -1,5 +1,7 @@
 """ System Module """
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import ListView
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -131,3 +133,20 @@ def delete_product(request, pk):
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
         return render(request, 'home/index1.html')
+
+
+class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
+    """
+    Create super user only class
+    """
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class ListProducts(SuperUserRequiredMixin, ListView):
+    """
+    Creates a list of all boxes to admin
+    """
+    model = Box
+    template_name = 'products/boxes_list.html'
+    paginate_by = 20
