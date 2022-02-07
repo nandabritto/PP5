@@ -17,8 +17,8 @@
 
 {% block content %}
 <section class="h-100 h-custom">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100 ">
+    <div class="container py-5 h-100" itemscope itemtype="https://schema.org/Store">
+        <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 ">
                 <div class="card">
                     <div class="card-body p-0">
@@ -26,7 +26,7 @@
                             <div class="col-lg-8">
                                 <div class="p-5">
                                     <!-- Shopping cart card -->
-                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-5"itemscope itemtype="shopping cart">
                                         <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
                                         <h6 class="mb-0 text-muted">{{order.get_cart_items}} item(s)</h6>
                                     </div>
@@ -42,8 +42,8 @@
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                 <!-- Box name and descritption -->
-                                                <h6 class="text-black">Box: {{ item.box|title}}</h6>
-                                                <p class="small text-muted mb-0">{{ item.box.box_description}}</p>
+                                                <h6 class="text-black" itemprop="name">Box: {{ item.box|title}}</h6>
+                                                <p class="small text-muted mb-0" itemprop="description">{{ item.box.box_description}}</p>
                                             </div>
                                             <div class="cart-item-quantity">
                                                 <!-- Box quantity -->
@@ -51,14 +51,14 @@
                                                 <img data-box="{{item.box.id}}" data-action="add"
                                                     class="chg-quantity update-cart mx-auto"
                                                     src="{{MEDIA_URL}}arrow-up.png">
-                                                <p class="quantity cart-item-quantity mt-2 text-center">{{item.quantity}}
+                                                <p class="quantity cart-item-quantity mt-2 text-center" itemprop="quantity">{{item.quantity}}
                                                 </p>
                                                 <img data-box="{{item.box.id}}" data-action="remove"
                                                     class="chg-quantity update-cart mx-auto"
                                                     src="{{MEDIA_URL}}arrow-down.png">
                                             </div>
                                             <!-- Item total price -->
-                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" itemprop="price">
                                                 <h6 class="mb-0"> € {{item.quantity | mul:item.box.box_price}}</h6>
                                             </div>
                                             
@@ -68,7 +68,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-lg-4 bg-grey">
+                            <div class="col-lg-4 bg-grey" itemscope>
                                 <div class="p-5">
                                     <!-- Summary column -->
                                     <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
@@ -77,10 +77,10 @@
                                     <!-- Total itams and price -->
                                     <div class="d-flex justify-content-between mb-4">
                                         <p class="lead text-capitalize">Items: {{order.get_cart_items}}</p>
-                                        <p class="lead">€ {{order.get_cart_total|floatformat:2}}</p>
+                                        <p class="lead" itemprop="price">€ {{order.get_cart_total|floatformat:2}}</p>
                                     </div>
                                     <!-- Shiping options -->
-                                    <p class="text-uppercase mb-3"><strong>Shipping</strong></p>
+                                    <p class="text-uppercase mb-3" itemprop="shipping"><strong>Shipping</strong></p>
 
                                     <div class="mb-4 pb-2">
                                         <select class="select">
@@ -91,15 +91,15 @@
                                     <hr class="my-4">
                                     <!-- Order Total -->
                                     <div class="d-flex justify-content-between mb-5">
-                                        <h5 class="text-uppercase"><strong>Total price</strong></h5>
+                                        <h5 class="text-uppercase" itemprop="price"><strong>Total price</strong></h5>
                                         <h5>€ {{order.get_cart_total|floatformat:2}}</h5>
                                     </div>
                                     <!-- Choice buttons -->
                                     <div class="text-center">
-                                    <a class="btn btn-dark btn-block btn-lg mt-2" href="{% url 'boxes' %}"
-                                        data-mdb-ripple-color="dark">Keep shopping</a>
-                                    <a class="btn btn-dark btn-block btn-lg mt-2" href="{% url 'checkout' %}"
-                                        data-mdb-ripple-color="dark">Checkout</a>
+                                    <a class="btn btn-dark btn-block btn-lg m-2" href="{% url 'boxes' %}"
+                                        data-mdb-ripple-color="dark"><i class="fas fa-store p-2"></i>  Keep shopping</a>
+                                    <a class="btn btn-success btn-block btn-lg m-2" href="{% url 'checkout' %}"
+                                        data-mdb-ripple-color="dark"><i class="fas fa-credit-card p-2"></i>  Checkout</a>
                                     </div>
                                 </div>
                             </div>

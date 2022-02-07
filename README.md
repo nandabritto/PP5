@@ -150,7 +150,7 @@ Click to see wireframes:
 
 The Colour scheme was generated using the eyedropper plugin to get one colour from the logo image and [colours](https://coolors.co/) to create the colour palette.
 
-<img width="300" src="">
+<img width="300" src="media/readme/regionaltastepallete.jpg">
 
 
 * Font Selection
@@ -324,6 +324,7 @@ Press Enter. Your local clone will be created.
 [**JustDjango Youtube Channel**](https://www.youtube.com/channel/UCRM1gWNTDx0SHIqUJygD-kQ) - Used as a base to develop cart and checkout features<br>
 [**Dennis Ivy Youtube Channel**](https://www.youtube.com/channel/UCTZRcDjjkVajGL6wd76UnGg)- Used as a base to develop cart, checkout and confirmation email features<br>
 [**Master Code Online**](https://www.youtube.com/channel/UCbhm6TbMBTWn_GxrIbPFapA)- Used as a base to develop newsletter app <br>
+[**Code With Stein**](https://www.youtube.com/channel/UCfVoYvY8BfTDeF63JQmQJvg)- Used as a base to develop box reviews app <br>
  
 # Acknowledgements
 

@@ -25,15 +25,15 @@
                     <hr>
                     <div class="row ">
                         <!--Shipping Address Details -->
-                        <div class="col-md-6 mx-auto" itemtype="shipping">
+                        <div class="col-md-6 mx-auto text-center" itemtype="shipping">
                             {% if not shipping_address.address1  %}
                                 <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
-                                    <a href="{% url 'update_profile'%}"><i class="fas fa-edit"></i>
+                                    <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
                                     </a>
                                 </p>
                             {% else %}
                                 <p class="lead fw-bolder"><i class="fas fa-truck"></i> Default Shipping Address
-                                    <a href="{% url 'update_profile'%}"><i class="fas fa-edit"></i>
+                                    <a href="{% url 'update_profile'%}"><i class=" p-2 text-black fas fa-lg fa-edit"></i>
                                     </a>
                                 </p>
                                 <p>{{shipping_address.address1}},</p>
@@ -43,22 +43,22 @@
                             {% endif %}
                         </div>
                         <!--Billing Address Details -->
-                        <div class="col-md-6 mx-auto" itemtype="billing">
+                        <div class="col-md-6 mx-auto text-center" itemtype="billing">
                             {% if not billing_address.address1  %}
                                 <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
-                                        <a href="{% url 'update_profile'%}"><i class="fas fa-edit"></i>
+                                        <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
                                     </a>
                                 </p>
                                 {% else %}
                                     <p class="lead fw-bolder">
                                         <i class="fas fa-file-invoice"></i> Default Billing Address
-                                        <a href="{% url 'update_profile'%}"><i class="fas fa-edit"></i>
+                                        <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
                                         </a>
                                     </p>
                                     <p>{{billing_address.address1}},</p>
                                     <p>{{billing_address.address2}}</p>
                                     <p>{{billing_address.county}}, {{billing_address.country}}</p>
-                                    <p>EirCode:{{billing_address.eircode}}</p>
+                                    <p>EirCode: {{billing_address.eircode}}</p>
                             {% endif %}
                         </div>
                     </div>

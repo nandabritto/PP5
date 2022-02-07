@@ -16,10 +16,10 @@
 
 {% block content %}
 <section>
-    <div class="products-container bg-light mx-auto">
+    <div class="products-container mx-auto">
         <!-- Page title -->
-        <h1 class="text-center m-3 p-3" item-prop="available products"><strong> Regional Boxes availabe this
-                month</strong>
+        <h1 class="text-center m-3 p-3 bg-light text-green fw-bolder" item-prop="available products"> Regional Boxes availabe this
+                month
         </h1>
         <!-- Boxes container -->
         <div class="row d-flex justify-content-center text-center mx-auto test">
@@ -27,10 +27,10 @@
             {% for box in boxes %}
             <div class="col-lg-6 col-xl-4 col-md-6 col-sm-11">
                 <!-- Box card -->
-                <div class="card m-3 border-0 ">
+                <div class="card m-3 border-0 bg-light ">
                     <!-- Box name -->
-                    <div class="card-header ">
-                        <p class="mb-0 lead fw-bolder text-primary" itemprop="name">Box {{ box.box_name|title}}</p>
+                    <div class="card-header">
+                        <h2 class="mb-0 fw-bolder text-green" itemprop="name">Box {{ box.box_name|title}}</h2>
                     </div>
                     <!-- Box image -->
                     {% if box.box_image %}
@@ -53,11 +53,11 @@
                         <p class="text-center" itemprop="description">{{ box.box_description }}</p>                        
                     </div>
                     <hr class="text-dark">
-                    <div class="card-footer bg-white pt-0 border-0 text-left">
-                        <div class="row">
+                    <div class="card-footer bg-light pt-0 border-0 text-left">
+                        <div class="row ">
                             <div class="col">
                                 <!-- Box price -->
-                                <p class="lead mb-0 text-left font-weight-bold"><i class="fa fa-eur text-muted"
+                                <p class="lead mb-0 text-left fw-bold"><i class="fa fa-eur"
                                         aria-hidden="true" itemprop="price"></i>
                                     {{ box.box_price }}
                                 </p>
