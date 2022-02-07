@@ -15,9 +15,9 @@
             <h2> Bad request </h2>
             <hr>
             <h2> Your request resulted in an error. </h2>
+            <a href="{% url 'home'%}" class="btn btn-success btn-lg fw-bold mt-3 shadow-none" value="Go back!"
+                onclick="history.back()">Back</a>
         </div>
-        <a href="{% url 'home'%}" class="btn btn-success btn-lg fw-bold mt-3 shadow-none">Home</a>
-    </div>
 </section>
 
 {% endblock %}
