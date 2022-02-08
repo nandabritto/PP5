@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block extra_title %}How it works?{% endblock %}
+
+{% block content %}
+
+<section>
+        <!-- How it works container -->
+        <h2 class="text-dark text-center p-2 m-4"><strong>How it works?</strong></h2>
+        <div class="container text-center">
+            <div class="row justify-content-md-center gx-5">
+                <div class="col-lg-4 col-md-3 col-sm-12">
+                    Choose your favorite box and products
+                    <img src="{{ MEDIA_URL }}step1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-12">
+                    Proceed to payment
+                    <img src="{{ MEDIA_URL }}step2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-12">
+                    Your box will be delivery for you
+                    <img src="{{ MEDIA_URL }}step3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+
+</section> 
+
+    {% endblock %}

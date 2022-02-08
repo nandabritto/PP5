@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from django.core.exceptions import ObjectDoesNotExist
 from user_profile.models import Address
 from user_profile.models import UserProfile
@@ -365,3 +365,13 @@ def success(request, pk):
     else:
         messages.error(request, "Sorry, you cannot access this data.")
         return redirect("/")
+
+
+class OrderDetailView(DetailView):
+    model = Order
+
+    def get_queryset(self, *args, **kwargs):
+        order = Order.objects.filter(id=self.kwargs['pk'])
+        # order = order.orderbox_set.all()
+        print(order)
+        return order

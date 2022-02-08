@@ -27,38 +27,39 @@
                         <!--Shipping Address Details -->
                         <div class="col-md-6 mx-auto text-center" itemtype="shipping">
                             {% if not shipping_address.address1  %}
-                                <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
-                                    <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
-                                    </a>
-                                </p>
+                            <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
+                                <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
+                                </a>
+                            </p>
                             {% else %}
-                                <p class="lead fw-bolder"><i class="fas fa-truck"></i> Default Shipping Address
-                                    <a href="{% url 'update_profile'%}"><i class=" p-2 text-black fas fa-lg fa-edit"></i>
-                                    </a>
-                                </p>
-                                <p>{{shipping_address.address1}},</p>
-                                <p>{{shipping_address.address2}}</p>
-                                <p>{{shipping_address.county}}, {{shipping_address.country}}</p>
-                                <p>EirCode:{{shipping_address.eircode}}</p>
+                            <p class="lead fw-bolder"><i class="fas fa-truck"></i> Default Shipping Address
+                                <a href="{% url 'update_profile'%}"><i class=" p-2 text-black fas fa-lg fa-edit"></i>
+                                </a>
+                            </p>
+                            <p>{{shipping_address.address1}},</p>
+                            <p>{{shipping_address.address2}}</p>
+                            <p>{{shipping_address.county}}, {{shipping_address.country}}</p>
+                            <p>EirCode:{{shipping_address.eircode}}</p>
                             {% endif %}
                         </div>
                         <!--Billing Address Details -->
                         <div class="col-md-6 mx-auto text-center" itemtype="billing">
                             {% if not billing_address.address1  %}
-                                <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
-                                        <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
-                                    </a>
-                                </p>
-                                {% else %}
-                                    <p class="lead fw-bolder">
-                                        <i class="fas fa-file-invoice"></i> Default Billing Address
-                                        <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
-                                        </a>
-                                    </p>
-                                    <p>{{billing_address.address1}},</p>
-                                    <p>{{billing_address.address2}}</p>
-                                    <p>{{billing_address.county}}, {{billing_address.country}}</p>
-                                    <p>EirCode: {{billing_address.eircode}}</p>
+                            <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
+                                <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
+                                </a>
+                            </p>
+                            {% else %}
+                            <p class="lead fw-bolder">
+                                <i class="fas fa-file-invoice"></i> Default Billing Address
+                                <a href="{% url 'update_profile'%}"><i
+                                        class="p-2 text-black fas fa-lg fa-edit edit-billing"></i>
+                                </a>
+                            </p>
+                            <p>{{billing_address.address1}},</p>
+                            <p>{{billing_address.address2}}</p>
+                            <p>{{billing_address.county}}, {{billing_address.country}}</p>
+                            <p>EirCode: {{billing_address.eircode}}</p>
                             {% endif %}
                         </div>
                     </div>
@@ -69,31 +70,27 @@
         <!-- Orders history container-->
         <div class="col-md-4" itemscope>
             <div class="card p-3" itemtype="orders">
-                <p> My previous orders</p>
+                <h3 class="fw-bold"> My previous orders</h3>
                 <hr>
-                <table class="table table-sm table-borderless">
+                <table class="table table-sm table-borderless text-center">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Items</th>
-                            <th>Quantity</th>
-                            <th>Order Total</th>
+                            <th>Order No</th>
+                            <th>Qt</th>
+                            <th>Shipping</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for order in order_ctxt %}
-                            <tr>
-                                <td>{{ order.order_id }}
-                                {{ order.itemsCount }}
-                                {{order.get_cart_total}}
-                                {{order.shipping}}</td>
-                            </tr>
-                            {% for item in order.items %}
-                            <td>{{item.box}} {{order.shipping}}</td>
-                            {% endfor %} 
-                        {% endfor %}
-
+                        <tr>
+                            <td><a href="{% url 'order_detail' order.order_id %}" >{{ order.order_id }}</a>
+                            </td>
+                            <td>{{ order.itemsCount }}</td>
+                            <td>€ {{order.shipping}}</td>
+                            <td>€ {{order.get_cart_total}}</td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -105,4 +102,5 @@
 
 {% block postloadjs %}
 <script type="text/javascript" src="{% static 'js/countryfield.js' %}"></script>
+
 {% endblock %}
