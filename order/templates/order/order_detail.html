@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/order.css' %}">
@@ -10,22 +9,22 @@
 
 {% block content %}
 <!--Order Detail Container-->
-<div class="container mt-5" itemscope itemtype="https://schema.org/GroceryStore">
+<div class="container mt-5 " itemscope itemtype="https://schema.org/GroceryStore">
     <div class="row">
-        <div class="col-md-6 col-12 col-lg-5 mx-auto">
+        <div class="col-md-6 col-12 col-lg-5 mb-2 mx-auto">
             <div class="card p-3">
-                <h2 class="logo-font mb-4 text-center" itemtype="user profile"><i class="fas fa-user-circle"></i> Order
+                <h2 class="logo-font mb-3 text-center" itemtype="order summary"> <i
+                        class="fa-solid fa-circle-info"></i>Order
                     Details</h2>
                 <hr>
-
-                <div class="main">
-
+                <div class>
                     <div class="row d-flex align-items-center">
+                        <!-- Boxes details-->
                         {% for order in order_ctxt %}
                         {% if object.id == order.order_id %}
                         {% for item in order.items %}
-                        <div class="col-3 p-3"> <img class="img-fluid" src="{{ item.box.box_image.url }}"> </div>
-                        <div class="col-6">
+                        <div class="col-4 p-3"> <img class="img-fluid" src="{{ item.box.box_image.url }}"> </div>
+                        <div class="col-4">
                             <div class="row ">
                                 <p>{{ item.box |title}}</p>
                             </div>
@@ -33,11 +32,12 @@
                                 <p class="text-muted">{{ item.quantity }} unit(s)</p>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <p class="text-end">Unit Price: €{{ item.box.box_price |title}}</p>
                         </div>
                         {% endfor %}
                     </div>
+                    <!-- Order details-->
                     <div class="text-end">
                         <p>Total items: {{ order.itemsCount }}</p>
                         <p>Shipping: €{{order.shipping}}</p>
@@ -45,13 +45,9 @@
                     </div>
                     {% endif %}
                     {% endfor %}
-
                 </div>
             </div>
         </div>
-
-
-
         <!-- Orders history container-->
         <div class="col-md-6 col-12 col-lg-5" itemscope>
             <div class="card p-3" itemtype="orders">
@@ -69,7 +65,7 @@
                     <tbody>
                         {% for order in order_ctxt %}
                         <tr>
-                            <td><a href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
+                            <td><a class= "text-black text-decoration-none" href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
                             </td>
                             <td>{{ order.itemsCount }}</td>
                             <td>€ {{order.shipping}}</td>
@@ -80,11 +76,12 @@
                 </table>
             </div>
         </div>
+    </div>
+</div>
 
+{% endblock %}
 
-        {% endblock %}
+{% block postloadjs %}
+<script type="text/javascript" src="{% static 'js/countryfield.js' %}"></script>
 
-        {% block postloadjs %}
-        <script type="text/javascript" src="{% static 'js/countryfield.js' %}"></script>
-
-        {% endblock %}
+{% endblock %}

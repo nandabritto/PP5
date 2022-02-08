@@ -84,7 +84,7 @@
                     <tbody>
                         {% for order in order_ctxt %}
                         <tr>
-                            <td><a href="{% url 'order_detail' order.order_id %}" >{{ order.order_id }}</a>
+                            <td><a a class= "text-black text-decoration-none" href="{% url 'order_detail' order.order_id %}" >{{ order.order_id }}</a>
                             </td>
                             <td>{{ order.itemsCount }}</td>
                             <td>€ {{order.shipping}}</td>
