@@ -9,7 +9,7 @@ def order_contents(request):
     order_ctxt = []
     if request.user.is_authenticated:
         orders = Order.objects.filter(
-            customer=request.user, ordered=True)
+            customer=request.user, ordered=True).order_by('-date_ordered')
         for order in orders:
             order_ctxt.append({
                 'order_id': order.id,

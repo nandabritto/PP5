@@ -82,7 +82,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for order in order_ctxt %}
+                        {% for order in order_ctxt|slice:10 %}
                         <tr>
                             <td><a a class= "text-black text-decoration-none" href="{% url 'order_detail' order.order_id %}" >{{ order.order_id }}</a>
                             </td>
