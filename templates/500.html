@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load cloudinary %}
+
+{% block title %}
+500 error
+{% endblock %}
+
+
+{% block content %}
+<section>
+    <!-- 500 error container -->
+    <div class="container no-review text-center mt-4">
+        <div class="bg-light col-lg-5 col-11 m-auto rounded m-2 p-3 text-dark">
+            <h1 class="display-1 fw-bolder text-yellow"> 500 </h1>
+            <h2> There was an error.</h2>
+            <hr>
+            <h2> The server is not responding. Please, try again later. </h2>
+            <a href="{% url 'home'%}" class="btn btn-success btn-lg fw-bold mt-3 shadow-none" value="Go back!"
+                onclick="history.back()">Back</a>
+        </div>
+</section>
+
+
+{% endblock %}

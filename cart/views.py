@@ -15,53 +15,53 @@ def cart(request):
         order, created = Order.objects.get_or_create(
             customer=customer, ordered=False)
         items = order.orderbox_set.all()
-        cartItems = order.get_cart_items
-        request.session['cartItems'] = cartItems
+        cart_items = order.get_cart_items
+        request.session['cart_items'] = cart_items
 
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
-        cartItems = order['get_cart_items']
+        cart_items = order['get_cart_items']
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
-
+    context = {'items': items, 'order': order, 'cart_items': cart_items}
     return render(request, 'cart/cart.html', context)
 
 
-def updateCart(request):
+def update_cart(request):
     """
     A view to update cart items
     """
     data = json.loads(request.body)
-    boxId = data['boxId']
+    box_id = data['box_id']
     action = data['action']
 
     customer = request.user
-    box = Box.objects.get(id=boxId)
+    box = Box.objects.get(id=box_id)
     order, created = Order.objects.get_or_create(
             customer=customer, ordered=False)
 
-    orderBox, created = OrderBox.objects.get_or_create(
+    order_box, created = OrderBox.objects.get_or_create(
         order_box=order, box=box)
 
     if action == 'add':
-        orderBox.quantity = (orderBox.quantity + 1)
+        order_box.quantity = (order_box.quantity + 1)
     elif action == 'remove':
-        orderBox.quantity = (orderBox.quantity - 1)
+        order_box.quantity = (order_box.quantity - 1)
 
-    orderBox.save()
+    order_box.save()
 
-    if orderBox.quantity <= 0:
-        orderBox.delete()
+    if order_box.quantity <= 0:
+        order_box.delete()
 
     return JsonResponse('Item was added', safe=False)
 
 
-
-def cart_number_on_all_pages(_request):
-    """ Add cart items numbemin all pages """
+def cart_number_on_all_pages(request):
+    """
+    Add cart items number in all pages
+    """
     customer = request.user
     order = Order.objects.filter(
         customer=customer, ordered=False)
-    cartItems = order.get_cart_items
-    return {'cartItems': cartItems}
+    cart_items = order.get_cart_items
+    return {'cart_items': cart_items}
