@@ -2,21 +2,21 @@ var updateBtns = document.getElementsByClassName('update-cart')
 
 for (var i = 0; i < updateBtns.length; i++) {
     updateBtns[i].addEventListener('click', function () {
-        var boxId = this.dataset.box
+        var box_id = this.dataset.box
         var action = this.dataset.action
-        console.log('boxId:', boxId, 'action:', action)
+        console.log('box_id:', box_id, 'action:', action)
 
         console.log('USER:', user)
         if (user == 'AnonymousUser') {
             console.log('Not logged in')
         } else {
-            updateUserOrder(boxId, action)
+            updateUserOrder(box_id, action)
         }
     })
 }
 
 
-function updateUserOrder(boxId, action) {
+function updateUserOrder(box_id, action) {
     console.log('User is logged in, sending data...')
 
     var url = '/cart/update_cart/'
@@ -27,7 +27,7 @@ function updateUserOrder(boxId, action) {
             'Content-Type':'application/json',
                 'X-CSRFToken': csrftoken,
         },
-        body:JSON.stringify({'boxId': boxId, 'action':action})
+        body:JSON.stringify({'box_id': box_id, 'action':action})
     })
 
     .then((response)=>{
@@ -66,7 +66,7 @@ function updateUserOrder(boxId, action) {
 //             },
             
 //             body: JSON.stringify({
-//                 'boxId': boxId,
+//                 'box_id': box_id,
 //                 'action': action
 //             })
 //         },

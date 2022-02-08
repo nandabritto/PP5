@@ -32,26 +32,26 @@ def update_cart(request):
     A view to update cart items
     """
     data = json.loads(request.body)
-    boxId = data['boxId']
+    box_id = data['box_id']
     action = data['action']
 
     customer = request.user
-    box = Box.objects.get(id=boxId)
+    box = Box.objects.get(id=box_id)
     order, created = Order.objects.get_or_create(
             customer=customer, ordered=False)
 
-    orderBox, created = OrderBox.objects.get_or_create(
+    order_box, created = OrderBox.objects.get_or_create(
         order_box=order, box=box)
 
     if action == 'add':
-        orderBox.quantity = (orderBox.quantity + 1)
+        order_box.quantity = (order_box.quantity + 1)
     elif action == 'remove':
-        orderBox.quantity = (orderBox.quantity - 1)
+        order_box.quantity = (order_box.quantity - 1)
 
-    orderBox.save()
+    order_box.save()
 
-    if orderBox.quantity <= 0:
-        orderBox.delete()
+    if order_box.quantity <= 0:
+        order_box.delete()
 
     return JsonResponse('Item was added', safe=False)
 

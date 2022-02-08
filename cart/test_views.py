@@ -61,7 +61,7 @@ class TestUpdateCart(SetupViewTestCase):
         """
         Test if products are loadng in shopping cart
         """
-        payload = {'boxId': self.box.id, 'action': 'add'}
+        payload = {'box_id': self.box.id, 'action': 'add'}
         response = self.client.post(
             reverse('update_cart'),
             data=payload,
@@ -72,12 +72,12 @@ class TestUpdateCart(SetupViewTestCase):
         """
         Test if user can add or remove items to the shopping cart
         """
-        payload = {'boxId': self.box.id, 'action': 'add'}
+        payload = {'box_id': self.box.id, 'action': 'add'}
         response = self.client.post(reverse(
             'update_cart'),
             data=payload,
             content_type='application/json')
-        payload = {'boxId': self.box.id, 'action': 'remove'}
+        payload = {'box_id': self.box.id, 'action': 'remove'}
         response = self.client.post(reverse(
             'update_cart'),
             data=payload,
