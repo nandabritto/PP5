@@ -15,21 +15,19 @@ def cart(request):
         order, created = Order.objects.get_or_create(
             customer=customer, ordered=False)
         items = order.orderbox_set.all()
-        cartItems = order.get_cart_items
-        request.session['cartItems'] = cartItems
+        cart_items = order.get_cart_items
+        request.session['cart_items'] = cart_items
 
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
-        cartItems = order['get_cart_items']
+        cart_items = order['get_cart_items']
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
-
-
+    context = {'items': items, 'order': order, 'cart_items': cart_items}
     return render(request, 'cart/cart.html', context)
 
 
-def updateCart(request):
+def update_cart(request):
     """
     A view to update cart items
     """
@@ -58,11 +56,12 @@ def updateCart(request):
     return JsonResponse('Item was added', safe=False)
 
 
-
-def cart_number_on_all_pages(_request):
-    """ Add cart items numbemin all pages """
+def cart_number_on_all_pages(request):
+    """
+    Add cart items number in all pages
+    """
     customer = request.user
     order = Order.objects.filter(
         customer=customer, ordered=False)
-    cartItems = order.get_cart_items
-    return {'cartItems': cartItems}
+    cart_items = order.get_cart_items
+    return {'cart_items': cart_items}

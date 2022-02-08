@@ -1,11 +1,11 @@
 """ System Module """
 from django.db import models
 from django.contrib.auth.models import User
-from decimal import Decimal
+# from decimal import Decimal
 from django.conf import settings
 # from django_countries.fields import CountryField
 from products.models import Box
-from user_profile.models import UserProfile, Address
+from user_profile.models import Address
 
 
 class Order(models.Model):
@@ -14,7 +14,7 @@ class Order(models.Model):
     """
     customer = models.ForeignKey(
         User, on_delete=models.CASCADE)
-     
+
     date_ordered = models.DateTimeField(auto_now_add=True)
     ordered = models.BooleanField(default=False, null=True, blank=False)
     billing_address = models.ForeignKey(
@@ -33,13 +33,16 @@ class Order(models.Model):
         return str(self.customer)
 
     def shipping(self):
+        """
+        Creates national or international shipping
+        """
         national_shipping = settings.STANDART_SHIPPING_NATIONAL
         international_shipping = settings.STANDART_SHIPPING_NATIONAL
 
         if self.shipping_address is not None:
             shipping_address = self.shipping_address
             print('shipping nao nulo')
-                        
+
             if shipping_address.country == 'IE':
                 shipping = national_shipping
             else:
@@ -54,12 +57,10 @@ class Order(models.Model):
         """
         Get items and in the cart and sum to create cart total price
         """
-        
         orderitems = self.orderbox_set.all()
         shipping = self.shipping()
         total = sum([item.get_total for item in orderitems], shipping)
         return total
-        
 
     @property
     def get_cart_items(self):
@@ -75,13 +76,6 @@ class OrderBox(models.Model):
     """
     Create orderbox details and quantity to add to the cart
     """
-    # user_profile = models.ForeignKey(
-    #     UserProfile,
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True,
-    #     related_name='ordered_boxes'
-    #     )
     box = models.ForeignKey(
         Box, on_delete=models.SET_NULL, blank=True, null=True)
     order_box = models.ForeignKey(
@@ -94,7 +88,6 @@ class OrderBox(models.Model):
         Add correct plural name on Adress
         """
         verbose_name_plural = 'Ordered boxes'
-
 
     @property
     def get_total(self):

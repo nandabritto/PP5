@@ -7,11 +7,10 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.views.generic import View, DetailView
 from django.core.exceptions import ObjectDoesNotExist
+import stripe
 from user_profile.models import Address
-from user_profile.models import UserProfile
 from .forms import CheckoutForm
 from .models import Order, Payment
-import stripe
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -113,9 +112,6 @@ class CheckoutView(View):
                         'shipping_country')
                     shipping_eircode = form.cleaned_data.get(
                         'shipping_eircode')
-                    # same_shipping_address = form.cleaned_data.get(
-                    # 'same_shipping_address')
-                    # save_info = form.cleaned_data.get('save_info')
 
                     if is_valid_form([
                         shipping_address1,
@@ -225,8 +221,11 @@ class CheckoutView(View):
 
 
 def checkout_summary(request):
+    """"
+    Creates a checkout sumary page with all user details
+    """
     order = Order.objects.get(
-        customer= request.user, ordered=False)
+        customer=request.user, ordered=False)
     items = order.orderbox_set.all()
     cart_items = order.get_cart_items
     shipping = order.shipping()
@@ -235,9 +234,9 @@ def checkout_summary(request):
         'items': items,
         'order': order,
         'cart_items': cart_items,
-        'shipping':shipping,
+        'shipping': shipping,
     }
-    return render(request, "order/checkout_summary.html",context )
+    return render(request, "order/checkout_summary.html", context)
 
 
 class PaymentView(View):
@@ -326,26 +325,6 @@ def success(request, pk):
     Render a success page and send a purchase confirmation email
     """
     order = Order.objects.get(pk=pk)
-
-    # if request.user.is_authenticated:
-    #     profile = UserProfile.objects.get(customer=request.user)
-    #     order.user_profile = profile
-    #     order.save()
-
-    #     if save_info:
-    #         profile_data = {
-    #             'default_address1': order.shipping_address.address1,
-    #             'default_address2': order.shipping_address.address2,
-    #             'default_county': order.shipping_address.county,
-    #             'default_country': order.shipping_address.country,
-    #             'default_eircode': order.shipping_address.eircode,
-    #         }
-
-    #         user_profile_form = UserProfileForm(profile_data, instance=profile)
-
-    #         if user_profile_form.is_valid():
-    #             user_profile_form.save()
-
     if order.customer == request.user:
         template = render_to_string(
             'order/email_template.html', {'name': request.user})
@@ -368,10 +347,11 @@ def success(request, pk):
 
 
 class OrderDetailView(DetailView):
+    """
+    Creates past order details view
+    """
     model = Order
 
     def get_queryset(self, *args, **kwargs):
         order = Order.objects.filter(id=self.kwargs['pk'])
-        # order = order.orderbox_set.all()
-        print(order)
         return order
