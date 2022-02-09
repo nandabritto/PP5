@@ -12,3 +12,8 @@ def index(request):
 class Management(TemplateView):
     """ Render management view """
     template_name = 'home/management.html'
+
+
+class HowItWorksView(TemplateView):
+    """ Render how it works view view """
+    template_name = 'home/howitworks.html'

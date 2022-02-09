@@ -20,9 +20,9 @@
                 <div class>
                     <div class="row d-flex align-items-center">
                         <!-- Boxes details-->
-                        {% for order in order_ctxt %}                        
+                        {% for order in order_ctxt %}
                         {% if object.id == order.order_id %}
-                        <p class= "lead fw-bold">Order number: {{ order.order_id }}</p>
+                        <p class="lead fw-bold">Order number: {{ order.order_id }}</p>
                         {% for item in order.items %}
                         <div class="col-4 p-3"> <img class="img-fluid" src="{{ item.box.box_image.url }}"> </div>
                         <div class="col-4">
@@ -66,7 +66,8 @@
                     <tbody>
                         {% for order in order_ctxt|slice:10 %}
                         <tr>
-                            <td><a class= "text-black text-decoration-none" href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
+                            <td><a class="text-black text-decoration-none"
+                                    href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
                             </td>
                             <td>{{ order.itemsCount }}</td>
                             <td>€ {{order.shipping}}</td>
