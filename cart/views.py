@@ -34,7 +34,11 @@ def update_cart(request):
     data = json.loads(request.body)
     box_id = data['box_id']
     action = data['action']
-
+    # 
+    prod_selected_ids = data['prod_selected_ids']
+    # box_prod2 = data['boxprod']
+    print(f'selected product list: {prod_selected_ids}')
+    # print(f'selected product list: {box_prod2}')
     customer = request.user
     box = Box.objects.get(id=box_id)
     order, created = Order.objects.get_or_create(

@@ -16,7 +16,7 @@ for (var i = 0; i < updateBtns.length; i++) {
 }
 
 
-function updateUserOrder(box_id, action) {
+function updateUserOrder(box_id, action, prod_selected_ids=getvalues()) {
     console.log('User is logged in, sending data...')
 
     var url = '/cart/update_cart/'
@@ -27,7 +27,7 @@ function updateUserOrder(box_id, action) {
             'Content-Type':'application/json',
                 'X-CSRFToken': csrftoken,
         },
-        body:JSON.stringify({'box_id': box_id, 'action':action})
+        body:JSON.stringify({'box_id': box_id, 'action':action, 'prod_selected_ids':prod_selected_ids})
     })
 
     .then((response)=>{
