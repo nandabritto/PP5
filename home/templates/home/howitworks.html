@@ -1,33 +1,27 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
-{% endblock %}
-
 {% block extra_title %}How it works?{% endblock %}
 
 {% block content %}
 
 <section>
         <!-- How it works container -->
-        <h2 class="text-dark text-center p-2 m-4"><strong>How it works?</strong></h2>
-        <div class="container text-center">
+        <div class="container text-center bg-light mt-4 rounded">
+            <h2 class="text-dark text-center p-2"><strong>How it works?</strong></h2>
+            <hr>
             <div class="row justify-content-md-center gx-5">
-                <div class="col-lg-4 col-md-3 col-sm-12">
-                    Choose your favorite box and products
-                    <img src="{{ MEDIA_URL }}step1.jpg" class="d-block w-100" alt="...">
+                <div class="col-lg-4 col-md-3 col-sm-12 ">
+                    <img src="{{ MEDIA_URL }}step1.jpg" class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3" alt="purchase step one">
+                    <p class="lead py-2 fw-bold">Choose your favorite box and products</p>
                 </div>
                 <div class="col-lg-4 col-md-3 col-sm-12">
-                    Proceed to payment
-                    <img src="{{ MEDIA_URL }}step2.jpg" class="d-block w-100" alt="...">
+                    <img src="{{ MEDIA_URL }}step2.jpg" class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3" alt="purchase step two">
+                    <p class="lead py-2 fw-bold">Add your delivery address and proceed to payment</p>
                 </div>
                 <div class="col-lg-4 col-md-3 col-sm-12">
-                    Your box will be delivery for you
-                    <img src="{{ MEDIA_URL }}step3.jpg" class="d-block w-100" alt="...">
+                    <img src="{{ MEDIA_URL }}step3.jpg" class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3" alt="purchase step three">
+                    <p class="lead py-2 fw-bold">Your box will be delivery for you</p>
                 </div>
             </div>
         </div>
