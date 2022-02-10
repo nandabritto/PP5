@@ -1,6 +1,6 @@
 """ System Module """
 from django import forms
-from .models import Product, Box, Product
+from .models import Product, Box, Product, Product_On_Box
 
 
 class ProductChoicesForm(forms.Form):
@@ -39,4 +39,12 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
-        
+
+
+class ProductOnBoxForm(forms.ModelForm):
+    """
+    Add products on boxes form
+    """
+    class Meta:
+        model = Product_On_Box
+        fields = '__all__'

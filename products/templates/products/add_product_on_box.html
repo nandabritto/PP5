@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- Page title -->
+{% block extra_title %}Add Product{% endblock %}
+
+{% block content %}
+
+<!-- Product Management container -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-10 col-lg-10 col-11 mx-auto">
+            <div class="card p-3">
+                <h2 class="text-center"><strong>Product Management</strong></h2>
+                <hr>
+                <h3> <i class="fas fa-box-open"></i> Add Product on Boxes</h3>
+                <!-- Add Product Details form -->
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy}}
+                    <div class="text-center">
+                        <button class="btn btn-lg btn-warning" type="submit">Add Product to the box</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{% endblock %}

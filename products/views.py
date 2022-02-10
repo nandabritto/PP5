@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Box
-from .forms import ProductChoicesForm, BoxForm, ProductForm
+from .forms import ProductChoicesForm, BoxForm, ProductForm, ProductOnBoxForm
 from product_review.forms import AddReviewForm
 from product_review.models import BoxReview
 
@@ -100,6 +100,34 @@ def add_product(request):
             'form': form,
         }
         return render(request, 'products/add_product.html', context)
+
+    else:
+        messages.error(request, 'Sorry, you do not have permittion \
+            to access this page')
+        return render(request, 'home/index1.html')
+
+@login_required
+def add_product_on_boxes(request):
+    """
+    Add product on boxes to the store
+    """
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = ProductOnBoxForm(request.POST, request.FILES)
+            if form.is_valid():
+                product_on_box = form.save()
+                messages.success(request, 'Your product was added on the box')
+                # return redirect(reverse('product_details', args=[box.id]))
+            else:
+                messages.error(request, 'Error adding your product on box.\
+                    Please, ensure your form is valid')
+        else:
+            form = ProductOnBoxForm
+
+        context = {
+            'form': form,
+        }
+        return render(request, 'products/add_product_on_box.html', context)
 
     else:
         messages.error(request, 'Sorry, you do not have permittion \
