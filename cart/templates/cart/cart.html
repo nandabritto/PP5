@@ -56,12 +56,12 @@
                                                 <img data-box="{{item.box.id}}" data-action="remove"
                                                     class="chg-quantity update-cart mx-auto"
                                                     src="{{MEDIA_URL}}arrow-down.png">
-                                            </div>
+                                            </div> 
                                             <!-- Item total price -->
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" itemprop="price">
                                                 <h6 class="mb-0"> € {{item.quantity | mul:item.box.box_price}}</h6>
                                             </div>
-                                            
+                                            {{item.selected_products}}
                                         </div>
                                         <hr class="my-4">
                                     {% endfor %}
@@ -78,6 +78,7 @@
                                     <div class="d-flex justify-content-between mb-4">
                                         <p class="lead text-capitalize">Items: {{order.get_cart_items}}</p>
                                         <p class="lead" itemprop="price">€ {{order.get_cart_total|floatformat:2}}</p>
+                                       
                                     </div>
                                     
                                     <!-- Order Total -->

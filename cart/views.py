@@ -3,7 +3,7 @@ import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from order.models import Order, OrderBox
-from products.models import Box
+from products.models import Box, Product
 
 
 def cart(request):
@@ -34,18 +34,22 @@ def update_cart(request):
     data = json.loads(request.body)
     box_id = data['box_id']
     action = data['action']
-    # 
-    prod_selected_ids = data['prod_selected_ids']
-    # box_prod2 = data['boxprod']
-    print(f'selected product list: {prod_selected_ids}')
-    # print(f'selected product list: {box_prod2}')
+
     customer = request.user
+    
+    prod_selected_ids = data.get('prod_selected_ids',[])
+    prod_selected = Product.objects.filter(id__in=[int(prd) for prd in prod_selected_ids])
+    prod_selected_names = ', '.join([prd.product_name for prd in prod_selected])
+
     box = Box.objects.get(id=box_id)
     order, created = Order.objects.get_or_create(
             customer=customer, ordered=False)
 
     order_box, created = OrderBox.objects.get_or_create(
         order_box=order, box=box)
+
+    if created:
+        order_box.selected_products=prod_selected_names
 
     if action == 'add':
         order_box.quantity = (order_box.quantity + 1)
@@ -58,6 +62,7 @@ def update_cart(request):
         order_box.delete()
 
     return JsonResponse('Item was added', safe=False)
+
 
 
 def cart_number_on_all_pages(request):

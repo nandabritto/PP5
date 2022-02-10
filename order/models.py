@@ -82,6 +82,7 @@ class OrderBox(models.Model):
         Order, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
+    selected_products = models.CharField(max_length=500, null=True)
 
     class Meta:
         """
