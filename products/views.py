@@ -51,7 +51,7 @@ def product_detail(request, pk):
 
 
 @login_required
-def add_product(request):
+def add_box(request):
     """
     Add product to the store
     """
@@ -71,7 +71,7 @@ def add_product(request):
         context = {
             'form': form,
         }
-        return render(request, 'products/add_products.html', context)
+        return render(request, 'products/add_box.html', context)
 
     else:
         messages.error(request, 'Sorry, you do not have permittion \
