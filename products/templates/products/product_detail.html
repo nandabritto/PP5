@@ -21,7 +21,7 @@
             </h1>
             <hr>
             <!-- Box image -->
-            <figure class="col-md-5 col-lg-5 col-xl-3 col-8 d-flex align-items-center p-2 mr-0 ">
+            <figure class="col-md-5 col-lg-5 col-xl-3 col-8 d-flex align-items-center px-2 mr-0 ">
                 <img src="{{ box.box_image.url }}" class="rounded-3 w-100 box-image-detail mx-auto" alt="{{ box.box_image }}" itemprop="image">
             </figure>
             <div class="col-md-5 col-lg-5 mr-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
@@ -33,17 +33,17 @@
                     <!-- Products options -->
                     <p class="lead text-center">Select your products here:</p>
                     <div class="d-flex justify-content-center">
-                        <form class="product_options p-4" action="" method="post" itemprop="product choices">
+                        <form class="product_options px-4" action="" method="post" itemprop="product choices">
                             {% csrf_token %}
                             {{form|crispy}}                       
                         </form>
                     </div>
                     <!-- Submited box products options -->
-                    <p id="displayvalues"></p> 
+                    <div id="displayvalues" class="hide"></div>
                 </div>
             </div>
             <!-- Box price -->
-            <div class="m-2 p-3">
+            <div>
                 <h3 class="card-text text-center" itemprop="price">
                     <bold><i class="fa fa-eur text-muted" aria-hidden="true" itemprop="priceCurrency" content="EU"></i>
                         {{ box.box_price }}

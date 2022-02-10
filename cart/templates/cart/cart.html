@@ -61,8 +61,8 @@
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" itemprop="price">
                                                 <h6 class="mb-0"> € {{item.quantity | mul:item.box.box_price}}</h6>
                                             </div>
-                                            {{item.selected_products}}
                                         </div>
+                                        <p><strong>Selected Products:</strong> {{item.selected_products}}</p>
                                         <hr class="my-4">
                                     {% endfor %}
 

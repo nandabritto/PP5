@@ -56,6 +56,12 @@ function getvalues() {
     }
   }
   
+// Limit checkbox selection only to 5 
+  $('input[type=checkbox]').change(function(e){
+    if ($('input[type=checkbox]:checked').length > 5) {
+         $(this).prop('checked', false);
+    }
+ })
 
 
 
