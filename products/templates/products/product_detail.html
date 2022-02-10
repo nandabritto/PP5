@@ -58,7 +58,7 @@
                         class="fas fa-arrow-circle-left"></i>
                     Back</a>
             </div>
-            <!-- Product Management buttons-->
+            <!-- Product Management buttons
             {% if request.user.is_superuser %}
             <span class="float-end">
                 <a href="{% url 'edit_product' box.pk %}" class="text-decoration-none text-black shadow-none"
@@ -70,7 +70,7 @@
                     <i class="fas fa-lg fa-trash px-2 pb-2 "></i>
                 </a>
             </span>
-            {% endif %}
+            {% endif %} -->
         </div>
     </div>
 
@@ -100,26 +100,33 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            {% for review in reviews %}
-                            <div class="bg-light border rounded border-dark my-3">
-                                <p class="text-center my-0" itemprop="reviewBody">{{review.review_text}}</p>
-                                <p class="text-center my-0" itemprop="reviewRating">
-                                    <span
-                                        class="fa fa-star {% if review.review_rating > 0 %} checked {% endif %}"></span>
-                                    <span
-                                        class="fa fa-star {% if review.review_rating > 1 %} checked {% endif %}"></span>
-                                    <span
-                                        class="fa fa-star {% if review.review_rating > 2 %} checked {% endif %}"></span>
-                                    <span
-                                        class="fa fa-star {% if review.review_rating > 3 %} checked {% endif %}"></span>
-                                    <span
-                                        class="fa fa-star {% if review.review_rating > 4 %} checked {% endif %}"></span>
-                                </p>
-                                <p class="text-muted text-end mx-3 my-0" itemprop="datePublished">
-                                    <small>{{review.date_added}} -
-                                        {{review.customer|title}}</small></p>
+                            {% if reviews %}
+                                {% for review in reviews %}
+                                <div class="bg-light border rounded border-dark my-3">
+                                    <p class="text-center my-0" itemprop="reviewBody">{{review.review_text}}</p>
+                                    <p class="text-center my-0" itemprop="reviewRating">
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 0 %} checked {% endif %}"></span>
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 1 %} checked {% endif %}"></span>
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 2 %} checked {% endif %}"></span>
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 3 %} checked {% endif %}"></span>
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 4 %} checked {% endif %}"></span>
+                                    </p>
+                                    <p class="text-muted text-end mx-3 my-0" itemprop="datePublished">
+                                        <small>{{review.date_added}} -
+                                            {{review.customer|title}}</small></p>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                            <div class="bg-light  my-3">
+                                <p class="text-center my-0" itemprop="reviewBody">There's no review for this product yet.<br> Be the first! </p>
                             </div>
-                            {% endfor %}
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
