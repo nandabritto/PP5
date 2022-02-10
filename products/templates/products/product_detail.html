@@ -15,19 +15,19 @@
     <!-- Details page card -->
     <div class="card col-11 col-md-8 d-flex mx-auto products-container" itemscope>
         <!-- Box title -->
-        <div class="row g-0">
+        <div class="row g-0 justify-content-center">
             <h1 class="card-title text-center text-green w-100 m-2 fw-bolder" item-prop="name"><strong>
                     Box {{ box.box_name|title}}</strong>
             </h1>
             <hr>
             <!-- Box image -->
-            <figure class="col-md-5 col-lg-5 d-flex align-items-center p-2 ">
-                <img src="{{ box.box_image.url }}" class="rounded-3 w-100 " alt="{{ box.box_image }}" itemprop="image">
+            <figure class="col-md-5 col-lg-5 col-xl-3 col-8 d-flex align-items-center p-2 mr-0 ">
+                <img src="{{ box.box_image.url }}" class="rounded-3 w-100 box-image-detail mx-auto" alt="{{ box.box_image }}" itemprop="image">
             </figure>
-            <div class="col-md-7 col-lg-7" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <div class="col-md-5 col-lg-5 mr-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                 <div class="card-body ">
                     <!-- Box description -->
-                    <p class="card-text text-center lead px-5" itemprop="description">{{ box.box_description }}</p>
+                    <p class="card-text text-center lead px-5 " itemprop="description">{{ box.box_description }}</p>
                     <p class="card-text text-center mb-0" itemprop="note"><small>{{ box.box_note1 }}</small></p>
                     <p class="card-text text-center" itemprop="note"><small>{{ box.box_note2 }}</small></p>
                     <!-- Products options -->
@@ -35,14 +35,11 @@
                     <div class="d-flex justify-content-center">
                         <form class="product_options p-4" action="" method="post" itemprop="product choices">
                             {% csrf_token %}
-                            {{form|crispy}}
-                            <!-- Submit box products options -->
-                            <input id="but1" class="btn btn-danger m-3" value="Submit your choices"
-                                onsubmit="return false" onclick="getvalues()">
+                            {{form|crispy}}                       
                         </form>
                     </div>
                     <!-- Submited box products options -->
-                    <p id="displayvalues" class="text-start"> Your choices for the box are: </p>
+                    <p id="displayvalues"></p> 
                 </div>
             </div>
             <!-- Box price -->
