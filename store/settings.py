@@ -14,8 +14,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
-# DEBUG = 'DEBUG' in os.environ
-DEBUG = False
+DEBUG = 'DEBUG' in os.environ
+# DEBUG = False
 # For debugging
 if DEBUG:
     logging.basicConfig(

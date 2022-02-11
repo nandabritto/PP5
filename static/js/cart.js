@@ -8,7 +8,7 @@ for (var i = 0; i < updateBtns.length; i++) {
 
         console.log('USER:', user)
         if (user == 'AnonymousUser') {
-            console.log('Not logged in')
+            location.href="/accounts/login"
         } else {
             updateUserOrder(box_id, action)
         }
@@ -57,47 +57,9 @@ function getvalues() {
   }
   
 // Limit checkbox selection only to 5 
+
 $('input[type=checkbox]').change(function(e){
     if ($('input[type=checkbox]:checked').length > 5) {
          $(this).prop('checked', false);
     }
  })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     const request = new Request(
-//         '/cart/update_cart/', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type':'application/json',
-//                 'X-CSRFToken': csrftoken
-//             },
-            
-//             body: JSON.stringify({
-//                 'box_id': box_id,
-//                 'action': action
-//             })
-//         },
-        
-//     );
-
-//     fetch(request).then(function (response) {
-//         return response.json();
-//     });
-//     fetch(request).then(function (data) {
-//         console.log('data', data);
-//     });
-
-// }
