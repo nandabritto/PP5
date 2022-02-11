@@ -1,7 +1,7 @@
 """ System Module """
 from django.urls import path
 from . import views
-from .views import ListProducts
+from .views import ListBoxes, ListProducts
 
 urlpatterns = [
     path('', views.boxes, name='boxes'),
@@ -10,8 +10,9 @@ urlpatterns = [
     path('add_box/', views.add_box, name='add_box'),
     path('add_product/', views.add_product, name='add_product'),
     path('add_product_box/', views.add_product_on_boxes, name='add_product_box'),
-    path('edit/<int:pk>/', views.edit_product, name='edit_product'),
-    path('delete/<int:pk>/', views.delete_product, name='delete_product'),
-    path('boxes_list/', ListProducts.as_view(), name='boxes_list'),
+    path('editbox/<int:pk>/', views.edit_box, name='edit_box'),
+    path('deletebox/<int:pk>/', views.delete_box, name='delete_box'),
+    path('boxes_list/', ListBoxes.as_view(), name='boxes_list'),
+    path('products_list/', ListProducts.as_view(), name='products_list'),
 ]
 

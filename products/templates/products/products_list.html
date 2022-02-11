@@ -8,13 +8,13 @@
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
             <div class="card p-3" itemscope itemtype=" send newsletter">
-                <h2 class="text-center"><strong>Boxes List</strong></h2>
+                <h2 class="text-center"><strong>Products List</strong></h2>
 
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Box</th>
+                            <th scope="col">Product</th>
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
                             <th scope="col"></th>
@@ -23,14 +23,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            {% for boxes in object_list %}
+                            {% for products in object_list %}
                             <th scope="row"></th>
                             
-                            <td>{{boxes|title}}</td>
-                            <td>{{boxes.box_description}}</td>
-                            <td>{{boxes.box_price}}</td>
-                            <td><a href="{% url 'edit_box' boxes.id %}" class="btn btn-warning fw-bold">Edit</a></td>
-                            <td><a href="{% url 'delete_box' boxes.id %}" class="btn btn-danger fw-bold">Delete</a></td>
+                            <td>{{products.product_name|title}}</td>
+                            <td>{{products.box_description}}</td>
+                            <td>{{products.box_price}}</td>
+                            <!-- <td><a href="{% url 'edit_product' products.id %}" class="btn btn-warning fw-bold">Edit</a></td>
+                            <td><a href="{% url 'delete_product' products.id %}" class="btn btn-danger fw-bold">Delete</a></td> -->
                         </tr>
                     </tbody>
                     {% endfor %}

@@ -5,7 +5,7 @@ from django.views.generic import ListView
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Box
+from .models import Box, Product
 from .forms import ProductChoicesForm, BoxForm, ProductForm, ProductOnBoxForm
 from product_review.forms import AddReviewForm
 from product_review.models import BoxReview
@@ -135,9 +135,9 @@ def add_product_on_boxes(request):
         return render(request, 'home/index1.html')
 
 @login_required
-def edit_product(request, pk):
+def edit_box(request, pk):
     """
-    Edit product on the store
+    Edit box on the store
     """
     if request.user.is_superuser:
         box = get_object_or_404(Box, pk=pk)
@@ -145,14 +145,14 @@ def edit_product(request, pk):
             form = BoxForm(request.POST, request.FILES, instance=box)
             if form.is_valid():
                 form.save()
-                messages.success(request, 'Your product was edited')
+                messages.success(request, 'Your box was edited')
                 box = get_object_or_404(Box, pk=pk)
                 context = {
                     'box': box,
                 }
                 return render(request, 'products/product_detail.html', context)
             else:
-                messages.error(request, 'Failed to edit your product.\
+                messages.error(request, 'Failed to edit your box.\
                     Please, ensure your form is valid')
         else:
             form = BoxForm(instance=box)
@@ -170,7 +170,7 @@ def edit_product(request, pk):
 
 
 @login_required
-def delete_product(request, pk):
+def delete_box(request, pk):
     """
     Delete product on the store
     """
@@ -178,11 +178,11 @@ def delete_product(request, pk):
         try:
             box = get_object_or_404(Box, pk=pk)
             box.delete()
-            messages.success(request, 'Product was deleted')
+            messages.success(request, 'Box was deleted')
             return redirect(reverse('boxes'))
         except:
             messages.error(request, 'Something went wrong.\
-                Your product was not deleted.')
+                Your box was not deleted.')
             return redirect(reverse('product_details', args=[pk]))
     else:
         messages.error(request, 'Sorry, you do not have permittion \
@@ -198,10 +198,18 @@ class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
         return self.request.user.is_superuser
 
 
-class ListProducts(SuperUserRequiredMixin, ListView):
+class ListBoxes(SuperUserRequiredMixin, ListView):
     """
     Creates a list of all boxes to admin
     """
     model = Box
     template_name = 'products/boxes_list.html'
+    paginate_by = 20
+
+class ListProducts(SuperUserRequiredMixin, ListView):
+    """
+    Creates a list of all boxes to admin
+    """
+    model = Product
+    template_name = 'products/products_list.html'
     paginate_by = 20
