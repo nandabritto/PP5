@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %}Boxes List{% endblock %}
+{% block extra_title %}Products List{% endblock %}
 
 {% block content %}
 <div class="container mt-5 px-1" itemscope>
@@ -10,7 +10,7 @@
             <div class="card p-3" itemscope itemtype="https://schema.org/ItemList">
                 <h2 class="text-center"><strong>Product Management</strong></h2>
                 <hr>
-                <h2 class="text-center" itemprop="name"><strong>Boxes</strong></h2>
+                <h2 class="text-center"><strong>Products</strong></h2>
 
                 <table class="table">
                     <thead>
@@ -24,21 +24,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for boxes in object_list %}
+                        {% for products in object_list %}
                         <tr>
                             <th scope="row"></th>
-                            <td itemprop="elementID">{{boxes.id}}</td>
-                            <td itemprop="name">{{boxes|title}}</td>
-                            <td itemprop="description">{{boxes.box_description}}</td>
-                            <td itemprop="price">{{boxes.box_price}}</td>
-                            <td class="text-end"><a href="{% url 'edit_box' boxes.id %}"
+                            <td itemprop="elementID">{{products.id}}</td>
+                            <td itemprop="name">{{products|title}}</td>
+                            <td itemprop="description">{{products.product_description}}</td>
+                            <td itemprop="price">{{products.product_price}}</td>
+                            <td class="text-end"><a href="{% url 'edit_product' products.id %}"
                                     class="btn btn-warning fw-bold mx-2">Edit</a>
-                                <a href="{% url 'delete_box' boxes.id %}" class="btn btn-danger fw-bold mx-2">Delete</a>
+                                <a href="{% url 'delete_product' products.id %}" class="btn btn-danger fw-bold mx-2">Delete</a>
                             </td>
                         </tr>
                     </tbody>
                     {% endfor %}
-                </table>
+                </table>                                 
                 <div class="text-center">
                     <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
                             class="fas fa-arrow-circle-left"></i> Back</a>

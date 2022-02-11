@@ -9,32 +9,33 @@
 
 {% block content %}
 <!--Order Detail Container-->
-<div class="container mt-5 " itemscope itemtype="https://schema.org/GroceryStore">
+<div class="container mt-5 " itemscope itemtype="https://schema.org/Order">
     <div class="row">
         <div class="col-md-6 col-12 col-lg-5 mb-2 mx-auto">
             <div class="card p-3">
-                <h2 class="logo-font mb-3 text-center" itemtype="order summary"> <i
+                <h2 class="logo-font mb-3 text-center"> <i
                         class="fa-solid fa-circle-info"></i>Order
                     Details</h2>
                 <hr>
                 <div class>
-                    <div class="row d-flex align-items-center">
+                    <div class="row d-flex align-items-center" itemscope itemtype="https://schema.org/Order">
                         <!-- Boxes details-->
                         {% for order in order_ctxt %}
                         {% if object.id == order.order_id %}
-                        <p class="lead fw-bold">Order number: {{ order.order_id }}</p>
+                        <p class="lead fw-bold" itemprop="productID" >Order number: {{ order.order_id }}</p>
                         {% for item in order.items %}
-                        <div class="col-4 p-3"> <img class="img-fluid" src="{{ item.box.box_image.url }}"> </div>
-                        <div class="col-4">
-                            <div class="row ">
+                        <div class="col-4 p-3" itemscope itemtype="https://schema.org/Order">
+                            <img class="img-fluid" src="{{ item.box.box_image.url }}" itemprop="image" alt="{{ item.box_name }}"> </div>
+                        <div class="col-4" itemscope itemtype="https://schema.org/Order">
+                            <div class="row" itemprop="orderedItem">
                                 <p>{{ item.box |title}}</p>
                             </div>
-                            <div class="row">
-                                <p class="text-muted">{{ item.quantity }} unit(s)</p>
+                            <div class="row" itemscope itemtype="https://schema.org/Order">
+                                <p class="text-muted" itemprop="quantity">{{ item.quantity }} unit(s)</p>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <p class="text-end">Unit Price: €{{ item.box.box_price |title}}</p>
+                        <div class="col-4" itemscope itemtype="https://schema.org/Order">
+                            <p class="text-end" itemprop="price">Unit Price: €{{ item.box.box_price |title}}</p>
                         </div>
                         {% endfor %}
                     </div>
@@ -50,8 +51,8 @@
             </div>
         </div>
         <!-- Orders history container-->
-        <div class="col-md-6 col-12 col-lg-5" itemscope>
-            <div class="card p-3" itemtype="orders">
+        <div class="col-md-6 col-12 col-lg-5" itemscope itemtype="https://schema.org/Order">
+            <div class="card p-3" itemprop="orderedItem">
                 <h3 class="fw-bold"> My previous orders</h3>
                 <hr>
                 <table class="table table-sm table-borderless text-center">
@@ -70,7 +71,7 @@
                                     href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
                             </td>
                             <td>{{ order.itemsCount }}</td>
-                            <td>€ {{order.shipping}}</td>
+                            <td>€ {{order.shipping}}.00</td>
                             <td>€ {{order.get_cart_total}}</td>
                         </tr>
                         {% endfor %}
@@ -84,6 +85,6 @@
 {% endblock %}
 
 {% block postloadjs %}
-<script type="text/javascript" src="{% static 'js/countryfield.js' %}"></script>
+<script src="{% static 'js/countryfield.js' %}"></script>
 
 {% endblock %}

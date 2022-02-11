@@ -4,24 +4,27 @@
 {% load crispy_forms_tags %}
 
 <!-- Page title -->
-{% block extra_title %}Add Product{% endblock %}
+{% block extra_title %}Add Box{% endblock %}
 
 {% block content %}
 
 <!-- Product Management container -->
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-10 col-lg-10 col-11 mx-auto">
-            <div class="card p-3">
+        <div class="col-md-10 col-lg-10 col-11 mx-auto" >
+            <div class="card p-3" itemscope itemtype="https://schema.org/Product">
                 <h2 class="text-center"><strong>Product Management</strong></h2>
                 <hr>
                 <h3> <i class="fas fa-box-open"></i> Add Boxes</h3>
                 <!-- Add Box Details form -->
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="" enctype="multipart/form-data" itemprop="itemListElement">
                     {% csrf_token %}
                     {{ form | crispy}}
                     <div class="text-center">
-                        <button class="btn btn-lg btn-warning" type="submit">Add Box</button>
+                        <button class="btn btn-lg btn-warning mx-2" type="submit">Add Box</button>
+                                                    <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
+                                class="fas fa-arrow-circle-left"></i> Back</a> 
+                        
                     </div>
                 </form>
             </div>

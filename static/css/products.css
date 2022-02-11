@@ -35,15 +35,6 @@
 }
 
 
-.form-check-input:checked{
-    background-color: grey!important;
-    border-color: grey!important;
-}
-
-.form-check-input:focus{
-    color:yellow!important;
-}
-
 
 
 /* Media query medium screen*/

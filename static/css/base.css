@@ -44,6 +44,9 @@ a {
     color: var(--red) !important;
 }
 
+
+
+
 /* Buttons */
 
 .btn-danger {
@@ -86,6 +89,19 @@ input:focus {
     position: absolute;
     opacity: 0.95;
     right: 0;
+}
+
+/* Form control colors */ 
+
+.form-control:focus {
+    border-color: var(--orange);
+    box-shadow: var(--orange);
+} 
+
+
+.form-check-input:checked{
+    background-color: var(--green);
+    border-color: var(--black);
 }
 
 /*Media queries*/

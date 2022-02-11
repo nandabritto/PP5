@@ -339,7 +339,7 @@ def success(request, pk):
 
         context = {'order': order}
 
-        return render(request, 'home/index1.html', context)
+        return render(request, 'home/index.html', context)
 
     else:
         messages.error(request, "Sorry, you cannot access this data.")

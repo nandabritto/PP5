@@ -11,13 +11,16 @@
 <div class="container mt-5 px-1" itemscope>
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
-            <div class="card p-3" itemscope itemtype=" send newsletter">
-                <h2 class="text-center"><strong>Send Newsletter to users</strong></h2>
-                <form method="POST">
+            <div class="card p-3" itemscope itemtype="https://schema.org/EmailMessage">
+                <h2 class="text-center" ><strong>Send Newsletter to users</strong></h2>
+                <form method="POST" itemprop="message">
                     {% csrf_token %}
                     {{ form|crispy }}
-
-                    <button class="btn btn-warning" type="submit">Send</button>
+                    <div class="text-center">
+                        <button class="btn btn-lg btn-warning mx-2" type="submit">Send</button>
+                        <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
+                                class="fas fa-arrow-circle-left"></i> Back</a>
+                    </div>
                 </form>
             </div>
         </div>

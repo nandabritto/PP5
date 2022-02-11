@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- Customizible CSS -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+
+<!-- Page title -->
+{% block extra_title %}Products{% endblock %}
+
+{% block content %}
+<section>
+    <!-- Details page card -->
+    <div class="card col-11 col-md-8 d-flex mx-auto products-container" >
+        <!-- Box title -->
+        <div class="row g-0 justify-content-center" itemscope itemtype="https://schema.org/Store">
+            <h1 class="card-title text-center text-green w-100 m-2 fw-bolder"><strong>
+                    Box {{ box.box_name|title}}</strong>
+            </h1>
+            <hr>
+            <!-- Box image -->
+            <figure class="col-md-5 col-lg-5 col-xl-3 col-8 d-flex align-items-center px-2 mr-0 ">
+                <img src="{{ box.box_image.url }}" class="rounded-3 w-100 box-image-detail mx-auto" alt="{{ box.box_image }}" itemprop="image">
+            </figure>
+            <div class="col-md-5 col-lg-5 mr-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <div class="card-body ">
+                    <!-- Box description -->
+                    <p class="card-text text-center lead px-5 " itemprop="description">{{ box.box_description }}</p>
+                    <p class="card-text text-center mb-0" itemprop="note"><small>{{ box.box_note1 }}</small></p>
+                    <p class="card-text text-center" itemprop="note"><small>{{ box.box_note2 }}</small></p>
+                    <!-- Products options -->
+                    <p class="lead text-center">Select your products here:</p>
+                    
+                    <div class="d-flex justify-content-center" itemscope itemtype="https://schema.org/GroceryStore">
+                        <form class="product_options px-4" method="post" itemprop="product choices">
+                            {% csrf_token %}
+                            {{form|crispy}}                       
+                        </form>
+                    </div>
+                    <!-- Submited box products options -->
+                    <div id="displayvalues" class="hide"></div>
+                </div>
+            </div>
+            <!-- Box price -->
+            <div itemscope itemtype="https://schema.org/PriceSpecification">
+                <h3 class="card-text text-center" itemprop="price">
+                    <i class="fa fa-eur text-muted" aria-hidden="true" itemprop="priceCurrency" content="EU"></i>
+                        {{ box.box_price }}                    
+                </h3>
+            </div>
+
+            <div class="text-center" itemscope itemtype="https://schema.org/url">
+                <button class="btn btn-success btn-lg fw-bold m-2 update-cart" itemprop="url" data-box="{{box.id}}"
+                    data-action="add" data-choices="" type="button" onclick="getvalues()"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                <a class="btn btn-lg btn-dark fw-bold m-2" itemprop="url" href="javascript:history.back()"><i
+                        class="fas fa-arrow-circle-left"></i>
+                    Back</a>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <!-- User's review container-->
+    <div class="card col-11 col-md-8 d-flex mx-auto products-container mx-0"  >
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-12 d-flex align-items-center" itemscope 
+            itemtype="https://schema.org/Review">
+                <!-- Button trigger modal -->
+                {% if user.is_authenticated %}
+                <div class="text-center mx-auto p-3" itemprop="review">
+                    <h3> Add your review</h3>
+                    <div>
+                        <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal"
+                            data-bs-target="#add_review">
+                            Add product review
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <!-- User reviews list -->
+            <div class="col-md-8 col-lg-8 col-12 mx-0" itemscope itemtype="https://schema.org/Review">
+                <h2 class="text-center my-2 mx-0" itemprop="review">Users
+                    reviews</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            {% if reviews %}
+                                {% for review in reviews %}
+                                <div class="bg-light border rounded border-dark my-3">
+                                    <p class="text-center my-0" itemprop="reviewBody">{{review.review_text}}</p>
+                                    <p class="text-center my-0" itemprop="reviewRating">
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 0 %} checked {% endif %}"></span>
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 1 %} checked {% endif %}"></span>
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 2 %} checked {% endif %}"></span>
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 3 %} checked {% endif %}"></span>
+                                        <span
+                                            class="fa fa-star {% if review.review_rating > 4 %} checked {% endif %}"></span>
+                                    </p>
+                                    <p class="text-muted text-end mx-3 my-0" itemprop="datePublished">
+                                        <small>{{review.date_added}} -
+                                            {{review.customer|title}}</small></p>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                            <div class="bg-light  my-3">
+                                <p class="text-center my-0" itemprop="reviewBody">There's no review for this product yet.<br> Be the first! </p>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="add_review" tabindex="-1" aria-labelledby="add_reviewLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title text-green fw-bolder" id="add_reviewLabel">Add review</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST">
+                                    {%csrf_token%}
+                                    {{review_form|crispy}}
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-lg btn-success">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+<!-- Customizible JS -->
+{% block postloadjs %}
+<!-- <script src="{% static 'js/product_detail.js' %}"></script> -->
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

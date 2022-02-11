@@ -139,7 +139,7 @@ def send_newsletter(request):
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
-        return render(request, 'home/index1.html')
+        return render(request, 'home/index.html')
 
 
 class NewsletterList(SuperUserRequiredMixin, ListView):

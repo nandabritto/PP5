@@ -1,6 +1,7 @@
 """ System Module """
 import json
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from order.models import Order, OrderBox
 from products.models import Box, Product
@@ -36,11 +37,16 @@ def update_cart(request):
     action = data['action']
 
     customer = request.user
-    
-    prod_selected_ids = data.get('prod_selected_ids',[])
-    prod_selected = Product.objects.filter(id__in=[int(prd) for prd in prod_selected_ids])
-    prod_selected_names = ', '.join([prd.product_name for prd in prod_selected])
+    # request.session['cart_items'] = cart_items
 
+    # Get user selected products
+    prod_selected_ids = data.get('prod_selected_ids', [])
+    prod_selected = Product.objects.filter(
+        id__in=[int(prd) for prd in prod_selected_ids])
+    prod_selected_names = ', '.join([
+        prd.product_name for prd in prod_selected])
+
+    # creates a box
     box = Box.objects.get(id=box_id)
     order, created = Order.objects.get_or_create(
             customer=customer, ordered=False)
@@ -49,7 +55,7 @@ def update_cart(request):
         order_box=order, box=box)
 
     if created:
-        order_box.selected_products=prod_selected_names
+        order_box.selected_products = prod_selected_names
 
     if action == 'add':
         order_box.quantity = (order_box.quantity + 1)
@@ -61,8 +67,9 @@ def update_cart(request):
     if order_box.quantity <= 0:
         order_box.delete()
 
-    return JsonResponse('Item was added', safe=False)
-
+    # redirect_url = reques.POST.get('redirect_url')
+    return JsonResponse('Item was added.', safe=False)
+    # return HttpResponseRedirect(request.path_info)
 
 
 def cart_number_on_all_pages(request):

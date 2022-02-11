@@ -1,9 +1,7 @@
 """ System Module """
 from django.db import models
 from django.contrib.auth.models import User
-# from decimal import Decimal
 from django.conf import settings
-# from django_countries.fields import CountryField
 from products.models import Box
 from user_profile.models import Address
 
@@ -41,7 +39,6 @@ class Order(models.Model):
 
         if self.shipping_address is not None:
             shipping_address = self.shipping_address
-            print('shipping nao nulo')
 
             if shipping_address.country == 'IE':
                 shipping = national_shipping

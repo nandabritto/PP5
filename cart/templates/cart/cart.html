@@ -26,8 +26,8 @@
                             <div class="col-lg-8">
                                 <div class="p-5">
                                     <!-- Shopping cart card -->
-                                    <div class="d-flex justify-content-between align-items-center mb-5"itemscope itemtype="shopping cart">
-                                        <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                                    <div class="d-flex justify-content-between align-items-center mb-5" itemscope itemprop="https://schema.org/Store">
+                                        <h1 class="fw-bold mb-0 text-black" >Shopping Cart</h1>
                                         <h6 class="mb-0 text-muted">{{order.get_cart_items}} item(s)</h6>
                                     </div>
 
@@ -50,12 +50,12 @@
                                                 <p class="text-center">Quantity</p>
                                                 <img data-box="{{item.box.id}}" data-action="add"
                                                     class="chg-quantity update-cart mx-auto"
-                                                    src="{{MEDIA_URL}}arrow-up.png">
+                                                    src="{{MEDIA_URL}}arrow-up.png" alt="Arrow up">
                                                 <p class="quantity cart-item-quantity mt-2 text-center" itemprop="quantity">{{item.quantity}}
                                                 </p>
                                                 <img data-box="{{item.box.id}}" data-action="remove"
                                                     class="chg-quantity update-cart mx-auto"
-                                                    src="{{MEDIA_URL}}arrow-down.png">
+                                                    src="{{MEDIA_URL}}arrow-down.png" alt="Arrow down">
                                             </div> 
                                             <!-- Item total price -->
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" itemprop="price">
@@ -106,5 +106,5 @@
 
 <!-- Customizible JS -->
 {% block postloadjs %}
-<script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

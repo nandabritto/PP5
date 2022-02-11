@@ -1,5 +1,7 @@
+""" System Module """
 from django.contrib import admin
 from .models import BoxReview
+
 
 class BoxReviewAdmin(admin.ModelAdmin):
     """
@@ -12,5 +14,6 @@ class BoxReviewAdmin(admin.ModelAdmin):
         'review_text',
         'review_rating',
     ]
+
 
 admin.site.register(BoxReview, BoxReviewAdmin)

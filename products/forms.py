@@ -1,6 +1,6 @@
 """ System Module """
 from django import forms
-from .models import Product, Box, Product, Product_On_Box
+from .models import Product, Box, Product_On_Box
 
 
 class ProductChoicesForm(forms.Form):
@@ -13,9 +13,12 @@ class ProductChoicesForm(forms.Form):
         """
         super(ProductChoicesForm, self).__init__(*args, **kwargs)
         query = Product.objects.filter(product_on_box__box_id=pk)
-        selectables_query = query.filter(product_on_box__product_selectable=True)
+        selectables_query = query.filter(
+            product_on_box__product_selectable=True)
         self.fields['selected_product'] = forms.ModelChoiceField(
-            queryset=selectables_query.all(), widget=forms.CheckboxSelectMultiple, empty_label=None)
+            queryset=selectables_query.all(),
+            widget=forms.CheckboxSelectMultiple,
+            empty_label=None)
         self.fields['selected_product'].label = False
 
 
@@ -24,21 +27,33 @@ class BoxForm(forms.ModelForm):
     Create Products form
     """
     class Meta:
+        """
+        Get Box model and add widgets to fields
+        """
         model = Box
         fields = '__all__'
         widgets = {
-          'box_description': forms.Textarea(attrs={'rows':4}),
-          'box_note2': forms.Textarea(attrs={'rows':2}),
-          'box_note1': forms.Textarea(attrs={'rows':2}),
+          'box_description': forms.Textarea(attrs={'rows': 4}),
+          'box_note2': forms.Textarea(attrs={'rows': 2}),
+          'box_note1': forms.Textarea(attrs={'rows': 2}),
         }
+
 
 class ProductForm(forms.ModelForm):
     """
     Create Box form
     """
     class Meta:
+        """
+        Get Product model and add widgets to fields
+        """
         model = Product
         fields = '__all__'
+        widgets = {
+          'product_description': forms.Textarea(attrs={'rows': 4}),
+          'product_note1': forms.Textarea(attrs={'rows': 2}),
+          'product_note2': forms.Textarea(attrs={'rows': 2})
+        }
 
 
 class ProductOnBoxForm(forms.ModelForm):
@@ -46,5 +61,8 @@ class ProductOnBoxForm(forms.ModelForm):
     Add products on boxes form
     """
     class Meta:
+        """
+        Get Product on Box model
+        """
         model = Product_On_Box
         fields = '__all__'
