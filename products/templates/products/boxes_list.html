@@ -24,8 +24,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for boxes in object_list %}
                         <tr>
-                            {% for boxes in object_list %}
                             <th scope="row"></th>
                             <td itemprop="elementID">{{boxes.id}}</td>
                             <td itemprop="name">{{boxes|title}}</td>

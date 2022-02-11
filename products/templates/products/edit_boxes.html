@@ -17,7 +17,7 @@
                 <hr>
                 <h3> <i class="fas fa-box-open"></i> Edit Box {{box.box_name|title}}</h3>
                 <!-- Edit Box Details form -->
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy}}
                     <div class="text-center">
