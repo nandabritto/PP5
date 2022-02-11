@@ -47,8 +47,7 @@
             <div itemscope itemtype="https://schema.org/PriceSpecification">
                 <h3 class="card-text text-center" itemprop="price">
                     <i class="fa fa-eur text-muted" aria-hidden="true" itemprop="priceCurrency" content="EU"></i>
-                        {{ box.box_price }}
-                    
+                        {{ box.box_price }}                    
                 </h3>
             </div>
 
@@ -151,6 +150,6 @@
 
 <!-- Customizible JS -->
 {% block postloadjs %}
-<script src="{% static 'js/product_detail.js' %}"></script>
+<!-- <script src="{% static 'js/product_detail.js' %}"></script> -->
 <script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

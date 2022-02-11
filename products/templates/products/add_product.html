@@ -12,12 +12,12 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
-            <div class="card p-3">
+            <div class="card p-3" itemscope itemtype="https://schema.org/Product">
                 <h2 class="text-center"><strong>Product Management</strong></h2>
                 <hr>
                 <h3> <i class="fas fa-box-open"></i> Add Products</h3>
                 <!-- Add Product Details form -->
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" itemprop="itemListElement">
                     {% csrf_token %}
                     {{ form | crispy}}
                     <div class="text-center">

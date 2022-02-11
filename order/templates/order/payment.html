@@ -47,9 +47,8 @@
                 </label>
                 <div id="card-element">
                   <div>
-                    <iframe
-                     title="Secure payment input frame"></iframe><input
-                      aria-hidden="true" aria-label=" " maxlength="1"></div>
+                    <iframe title="Secure payment input frame"></iframe><input aria-hidden="true" aria-label=" "
+                      maxlength="1"></div>
                 </div>
               </div>
               <!-- Submit payment -->
@@ -72,7 +71,9 @@
 {% endblock content %}
 
 {% block postloadjs %}
-
+<!-- Stripe -->
 <script src="{% static 'js/stripe_elements.js' %}"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 {% endblock %}

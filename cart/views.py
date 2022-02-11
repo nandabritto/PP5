@@ -1,6 +1,7 @@
 """ System Module """
 import json
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from order.models import Order, OrderBox
 from products.models import Box, Product
@@ -36,6 +37,7 @@ def update_cart(request):
     action = data['action']
 
     customer = request.user
+    # request.session['cart_items'] = cart_items
 
     # Get user selected products
     prod_selected_ids = data.get('prod_selected_ids', [])
@@ -65,7 +67,9 @@ def update_cart(request):
     if order_box.quantity <= 0:
         order_box.delete()
 
+    # redirect_url = reques.POST.get('redirect_url')
     return JsonResponse('Item was added.', safe=False)
+    # return HttpResponseRedirect(request.path_info)
 
 
 def cart_number_on_all_pages(request):
