@@ -21,7 +21,10 @@
                     {% csrf_token %}
                     {{ form | crispy}}
                     <div class="text-center">
-                        <button class="btn btn-lg btn-warning" type="submit">Add Box</button>
+                        <button class="btn btn-lg btn-warning mx-2" type="submit">Add Box</button>
+                                                    <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
+                                class="fas fa-arrow-circle-left"></i> Back</a> 
+                        
                     </div>
                 </form>
             </div>

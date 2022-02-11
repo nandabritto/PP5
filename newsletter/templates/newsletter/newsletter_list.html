@@ -14,12 +14,25 @@
             <div class="card p-3" itemscope itemtype=" send newsletter">
                 <h2 class="text-center"><strong>Sent Newsletter List</strong></h2>
                 <ul>
+                    {% if object_list %}
                     {% for newsletter in object_list %}
                     <li>
-                        {{ newsletter.subject }} , {{ newsletter.created}}                      
+                        {{ newsletter.subject }} , {{ newsletter.created}}
                     </li>
                     {% endfor %}
+                    {% else %}
+                    <div class="text-center m-4">
+                        There's no newsletter. Send the first one <a href="{% url 'send' %}" class="text-success fw-bold" > here.
+                        </a>
+                    </div>
+                    {% endif %}
+
                 </ul>
+                <div class="text-center">
+
+                    <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
+                            class="fas fa-arrow-circle-left"></i> Back</a>
+                </div>
             </div>
         </div>
     </div>

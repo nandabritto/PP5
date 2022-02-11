@@ -8,12 +8,14 @@
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
             <div class="card p-3" itemscope itemtype=" send newsletter">
-                <h2 class="text-center"><strong>Boxes List</strong></h2>
+                <h2 class="text-center"><strong>Product Management</strong></h2>
+                <hr><h2 class="text-center"><strong>Boxes</strong></h2>
 
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col"></th>
+                            <th scope="col">Id</th>
                             <th scope="col">Box</th>
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
@@ -25,7 +27,7 @@
                         <tr>
                             {% for boxes in object_list %}
                             <th scope="row"></th>
-                            
+                            <td>{{boxes.id}}</td>
                             <td>{{boxes|title}}</td>
                             <td>{{boxes.box_description}}</td>
                             <td>{{boxes.box_price}}</td>
