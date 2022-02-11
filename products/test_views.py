@@ -31,7 +31,7 @@ class TestViews(TestCase):
         Test if render correctly product details view with correct
         box and product pk
         """
-        url = reverse('product_details', kwargs={
+        url = reverse('box_details', kwargs={
             'pk': self.boxtest.id})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)

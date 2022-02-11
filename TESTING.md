@@ -21,7 +21,7 @@ Unittest were done to ensure all products, bag an order functionality developed 
 | App | File | Class/Function Name |
 |:---:|:---:|:---:|
 | Product | Views | boxes |
-| Product | Views | product_details |
+| Product | Views | box_details |
 | Product | Models | Product |
 | Product | Models | Box |
 | Product | Models | Product_On_Box |

@@ -35,7 +35,7 @@ def product_detail(request, pk):
             review_rating=review_rating,
             review_text=review_text
             )
-        return redirect(reverse('product_details', args=[box.id]))
+        return redirect(reverse('box_details', args=[box.id]))
 
     review_form = AddReviewForm
     reviews = BoxReview.objects.filter(box=box.id).order_by('-date_added')[:2]
@@ -47,7 +47,7 @@ def product_detail(request, pk):
         'reviews':reviews
     }
     context['form'] = ProductChoicesForm(pk)
-    return render(request, 'products/product_detail.html', context)
+    return render(request, 'products/box_detail.html', context)
 
 
 @login_required
@@ -61,7 +61,7 @@ def add_box(request):
             if form.is_valid():
                 box = form.save()
                 messages.success(request, 'Your box was added')
-                return redirect(reverse('product_details', args=[box.id]))
+                return redirect(reverse('box_details', args=[box.id]))
             else:
                 messages.error(request, 'Error adding your box.\
                     Please, ensure your form is valid')
@@ -89,7 +89,7 @@ def add_product(request):
             if form.is_valid():
                 product = form.save()
                 messages.success(request, 'Your product was added')
-                # return redirect(reverse('product_details', args=[box.id]))
+                # return redirect(reverse('box_details', args=[box.id]))
             else:
                 messages.error(request, 'Error adding your product.\
                     Please, ensure your form is valid')
@@ -117,7 +117,7 @@ def add_product_on_boxes(request):
             if form.is_valid():
                 product_on_box = form.save()
                 messages.success(request, 'Your product was added on the box')
-                # return redirect(reverse('product_details', args=[box.id]))
+                # return redirect(reverse('box_details', args=[box.id]))
             else:
                 messages.error(request, 'Error adding your product on box.\
                     Please, ensure your form is valid')
@@ -150,7 +150,7 @@ def edit_box(request, pk):
                 context = {
                     'box': box,
                 }
-                return render(request, 'products/product_detail.html', context)
+                return render(request, 'products/box_detail.html', context)
             else:
                 messages.error(request, 'Failed to edit your box.\
                     Please, ensure your form is valid')
@@ -163,8 +163,8 @@ def edit_box(request, pk):
             'box': box,
         }
         return render(request, 'products/edit_products.html', context)
-    else:
-        messages.error(request, 'Sorry, you do not have permition \
+    else: 
+        messages.error(request, 'Sorry, you do not  have permition \
             to access this page')
         return render(request, 'home/index1.html')
 
@@ -183,11 +183,68 @@ def delete_box(request, pk):
         except:
             messages.error(request, 'Something went wrong.\
                 Your box was not deleted.')
-            return redirect(reverse('product_details', args=[pk]))
+            return redirect(reverse('box_details', args=[pk]))
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
         return render(request, 'home/index1.html')
+
+
+@login_required
+def edit_product(request, pk):
+    """
+    Edit products on the store
+    """
+    if request.user.is_superuser:
+        product = get_object_or_404(Product, pk=pk)
+        if request.method == 'POST':
+            form = ProductForm(request.POST, request.FILES, instance=product)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your box was edited')
+                product = get_object_or_404(Product, pk=pk)
+                context = {
+                    'product': product,
+                }
+                return render(request, 'products/products_detail.html', context)
+            else:
+                messages.error(request, 'Failed to edit your product.\
+                    Please, ensure your form is valid')
+        else:
+            form = ProductForm(instance=product)
+            messages.info(request, f'You are editing Product {product.product_name}')
+
+        context = {
+            'form': form,
+            'product': product,
+        }
+        return render(request, 'products/edit_products.html', context)
+    else:
+        messages.error(request, 'Sorry, you do not have permition \
+            to access this page')
+        return render(request, 'home/index1.html')
+
+
+@login_required
+def delete_product(request, pk):
+    """
+    Delete product on the store
+    """
+    if request.user.is_superuser:
+        try:
+            product = get_object_or_404(Product, pk=pk)
+            product.delete()
+            messages.success(request, 'Product was deleted')
+            return redirect(reverse('boxes'))
+        except:
+            messages.error(request, 'Something went wrong.\
+                Your product was not deleted.')
+            return redirect(reverse('box_details', args=[pk]))
+    else:
+        messages.error(request, 'Sorry, you do not have permittion \
+            to access this page')
+        return render(request, 'home/index1.html')
+
 
 
 class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):

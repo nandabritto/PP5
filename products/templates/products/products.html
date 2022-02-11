@@ -35,10 +35,10 @@
                     <!-- Box image -->
                     {% if box.box_image %}
                     <figure class="product-img-box m-2">
-                        <a href="{% url 'product_details' box.id %}">
+                        <a href="{% url 'box_details' box.id %}">
                             <img class="rounded-circle product-image" itemprop="image" src="{{ box.box_image.url }}"
                                 alt="{{ box.box_name }}">
-                        </a>
+                        </a> 
                     </figure>
                     {% else %}
                     <figure class="product-image">
@@ -71,7 +71,7 @@
                             to cart
                         </button>
                         <a class="btn btn-warning fw-bold mx-1" itemprop="url"
-                            href="{% url 'product_details' box.id %}"><i class="fas fa-info-circle"></i>
+                            href="{% url 'box_details' box.id %}"><i class="fas fa-info-circle"></i>
                             Details
                         </a>
                     </span>

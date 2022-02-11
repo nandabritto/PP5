@@ -29,8 +29,8 @@
                             <td>{{products.product_name|title}}</td>
                             <td>{{products.box_description}}</td>
                             <td>{{products.box_price}}</td>
-                            <!-- <td><a href="{% url 'edit_product' products.id %}" class="btn btn-warning fw-bold">Edit</a></td>
-                            <td><a href="{% url 'delete_product' products.id %}" class="btn btn-danger fw-bold">Delete</a></td> -->
+                            <td><a href="{% url 'edit_product' products.id %}" class="btn btn-warning fw-bold">Edit</a></td>
+                            <td><a href="{% url 'delete_product' products.id %}" class="btn btn-danger fw-bold">Delete</a></td>
                         </tr>
                     </tbody>
                     {% endfor %}
