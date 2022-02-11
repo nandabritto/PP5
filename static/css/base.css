@@ -88,6 +88,19 @@ input:focus {
     right: 0;
 }
 
+/* Form control colors */ 
+
+.form-control:focus {
+    border-color: var(--orange);
+    box-shadow: var(--orange);
+} 
+
+
+.form-check-input:checked{
+    background-color: var(--green);
+    border-color: var(--black);
+}
+
 /*Media queries*/
 
 @media only screen and (max-width: 900px) {

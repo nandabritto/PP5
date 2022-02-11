@@ -27,7 +27,7 @@
             {% for box in boxes %}
             <div class="col-lg-6 col-xl-4 col-md-6 col-sm-11">
                 <!-- Box card -->
-                <div class="card m-3 border-0 bg-light ">
+                <div class="card m-2 border-0 bg-light ">
                     <!-- Box name -->
                     <div class="card-header">
                         <h2 class="mb-0 fw-bolder text-green" itemprop="name">Box {{ box.box_name|title}}</h2>
@@ -66,11 +66,11 @@
                     </div>
                     <!-- Buttons -->
                     <span class="m-2 p-3">
-                        <button class="btn btn-success fw-bold mx-1 my-2 update-cart" itemprop="url"
+                        <button class="btn btn-success fw-bold mx-1 m-2 update-cart" itemprop="url"
                             data-box="{{box.id}}" data-action="add" type="button"><i class="fas fa-cart-plus"></i> Add
                             to cart
                         </button>
-                        <a class="btn btn-warning fw-bold mx-1" itemprop="url"
+                        <a class="btn btn-warning fw-bold m-2" itemprop="url"
                             href="{% url 'box_details' box.id %}"><i class="fas fa-info-circle"></i>
                             Details
                         </a>
