@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 <!-- Page title -->
-{% block extra_title %}Edit Products{% endblock %}
+{% block extra_title %}Edit Box{% endblock %}
 
 {% block content %}
 
@@ -15,13 +15,13 @@
             <div class="card p-3">
                 <h2 class="text-center"><strong>Product Management</strong></h2>
                 <hr>
-                <h3> <i class="fas fa-box-open"></i> Edit Product {{product_product_name|title}}</h3>
+                <h3> <i class="fas fa-box-open"></i> Edit Box {{box.box_name|title}}</h3>
                 <!-- Edit Box Details form -->
                 <form method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy}}
                     <div class="text-center">
-                        <button class="btn btn-lg btn-warning" type="submit">Update Product</button>
+                        <button class="btn btn-lg btn-warning" type="submit">Update Box</button>
                     </div>
                 </form>
             </div>

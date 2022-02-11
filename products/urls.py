@@ -6,7 +6,9 @@ from .views import ListBoxes, ListProducts
 urlpatterns = [
     path('', views.boxes, name='boxes'),
     path("box_details/<int:pk>/",
-         views.product_detail, name="box_details"),
+         views.box_detail, name="box_details"),
+    path("product_details/<int:pk>/",
+         views.product_detail, name="product_details"),
     path('add_box/', views.add_box, name='add_box'),
     path('add_product/', views.add_product, name='add_product'),
     path('add_product_box/', views.add_product_on_boxes, name='add_product_box'),

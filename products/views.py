@@ -19,7 +19,7 @@ def boxes(request):
     return render(request, 'products/products.html', {'boxes': boxes})
 
 
-def product_detail(request, pk):
+def box_detail(request, pk):
     """
     Get and filter objects from Box model and render box detail view
     """
@@ -49,6 +49,18 @@ def product_detail(request, pk):
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/box_detail.html', context)
 
+
+def product_detail(request, pk):
+    """
+    Get and filter objects from Box model and render box detail view
+    """
+    product = get_object_or_404(Product, pk=pk)
+
+    context = {
+        'product': product,       
+    }
+
+    return render(request, 'products/product_detail.html', context)
 
 @login_required
 def add_box(request):
@@ -162,7 +174,7 @@ def edit_box(request, pk):
             'form': form,
             'box': box,
         }
-        return render(request, 'products/edit_products.html', context)
+        return render(request, 'products/edit_boxes.html', context)
     else: 
         messages.error(request, 'Sorry, you do not  have permition \
             to access this page')
@@ -201,12 +213,12 @@ def edit_product(request, pk):
             form = ProductForm(request.POST, request.FILES, instance=product)
             if form.is_valid():
                 form.save()
-                messages.success(request, 'Your box was edited')
+                messages.success(request, 'Your product was edited')
                 product = get_object_or_404(Product, pk=pk)
                 context = {
                     'product': product,
                 }
-                return render(request, 'products/products_detail.html', context)
+                return render(request, 'products/product_detail.html', context)
             else:
                 messages.error(request, 'Failed to edit your product.\
                     Please, ensure your form is valid')
@@ -235,7 +247,7 @@ def delete_product(request, pk):
             product = get_object_or_404(Product, pk=pk)
             product.delete()
             messages.success(request, 'Product was deleted')
-            return redirect(reverse('boxes'))
+            return redirect(reverse('products'))
         except:
             messages.error(request, 'Something went wrong.\
                 Your product was not deleted.')
