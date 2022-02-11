@@ -13,9 +13,9 @@
 {% block content %}
 <section>
     <!-- Details page card -->
-    <div class="card col-11 col-md-8 d-flex mx-auto products-container" itemscope>
+    <div class="card col-11 col-md-8 d-flex mx-auto products-container">
         <!-- Box title -->
-        <div class="row g-0 justify-content-center">
+        <div class="row g-0 justify-content-center" itemscope itemtype="https://schema.org/Store">
             <h1 class="card-title text-center text-green w-100 m-2 fw-bolder" item-prop="name"><strong>
                     {{ product.product_name|title}}</strong>
             </h1>
@@ -35,16 +35,16 @@
 
                 </div>
                 <!-- Box price -->
-                <div>
+                <div itemscope itemtype="https://schema.org/PriceSpecification">
                     <h3 class="card-text text-center" itemprop="price">
-                        <bold><i class="fa fa-eur text-muted" aria-hidden="true" itemprop="priceCurrency"
+                        <i class="fa fa-eur text-muted" aria-hidden="true" itemprop="priceCurrency"
                                 content="EU"></i>
                             {{ product.product_price }}
-                        </bold>
+                       
                     </h3>
                 </div>
 
-                <div class="text-center">
+                <div class="text-center" itemscope itemtype="https://schema.org/url">
                     <a class="btn btn-lg btn-dark fw-bold m-2" itemprop="url" a href="{% url 'products_list' %}"><i
                             class="fas fa-arrow-circle-left"></i>
                         Back</a>
@@ -62,6 +62,6 @@
 
 <!-- Customizible JS -->
 {% block postloadjs %}
-<script src="{% static 'js/product_detail.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/product_detail.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

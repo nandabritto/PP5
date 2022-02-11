@@ -16,9 +16,9 @@
 
 {% block content %}
 <section>
-    <div class="products-container mx-auto">
+    <div class="products-container mx-auto" itemscope itemtype="https://schema.org/Store">
         <!-- Page title -->
-        <h1 class="text-center m-3 p-3 bg-light text-green fw-bolder" item-prop="available products"> Regional Boxes availabe this
+        <h1 class="text-center m-3 p-3 bg-light text-green fw-bolder"> Regional Boxes availabe this
                 month
         </h1>
         <!-- Boxes container -->
@@ -29,7 +29,7 @@
                 <!-- Box card -->
                 <div class="card m-2 border-0 bg-light ">
                     <!-- Box name -->
-                    <div class="card-header">
+                    <div class="card-header" >
                         <h2 class="mb-0 fw-bolder text-green" itemprop="name">Box {{ box.box_name|title}}</h2>
                     </div>
                     <!-- Box image -->
@@ -85,6 +85,6 @@
 
 <!-- Customizible JS -->
 {% block postloadjs %}
-<script src="{% static 'js/product_detail.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/product_detail.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

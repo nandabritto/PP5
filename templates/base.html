@@ -37,7 +37,7 @@
 
     {% block corejs %}
 
-    <script type="text/javascript">
+    <script>
         var user = '{{ request.user }}'
 
         function getToken(name) {
@@ -69,7 +69,7 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
     <!-- Customizible JS -->
-    <script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
 
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>

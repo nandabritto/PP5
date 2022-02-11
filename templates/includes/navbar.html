@@ -16,9 +16,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'howitworks' %}">How it works</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,21 +37,22 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                            <a href="{% url 'management' %}" class="dropdown-item">Product Management</a>
+                            <li><a href="{% url 'management' %}" class="dropdown-item">Product Management</a></li>
                             {% endif %}
-                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            <li><a href="{% url 'profile' %}" class="dropdown-item">My Profile</a></li>
+                            <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
                             {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
+                            <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
                             {% endif %}
                         </ul>
                     </li>
                 </ul>
                 <div>
                     <ul class="navbar-nav mx-1 my-2">
-                        <a href="{% url 'cart' %}">
-                            <li class="btn position-relative">
+
+                        <li class="btn position-relative">
+                            <a href="{% url 'cart' %}">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 <span
                                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -61,8 +60,8 @@
 
                                     <span class="visually-hidden">Cart Items</span>
                                 </span>
-                            </li>
-                        </a>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
