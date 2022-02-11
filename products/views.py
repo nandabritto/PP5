@@ -88,7 +88,7 @@ def add_box(request):
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
-        return render(request, 'home/index1.html')
+        return render(request, 'home/index.html')
 
 @login_required
 def add_product(request):
@@ -116,7 +116,7 @@ def add_product(request):
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
-        return render(request, 'home/index1.html')
+        return render(request, 'home/index.html')
 
 @login_required
 def add_product_on_boxes(request):
@@ -144,7 +144,7 @@ def add_product_on_boxes(request):
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
-        return render(request, 'home/index1.html')
+        return render(request, 'home/index.html')
 
 @login_required
 def edit_box(request, pk):
@@ -178,7 +178,7 @@ def edit_box(request, pk):
     else: 
         messages.error(request, 'Sorry, you do not  have permition \
             to access this page')
-        return render(request, 'home/index1.html')
+        return render(request, 'home/index.html')
 
 
 @login_required
@@ -199,7 +199,7 @@ def delete_box(request, pk):
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
-        return render(request, 'home/index1.html')
+        return render(request, 'home/index.html')
 
 
 @login_required
@@ -234,7 +234,7 @@ def edit_product(request, pk):
     else:
         messages.error(request, 'Sorry, you do not have permition \
             to access this page')
-        return render(request, 'home/index1.html')
+        return render(request, 'home/index.html')
 
 
 @login_required
@@ -247,7 +247,7 @@ def delete_product(request, pk):
             product = get_object_or_404(Product, pk=pk)
             product.delete()
             messages.success(request, 'Product was deleted')
-            return redirect(reverse('products'))
+            return redirect(reverse('products_list'))
         except:
             messages.error(request, 'Something went wrong.\
                 Your product was not deleted.')
@@ -255,7 +255,7 @@ def delete_product(request, pk):
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
-        return render(request, 'home/index1.html')
+        return render(request, 'home/index.html')
 
 
 

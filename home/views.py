@@ -7,7 +7,7 @@ def index(request):
     """
     A view to return index page 
     """
-    return render(request, 'home/index1.html')
+    return render(request, 'home/index.html')
 
 class Management(TemplateView):
     """ Render management view """
