@@ -10,22 +10,22 @@
 
 {% block content %}
 <!--Profile Container-->
-<div class="container mt-5 px-1" itemscope itemtype="https://schema.org/GroceryStore">
+<div class="container mt-5 px-1">
     <div class="row">
         <div class="col-md-8">
-            <div class="card p-3">
-                <h2 class="logo-font mb-4 text-center" itemtype="user profile"><i class="fas fa-user-circle"></i> My
+            <div class="card p-3" >
+                <h2 class="logo-font mb-4 text-center"><i class="fas fa-user-circle"></i> My
                     Profile</h2>
                 <hr>
                 <div>
                     <!--Personal Details -->
-                    <p class="lead fw-bolder" itemtype="personal details">My personal details</p>
+                    <p class="lead fw-bolder">My personal details</p>
                     <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
                     <p>First Name: {{ customer.first_name }} | Last Name: {{ customer.first_name }}</p>
                     <hr>
-                    <div class="row ">
+                    <div class="row" itemscope itemtype="https://schema.org/address">
                         <!--Shipping Address Details -->
-                        <div class="col-md-6 mx-auto text-center" itemtype="shipping">
+                        <div class="col-md-6 mx-auto text-center" itemprop="shippingaddress">
                             {% if not shipping_address.address1  %}
                             <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
                                 <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
@@ -43,7 +43,7 @@
                             {% endif %}
                         </div>
                         <!--Billing Address Details -->
-                        <div class="col-md-6 mx-auto text-center" itemtype="billing">
+                        <div class="col-md-6 mx-auto text-center" itemprop="billingaddress">
                             {% if not billing_address.address1  %}
                             <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
                                 <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
@@ -68,8 +68,8 @@
         </div>
 
         <!-- Orders history container-->
-        <div class="col-md-4" itemscope>
-            <div class="card p-3" itemtype="orders">
+        <div class="col-md-4" itemscope itemtype="https://schema.org/Order" >
+            <div class="card p-3" itemprop="orderedItem">
                 <h3 class="fw-bold"> My previous orders</h3>
                 <hr>
                 <table class="table table-sm table-borderless text-center">
@@ -84,7 +84,7 @@
                     <tbody>
                         {% for order in order_ctxt|slice:10 %}
                         <tr>
-                            <td><a a class= "text-black text-decoration-none" href="{% url 'order_detail' order.order_id %}" >{{ order.order_id }}</a>
+                            <td><a class= "text-black text-decoration-none" href="{% url 'order_detail' order.order_id %}" >{{ order.order_id }}</a>
                             </td>
                             <td>{{ order.itemsCount }}</td>
                             <td>€ {{order.shipping}}</td>
