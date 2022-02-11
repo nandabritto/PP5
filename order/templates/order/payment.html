@@ -32,9 +32,9 @@
               {% csrf_token %}
               <input type="hidden" name="use_default" value="true">
               <div class="stripe-form-row">
-                <button id="stripeBtn" class="btn-success">Submit Payment</button>
+                <button class="stripeBtn btn-success">Submit Payment</button>
               </div>
-              <div id="card-errors" role="alert"></div>
+              <div class="card-errors" role="alert"></div>
             </form>
           </div>
           <!--Cart input Container -->
@@ -42,21 +42,19 @@
             <form action="." method="post" class="stripe-form" id="stripe-form">
               {% csrf_token %}
               <div class="stripe-form-row" id="creditCard">
-                <label for="card-element" id="stripeBtnLabel">
+                <label class="stripeBtnLabel">
                   Credit or debit card
                 </label>
-                <div id="card-element" class="StripeElement StripeElement--empty">
-                  <div class="__PrivateStripeElement">
-                    <iframe frameborder="0" allowtransparency="true" scrolling="no" name="__privateStripeFrame5"
-                      allowpaymentrequest="true" class=" __privateStripeFrame5"
-                      src="https://js.stripe.com/v3/elements-inner-card-19066928f2ed1ba3ffada645e45f5b50.html#style[base][color]=%2332325d&amp;style[base][fontFamily]=%22Helvetica+Neue%22%2C+Helvetica%2C+sans-serif&amp;style[base][fontSmoothing]=antialiased&amp;style[base][fontSize]=16px&amp;style[base][::placeholder][color]=%23aab7c4&amp;style[invalid][color]=%23fa755a&amp;style[invalid][iconColor]=%23fa755a&amp;componentName=card&amp;wait=false&amp;rtl=false&amp;keyMode=test&amp;origin=https%3A%2F%2Fstripe.com&amp;referrer=https%3A%2F%2Fstripe.com%2Fdocs%2Fstripe-js&amp;controllerId=__privateStripeController1"
-                      title="Secure payment input frame"></iframe><input class="__PrivateStripeElement-input"
-                      aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1"></div>
+                <div id="card-element">
+                  <div>
+                    <iframe
+                     title="Secure payment input frame"></iframe><input
+                      aria-hidden="true" aria-label=" " maxlength="1"></div>
                 </div>
               </div>
               <!-- Submit payment -->
               <div class="stripe-form-row my-3">
-                <button id="stripeBtn" class="btn-success">Submit Payment</button>
+                <button class="stripeBtn btn-success">Submit Payment</button>
               </div>
               <!--Payment alerts -->
               <div id="card-errors" role="alert"></div>
