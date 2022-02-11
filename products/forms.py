@@ -39,6 +39,11 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+        widgets = {
+          'product_description': forms.Textarea(attrs={'rows':4}),
+          'product_note1': forms.Textarea(attrs={'rows':2}),
+          'product_note2': forms.Textarea(attrs={'rows':2})
+        }
 
 
 class ProductOnBoxForm(forms.ModelForm):
