@@ -11,19 +11,18 @@
 <div class="container mt-5 px-1" itemscope>
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
-            <div class="card p-3" itemscope itemtype=" send newsletter">
+            <div class="card p-3" itemscope itemtype="https://schema.org/EmailMessage">
                 <h2 class="text-center"><strong>Sent Newsletters </strong></h2>
 
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Send Date</th>
-                            <th scope="col">Subject</th>
-                            <th scope="col">Body</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Update date</th>
-                            <th scope="col"></th>
+                            <th scope="col" itemprop="datesent">Send Date</th>
+                            <th scope="col" itemprop="subject">Subject</th>
+                            <th scope="col" itemprop="message">Body</th>
+                            <th scope="col" itemprop="status">Status</th>
+                            <th scope="col" itemprop="updatedate">Update date</th>
 
                         </tr>
                     </thead>
@@ -52,7 +51,7 @@
                 </div>
                 {% endif %}
 
-                </ul>
+          
                 <div class="text-center">
                     <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
                             class="fas fa-arrow-circle-left"></i> Back</a>
