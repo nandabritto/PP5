@@ -12,24 +12,48 @@
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
             <div class="card p-3" itemscope itemtype=" send newsletter">
-                <h2 class="text-center"><strong>Sent Newsletter List</strong></h2>
-                <ul>
-                    {% if object_list %}
-                    {% for newsletter in object_list %}
-                    <li>
-                        {{ newsletter.subject }} , {{ newsletter.created}}
-                    </li>
-                    {% endfor %}
-                    {% else %}
-                    <div class="text-center m-4">
-                        There's no newsletter. Send the first one <a href="{% url 'send' %}" class="text-success fw-bold" > here.
-                        </a>
-                    </div>
-                    {% endif %}
+                <h2 class="text-center"><strong>Sent Newsletters </strong></h2>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Send Date</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Body</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Update date</th>
+                            <th scope="col"></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% if object_list %}
+                            {% for newsletter in object_list %}
+                            <th scope="row"></th>
+                            <td>{{ newsletter.created}} </td>
+                            <td>{{ newsletter.subject }}</td>
+                            <td>{{ newsletter.body|slice:30 }}</td>
+                            <td>{{ newsletter.status }}</td>
+                            <td>{{ newsletter.updated }}</td>
+                            {% endfor %}
+                            
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                {% else %}
+                <div class="text-center m-4">
+                    There's no newsletter. Send the first one <a href="{% url 'send' %}" class="text-success fw-bold">
+                        here.
+                    </a>
+                </div>
+                {% endif %}
 
                 </ul>
                 <div class="text-center">
-
                     <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
                             class="fas fa-arrow-circle-left"></i> Back</a>
                 </div>

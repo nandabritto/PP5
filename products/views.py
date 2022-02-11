@@ -274,6 +274,7 @@ class ListBoxes(SuperUserRequiredMixin, ListView):
     model = Box
     template_name = 'products/boxes_list.html'
     paginate_by = 20
+    ordering = ['id']
 
 class ListProducts(SuperUserRequiredMixin, ListView):
     """
@@ -282,3 +283,4 @@ class ListProducts(SuperUserRequiredMixin, ListView):
     model = Product
     template_name = 'products/products_list.html'
     paginate_by = 20
+    ordering = ['id']
