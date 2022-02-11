@@ -1,14 +1,16 @@
+""" System Module """
 from django.db import models
 from django.contrib.auth.models import User
 from products.models import Box
 
-RATING=(
+RATING = (
     ('1', '1'),
-    ('2','2'),
-    ('3','3'),
-    ('4','4'),
-    ('5','5')
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5')
 )
+
 
 class BoxReview(models.Model):
     """"
@@ -19,7 +21,6 @@ class BoxReview(models.Model):
     review_text = models.TextField()
     review_rating = models.IntegerField(choices=RATING, default=0)
     date_added = models.DateTimeField(auto_now_add=True)
-
 
     def __str__(self):
         """

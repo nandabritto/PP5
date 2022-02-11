@@ -5,10 +5,10 @@ from django.views.generic import ListView
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Box, Product
-from .forms import ProductChoicesForm, BoxForm, ProductForm, ProductOnBoxForm
 from product_review.forms import AddReviewForm
 from product_review.models import BoxReview
+from .models import Box, Product
+from .forms import ProductChoicesForm, BoxForm, ProductForm, ProductOnBoxForm
 
 
 def boxes(request):
@@ -27,7 +27,7 @@ def box_detail(request, pk):
 
     if request.method == "POST" and request.user.is_authenticated:
         review_rating = request.POST.get('review_rating', 5)
-        review_text = request.POST.get('review_text','')
+        review_text = request.POST.get('review_text', '')
 
         review = BoxReview.objects.create(
             box=box,
@@ -40,11 +40,10 @@ def box_detail(request, pk):
     review_form = AddReviewForm
     reviews = BoxReview.objects.filter(box=box.id).order_by('-date_added')[:2]
 
-
     context = {
         'box': box,
         'review_form': review_form,
-        'reviews':reviews
+        'reviews': reviews
     }
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/box_detail.html', context)
@@ -57,10 +56,11 @@ def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
 
     context = {
-        'product': product,       
+        'product': product,
     }
 
     return render(request, 'products/product_detail.html', context)
+
 
 @login_required
 def add_box(request):
@@ -90,6 +90,7 @@ def add_box(request):
             to access this page')
         return render(request, 'home/index.html')
 
+
 @login_required
 def add_product(request):
     """
@@ -118,6 +119,7 @@ def add_product(request):
             to access this page')
         return render(request, 'home/index.html')
 
+
 @login_required
 def add_product_on_boxes(request):
     """
@@ -145,6 +147,7 @@ def add_product_on_boxes(request):
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
         return render(request, 'home/index.html')
+
 
 @login_required
 def edit_box(request, pk):
@@ -175,7 +178,7 @@ def edit_box(request, pk):
             'box': box,
         }
         return render(request, 'products/edit_boxes.html', context)
-    else: 
+    else:
         messages.error(request, 'Sorry, you do not  have permition \
             to access this page')
         return render(request, 'home/index.html')
@@ -224,7 +227,9 @@ def edit_product(request, pk):
                     Please, ensure your form is valid')
         else:
             form = ProductForm(instance=product)
-            messages.info(request, f'You are editing Product {product.product_name}')
+            messages.info(
+                request,
+                f'You are editing Product {product.product_name}')
 
         context = {
             'form': form,
@@ -258,7 +263,6 @@ def delete_product(request, pk):
         return render(request, 'home/index.html')
 
 
-
 class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     """
     Create super user only class
@@ -275,6 +279,7 @@ class ListBoxes(SuperUserRequiredMixin, ListView):
     template_name = 'products/boxes_list.html'
     paginate_by = 20
     ordering = ['id']
+
 
 class ListProducts(SuperUserRequiredMixin, ListView):
     """

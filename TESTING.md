@@ -24,7 +24,7 @@ Unittest were done to ensure all products, bag an order functionality developed 
 | Product | Views | box_details |
 | Product | Models | Product |
 | Product | Models | Box |
-| Product | Models | Product_On_Box |
+| Product | Models | s |
 | Cart | Models | cart |
 | Cart | Models | updateCart |
 

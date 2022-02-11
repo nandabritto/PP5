@@ -21,7 +21,6 @@ class OrderBoxAdmin(admin.ModelAdmin):
         'order_box',
         'quantity',
         'date_added',
-        # 'get_order_admin',
         'order_number'
     ]
 
