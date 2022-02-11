@@ -28,7 +28,7 @@ def cart(request):
     context = {'items': items, 'order': order, 'cart_items': cart_items}
     return render(request, 'cart/cart.html', context)
 
-# @login_required
+
 def update_cart(request):
     """
     A view to update cart items
@@ -59,6 +59,10 @@ def update_cart(request):
 
     if action == 'add':
         order_box.quantity = (order_box.quantity + 1)
+        print(f'len: {order_box.selected_products.__len__()}')
+        if prod_selected_names.__len__() > 0:
+            order_box.selected_products = prod_selected_names
+
     elif action == 'remove':
         order_box.quantity = (order_box.quantity - 1)
 
