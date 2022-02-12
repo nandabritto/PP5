@@ -13,109 +13,104 @@
 
 
 {% block content %}
-<section class="h-100 h-custom">
-    <div class="container py-5 h-100" itemscope itemtype="https://schema.org/Store">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 ">
-                <div class="card">
-                    {% if items %}
-                    <div class="card-body p-0">
-                        <div class="row g-0">
-                            <div class="col-lg-8">
-                                <div class="p-5">
-                                    <!-- Shopping cart card -->
-                                    <div class="d-flex justify-content-between align-items-center mb-5" itemscope
-                                        itemprop="https://schema.org/Store">
-                                        <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                                        <h6 class="mb-0 text-muted">{{order.get_cart_items}} item(s)</h6>
-                                    </div>
-
-                                    <!-- Shopping cart items -->
-                                    {% for item in items %}
-                                    <hr class="my-4">
-
-                                    <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                        <div class="col-md-2 col-lg-2 col-xl-2">
-                                            <img src="{{ item.box.box_image.url }}" class="rounded-3 w-100 "
-                                                alt="{{ item.box_image }}">
+    <section class="h-100 h-custom">
+        <div class="container py-5 h-100" itemscope itemtype="https://schema.org/Store">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 ">
+                    <div class="card">
+                        {% if items %}
+                            <div class="card-body p-0">
+                                <div class="row g-0">
+                                    <div class="col-lg-8">
+                                        <div class="p-5">
+                                            <!-- Shopping cart card -->
+                                            <div class="d-flex justify-content-between align-items-center mb-5" itemscope
+                                                itemtype="https://schema.org/Store">
+                                                <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                                                <h6 class="mb-0 text-muted">{{order.get_cart_items}} item(s)</h6>
+                                            </div>
+                                            <!-- Shopping cart items -->
+                                            {% for item in items %}
+                                                <hr class="my-4">
+                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                                        <img src="{{ item.box.box_image.url }}" class="rounded-3 w-100 "
+                                                            alt="{{ item.box_image }}">
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                                        <!-- Box name and descritption -->
+                                                        <h6 class="text-black" itemprop="name">Box: {{ item.box|title}}</h6>
+                                                        <p class="small text-muted mb-0" itemprop="description">
+                                                            {{ item.box.box_description}}</p>
+                                                    </div>
+                                                    <div class="cart-item-quantity">
+                                                        <!-- Box quantity -->
+                                                        <p class="text-center">Quantity</p>
+                                                        <img data-box="{{item.box.id}}" data-action="add"
+                                                            class="chg-quantity update-cart mx-auto" src="{{MEDIA_URL}}arrow-up.png"
+                                                            alt="Arrow up">
+                                                        <p class="quantity cart-item-quantity mt-2 text-center" itemprop="quantity">
+                                                            {{item.quantity}}
+                                                        </p>
+                                                        <img data-box="{{item.box.id}}" data-action="remove"
+                                                            class="chg-quantity update-cart mx-auto"
+                                                            src="{{MEDIA_URL}}arrow-down.png" alt="Arrow down">
+                                                    </div>
+                                                    <!-- Item total price -->
+                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" itemprop="price">
+                                                        <h6 class="mb-0"> € {{item.quantity | mul:item.box.box_price}}</h6>
+                                                    </div>
+                                                </div>
+                                                <p><strong>Selected Products:</strong> {{item.selected_products}}</p>
+                                                <hr class="my-4">
+                                            {% endfor %}
                                         </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                            <!-- Box name and descritption -->
-                                            <h6 class="text-black" itemprop="name">Box: {{ item.box|title}}</h6>
-                                            <p class="small text-muted mb-0" itemprop="description">
-                                                {{ item.box.box_description}}</p>
-                                        </div>
-                                        <div class="cart-item-quantity">
-                                            <!-- Box quantity -->
-                                            <p class="text-center">Quantity</p>
-                                            <img data-box="{{item.box.id}}" data-action="add"
-                                                class="chg-quantity update-cart mx-auto" src="{{MEDIA_URL}}arrow-up.png"
-                                                alt="Arrow up">
-                                            <p class="quantity cart-item-quantity mt-2 text-center" itemprop="quantity">
-                                                {{item.quantity}}
-                                            </p>
-                                            <img data-box="{{item.box.id}}" data-action="remove"
-                                                class="chg-quantity update-cart mx-auto"
-                                                src="{{MEDIA_URL}}arrow-down.png" alt="Arrow down">
-                                        </div>
-                                        <!-- Item total price -->
-                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" itemprop="price">
-                                            <h6 class="mb-0"> € {{item.quantity | mul:item.box.box_price}}</h6>
-                                        </div>
                                     </div>
-                                    <p><strong>Selected Products:</strong> {{item.selected_products}}</p>
-                                    <hr class="my-4">
-                                    {% endfor %}
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4 bg-grey" itemscope>
-                                <div class="p-5">
-                                    <!-- Summary column -->
-                                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
-                                    <hr class="my-4">
-
-                                    <!-- Total itams and price -->
-                                    <div class="d-flex justify-content-between mb-4">
-                                        <p class="lead text-capitalize">Items: {{order.get_cart_items}}</p>
-                                        <p class="lead" itemprop="price">€ {{order.get_cart_total|floatformat:2}}</p>
-
-                                    </div>
-
-                                    <!-- Order Total -->
-                                    <div class="d-flex justify-content-between mb-5">
-                                        <h5 class="text-uppercase" itemprop="price"><strong>Total price</strong></h5>
-                                        <h5>€ {{order.get_cart_total|floatformat:2}}</h5>
-                                    </div>
-                                    <!-- Choice buttons -->
-                                    <div class="text-center">
-                                        <a class="btn btn-dark btn-block btn-lg m-2" href="{% url 'boxes' %}"
-                                            data-mdb-ripple-color="dark"><i class="fas fa-store p-2"></i> Keep
-                                            shopping</a>
-                                        <a class="btn btn-success btn-block btn-lg m-2" href="{% url 'checkout' %}"
-                                            data-mdb-ripple-color="dark"><i class="fas fa-credit-card p-2"></i>
-                                            Checkout</a>
+                                    <div class="col-lg-4 bg-grey">
+                                        <div class="p-5">
+                                            <!-- Summary column -->
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                            <hr class="my-4">
+                                            <!-- Total itams and price -->
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <p class="lead text-capitalize">Items: {{order.get_cart_items}}</p>
+                                                <p class="lead" itemprop="price">€ {{order.get_cart_total|floatformat:2}}</p>
+                                            </div>
+                                            <!-- Order Total -->
+                                            <div class="d-flex justify-content-between mb-5">
+                                                <h5 class="text-uppercase" itemprop="price"><strong>Total price</strong></h5>
+                                                <h5>€ {{order.get_cart_total|floatformat:2}}</h5>
+                                            </div>
+                                            <!-- Choice buttons -->
+                                            <div class="text-center">
+                                                <a class="btn btn-dark btn-block btn-lg m-2" href="{% url 'boxes' %}"
+                                                    data-mdb-ripple-color="dark">
+                                                    <i class="fas fa-store p-2"></i> Keep shopping
+                                                </a>
+                                                <a class="btn btn-success btn-block btn-lg m-2" href="{% url 'checkout' %}"
+                                                    data-mdb-ripple-color="dark">
+                                                    <i class="fas fa-credit-card p-2"></i>Checkout
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% else %}
+                    <div class="text-center m-5" itemscope itemtype="https://schema.org/Store">
+                        <h3><i class="fa fa-shopping-cart text-black fa-lg" aria-hidden="true" itemprop="cart"></i>Your cart is empty</h3>
+                        <div class="text-center" itemscope itemtype="https://schema.org/Store">
+                            <a class="btn btn-dark btn-block btn-lg m-4" href="{% url 'boxes' %}" data-mdb-ripple-color="dark">
+                                <i class="fas fa-store p-2" itemprop="url"></i> Keep shopping
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
-        </div>
-        {% else %}
-
-        <div class="text-center m-5">
-            <h3> <i class="fa fa-shopping-cart text-black fa-lg" aria-hidden="true"></i> Your cart is empty</h3>
-            <div class="text-center">
-                <a class="btn btn-dark btn-block btn-lg m-4" href="{% url 'boxes' %}" data-mdb-ripple-color="dark"><i
-                        class="fas fa-store p-2"></i> Keep shopping</a>
-            </div>
-        </div>
-    </div>
-
-    {% endif %}
-</section>
+    </section>
 {% endblock %}
 
 <!-- Customizible JS -->
