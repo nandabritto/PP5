@@ -56,6 +56,11 @@ INSTALLED_APPS = [
     'active_link',
 ]
 
+
+ACCOUNT_FORMS = {
+'signup': 'store.forms.CustomSignupForm',
+}
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
