@@ -1,4 +1,5 @@
 {% load static %}
+{% load active_link_tags %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
@@ -6,7 +7,7 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid ">
-            <a class="navbar-brand" href="{% url 'home' %}">The regional Taste</a>
+            <a class="navbar-brand {% active_link 'home' %}" href="{% url 'home' %}">The regional Taste</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,18 +15,12 @@
             <div class="collapse navbar-collapse flot-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'howitworks' %}">How it works</a>
+                        <a href="{% url 'howitworks' %}" class="nav-link {% active_link 'howitworks' %}" >How it works</a>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Products
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'boxes' %}">All</a></li>
-                        </ul>
-                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link {% active_link 'boxes' %}" href="{% url 'boxes' %}">Boxes</a>
+                    </li>                    
                 </ul>
 
                 <ul class="navbar-nav ms-auto">

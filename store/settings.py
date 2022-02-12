@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'order',
     'newsletter',
     'product_review',
+    'active_link',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
