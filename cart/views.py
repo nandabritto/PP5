@@ -46,6 +46,8 @@ def update_cart(request):
     prod_selected_names = ', '.join([
         prd.product_name for prd in prod_selected])
 
+    surprise_products = 'Surprise products will be added to your box.'
+
     # creates a box
     box = Box.objects.get(id=box_id)
     order, created = Order.objects.get_or_create(
@@ -54,6 +56,7 @@ def update_cart(request):
     order_box, created = OrderBox.objects.get_or_create(
         order_box=order, box=box)
 
+    
     if created:
         order_box.selected_products = prod_selected_names
     
@@ -62,6 +65,8 @@ def update_cart(request):
         print(f'len: {order_box.selected_products.__len__()}')
         if prod_selected_names.__len__() > 0:
             order_box.selected_products = prod_selected_names
+        else:
+            order_box.selected_products = surprise_products
 
     elif action == 'remove':
         order_box.quantity = (order_box.quantity - 1)
