@@ -56,7 +56,7 @@ def update_cart(request):
 
     if created:
         order_box.selected_products = prod_selected_names
-
+    
     if action == 'add':
         order_box.quantity = (order_box.quantity + 1)
         print(f'len: {order_box.selected_products.__len__()}')

@@ -101,6 +101,14 @@
             </div>
         </div>
     </div>
+
+    <alert class="alertmessage" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+        <small>Hello!!!!!{{alert.msg}}</small>
+</alert>
+
+
+
+    
 </section>
 {% endblock %}
 

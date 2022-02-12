@@ -4,11 +4,18 @@ for (var i = 0; i < updateBtns.length; i++) {
     updateBtns[i].addEventListener('click', function () {
         var box_id = this.dataset.box
         var action = this.dataset.action
-        console.log('box_id:', box_id, 'action:', action)
-
-        console.log('USER:', user)
+        
         if (user == 'AnonymousUser') {
-            location.href="/accounts/login"
+            swal({
+                title: "Sorry, you need to login first.",
+                text: "Redirecting in 2 seconds.",
+                type: "warning",
+                timer: 2000,
+                showConfirmButton: false
+              }, function(){
+                    location.href = "/accounts/login";
+              });
+    
         } else {
             updateUserOrder(box_id, action)
         }
@@ -17,8 +24,6 @@ for (var i = 0; i < updateBtns.length; i++) {
 
 
 function updateUserOrder(box_id, action, prod_selected_ids=getvalues()) {
-    console.log('User is logged in, sending data...')
-
     var url = '/cart/update_cart/'
 
     fetch(url, {
@@ -35,7 +40,6 @@ function updateUserOrder(box_id, action, prod_selected_ids=getvalues()) {
     })
 
     .then((data)=>{
-        console.log('data',data)
         location.reload()
     })
 }
