@@ -7,7 +7,7 @@
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid ">
-            <a class="navbar-brand {% active_link 'home' %}" href="{% url 'home' %}">The regional Taste</a>
+            <a class="navbar-brand fw-bolder" href="{% url 'home' %}">The regional Taste</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -45,10 +45,9 @@
                 </ul>
                 <div>
                     <ul class="navbar-nav mx-1 my-2">
-
                         <li class="btn position-relative">
                             <a href="{% url 'cart' %}">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <i class="fa fa-shopping-cart text-black" aria-hidden="true"></i>
                                 <span
                                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     {{request.session.cart_items}}
