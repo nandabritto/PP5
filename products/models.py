@@ -40,7 +40,7 @@ class Box(models.Model):
     def save(self):
         super().save()
 
-        img = Image.open(self.box_image.path)
+        img = Image.open(self.box_image)
 
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
