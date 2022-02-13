@@ -1,7 +1,7 @@
 """ System Module """
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView
+from django.views.generic import ListView, UpdateView
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -22,7 +22,7 @@ def boxes(request):
 def box_detail(request, pk):
     """
     Get and filter objects from Box model and render box detail view
-    """
+    """ 
     box = get_object_or_404(Box, pk=pk)
 
     if request.method == "POST" and request.user.is_authenticated:
@@ -40,6 +40,7 @@ def box_detail(request, pk):
     review_form = AddReviewForm
     reviews = BoxReview.objects.filter(box=box.id).order_by('-date_added')[:2]
 
+
     product_on_box = Product_On_Box.objects.filter(box=box.id)
 
     context = {
@@ -50,6 +51,7 @@ def box_detail(request, pk):
     }
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/box_detail.html', context)
+
 
 
 def product_detail(request, pk):
@@ -361,3 +363,43 @@ class ListProductsOnBox(SuperUserRequiredMixin, ListView):
     template_name = 'products/productsonbox_list.html'
     paginate_by = 20
     ordering = ['-box']
+
+
+
+
+@login_required
+def edit_review(request, pk):
+    """
+    Edit reviews
+    """
+    review = get_object_or_404(BoxReview, pk=pk)
+    if request.user == review.customer:
+
+        if request.method == 'POST':
+            form = AddReviewForm(request.POST, request.FILES, instance=review)
+            rating = request.POST.get('review_rating')
+            form.fields['review_rating'].choices = [(int(rating), int(rating))]
+            if form.is_valid():
+                form.save()
+
+                review = get_object_or_404(BoxReview, pk=pk)
+                context = {
+                    'review': review,
+                }
+                # return render(request, 'products/box_details.html', args=[pk])
+                return redirect(reverse('box_details', args=[review.box.pk]))
+            else:
+                messages.error(request, 'Failed to edit your product.\
+                    Please, ensure your form is valid')
+        else:
+            form = AddReviewForm(instance=review)        
+
+        context = {
+            'form': form,
+            'review': review,
+        }
+        return render(request, 'product_review/edit_review.html', context)
+    else:
+        messages.info(request, 'Sorry, you cannot change this review.')
+        return redirect(reverse('box_details', args=[review.box.pk]))
+
