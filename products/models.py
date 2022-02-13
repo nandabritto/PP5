@@ -1,5 +1,6 @@
 """ System Module """
 from django.db import models
+from django.db.models import UniqueConstraint
 from PIL import Image
 
 
@@ -60,3 +61,10 @@ class Product_On_Box(models.Model):
     def __str__(self):
         """ Return product name string """
         return f"{self.box.box_name} | {self.product.product_name}"
+    
+    class Meta:
+        constraints = [
+            UniqueConstraint(fields=['product', 'box'],
+                name='productsunique',
+            ),
+        ]

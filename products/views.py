@@ -1,7 +1,7 @@
 """ System Module """
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView
+from django.views.generic import ListView, UpdateView
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -22,7 +22,7 @@ def boxes(request):
 def box_detail(request, pk):
     """
     Get and filter objects from Box model and render box detail view
-    """
+    """ 
     box = get_object_or_404(Box, pk=pk)
 
     if request.method == "POST" and request.user.is_authenticated:
@@ -40,6 +40,7 @@ def box_detail(request, pk):
     review_form = AddReviewForm
     reviews = BoxReview.objects.filter(box=box.id).order_by('-date_added')[:2]
 
+
     product_on_box = Product_On_Box.objects.filter(box=box.id)
 
     context = {
@@ -50,6 +51,7 @@ def box_detail(request, pk):
     }
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/box_detail.html', context)
+
 
 
 def product_detail(request, pk):
@@ -266,6 +268,65 @@ def delete_product(request, pk):
         return render(request, 'home/index.html')
 
 
+@login_required
+def edit_product_on_box(request, pk):
+    """
+    Edit products on box on the store
+    """
+    if request.user.is_superuser:
+        productonbox = get_object_or_404(Product_On_Box, pk=pk)
+        if request.method == 'POST':
+            form = ProductOnBoxForm(request.POST, request.FILES, instance=productonbox)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your product on box was edited')
+                productonbox = get_object_or_404(Product_On_Box, pk=pk)
+                context = {
+                    'productonbox': productonbox,
+                }
+                return redirect(reverse('productsonbox_list'))
+            else:
+                messages.error(request, 'Failed to edit your product on box.\
+                    Please, ensure your form is valid')
+        else:
+            form = ProductOnBoxForm(instance=productonbox)
+            messages.info(
+                request,
+                f'You are editing Product {productonbox.product.product_name} on Box {productonbox.box.box_name}')
+
+        context = {
+            'form': form,
+            'product': productonbox,
+        }
+        return render(request, 'products/edit_productsonbox.html', context)
+    else:
+        messages.error(request, 'Sorry, you do not have permition \
+            to access this page')
+        return render(request, 'home/index.html')
+
+
+
+@login_required
+def delete_productonbox(request, pk):
+    """
+    Delete product on box on the store
+    """
+    if request.user.is_superuser:
+        try:
+            productonbox = get_object_or_404(Product_On_Box, pk=pk)
+            productonbox.delete()
+            messages.success(request, 'Product was deleted from box')
+            return redirect(reverse('productsonbox_list'))
+        except:
+            messages.error(request, 'Something went wrong.\
+                Your product was not deleted from the box.')
+            # return redirect(reverse('box_details', args=[pk]))
+    else:
+        messages.error(request, 'Sorry, you do not have permittion \
+            to access this page')
+        return render(request, 'home/index.html')
+
+
 class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     """
     Create super user only class
@@ -292,3 +353,74 @@ class ListProducts(SuperUserRequiredMixin, ListView):
     template_name = 'products/products_list.html'
     paginate_by = 20
     ordering = ['id']
+
+
+class ListProductsOnBox(SuperUserRequiredMixin, ListView):
+    """
+    Creates a list of all boxes to admin
+    """
+    model = Product_On_Box
+    template_name = 'products/productsonbox_list.html'
+    paginate_by = 20
+    ordering = ['-box']
+
+
+
+
+@login_required
+def edit_review(request, pk):
+    """
+    Edit reviews
+    """
+    review = get_object_or_404(BoxReview, pk=pk)
+    if request.user == review.customer:
+        if request.method == 'POST':
+            form = AddReviewForm(request.POST, request.FILES, instance=review)
+            rating = request.POST.get('review_rating')
+            form.fields['review_rating'].choices = [(int(rating), int(rating))]
+            if form.is_valid():
+                form.save()
+
+                review = get_object_or_404(BoxReview, pk=pk)
+                context = {
+                    'review': review,
+                }
+                # return render(request, 'products/box_details.html', args=[pk])
+                return redirect(reverse('box_details', args=[review.box.pk]))
+            else:
+                messages.error(request, 'Failed to edit your product.\
+                    Please, ensure your form is valid')
+        else:
+            form = AddReviewForm(instance=review)        
+
+        context = {
+            'form': form,
+            'review': review,
+        }
+        return render(request, 'product_review/edit_review.html', context)
+    else:
+        messages.info(request, 'Sorry, you cannot change this review.')
+        return redirect(reverse('box_details', args=[review.box.pk]))
+
+
+
+@login_required
+def delete_review(request, pk):
+    """
+    Delete review
+    """
+    review = get_object_or_404(BoxReview, pk=pk)
+    if request.user == review.customer:
+        try:
+            review = get_object_or_404(BoxReview, pk=pk)
+            review.delete()
+            messages.success(request, 'Your review was deleted')
+            return redirect(reverse('box_details', args=[review.box.pk]))
+        except:
+            messages.error(request, 'Something went wrong.\
+                Your review was not deleted .')
+            # return redirect(reverse('box_details', args=[pk]))
+    else:
+        messages.error(request, 'Sorry, you do not have permittion \
+            to access this page')
+        return redirect(reverse('box_details', args=[review.box.pk]))

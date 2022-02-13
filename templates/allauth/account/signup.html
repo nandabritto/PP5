@@ -3,10 +3,9 @@
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
-
+{% block extra_title %} Register{% endblock %}
 
 {% block content %}
-
 <div class="container mt-5">
   <div class="row d-flex justify-content-center">
     <div class="col-md-7 col-lg-5 col-11 ">
@@ -18,7 +17,6 @@
                 class="link-secondary fw-bold">log
                 in</a>.{% endblocktrans %}</p>
           </div>
-
           <form class="signup text-center m-1" id="signup_form" method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
               {% for field in form %}
@@ -34,5 +32,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

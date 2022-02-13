@@ -9,7 +9,7 @@
 {% endblock %}
 
 <!-- Page title -->
-{% block extra_title %}Cart{% endblock %}
+{% block extra_title %} Cart{% endblock %}
 
 
 {% block content %}
@@ -42,6 +42,7 @@
                                                         <h6 class="text-black" itemprop="name">Box: {{ item.box|title}}</h6>
                                                         <p class="small text-muted mb-0" itemprop="description">
                                                             {{ item.box.box_description}}</p>
+                                                         
                                                     </div>
                                                     <div class="cart-item-quantity">
                                                         <!-- Box quantity -->
