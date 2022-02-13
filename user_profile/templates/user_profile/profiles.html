@@ -6,14 +6,14 @@
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 
-{% block extra_title %}| Profile{% endblock %}
+{% block extra_title %}Profile{% endblock %}
 
 {% block content %}
 <!--Profile Container-->
 <div class="container mt-5 px-1">
     <div class="row">
         <div class="col-md-8">
-            <div class="card p-3" >
+            <div class="card p-3">
                 <h2 class="logo-font mb-4 text-center"><i class="fas fa-user-circle"></i> My
                     Profile</h2>
                 <hr>
@@ -68,36 +68,45 @@
         </div>
 
         <!-- Orders history container-->
-        <div class="col-md-4" itemscope itemtype="https://schema.org/Order" >
+        <div class="col-md-4" itemscope itemtype="https://schema.org/Order">
             <div class="card p-3" itemprop="orderedItem">
                 <h3 class="fw-bold"> My previous orders</h3>
                 <hr>
-                <table class="table table-sm table-borderless text-center">
-                    <thead>
-                        <tr>
-                            <th>Order No</th>
-                            <th>Qt</th>
-                            <th>Shipping</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for order in order_ctxt|slice:10 %}
-                        <tr>
-                            <td><a class= "text-black text-decoration-none" href="{% url 'order_detail' order.order_id %}" >{{ order.order_id }}</a>
-                            </td>
-                            <td>{{ order.itemsCount }}</td>
-                            <td>€ {{order.shipping}}</td>
-                            <td>€ {{order.get_cart_total}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% if order_ctxt %}
+                    <table class="table table-sm table-borderless text-center">
+                        <thead>
+                            <tr>
+                                <th>Order No</th>
+                                <th>Qt</th>
+                                <th>Shipping</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in order_ctxt|slice:10 %}
+                            <tr>
+                                <td><a class="text-black text-decoration-none"
+                                        href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
+                                </td>
+                                <td>{{ order.itemsCount }}</td>
+                                <td>€ {{order.shipping}}</td>
+                                <td>€ {{order.get_cart_total}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="lead"> You don't have any previous order.</p>
+                    <div class="text-center">
+                        <a class="btn btn-dark btn-block btn m-4" href="{% url 'boxes' %}" data-mdb-ripple-color="dark">
+                            <i class="fas fa-store p-2" itemprop="url"></i>Order Now
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
 
 {% block postloadjs %}

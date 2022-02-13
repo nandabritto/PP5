@@ -30,6 +30,15 @@
                     <p class="card-text text-center lead px-5 " itemprop="description">{{ box.box_description }}</p>
                     <p class="card-text text-center mb-0" itemprop="note"><small>{{ box.box_note1 }}</small></p>
                     <p class="card-text text-center" itemprop="note"><small>{{ box.box_note2 }}</small></p>
+                    <div class="my-2">
+                    <p>Fixed products on this box:</p>
+                    {% for products in product_on_box%}
+                        {% if products.product_selectable == False %}                            
+                            | {{ products.product.product_name }}
+                        {% endif%}
+                    {% endfor %}
+                </div>
+                    
                     <!-- Products options -->
                     <p class="lead text-center">Select your products here:</p>
                     
@@ -150,6 +159,6 @@
 
 <!-- Customizible JS -->
 {% block postloadjs %}
-<!-- <script src="{% static 'js/product_detail.js' %}"></script> -->
+<script src="{% static 'js/product_detail.js' %}"></script>
 <script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

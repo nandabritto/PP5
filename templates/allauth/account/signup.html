@@ -14,13 +14,16 @@
         <div class="form-data" v-if="!submitted">
           <div class="text-center mb-4">
             <h1>{% trans "Sign Up" %}</h1>
-            <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}" class="link-secondary fw-bold">log
+            <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}"
+                class="link-secondary fw-bold">log
                 in</a>.{% endblocktrans %}</p>
           </div>
 
           <form class="signup text-center m-1" id="signup_form" method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
-            {{ form|crispy  }}
+              {% for field in form %}
+                {{ field|as_crispy_field  }} 
+              {% endfor %}
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}

@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from product_review.forms import AddReviewForm
 from product_review.models import BoxReview
-from .models import Box, Product
+from .models import Box, Product, Product_On_Box
 from .forms import ProductChoicesForm, BoxForm, ProductForm, ProductOnBoxForm
 
 
@@ -40,10 +40,13 @@ def box_detail(request, pk):
     review_form = AddReviewForm
     reviews = BoxReview.objects.filter(box=box.id).order_by('-date_added')[:2]
 
+    product_on_box = Product_On_Box.objects.filter(box=box.id)
+
     context = {
         'box': box,
         'review_form': review_form,
-        'reviews': reviews
+        'reviews': reviews,
+        'product_on_box':product_on_box,
     }
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/box_detail.html', context)

@@ -14,8 +14,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
-# DEBUG = 'DEBUG' in os.environ
-DEBUG = False
+DEBUG = 'DEBUG' in os.environ
+# DEBUG = False
 # For debugging
 if DEBUG:
     logging.basicConfig(
@@ -53,7 +53,14 @@ INSTALLED_APPS = [
     'order',
     'newsletter',
     'product_review',
+    'active_link',
 ]
+
+
+ACCOUNT_FORMS = {
+'signup': 'store.forms.CustomSignupForm',
+ "login": "store.forms.CustomLoginForm",
+}
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"

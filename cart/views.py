@@ -2,6 +2,7 @@
 import json
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from order.models import Order, OrderBox
 from products.models import Box, Product
@@ -37,7 +38,6 @@ def update_cart(request):
     action = data['action']
 
     customer = request.user
-    # request.session['cart_items'] = cart_items
 
     # Get user selected products
     prod_selected_ids = data.get('prod_selected_ids', [])
@@ -45,6 +45,8 @@ def update_cart(request):
         id__in=[int(prd) for prd in prod_selected_ids])
     prod_selected_names = ', '.join([
         prd.product_name for prd in prod_selected])
+
+    surprise_products = 'Surprise products will be added to your box.'
 
     # creates a box
     box = Box.objects.get(id=box_id)
@@ -54,11 +56,18 @@ def update_cart(request):
     order_box, created = OrderBox.objects.get_or_create(
         order_box=order, box=box)
 
+    
     if created:
         order_box.selected_products = prod_selected_names
-
+    
     if action == 'add':
         order_box.quantity = (order_box.quantity + 1)
+        print(f'len: {order_box.selected_products.__len__()}')
+        if prod_selected_names.__len__() > 0:
+            order_box.selected_products = prod_selected_names
+        else:
+            order_box.selected_products = surprise_products
+
     elif action == 'remove':
         order_box.quantity = (order_box.quantity - 1)
 
@@ -67,9 +76,7 @@ def update_cart(request):
     if order_box.quantity <= 0:
         order_box.delete()
 
-    # redirect_url = reques.POST.get('redirect_url')
     return JsonResponse('Item was added.', safe=False)
-    # return HttpResponseRedirect(request.path_info)
 
 
 def cart_number_on_all_pages(request):
