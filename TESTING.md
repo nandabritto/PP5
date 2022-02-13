@@ -62,7 +62,7 @@ Unittest were done to ensure all products, bag an order functionality developed 
 
 ### Sprint 3 - 17/01/2022 - 24/01/2022
 
-Order and payment functionlity begin to be developed during this sprint, but all unit tests related to them will be develop at sprint 4 when this features are complete and working as expected. 
+Order and payment functionality begin to be developed during this sprint, but all unit tests related to them will be develop at sprint 4 when this features are complete and working as expected. 
   
 ### Sprint 4 - 25/01/2022 - 31/01/2022
 

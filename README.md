@@ -7,7 +7,7 @@
 <img src="">
 </p>
 
-Live app link [here]()
+Live app link [here](https://theregionaltaste.herokuapp.com/)
 
 
 ## User Experience
@@ -16,29 +16,59 @@ Live app link [here]()
 
 1. As a user, I would like to be able to …
 
-    1.1 Register on the website using my username, email and password;
+    1.1 ... register using name, email, username and password;
     
-    1.2. 
+    1.2. ... login on website using my email/username and password;
     
-    1.3 
+    1.3 ... logout easily;
     
-    1.4   
+    1.4 ... have all information about website services on landing page;
 
-2. As a logged user, I would like to be able to …
+    1.5 ... see details about each available box;
+    
+    1.6 ... add boxes on my bag;
 
-    2.1 
+    1.7 ... check all available boxes and products;
 
-    2.2 
+    1.8 ... pay for my product using a Credit Card;
 
-    2.3 
+    1.9 ... add my shipping and billing address;
 
-    2.4 
+    1.10 ... get a confirmation email with my order and shipping details;
+
+    1.11 ... create my profile
+
+    1.12 ... check my previous order details on profile page;
+
+    1.13 ... subscribe the newsletter;
+
+    1.14 ... unsubscribe the newsletter;
+
+    1.14 ... select 5 products to add on my box;
+
+    1.15 ... check user's review's on boxes;
+
+    1.16 ... add a review on boxes;
+    
+    1.17 ... edit or delete my reviews on boxes. 
+
+2. As a site admin, I would like to be able to …
+
+    2.1  ... have admin privileges and check the product management page;
+
+    2.2 ... be present to a list of products to edit or delete;
+
+    2.3 ... create products or add them to the boxes;
+
+    2.4 ... o delete created products or boxes;
+
+    2.5 ... the user to be redirected to a specific page if any error happens.
 
 ### 1. Strategy
 
   + **Project Goal**
 
-
+Create an e-commerce app that allows people (users) who lives out of their home countries or loves different cuisines to have access to a range of regional products from various part of the world.  
 
 ### 2. Scope
 
@@ -81,7 +111,7 @@ Test cases were linked with every User story presented above, and can be found i
     - As a user I want to logout on website
     - As a site admin I want to have admin privileges 
 
-* Sprint 2 - 09/11/2022 - 16/01/2022
+* Sprint 2 - 09/11/2022 - 16/01/2022 (1 week)
 
   + Create products page
     - As a shopper I want to to see details about each available box
@@ -90,35 +120,33 @@ Test cases were linked with every User story presented above, and can be found i
     - As a shopper I want to sort a list of products by region (Not done on this sprint. Will be add in future sprints)
 
 
-* Sprint 3
+* Sprint 3 and 4 - 17/01/2022 - 24/01/2022 (2 weeks)
+
+  + Create order and payment pages
+    - As a user I want to pay for my product 
+    - As a user I want to add my shipping and billing address
+    - As a user, I want to get a confirmation email with my order and shipping details 
+
+* Sprint 5 - 30/01/2022 - 06/02/2022
+
+  + Create Profile
+    - As a user, I want to create my profile
+    - As a user I want to check my previous order details
+
+* Sprint 6 - 07/02/2022 - 14/02/2022
+
+  + Add products on Box
+    - As a user, I want to select 5 products to add on my box
+
+  + Product Management
+    - As a site admin, I want to create products or add it to the box
+    - As a site admin, I want to delete created products
+    - As a site admin, I want to be present to a list of products to edit or delete
+
+* Sprint 7 - 13/02/2022 - 20/02/2022
 
   + 
 
-<img width= "800" src="">
-
-* Sprint 4
-
-  + 
-
-<img width= "800" src="">
-
-* Sprint 5
-
-  + 
-
-<img width= "800" src="">
-
-* Sprint 6
-
-  + 
-
-<img width= "800" src="">
-
-* Sprint 7
-
-  + 
-
-<img width= "800" src="">
 
 </details>
 
@@ -127,13 +155,15 @@ Test cases were linked with every User story presented above, and can be found i
 
 * A clear and straightforward layout is in place to ensure users can navigate intuitively and have a leisurely experience.
 * Navbar is fixed on top to facilitate users to navigate through pages easily. Small navigation is the same on all pages to ensure easy navigation.
-* 
+* Footer is fixed on the bottom with links to social media and newsletter subscription.
 
 ### 4. Skeleton
 
 Wireframes created with Balsamiq. The project was developed from initial wireframes, and some modifications were made during the development process in respose to user feedbacks and to assure the best usability. 
 
-Click to see wireframes:
+* UI was changed during the project to ensure better user experience.
+
+Click to see wireframes (before UI changes):
 
 [HomePage](media/readme/wireframes/homepage.png) <br>
 [Register Page](media/readme/wireframes/register_page.png) <br>
@@ -152,7 +182,6 @@ The Colour scheme was generated using the eyedropper plugin to get one colour fr
 
 <img width="300" src="media/readme/regionaltastepallete.jpg">
 
-
 * Font Selection
  
 Two complimentary fonts were chosen with [Google Fonts](https://fonts.google.com/) to be used across the website.
@@ -168,23 +197,121 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 + Fixed Navbar allow the user easy access to all pages. 
 
-1. Login and  Register User buttons are present on the navbar if the user is not logged. 
+1. On the left site, How it works and Boxes links leads user to this pages;
 
 <img width="800" src="">
 
-2. Logout is present if the user is logged. 
+2. on the right side Account and Cart buttons are available to user;
+
+  2.1 Not logged user:
+
+  + Register and Login options are available
 
 <img width="800" src="">
 
-3. 
+  2.2 Admin logged user:
 
-4.  
+  + Product Management, Login and Logout options available
+
+<img width="800" src="">
+
+  2.2 Customer logged user:
+
+  + Login and Logout options available
+
+<img width="800" src="">
+
+  2.3 Cart Button are available to all users and leads to respective page
+
+3. Collapsed navbar on smaller devices to wrap in all options and assure better navbar design.
 
 <img width="400" src="">
 
-5. Collapsed navbar on smaller devices to wrap in all options and assure better navbar design.
+### **Homepage** 
 
-  <img width="400" src="">
+1. Homepage jumbotron 
+
+  + A brief explanation about the store with a button link to products page
+
+<img width="400" src="">
+
+### **How it works** 
+
+1. 3 steps images 
+
+  + A brief explanation about how the store works
+
+<img width="400" src="">
+
+### **Boxes Page** 
+
+1. Cards with all available boxes are present on this page with image, description and price. 
+
+<img width="400" src="">
+
+2. Buttons are available in each card to lead user to add the box directly to the cart or customize it
+
+<img width="400" src="">
+
+### **Boxes Details Page** 
+
+1. A card with all box information are available to the user (box name, description, image, standart products, selectable products and price)
+
+<img width="400" src="">
+
+2. The user can customize the box choosing 5 items from checkbox list before add the box to cart. In case the user dont customize the box, 5 surprise items will be added to their box in the cart page. 
+
+<img width="400" src="">
+
+3. User's reviews are availabe on the bottom of the box card and can be viewed by all customers (logged or not)
+
+<img width="400" src="">
+
+4. A logged user can add a review about the box clicking on Add Product Review button. 
+
+<img width="400" src="">
+
+### **Shopping Cart Page** 
+
+1. User can check all data about the boxes in the cart (box name, quantity, selected products, number of items and total price)
+
+2. On the right side, an order summary is available with number of items and total price
+
+<img width="400" src="">
+
+3. Optional buttons can lead user back to the boxe page or to checkout 
+
+<img width="400" src="">
+
+### **Checkout Page** 
+
+1. Shipping address 
+
+  + User can add a shipping address and save it on profile if didn't do it before. 
+  + User can add the same billing address just checking the checkbox 
+
+<img width="400" src="">
+
+2. Shipping address 
+
+  + User can add a billling address and save it on profile if didn't do it before. 
+  + User can auto complete billing address with saved shipping address from profile 
+
+<img width="400" src="">
+
+### **Confirm Order Page** 
+
+1. All shipping and billing address ae available to be confirm by the user
+
+2. If want to change address user can come back to the last page and change it
+
+<img width="400" src="">
+
+### **Payment Page** 
+
+1. Credit card only payments are available on this age
+
+<img width="400" src="">
 
 ## Future Features
 
