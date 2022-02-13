@@ -17,6 +17,9 @@
 
     {% block extra_meta %}
     {% endblock %}
+    
+    {% block extra_js %}
+    {% endblock %}
 
     {% block corecss %}
     <!-- Bootstrap -->
@@ -37,10 +40,13 @@
     <!-- Customizable CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
+    <script src="https://js.stripe.com/v3/"></script>
+
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
+    
 
     {% block corejs %}
 
@@ -83,8 +89,6 @@
 
     {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
 
     <title>The Regional Taste |{% block extra_title %}{% endblock %}</title>
 </head>
