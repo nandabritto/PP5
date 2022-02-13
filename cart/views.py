@@ -84,12 +84,12 @@ def update_cart(request):
     return JsonResponse('Item was added.', safe=False)
 
 
-def cart_number_on_all_pages(request):
-    """
-    Add cart items number in all pages
-    """
-    customer = request.user
-    order = Order.objects.filter(
-        customer=customer, ordered=False)
-    cart_items = order.get_cart_items
-    return {'cart_items': cart_items}
+# def cart_number_on_all_pages(request):
+#     """
+#     Add cart items number in all pages
+#     """
+#     customer = request.user
+#     order = Order.objects.filter(
+#         customer=customer, ordered=False)
+#     cart_items = order.get_cart_items
+#     return {'cart_items': cart_items}
