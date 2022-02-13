@@ -21,31 +21,33 @@
             </h1>
             <hr>
             <!-- Box image -->
-            <figure class="col-md-5 col-lg-5 col-xl-3 col-8 d-flex align-items-center px-2 mr-0 ">
+            <figure class="col-md-5 col-lg-5 col-xl-5 col-8 d-flex align-items-center px-2 mr-0 ">
                 <img src="{{ box.box_image.url }}" class="rounded-3 w-100 box-image-detail mx-auto" alt="{{ box.box_image }}" itemprop="image">
             </figure>
-            <div class="col-md-5 col-lg-5 mr-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <div class="col-md-7 col-lg-7 mr-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                 <div class="card-body ">
                     <!-- Box description -->
                     <p class="card-text text-center lead px-5 " itemprop="description">{{ box.box_description }}</p>
                     <p class="card-text text-center mb-0" itemprop="note"><small>{{ box.box_note1 }}</small></p>
                     <p class="card-text text-center" itemprop="note"><small>{{ box.box_note2 }}</small></p>
-                    <div class="my-2">
-                    <p>Fixed products on this box:</p>
-                    {% for products in product_on_box%}
-                        {% if products.product_selectable == False %}                            
-                            | {{ products.product.product_name }}
-                        {% endif%}
-                    {% endfor %}
+                    <div class="my-2 text-center">
+                        <small>
+                        <p class="m-0">Standard products on this box:</p>
+                            {% for products in product_on_box%}
+                                {% if products.product_selectable == False %}                            
+                                    | {{ products.product.product_name|title }}
+                                {% endif%} 
+                            {% endfor %} |
+                        </small>
                 </div>
                     
                     <!-- Products options -->
-                    <p class="lead text-center">Select your products here:</p>
+                    <p class="text-center mt-0">Customize your optional products:</p>
                     
                     <div class="d-flex justify-content-center" itemscope itemtype="https://schema.org/GroceryStore">
                         <form class="product_options px-4" method="post" itemprop="product choices">
                             {% csrf_token %}
-                            {{form|crispy}}                       
+                           <small> {{form|crispy }}  </small>                     
                         </form>
                     </div>
                     <!-- Submited box products options -->

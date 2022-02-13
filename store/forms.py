@@ -1,6 +1,6 @@
 """ System Module """
 from crispy_forms.helper import FormHelper
-from allauth.account.forms import SignupForm, LoginForm, PasswordField
+from allauth.account.forms import SignupForm, LoginForm, PasswordField, ChangePasswordForm
 from django import forms
  
  
@@ -38,4 +38,10 @@ class CustomLoginForm(LoginForm):
         self.fields["login"].label = ""
         self.fields["password"].label = ""
 
-    
+
+# class CustomPasswordChangeForm(ChangePasswordForm):
+     
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields["password1"].label = ""
+#         self.fields["password2"].label = ""

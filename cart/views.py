@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from order.models import Order, OrderBox
-from products.models import Box, Product
+from products.models import Box, Product, Product_On_Box
 
 
 def cart(request):
@@ -18,6 +18,7 @@ def cart(request):
             customer=customer, ordered=False)
         items = order.orderbox_set.all()
         cart_items = order.get_cart_items
+
         request.session['cart_items'] = cart_items
 
     else:
@@ -25,7 +26,11 @@ def cart(request):
         order = {'get_cart_total': 0, 'get_cart_items': 0}
         cart_items = order['get_cart_items']
 
-    context = {'items': items, 'order': order, 'cart_items': cart_items}
+    context = {
+        'items': items,
+        'order': order,
+        'cart_items': cart_items,
+        }
     return render(request, 'cart/cart.html', context)
 
 
