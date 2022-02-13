@@ -84,12 +84,19 @@
                 <div class="text-center mx-auto p-3" itemprop="review">
                     <h3> Add your review</h3>
                     <div>
-                        <button type="button" class="btn btn-warning mx-1" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-warning m-2" data-bs-toggle="modal"
                             data-bs-target="#add_review">
                             Add product review
                         </button>
                     </div>
                 </div>
+                {% else %}
+                <div class="text-center mx-auto p-3" itemprop="review">
+                    <h3> Login to review</h3>
+                    <div>
+                        <a href="{% url 'account_login' %}" class="btn btn-warning m-2">Go to Login</a>
+                    </div>
+                </div>            
                 {% endif %}
             </div>
             <!-- User reviews list -->
