@@ -374,7 +374,6 @@ def edit_review(request, pk):
     """
     review = get_object_or_404(BoxReview, pk=pk)
     if request.user == review.customer:
-
         if request.method == 'POST':
             form = AddReviewForm(request.POST, request.FILES, instance=review)
             rating = request.POST.get('review_rating')
@@ -403,3 +402,25 @@ def edit_review(request, pk):
         messages.info(request, 'Sorry, you cannot change this review.')
         return redirect(reverse('box_details', args=[review.box.pk]))
 
+
+
+@login_required
+def delete_review(request, pk):
+    """
+    Delete review
+    """
+    review = get_object_or_404(BoxReview, pk=pk)
+    if request.user == review.customer:
+        try:
+            review = get_object_or_404(BoxReview, pk=pk)
+            review.delete()
+            messages.success(request, 'Your review was deleted')
+            return redirect(reverse('box_details', args=[review.box.pk]))
+        except:
+            messages.error(request, 'Something went wrong.\
+                Your review was not deleted .')
+            # return redirect(reverse('box_details', args=[pk]))
+    else:
+        messages.error(request, 'Sorry, you do not have permittion \
+            to access this page')
+        return redirect(reverse('box_details', args=[review.box.pk]))
