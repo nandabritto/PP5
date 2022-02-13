@@ -31,15 +31,18 @@
                             <td itemprop="elementID">{{productsonbox.box.box_name}}</td>
                             <td itemprop="name">{{productsonbox.product.product_name|title}}</td>
                             <td itemprop="name">{{productsonbox.product_selectable|title}}</td>
-
-                         
+                            <td class="text-end"><a href=""
+                                class="btn btn-warning fw-bold mx-2">Edit</a>
+                            <a href="{% url 'deleteproductonbox' productsonbox.id %}" class="btn btn-danger fw-bold mx-2">Delete</a>
+                        </td>                
                             </td>
                         </tr>
                     </tbody>
                     {% endfor %}
                 </table>                                 
                 <div class="text-center">
-               
+               <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
+                            class="fas fa-arrow-circle-left"></i> Back</a>
                 </div>
             </div>
         </div>

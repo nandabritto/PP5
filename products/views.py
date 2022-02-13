@@ -266,6 +266,27 @@ def delete_product(request, pk):
         return render(request, 'home/index.html')
 
 
+@login_required
+def delete_productonbox(request, pk):
+    """
+    Delete product on box on the store
+    """
+    if request.user.is_superuser:
+        try:
+            productonbox = get_object_or_404(Product_On_Box, pk=pk)
+            productonbox.delete()
+            messages.success(request, 'Product was deleted from box')
+            return redirect(reverse('productsonbox_list'))
+        except:
+            messages.error(request, 'Something went wrong.\
+                Your product was not deleted from the box.')
+            # return redirect(reverse('box_details', args=[pk]))
+    else:
+        messages.error(request, 'Sorry, you do not have permittion \
+            to access this page')
+        return render(request, 'home/index.html')
+
+
 class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     """
     Create super user only class
