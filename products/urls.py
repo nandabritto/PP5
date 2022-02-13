@@ -15,6 +15,7 @@ urlpatterns = [
     path('editbox/<int:pk>/', views.edit_box, name='edit_box'),
     path('deletebox/<int:pk>/', views.delete_box, name='delete_box'),
     path('editproduct/<int:pk>/', views.edit_product, name='edit_product'),
+    path('editproductonbox/<int:pk>/', views.edit_product_on_box, name='editproductonbox'),
     path('deleteproduct/<int:pk>/', views.delete_product,name='delete_product'),
     path('deleteproductonbox/<int:pk>/', views.delete_productonbox,name='deleteproductonbox'),
     path('boxes_list/', ListBoxes.as_view(), name='boxes_list'),

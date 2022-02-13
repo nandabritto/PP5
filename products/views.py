@@ -267,6 +267,44 @@ def delete_product(request, pk):
 
 
 @login_required
+def edit_product_on_box(request, pk):
+    """
+    Edit products on box on the store
+    """
+    if request.user.is_superuser:
+        productonbox = get_object_or_404(Product_On_Box, pk=pk)
+        if request.method == 'POST':
+            form = ProductOnBoxForm(request.POST, request.FILES, instance=productonbox)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your product on box was edited')
+                productonbox = get_object_or_404(Product_On_Box, pk=pk)
+                context = {
+                    'productonbox': productonbox,
+                }
+                return redirect(reverse('productsonbox_list'))
+            else:
+                messages.error(request, 'Failed to edit your product on box.\
+                    Please, ensure your form is valid')
+        else:
+            form = ProductOnBoxForm(instance=productonbox)
+            messages.info(
+                request,
+                f'You are editing Product {productonbox.product.product_name} on Box {productonbox.box.box_name}')
+
+        context = {
+            'form': form,
+            'product': productonbox,
+        }
+        return render(request, 'products/edit_productsonbox.html', context)
+    else:
+        messages.error(request, 'Sorry, you do not have permition \
+            to access this page')
+        return render(request, 'home/index.html')
+
+
+
+@login_required
 def delete_productonbox(request, pk):
     """
     Delete product on box on the store
@@ -322,4 +360,4 @@ class ListProductsOnBox(SuperUserRequiredMixin, ListView):
     model = Product_On_Box
     template_name = 'products/productsonbox_list.html'
     paginate_by = 20
-    ordering = ['id']
+    ordering = ['-box']
