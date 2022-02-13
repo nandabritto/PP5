@@ -14,13 +14,16 @@ def cart_contents(request):
     """
     Creates order contexts to be callable in profile pages
     """
+    cartItemsCount = 0
     if request.user.is_authenticated:
         order = Order.objects.filter(
             customer=request.user, ordered=False)
-        open_order = order[0]
-        cartItemsCount = open_order.get_cart_items
-    else:
-        cartItemsCount = 0
+        if order.exists():
+            open_order = order[0]
+            cartItemsCount = open_order.get_cart_items
+
+    # else:
+    #     cartItemsCount = 0
 
     context = {
                 'cartItemsCount': cartItemsCount
