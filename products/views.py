@@ -292,3 +292,13 @@ class ListProducts(SuperUserRequiredMixin, ListView):
     template_name = 'products/products_list.html'
     paginate_by = 20
     ordering = ['id']
+
+
+class ListProductsOnBox(SuperUserRequiredMixin, ListView):
+    """
+    Creates a list of all boxes to admin
+    """
+    model = Product_On_Box
+    template_name = 'products/productsonbox_list.html'
+    paginate_by = 20
+    ordering = ['id']
