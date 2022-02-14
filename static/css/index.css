@@ -1,3 +1,7 @@
+.body {
+    background-image: url(/media/background-index.jpg)!important;
+}
+
 .card {
     border: none
 }
