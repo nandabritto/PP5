@@ -22,9 +22,6 @@ def cart_contents(request):
             open_order = order[0]
             cartItemsCount = open_order.get_cart_items
 
-    # else:
-    #     cartItemsCount = 0
-
     context = {
                 'cartItemsCount': cartItemsCount
             }
