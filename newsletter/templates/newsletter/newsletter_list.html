@@ -12,8 +12,9 @@
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
             <div class="card p-3" itemscope itemtype="https://schema.org/EmailMessage">
-                <h2 class="text-center"><strong>Sent Newsletters </strong></h2>
+                <h1 class="text-center"><strong>Sent Newsletters </strong></h1>
 
+                {% if object_list %}
                 <table class="table">
                     <thead>
                         <tr>
@@ -28,7 +29,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            {% if object_list %}
                             {% for newsletter in object_list %}
                             <th scope="row"></th>
                             <td>{{ newsletter.created}} </td>

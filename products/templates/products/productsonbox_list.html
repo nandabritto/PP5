@@ -8,40 +8,37 @@
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
             <div class="card p-3" itemscope itemtype="https://schema.org/ItemList">
-                <h2 class="text-center"><strong>Product Management</strong></h2>
+                <h1 class="text-center"><strong>Product Management</strong></h1>
                 <hr>
                 <h2 class="text-center"><strong>Products on Boxes</strong></h2>
 
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col"></th>
                             <th scope="col" itemprop="elementID">Id</th>
                             <th scope="col" itemprop="name">Box</th>
                             <th scope="col" itemprop="description">Product</th>
                             <th scope="col" itemprop="price">Selectable</th>
-                            <th scope="col" ></th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for productsonbox in object_list %}
                         <tr>
-                            <th scope="row"></th>
                             <td itemprop="elementID">{{productsonbox.id}}</td>
                             <td itemprop="elementID">{{productsonbox.box.box_name}}</td>
                             <td itemprop="name">{{productsonbox.product.product_name|title}}</td>
                             <td itemprop="name">{{productsonbox.product_selectable|title}}</td>
                             <td class="text-end"><a href="{% url 'editproductonbox' productsonbox.id %}"
-                                class="btn btn-warning fw-bold mx-2">Edit</a>
-                            <a href="{% url 'deleteproductonbox' productsonbox.id %}" class="btn btn-danger fw-bold mx-2">Delete</a>
-                        </td>                
+                                    class="btn btn-warning fw-bold mx-2">Edit</a>
+                                <a href="{% url 'deleteproductonbox' productsonbox.id %}"
+                                    class="btn btn-danger fw-bold mx-2">Delete</a>
                             </td>
                         </tr>
                     </tbody>
                     {% endfor %}
-                </table>                                 
+                </table>
                 <div class="text-center">
-               <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
+                    <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
                             class="fas fa-arrow-circle-left"></i> Back</a>
                 </div>
             </div>

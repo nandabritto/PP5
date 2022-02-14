@@ -13,19 +13,19 @@
     <div class="row">
         <div class="col-md-10 col-lg-10 col-11 mx-auto">
             <div class="card p-3">
-                <h2 class="logo-font mb-2 text-center fw-bold">Update Profile</h2>
+                <h1 class="logo-font mb-2 text-center fw-bold">Update Profile</h1>
                 <hr>
                 <div>
-                    <p class="lead fw-bolder">My personal details</p>
+                    <h2 class="lead fw-bolder">My personal details</h2>
                     <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
                     <p>Name: {{ customer.first_name }} {{ customer.last_name }}</p>
                 </div>
                 <hr>
                 <form class="row g-3 shipping" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
-                    <p class="lead fw-bolder">My Default Shipping Address</p>
+                    <h2 class="lead fw-bolder">My Default Shipping Address</h2>
                     
-                    <div class="col-12">
+                    <div class="col-12" >
                         {{ shipping_address_form.address1|as_crispy_field }}
                         {{ shipping_address_form.address2|as_crispy_field }}
                     </div>
@@ -52,7 +52,7 @@
                     </div>
                 </form>
                 <hr>
-                <p class="lead fw-bolder">My Default Billing Address</p>
+                <h3 class="lead fw-bolder">My Default Billing Address</h3>
                 <form class="row g-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
 
                     {% csrf_token %}

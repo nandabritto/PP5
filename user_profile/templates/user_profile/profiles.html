@@ -14,12 +14,12 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card p-3">
-                <h2 class="logo-font mb-4 text-center"><i class="fas fa-user-circle"></i> My
-                    Profile</h2>
+                <h1 class="logo-font mb-4 text-center"><i class="fas fa-user-circle"></i> My
+                    Profile</h1>
                 <hr>
                 <div>
                     <!--Personal Details -->
-                    <p class="lead fw-bolder">My personal details</p>
+                    <h2 class="lead fw-bolder">My personal details</h2>
                     <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
                     <p>First Name: {{ customer.first_name }} | Last Name: {{ customer.first_name }}</p>
                     <hr>
@@ -28,12 +28,12 @@
                         <div class="col-md-6 mx-auto text-center" itemprop="shippingaddress">
                             {% if not shipping_address.address1  %}
                             <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
-                                <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
+                                <a href="{% url 'update_profile'%}" aria-label="add shipping address"><i class="p-2 text-black fas fa-lg fa-edit" ></i>
                                 </a>
                             </p>
                             {% else %}
                             <p class="lead fw-bolder"><i class="fas fa-truck"></i> Default Shipping Address
-                                <a href="{% url 'update_profile'%}"><i class=" p-2 text-black fas fa-lg fa-edit"></i>
+                                <a href="{% url 'update_profile'%}" aria-label="shipping address"><i class=" p-2 text-black fas fa-lg fa-edit" ></i>
                                 </a>
                             </p>
                             <p>{{shipping_address.address1}},</p>
@@ -46,14 +46,14 @@
                         <div class="col-md-6 mx-auto text-center" itemprop="billingaddress">
                             {% if not billing_address.address1  %}
                             <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
-                                <a href="{% url 'update_profile'%}"><i class="p-2 text-black fas fa-lg fa-edit"></i>
+                                <a href="{% url 'update_profile'%}" aria-label="add shipping address"><i class="p-2 text-black fas fa-lg fa-edit"></i>
                                 </a>
                             </p>
                             {% else %}
                             <p class="lead fw-bolder">
                                 <i class="fas fa-file-invoice"></i> Default Billing Address
-                                <a href="{% url 'update_profile'%}"><i
-                                        class="p-2 text-black fas fa-lg fa-edit edit-billing"></i>
+                                <a href="{% url 'update_profile'%}" aria-label="edit billing address"><i
+                                        class="p-2 text-black fas fa-lg fa-edit edit-billing" ></i>
                                 </a>
                             </p>
                             <p>{{billing_address.address1}},</p>

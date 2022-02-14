@@ -24,13 +24,13 @@
         <div class="col-md-8">
             <div class="card p-3">
 
-                <h2>Confirm your order and address</h2>
+                <h1>Confirm your order and address</h1>
                 <hr>
                 <!-- Shipping address details form -->
 
                 <form method="POST">
                     {% csrf_token %}
-                    <h3>Shipping Address</h3>
+                    <h2>Shipping Address</h2>
                     <div class='hideable_shipping_form'>
                         {{ form.shipping_address1|as_crispy_field  }}
                         {{ form.shipping_address2|as_crispy_field  }}
@@ -47,7 +47,7 @@
                     {% endif %}
                     {{ form.same_billing_address|as_crispy_field  }}
 
-                    <h3>Billing Address</h3>
+                    <h2>Billing Address</h2>
                     <div class='hideable_billing_form'>
                         {{ form.billing_address1|as_crispy_field  }}
                         {{ form.billing_address2|as_crispy_field  }}
@@ -73,13 +73,13 @@
         <div class="col-md-4">
             <!-- Order details -->
             <div class="card card-blue p-3 text-black mb-3">
-                <p class=" lead fw-bolder mb-0 text-muted p-3">Order Summary</p>
+                <h3 class=" lead fw-bolder mb-0 text-muted p-3">Order Summary</h3>
                 <p class=" text-end mb-0 text-muted">{{order.get_cart_items}} item(s)</p>
                 <ul class="list-group mb-3">
                     {% for item in items %}
                     <li class="list-group-item d-flex justify-content-between lh-sm">
                         <div>
-                            <h6 class="my-0">Box: {{ item.box.box_name}}</h6>
+                            <h4 class="small-text my-0">Box: {{ item.box.box_name}}</h4>
                             <small class="text-muted">Quantity: {{ item.quantity}}</small>
                         </div>
                         <span class="text-muted">€ {{item.quantity | mul:item.box.box_price}}</span>
