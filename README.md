@@ -346,7 +346,7 @@ All testing and code validation details are described in a separate file called 
 
 | Bugs              | Solutions |
 | ---               | --------- |
-|                   |           |
+| Cart count item just works when user add product to the cart, do to cart, come back to the previous page and refresh | Change functon on context and add cart count on it |
 
 ## Deployment 
 
@@ -444,7 +444,7 @@ Press Enter. Your local clone will be created.
 
 ## Media
 
-+ All pictures and images used in this project are from [Depositphotos](https://depositphotos.com).
++ All pictures and images used in this project are from [Depositphotos](https://depositphotos.com) and [Unsplash](https://unsplash.com/).
 
 ## Work based on other code
 
