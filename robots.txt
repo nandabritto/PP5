@@ -1,1 +1,3 @@
-    Sitemap: https://theregionaltaste.herokuapp.com/sitemap.xml
+User-agent: *
+Disallow: /cart/
+Sitemap: https://theregionaltaste.herokuapp.com/sitemap.xml
