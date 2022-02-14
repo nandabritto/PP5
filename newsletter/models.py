@@ -19,7 +19,7 @@ class Newsletter(models.Model):
     """
     EMAIL_STATUS_CHOICES = (
         ('Draft', 'Draft'),
-        ('Published', 'Puublished')
+        ('Published', 'Published')
     )
 
     subject = models.CharField(max_length=250)

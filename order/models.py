@@ -54,7 +54,7 @@ class Order(models.Model):
         """
         Get items and in the cart and sum to create cart total price
         """
-        orderitems = self.orderbox_set.all()
+        orderitems = self.orderbox_set.all().exclude(box__isnull=True)
         shipping = self.shipping()
         total = sum([item.get_total for item in orderitems], shipping)
         return total
@@ -64,7 +64,7 @@ class Order(models.Model):
         """
         Get items and in the cart and sum to create cart total items
         """
-        orderitems = self.orderbox_set.all()
+        orderitems = self.orderbox_set.all().exclude(box__isnull=True)
         total = sum([item.quantity for item in orderitems])
         return total
 

@@ -11,9 +11,10 @@ def order_contents(request):
         orders = Order.objects.filter(
             customer=request.user, ordered=True).order_by('-date_ordered')
         for order in orders:
+            items = order.orderbox_set.exclude(box__isnull=True)
             order_ctxt.append({
                 'order_id': order.id,
-                'items': order.orderbox_set.all(),
+                'items': items.all(),
                 'itemsCount': order.get_cart_items,
                 'get_cart_total': order.get_cart_total,
                 'shipping': order.shipping(),
