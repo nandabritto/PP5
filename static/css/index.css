@@ -10,11 +10,20 @@
 }
 
 @media only screen and (max-width: 900px) {
-    .container-box-home {
+        .container-box-home {
         /* position: absolute; */
         /* top: 40%; */
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
     }
 
+
+    @media only screen and (max-width: 400px) {
+        .container-box-home {
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    
 }
