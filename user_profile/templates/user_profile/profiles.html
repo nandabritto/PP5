@@ -85,11 +85,11 @@
                         <tbody>
                             {% for order in order_ctxt|slice:10 %}
                             <tr>
-                                <td><a class="text-black text-decoration-none"
+                                <td><a class="text-black fw-bold"
                                         href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
                                 </td>
                                 <td>{{ order.itemsCount }}</td>
-                                <td>€ {{order.shipping}}</td>
+                                <td>€ {{order.shipping}}.00</td>
                                 <td>€ {{order.get_cart_total}}</td>
                             </tr>
                             {% endfor %}
