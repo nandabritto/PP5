@@ -199,33 +199,33 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 1. On the left site, How it works and Boxes links leads user to this pages;
 
-<img width="800" src="">
+2. On the right side Account and Cart buttons are available to user;
 
-2. on the right side Account and Cart buttons are available to user;
+<img width="800" src="media/readme/features_ss/navbar.jpg">
 
   2.1 Not logged user:
 
   + Register and Login options are available
 
-<img width="800" src="">
+<img width="200" src="media/readme/features_ss/notlogged_account_navbar.jpg">
 
   2.2 Admin logged user:
 
   + Product Management, Login and Logout options available
 
-<img width="800" src="">
+<img width="200" src="media/readme/features_ss/admin_account_navbar.jpg">
 
   2.2 Customer logged user:
 
   + Login and Logout options available
 
-<img width="800" src="">
+<img width="200" src="media/readme/features_ss/customer_account_navbar.jpg">
 
   2.3 Cart Button are available to all users and leads to respective page
 
 3. Collapsed navbar on smaller devices to wrap in all options and assure better navbar design.
 
-<img width="400" src="">
+<img width="300" src="media/readme/features_ss/collapsed navbar.jpg">
 
 ### **Homepage** 
 
@@ -233,7 +233,7 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
   + A brief explanation about the store with a button link to products page
 
-<img width="400" src="">
+<img width="400" src="media/readme/features_ss/home_jumbotron.jpg">
 
 ### **How it works** 
 
@@ -257,19 +257,17 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 1. A card with all box information are available to the user (box name, description, image, standart products, selectable products and price)
 
-<img width="400" src="">
+<img width="700" src="media/readme/features_ss/box_details.jpg">
 
 2. The user can customize the box choosing 5 items from checkbox list before add the box to cart. In case the user dont customize the box, 5 surprise items will be added to their box in the cart page. 
 
-<img width="400" src="">
-
 3. User's reviews are availabe on the bottom of the box card and can be viewed by all customers (logged or not)
 
-<img width="400" src="">
+<img width="500" src="media/readme/features_ss/users_review_box.jpg">
 
 4. A logged user can add a review about the box clicking on Add Product Review button. 
 
-<img width="400" src="">
+<img width="400" src="media/readme/features_ss/add_review_button.jpg">
 
 ### **Shopping Cart Page** 
 
@@ -277,11 +275,11 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 2. On the right side, an order summary is available with number of items and total price
 
-<img width="400" src="">
+<img width="800" src="media/readme/features_ss/shopping_cart.jpg">
 
 3. Optional buttons can lead user back to the boxe page or to checkout 
 
-<img width="400" src="">
+<img width="200" src="media/readme/features_ss/cart_buttons.jpg">
 
 ### **Checkout Page** 
 
@@ -290,14 +288,17 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
   + User can add a shipping address and save it on profile if didn't do it before. 
   + User can add the same billing address just checking the checkbox 
 
-<img width="400" src="">
+<img width="700" src="media/readme/features_ss/shipping_address.jpg">
 
-2. Shipping address 
+2. Billing address 
 
   + User can add a billling address and save it on profile if didn't do it before. 
+
+<img width="700" src="media/readme/features_ss/billing_address.jpg">
+
   + User can auto complete billing address with saved shipping address from profile 
 
-<img width="400" src="">
+<img width="700" src="media/readme/features_ss/billing_shipping_same.jpg">
 
 ### **Confirm Order Page** 
 
@@ -305,7 +306,7 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 2. If want to change address user can come back to the last page and change it
 
-<img width="400" src="">
+<img width="700" src="media/readme/features_ss/confirm_order.jpg">
 
 ### **Payment Page** 
 
