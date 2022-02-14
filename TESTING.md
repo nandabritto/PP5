@@ -213,6 +213,110 @@ All results can be foound here
    <img src= "" width="40%" alt="JShint validation - before"/>
 </p>
 
+## Accessibility Testing
+========================================================================================
+
+<details>
+
+ <summary>All pages were tested using Wave accessibility tool and the results can be checked here:</summary>
+
+  + Home 
+
+  <img src="media/readme/wave/wave_home.png" width="400" height="200">
+
+  + Login
+
+  <img src="" width="400" height="200">
+
+  + Logout
+
+  <img src="" width="400" height="200">
+
+  + How it works
+
+  <img src="media/readme/wave/wave_how_it_works.png" width="400" height="200">
+
+  + Boxes
+
+  <img src="media/readme/wave/wave_boxes.png" width="400" height="200">
+
+  + Boxes Details
+
+  <img src="media/readme/wave/wave_box_details.png" width="400" height="200">
+
+  + Cart
+
+  <img src="media/readme/wave/wave_cart.png" width="400" height="200">
+
+  + Checkout
+
+  <img src="media/readme/wave/wave_checkout.png" width="400" height="200">
+
+  + Checkout Summary
+
+  <img src="media/readme/wave/wave_checkout_summary.png" width="400" height="200">
+
+  + Payment
+
+  <img src="media/readme/wave/wave_payment.png" width="400" height="200">
+
+  + Product Management
+
+  <img src="media/readme/wave/wave_management.png" width="400" height="200">
+
+  + Products List
+
+  <img src="media/readme/wave/wave_products_list.png" width="400" height="200">
+
+  + Boxes List
+
+  <img src="media/readme/wave/wave_box_list.png" width="400" height="200">
+
+  + Add box 
+
+  <img src="media/readme/wave/wave_add_box.png" width="400" height="200">
+
+  + Add product
+
+  <img src="media/readme/wave/wave_add_product.png" width="400" height="200">
+
+  + Add Product on Box
+
+  <img src="media/readme/wave/wave_add_product_on_box.png" width="400" height="200">
+
+  + Edit box 
+
+  <img src="" width="400" height="200">
+
+  + Edit product
+
+  <img src="" width="400" height="200">
+
+  + Edit Product on Box
+
+  <img src="" width="400" height="200">
+
+  + Send newsletter 
+
+  <img src="media/readme/wave/wave_send_newsletter.png" width="400" height="200">
+
+  + Newsletter List
+
+  <img src="media/readme/wave/wave_newsleter_list.png" width="400" height="200">
+
+  + Profile
+
+  <img src="media/readme/wave/wave_profile.png" width="400" height="200">
+
+  + Update Profile
+
+  <img src="" width="400" height="200">
+   
+
+ </details>
+
+
+
 ## Exploratory Testing
 ========================================================================================
 
