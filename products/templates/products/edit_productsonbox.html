@@ -21,9 +21,9 @@
                     {% csrf_token %}
                     {{ form | crispy}}
                     <div class="text-center">
-                        <button class="btn btn-lg btn-warning mx-3" type="submit">Update Product</button>                        
-                            <a href="{% url 'productsonbox_list' %}" class="btn btn-lg btn-dark mx-3"> <i
+                        <a href="{% url 'productsonbox_list' %}" class="btn btn-lg btn-dark mx-3"> <i
                                 class="fas fa-arrow-circle-left"></i> Back</a>                         
+                        <button class="btn btn-lg btn-warning mx-3" type="submit">Update Product</button>
                     </div>
                 </form>
             </div>

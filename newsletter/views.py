@@ -116,7 +116,8 @@ def send_newsletter(request):
                             )
                     # Message
                     messages.success(
-                        request, 'Your Changes Write Successfully.')
+                        request, 'Your newsletter was sent.')
+                    return redirect('newsletters')
                 else:
                     messages.warning(request, 'SomeThing Went Wrong...')
                 return redirect('send')

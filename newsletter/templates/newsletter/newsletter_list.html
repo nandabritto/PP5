@@ -27,19 +27,19 @@
 
                         </tr>
                     </thead>
+                    {% for newsletter in object_list %}
                     <tbody>
                         <tr>
-                            {% for newsletter in object_list %}
                             <th scope="row"></th>
                             <td>{{ newsletter.created}} </td>
-                            <td>{{ newsletter.subject }}</td>
-                            <td>{{ newsletter.body|slice:30 }}</td>
+                            <td>{{ newsletter.subject|slice:32 }}</td>
+                            <td>{{ newsletter.body|slice:30 }}(...)</td>
                             <td>{{ newsletter.status }}</td>
                             <td>{{ newsletter.updated }}</td>
-                            {% endfor %}
-
+                            
                         </tr>
                     </tbody>
+                    {% endfor %}
 
                 </table>
 
