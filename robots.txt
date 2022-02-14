@@ -1,0 +1,1 @@
+    Sitemap: https://theregionaltaste.herokuapp.com/sitemap.xml
