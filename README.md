@@ -91,7 +91,7 @@ Create an e-commerce app that allows people (users) who lives out of their home 
 
 **DER - Diagram Entity Relationship**
 
-<img width= "500" src="">
+<img width= "100%" src="media/readme/DERtheregionaltaste.png">
 
 **Agile Methodology**
 
