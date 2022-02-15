@@ -1,9 +1,6 @@
 {% load static %}
 {% load active_link_tags %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-{% endblock %}
 <section>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid ">
@@ -45,14 +42,14 @@
                     </li>
                 </ul>
                 <div>
-                    <ul class="navbar-nav mx-1 my-2">
-                        <div class="mx-0">
+                    <div class="mx-0">
+                            <ul class="navbar-nav mx-1 my-2">
                             <li class="btn position-relative">
                                 <a href="{% url 'cart' %}">
                                     <i class="fa fa-shopping-cart text-black" aria-hidden="true"></i>
                                     <span
                                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        {{cartItemsCount}}
+                                        {{cart_items_count}}
 
                                         <span class="visually-hidden">Cart Items</span>
                                     </span>

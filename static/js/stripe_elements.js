@@ -4,7 +4,6 @@ var stripe = Stripe('pk_test_51K75GAG6kIgu2TAlxJkRLrcFkmAOeJFZUpLb3Q5Ok32oWot4xT
 var elements = stripe.elements();
 
 // Custom styling can be passed to options when creating an Element.
-// (Note that this demo uses a wider set of styles than the guide below.)
 var style = {
     base: {
         color: '#32325d',
@@ -58,7 +57,6 @@ form.addEventListener('submit', function (event) {
 
 // Submit the form with the token ID.
 function stripeTokenHandler(token) {
-    // Insert the token ID into the form so it gets submitted to the server
     var form = document.getElementById('stripe-form');
     var hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
@@ -69,16 +67,3 @@ function stripeTokenHandler(token) {
     // Submit the form
     form.submit();
 }
-
-// var currentCardForm = $('.current-card-form');
-// var newCardForm = $('.new-card-form');
-// var use_default_card = document.querySelector("input[name=use_default_card]");
-// use_default_card.addEventListener('change', function () {
-//     if (this.checked) {
-//         newCardForm.hide();
-//         currentCardForm.show()
-//     } else {
-//         newCardForm.show();
-//         currentCardForm.hide()
-//     }
-// })

@@ -9,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A store where you can find the most desirables prodcuts from your coutry and feels like home everywhere">
+    <meta name="description"
+        content="A store where you can find the most desirables prodcuts from your coutry and feels like home everywhere">
     <meta name="keywords"
         content="groceries, international, world cuisine, food, cuisine, store, delivery, regional, worldwide">
     {% endblock %}
@@ -48,6 +49,35 @@
 
     {% block extra_css %}
     {% endblock %}
+
+
+
+    <title>The Regional Taste |{% block extra_title %}{% endblock %}</title>
+</head>
+
+<body class="body">
+
+    {% include 'includes/navbar.html' %}
+
+    <!-- Alert messages -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert-box  alert alert-warning alert-dismissible fade show" id="alert" role="alert">
+        <strong> {{ message }} </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}
+    {% endblock %}
+
+    {% include 'includes/footer.html' %}
+
 
 
     {% block corejs %}
@@ -92,31 +122,6 @@
     {% endblock %}
 
 
-    <title>The Regional Taste |{% block extra_title %}{% endblock %}</title>
-</head>
-
-<body class="body">
-
-    {% include 'includes/navbar.html' %}
-
-    <!-- Alert messages -->
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert-box  alert alert-warning alert-dismissible fade show" id="alert" role="alert">
-        <strong> {{ message }} </strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
-    {% endif %}
-
-
-    {% block content %}
-    {% endblock %}
-
-    {% block postloadjs %}
-    {% endblock %}
-
-    {% include 'includes/footer.html' %}
 </body>
 
 </html>

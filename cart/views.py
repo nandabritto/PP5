@@ -1,11 +1,9 @@
 """ System Module """
 import json
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from order.models import Order, OrderBox
-from products.models import Box, Product, Product_On_Box
+from products.models import Box, Product
 
 
 def cart(request):
@@ -61,10 +59,9 @@ def update_cart(request):
     order_box, created = OrderBox.objects.get_or_create(
         order_box=order, box=box)
 
-    
     if created:
         order_box.selected_products = prod_selected_names
-    
+
     if action == 'add':
         order_box.quantity = (order_box.quantity + 1)
         print(f'len: {order_box.selected_products.__len__()}')
@@ -82,14 +79,3 @@ def update_cart(request):
         order_box.delete()
 
     return JsonResponse('Item was added.', safe=False)
-
-
-# def cart_number_on_all_pages(request):
-#     """
-#     Add cart items number in all pages
-#     """
-#     customer = request.user
-#     order = Order.objects.filter(
-#         customer=customer, ordered=False)
-#     cart_items = order.get_cart_items
-#     return {'cart_items': cart_items}
