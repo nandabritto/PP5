@@ -16,13 +16,13 @@ Live app link [here](https://theregionaltaste.herokuapp.com/)
 
 1. As a user, I would like to be able to …
 
-    1.1 ... register using name, email, username and password;
+    1.1 ... register using the name, email, username and password;
     
     1.2. ... login on website using my email/username and password;
     
     1.3 ... logout easily;
     
-    1.4 ... have all information about website services on landing page;
+    1.4 ... have all information about website services on the landing page;
 
     1.5 ... see details about each available box;
     
@@ -38,13 +38,13 @@ Live app link [here](https://theregionaltaste.herokuapp.com/)
 
     1.11 ... create my profile
 
-    1.12 ... check my previous order details on profile page;
+    1.12 ... check my previous order details on the profile page;
 
     1.13 ... subscribe the newsletter;
 
     1.14 ... unsubscribe the newsletter;
 
-    1.14 ... select 5 products to add on my box;
+    1.14 ... select five products to add to my box;
 
     1.15 ... check user's review's on boxes;
 
@@ -107,55 +107,55 @@ Test cases were linked with every User story presented above, and can be found i
 * Sprint 1 - 04/01/2022 - 11/01/2022 (Finished at 09/01/2022)
 
   + Initial setup
-    - As a developer, I want to setup django templates
+    - As a developer, I want to set up Django templates
   + Create Database and Deployment on Heroku
-    - As a developer, I want to set up a Database to store all data 
-    - As a developer, I want to deploy website on Heroku
+    - As a developer, I want to set up a database to store all data 
+    - As a developer, I want to deploy a website on Heroku
   + Create user registration and login/logout features
-    - As a user I want to register on website
-    - As a user I want to login on website
-    - As a user I want to logout on website
-    - As a site admin I want to have admin privileges 
+    - As a user, I want to register on the website
+    - As a user, I want to login to the website
+    - As a user, I want to logout on website
+    - As a site admin, I want to have admin privileges 
 
 * Sprint 2 - 09/11/2022 - 16/01/2022 (1 week)
 
   + Create products page
-    - As a shopper I want to to see details about each available box
-    - As a shopper I want to add product on my bag 
-    - As a shopper I want to check all available products 
-    - As a shopper I want to sort a list of products by region (Not done on this sprint. Will be add in future sprints)
+    - As a shopper, I want to see details about each available box
+    - As a shopper, I want to add products to my bag 
+    - As a shopper, I want to check all available products 
+    - As a shopper, I want to sort a list of products by region (Not done on this sprint. Will be added in future sprints)
 
 
 * Sprint 3 and 4 - 17/01/2022 - 24/01/2022 (2 weeks)
 
   + Create order and payment pages
-    - As a user I want to pay for my product 
-    - As a user I want to add my shipping and billing address
+    - As a user, I want to pay for my product 
+    - As a user, I want to add my shipping and billing address
     - As a user, I want to get a confirmation email with my order and shipping details 
 
 * Sprint 5 - 30/01/2022 - 06/02/2022
 
-  + Create Profile
+  + Create profile
     - As a user, I want to create my profile
-    - As a user I want to check my previous order details
+    - As a user, I want to check my previous order details
 
 * Sprint 6 - 07/02/2022 - 14/02/2022
 
-  + Add products on Box
-    - As a user, I want to select 5 products to add on my box
+  + Add products to the box
+    - As a user, I want to select five products to add to my box
 
   + Product Management
-    - As a site admin, I want to create products or add it to the box
+    - As a site admin, I want to create products or add them to the box
     - As a site admin, I want to delete created products
-    - As a site admin, I want to be present to a list of products to edit or delete
+    - As a site admin, I want to be present on a list of products to edit or delete
 
 * Sprint 7 - 13/02/2022 - 20/02/2022
 
   + User acceptance
-    - As a user I want to use all features on platform without major issues
+    - As a user, I want to use all features on the platform without significant issues
 
   + Validation
-    - As a site owner I want to make sure that all files are validateds
+    - As a site owner, I want to make sure that all files are validated
 
 
 </details>
@@ -164,14 +164,14 @@ Test cases were linked with every User story presented above, and can be found i
 ### 3. Structure
 
 * A clear and straightforward layout is in place to ensure users can navigate intuitively and have a leisurely experience.
-* Navbar is fixed on top to facilitate users to navigate through pages easily. Small navigation is the same on all pages to ensure easy navigation.
+* Navbar is fixed on top to facilitate users easily navigating through pages. Small navigation is the same on all pages to ensure easy navigation.
 * Footer is fixed on the bottom with links to social media and newsletter subscription.
 
 ### 4. Skeleton
 
-Wireframes created with Balsamiq. The project was developed from initial wireframes, and some modifications were made during the development process in respose to user feedbacks and to assure the best usability. 
+Wireframes created with Balsamiq. The project was developed from initial wireframes, and some modifications were made during the development process to respond to user feedback and ensure the best usability. 
 
-* UI was changed during the project to ensure better user experience.
+* UI was changed during the project to ensure a better user experience.
 
 Click to see wireframes (before UI changes):
 
@@ -203,15 +203,15 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 ## Business Model
 
-+ A traditional B2C (Business to Customer) application has been chosen, which has a straightforward and user friendly responsive interface.
++ A traditional B2C (Business to Customer) application has been chosen, with a straightforward and user-friendly responsive interface.
 
 <img width="300" src="media/readme/B2Cbusinessmodel.jpg">
 
-+ This online store offers regional products to the final customer. In each box the custumer can receive 5 standart products and 5 chosen products. 
++ This online store offers regional products to the final customer. The customer can receive five standard products and five chosen products in each box. 
 
 ## Marketing
 
-+ This site has a Facebook Business page with a link on the page footer. It can be viewed [here](https://www.facebook.com/The-regional-taste-100218465935917)
++ This site has a Facebook Business Page with a link on the page footer. It can be viewed [here](https://www.facebook.com/The-regional-taste-100218465935917)
 
     <details>
     <summary>Facebook page image is available here (SS from 15/02/2022)</summary>
@@ -220,23 +220,23 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
     </details><br>
 
-+ User can choose to subscribe to our newletter to receive all offers on their email box. Subscription link are available on footer in all pages. 
++ Users can subscribe to our newsletter to receive all offers in their email box. Subscription links are available on the footer on all pages. 
 
-+ Upon registering, the user ir redirected to a new page confirming their subscription. The site owner can now see the new subscriber on their audience dashboard, and new campaigns will be sent to them too.
++ Upon registering, the user is redirected to a new page confirming their subscription. The site owner can now see the new subscriber on their audience dashboard, and new campaigns will be sent to them too.
 
 ## Existing Features
 
 <details>
 
-<summary> Here you can find a description of all features availabe on the platform. </summary>
+<summary> Here, you can find a description of all features available on the platform. </summary>
 
 ### **Navbar** 
 
 + Fixed Navbar allow the user easy access to all pages. 
 
-1. On the left site, How it works and Boxes links leads user to this pages;
+1. On the left side, How it works and Boxes links leads the user to these pages;
 
-2. On the right side Account and Cart buttons are available to user;
+2. On the right side, Account and Cart buttons are available to the user;
 
 <img width="800" src="media/readme/features_ss/navbar.jpg">
 
@@ -248,7 +248,7 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
   2.2 Admin logged user:
 
-  + Product Management, Login and Logout options available
+  + Product Management, login, and Logout options available
 
 <img width="200" src="media/readme/features_ss/admin_account_navbar.jpg">
 
@@ -258,15 +258,15 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 <img width="200" src="media/readme/features_ss/customer_account_navbar.jpg">
 
-  2.3 Cart Button are available to all users and leads to respective page
+  2.3 Cart Button are available to all users and leads to the respective page
 
-3. Collapsed navbar on smaller devices to wrap in all options and assure better navbar design.
+3. Collapsed navbar on smaller devices to wrap all options and assure better navbar design.
 
 <img width="300" src="media/readme/features_ss/collapsed navbar.jpg">
 
 ### **Footer** 
 
-+ Sticky footer present in all pages with link to susbcribe to newsletter and social media links. 
++ Sticky footer present on all pages with a link to subscribe to the newsletter and social media links. 
 
 <img width="800" src="media/readme/features_ss/footer.png">
 
@@ -274,7 +274,7 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 1. Homepage jumbotron 
 
-  + A brief explanation about the store with a button link to products page
+  + A brief explanation about the store with a button link to the products page
 
 <img width="400" src="media/readme/features_ss/home_jumbotron.jpg">
 
@@ -288,27 +288,27 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 ### **Boxes Page** 
 
-1. Cards with all available boxes are present on this page with image, description and price. 
+1. Cards with all available boxes are present on this page with images, descriptions and prices. 
 
 <img width="400" src="">
 
-2. Buttons are available in each card to lead user to add the box directly to the cart or customize it
+2. Buttons are available on each card to lead the user to add the box directly to the cart or customize it
 
 <img width="400" src="">
 
 ### **Boxes Details Page** 
 
-1. A card with all box information are available to the user (box name, description, image, standart products, selectable products and price)
+1. A card with all box information are available to the user (box name, description, image, standard products, selectable products and price)
 
 <img width="700" src="media/readme/features_ss/box_details.jpg">
 
-2. The user can customize the box choosing 5 items from checkbox list before add the box to cart. In case the user dont customize the box, 5 surprise items will be added to their box in the cart page. 
+2. The user can customize the box by choosing five items from the checkbox list before adding the box to the cart. If the user doesn't customize the box, five surprise items will be added to their box on the cart page. 
 
-3. User's reviews are availabe on the bottom of the box card and can be viewed by all customers (logged or not)
+3. User's reviews are available on the bottom of the box card and can be viewed by all customers (logged or not)
 
 <img width="500" src="media/readme/features_ss/users_review_box.jpg">
 
-4. A logged user can add a review about the box clicking on Add Product Review button. 
+4. A logged user can add a review about the box by clicking on Add Product Review button. 
 
 <img width="400" src="media/readme/features_ss/add_review_button.jpg">
 
@@ -316,11 +316,11 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 1. User can check all data about the boxes in the cart (box name, quantity, selected products, number of items and total price)
 
-2. On the right side, an order summary is available with number of items and total price
+2. On the right side, an order summary is available with several items and the total price
 
 <img width="800" src="media/readme/features_ss/shopping_cart.jpg">
 
-3. Optional buttons can lead user back to the boxe page or to checkout 
+3. Optional buttons can lead the user back to the box page or checkout 
 
 <img width="200" src="media/readme/features_ss/cart_buttons.jpg">
 
@@ -328,26 +328,26 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 1. Shipping address 
 
-  + User can add a shipping address and save it on profile if didn't do it before. 
-  + User can add the same billing address just checking the checkbox 
+  + Users can add a shipping address and save it on the profile if they didn't do it before. 
+  + user can add the same billing address just by checking the checkbox 
 
 <img width="700" src="media/readme/features_ss/shipping_address.jpg">
 
 2. Billing address 
 
-  + User can add a billling address and save it on profile if didn't do it before. 
+  + users can add a billing address and save it on the profile if they didn't before. 
 
 <img width="700" src="media/readme/features_ss/billing_address.jpg">
 
-  + User can auto complete billing address with saved shipping address from profile 
+  + User can auto-complete billing address with a saved shipping address from profile 
 
 <img width="700" src="media/readme/features_ss/billing_shipping_same.jpg">
 
 ### **Confirm Order Page** 
 
-1. All shipping and billing address ae available to be confirm by the user
+1. All shipping and billing addresses are available to be confirmed by the user
 
-2. If want to change address user can come back to the last page and change it
+2. If users want to change address user can come back to the last page and change it
 
 <img width="700" src="media/readme/features_ss/confirm_order.jpg">
 
@@ -359,13 +359,13 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 ### **Management Page** 
 
-1. On his page, admin user can find all options to add, edit or delete products, boxes and products on boxes, and also check all sent newsletters or send a new one. 
+1. On his page, the admin user can find all options to add, edit or delete products, boxes and products on boxes, and check all sent newsletters or send a new one. 
 
 <img width="700" src="media/readme/features_ss/management.png">
 
   1.1 Send newsletter 
 
-  + Admin user can send newsletter to all user or just chose some of them .
+  + Admin users can send the newsletter to all users or choose some of them.
 
 <img width="700" src="media/readme/features_ss/send_newsletter.png">
 
@@ -375,9 +375,9 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 <img width="700" src="media/readme/features_ss/sent_newsletter.png">
 
-  1.3 Add box, product and product on box 
+  1.3 Add box, product and product on the box 
 
-  + Admin user can add all products in database from frontend.
+  + Admin users can add all products in the database from the frontend.
 
 <p float="left">
 <img width="400" src="media/readme/features_ss/add_box.png">  
@@ -385,9 +385,9 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 <img width="400" src="media/readme/features_ss/add_products_on_the_box.png">
 </p>
 
-  1.4 Box, product and product on box list to edit or delte
+  1.4 Box, product and product on box list to edit or delete
 
- + Admin user can edit or delete or all products in database from frontend.
+ + Admin users can edit or delete all products in the database from the frontend.
 
 <p float="left">
 <img width="400" src="media/readme/features_ss/boxes_list.png">  
@@ -395,9 +395,9 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 <img width="400" src="media/readme/features_ss/products_on_box_list.png">
 </p>
 
-  1.5 Edit box, product and product on box 
+  1.5 Edit box, product and product on the box 
 
- + Admin user can edit or all products info in database from frontend.
+ + Admin users can edit all products info in the database from the frontend.
 
 <p float="left">
 <img width="400" src="media/readme/features_ss/edit_box.png">  
@@ -410,11 +410,11 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 ## Future Features
 
 1. Paginate Box, Products and Products on boxes list to show the admin user only 20 items per page;
-2. Create a seach feature to management page to make easier find boxes, products and products on boxes;
-3. Store all orders ins a json file to have all data even if boxes or products were deleted;
-4. Create a wishlist in user profile;
-5. Display all users comments on profile page;
-6. Only alow user to comment on prduct if they already bought it. 
+2. Create a search feature to the management page to make it easier to find boxes, products and products on boxes;
+3. Store all orders ins a JSON file to have all data even if boxes or products were deleted;
+4. Create a wishlist in the user profile;
+5. Display all users comments on the profile page;
+6. Only allow users to comment on the product if they have already bought it. 
 
 
 ## Languages Used
@@ -424,7 +424,7 @@ Python 3.0
 ## Frameworks, Libraries & Programs Used
 
 + Balsamiq: Balsamiq was used to create the wireframes during the design process.
-+ Favicon Generator: Used to create favicon used on the website.
++ Favicon Generator: Used to develop favicon used on the website.
 + Font Awesome: Font Awesome was used on all pages to add icons for aesthetic and UX purposes.
 + Grammarly: Used to correct any spell mistakes on readme and app text.
 + Git: Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
@@ -432,7 +432,7 @@ Python 3.0
 + Google Fonts: Google fonts are used to add fonts for aesthetic and UX purposes.
 + Django: Framework used to add structure to the platform. 
 + PGAdmin: Used to administer Database and generate DER.
-+ Multi Device Website Mockup Generator: Used to generate mockup image.
++ Multi Device Website Mockup Generator: Used to create mockup image.
 
 
 ## Testing and Code validation 
@@ -443,8 +443,8 @@ All testing and code validation details are described in a separate file called 
 
 | Bugs              | Solutions |
 | ---               | --------- |
-| Cart count item just works when user add product to the cart, do to cart, come back to the previous page and refresh | Change functon on context and add cart count on it |
-| Get cart total function stotp works when ordered box are deleted | Create a exclude item on this property  |
+| Cart count item works when user add the product to the cart, do to cart, come back to the previous page and refresh | Change function on context and add cart count on it |
+| Get cart total function stop works when ordered box are deleted | Create a exclude item on this property  |
 
 ## Deployment 
 
@@ -490,26 +490,26 @@ This App is deployed using Heroku.
     
     <img src="media/readme/deployment/heroku_github_deploy.png">
     
-    2.9.  Navigate to the settings tab
+    2.9. Navigate to the settings tab
     
     <img src="media/readme/deployment/heroku_dashboard_settings.png">
     
-    2.10.  Click on Config Vars, and add your Cloudinary, Database URL (from Heroku-Postgres) and Secret key.    
+    2.10. Click on Config Vars, and add your Cloudinary, Database URL (from Heroku-Postgres) and Secret key.    
     <img src="media/readme/deployment/heroku_vars_settings.png">
     
  
 
 3. Deployment on Heroku
 
-    3.1.  Navigate to the Deploy tab.
+    3.1. Navigate to the Deploy tab.
     
     <img src="media/readme/deployment/heroku_dashboard_deploy.png">
     
-    3.2.  Choose the main branch to deploy and enable automatic deployment to build Heroku every time any changes are pushed on the repository.
+    3.2. Choose the main branch to deploy and enable automatic deployment to build Heroku every time any changes are pushed on the repository.
     
     <img src="media/readme/deployment/heroku_automatic_deploys.png">
     
-    3.3 Click on manual deploy to build the App.  When complete, click on View to redirect to the live site. 
+    3.3 Click on manual deploy to build the App. When complete, click on View to redirect to the live site. 
     
     <img src="media/readme/deployment/heroku_view.png">
 </details>
