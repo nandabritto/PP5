@@ -1,10 +1,10 @@
-<h1 align=center> </h1>
+<h1 align=center> The Regional Taste</h1>
 
 <p align=center>
-
+We delivery a piece of your country taste at your door!
 </p>
 <p align="center">
-<img src="">
+<img src="media/readme/mockup.png">
 </p>
 
 Live app link [here](https://theregionaltaste.herokuapp.com/)
@@ -81,11 +81,17 @@ Create an e-commerce app that allows people (users) who lives out of their home 
 
 **Flowchart**
 
-<img height= "" src="">
++ Customer Flowchart
+
+<img height= "500" src="media/readme/flowchart.png">
+
++ Management Flowchart
+
+<img width= "500" src="media/readme/flowchart_management.png">
 
 **DER - Diagram Entity Relationship**
 
-<img width= "" src="">
+<img width= "500" src="">
 
 **Agile Methodology**
 
@@ -194,6 +200,29 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 <img width="200" src="media/readme/googlefonts_roboto.jpg">
 <img width="200" src="media/readme/googlefonts_lato.jpg">
+
+## Business Model
+
++ A traditional B2C (Business to Customer) application has been chosen, which has a straightforward and user friendly responsive interface.
+
+<img width="300" src="media/readme/B2Cbusinessmodel.jpg">
+
++ This online store offers regional products to the final customer. In each box the custumer can receive 5 standart products and 5 chosen products. 
+
+## Marketing
+
++ This site has a Facebook Business page with a link on the page footer. It can be viewed [here](https://www.facebook.com/The-regional-taste-100218465935917)
+
+    <details>
+    <summary>Facebook page image is available here (SS from 15/02/2022)</summary>
+
+    <img width="500" src="media/readme/theregionltaste_facebookpage.png">
+
+    </details><br>
+
++ User can choose to subscribe to our newletter to receive all offers on their email box. Subscription link are available on footer in all pages. 
+
++ Upon registering, the user ir redirected to a new page confirming their subscription. The site owner can now see the new subscriber on their audience dashboard, and new campaigns will be sent to them too.
 
 ## Existing Features
 
