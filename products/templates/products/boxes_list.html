@@ -1,48 +1,58 @@
 {% extends "base.html" %}
+
 {% load static %}
 
+<!-- Page title -->
 {% block extra_title %} Boxes List{% endblock %}
 
 {% block content %}
-<div class="container mt-5 px-1" itemscope>
-    <div class="row">
-        <div class="col-md-10 col-lg-10 col-11 mx-auto">
-            <div class="card p-3" itemscope itemtype="https://schema.org/ItemList">
-                <h1 class="text-center"><strong>Product Management</strong></h1>
-                <hr>
-                <h2 class="text-center" itemprop="name"><strong>Boxes</strong></h2>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" itemprop="elementID">Id</th>
-                            <th scope="col" itemprop="name">Box</th>
-                            <th scope="col" itemprop="description">Description</th>
-                            <th scope="col" itemprop="price">Price</th>
-                            <th scope="col" >Options</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for boxes in object_list %}
-                        <tr>
-                            <td itemprop="elementID">{{boxes.id}}</td>
-                            <td itemprop="name">{{boxes|title}}</td>
-                            <td itemprop="description">{{boxes.box_description}}</td>
-                            <td itemprop="price">{{boxes.box_price}}</td>
-                            <td class="text-end"><a href="{% url 'edit_box' boxes.id %}"
-                                    class="btn btn-warning fw-bold mx-2">Edit</a>
-                                <a href="{% url 'delete_box' boxes.id %}" class="btn btn-danger fw-bold mx-2">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
-                <div class="text-center">
-                    <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
-                            class="fas fa-arrow-circle-left"></i> Back</a>
+    <section>
+        <!-- Box list container -->
+        <div class="container mt-5 px-1" itemscope>
+            <div class="row">
+                <div class="col-md-10 col-lg-10 col-11 mx-auto">
+                    <div class="card p-3" itemscope itemtype="https://schema.org/ItemList">
+                        <h1 class="text-center"><strong>Product Management</strong></h1>
+                        <hr>
+                        <h2 class="text-center" itemprop="name"><strong>Boxes</strong></h2>
+                        <!-- Box list table -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" itemprop="elementID">Id</th>
+                                    <th scope="col" itemprop="name">Box</th>
+                                    <th scope="col" itemprop="description">Description</th>
+                                    <th scope="col" itemprop="price">Price</th>
+                                    <th scope="col">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for boxes in object_list %}
+                                    <tr>
+                                        <td itemprop="elementID">{{boxes.id}}</td>
+                                        <td itemprop="name">{{boxes|title}}</td>
+                                        <td itemprop="description">{{boxes.box_description}}</td>
+                                        <td itemprop="price">{{boxes.box_price}}</td>
+                                        <td class="text-end">
+                                            <a href="{% url 'edit_box' boxes.id %}"
+                                                class="btn btn-warning fw-bold mx-2">Edit
+                                            </a>
+                                            <a href="{% url 'delete_box' boxes.id %}"
+                                                class="btn btn-danger fw-bold mx-2">Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2">
+                                <i class="fas fa-arrow-circle-left"></i> Back
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 {% endblock %}

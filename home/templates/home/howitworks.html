@@ -1,39 +1,37 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!-- Page title -->
 {% block extra_title %} How it works?{% endblock %}
 
 {% block content %}
-
 <section>
     <!-- How it works container -->
     <div class="container text-center rounded">
-        <div class=" bg-light col-11 col-md-12 my-4  mx-auto">
-        <h1 class="text-dark text-center p-2"><strong>How it works?</strong></h1>
-        <hr>
-        <div class="row justify-content-md-center gx-5">
-            <div class="col-lg-4 col-md-4 col-sm-12 mx-auto">
-                <img src="{{ MEDIA_URL }}step1.jpg"
-                    class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3"
-                    alt="purchase step one">
-                <p class="lead py-2 fw-bold">Choose your favorite box and products</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <img src="{{ MEDIA_URL }}step2.jpg"
-                    class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3"
-                    alt="purchase step two">
-                <p class="lead py-2 fw-bold">Add your delivery address and proceed to payment</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <img src="{{ MEDIA_URL }}step3.jpg"
-                    class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3"
-                    alt="purchase step three">
-                <p class="lead py-2 fw-bold">Your box will be delivery for you</p>
+        <div class=" bg-light col-11 col-md-12 my-4 mx-auto">
+            <h1 class="text-dark text-center p-2"><strong>How it works?</strong></h1>
+            <hr>
+            <div class="row justify-content-md-center gx-5">
+                <div class="col-lg-4 col-md-4 col-sm-12 mx-auto">
+                    <img src="{{ MEDIA_URL }}step1.jpg"
+                        class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3"
+                        alt="purchase step one">
+                    <p class="lead py-2 fw-bold mx-2">Choose your favourite box and customize some of the products to fit your diary requirements and lifestyle</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <img src="{{ MEDIA_URL }}step2.jpg"
+                        class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3"
+                        alt="purchase step two">
+                    <p class="lead py-2 fw-bold">Add delivery address and pay with your credit card</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <img src="{{ MEDIA_URL }}step3.jpg"
+                        class="d-block w-75 rounded-circle p-4 border border-5 border-warning mx-auto my-3"
+                        alt="purchase step three">
+                    <p class="lead py-2 fw-bold mx-2"> Your box will be delivered to your chosen address. It can even be a gift to someone special :)</p>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-
 </section>
-
 {% endblock %}
