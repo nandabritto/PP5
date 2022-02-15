@@ -4,17 +4,17 @@ During the code development of each function, tests were in place to be sure tha
 
 ## Testing Plan
 
-Testing will be conducted regularly alongside development of this project. Each User Story will include Unit testing of the code being developed and a manual exploratory test session.
+Testing will be conducted regularly alongside the development of this project. Therefore, each User Story will include Unit testing of the developed code and a manual exploratory test session.
 
 ### Sprint 1 - 04/01/2022 - 11/01/2022 (Finished at 09/01/2022)
 
-Unittest were done to ensure all home app functionality were working as expected. 
+Unittest was done to ensure all home app functionality was working as expected. 
 
 <img width= "500" src="media/readme/unittests/sprint1/unittest_home_url.jpg">
 
 ### Sprint 2 - 09/01/2022 - 16/01/2022
 
-Unittest were done to ensure all products, bag an order functionality developed until this point were working as expected.
+Unittest was done to ensure all products, cart, and order functionality developed until this point was working as expected.
 
 + Functions tested: 
 
@@ -62,11 +62,11 @@ Unittest were done to ensure all products, bag an order functionality developed 
 
 ### Sprint 3 - 17/01/2022 - 24/01/2022
 
-Order and payment functionality begin to be developed during this sprint, but all unit tests related to them will be develop at sprint 4 when this features are complete and working as expected. 
+Order and payment functionality begin to be developed during this sprint. Still, all unit tests will be created at sprint 4 when these features are complete and working as expected. 
   
 ### Sprint 4 - 25/01/2022 - 31/01/2022
 
-Order and payment functionality was finished on this sprint and unit testes were del=veloped to ensure every feature was working as expected withour any major issues. 
+Order and payment functionality was finished on this sprint, and we developed unittests to ensure every feature was working as expected without significant issues. 
 
 + Functions tested: 
 
@@ -105,38 +105,38 @@ Order and payment functionality was finished on this sprint and unit testes were
 
 <img width= "500" src="media/readme/unittests/sprint4/unitttests_order_overall_final.jpg">
 
-**Note:** The lines highlited in red were not covered in unittests are related to Stripe exceptions and were tested manually after the end of this sprint. 
+**Note:** The lines highlighted in red were not covered in unittests related to Stripe exceptions and were tested manually after this sprint. 
 
   
 ### Sprint 5 - 30/01/2022 - 06/02/2022
 
-User profile was created on this sprint and manual tests were conducted to ensure all functionality was working as expected.  
+A user profile was created on this sprint, and manual tests were conducted to ensure all functionality was working as expected.  
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | Click on profile option on accouonts dropdown menu| To be redirect to profiles page|
-| 2 | Click in Add default shipping or billing address | To be redirect to change address page |
+| 1 | Click on profile option on accounts dropdown menu| To be redirected to profiles page|
+| 2 | Click in Add default shipping or billing address | To be redirected to change address page |
 | 3 | Change shipping or billing address and confirm on button | Save default addresses |
 
 
 ### Sprint 6 - 07/02/2022 - 14/02/2022
 
-Create a feature to user can add selectable products on the box and a product management page to an admin user can have all CRUD functonaluty from the fronten.
+Create a feature to add selectable products on the box and a product management page to an admin user that can have all CRUD functionality from the frontend.
 Manual tests were conducted to ensure all features were working as expected. 
 
 + Box details page 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | Go to the box detaisl page and find checkbox selectable products list | Can choose maximum on 5 different products|
-| 2 | After choose products, click on add to cart button | The box option with selected products list will be add to the cart |
-| 3 | Try to click on 6 products | only allows to click in 5 products. |
+| 1 | Go to the box details page and find checkbox selectable products list | Can choose maximum on five different products|
+| 2 | After selecting products, click on add to cart button | The box option with the list of the selected products will be added to the cart |
+| 3 | Try to click on six products | only allows clicking in 5 products. |
 
 + Product Management page
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
 | 1 | click on add products/boxes/products on box button | To be redirected to the respective page with all fields|
-| 2 | After add all information, click on add product/box/ product on box | To be redirected to products/box list |
+| 2 | After adding all information, click on add product/box/ product on box | To be redirected to products/box list |
 | 3 | on products/boxes list page and click in delete button| Delete product/box and be redirected to list page |
 
 
@@ -154,7 +154,7 @@ Exploratory Test Session Goals
 
 + On this project, the Incremental Testing method was used.
 
- Integrated units were checked after the developer finished writing code for every new feature. This approach was used to find defects early and because it was easy to find the cause of the defect thanks to a step-by-step examination. 
+ Integrated units were checked after the developer finished writing code for every new feature. This approach was used to find defects early because it was easy to find the cause of the defect thanks to a step-by-step examination. 
 
 + The integration tests were divided by features/pages and its described below: 
 
@@ -162,12 +162,12 @@ Exploratory Test Session Goals
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | Click account's navbar button | Open a dropdown with 3 options if logged and supper user and 2 options with not super user or not logged|
-| 2 | A registered user click login's button | To be redirect to login page |
-| 3 | A registered user click logout's button | To be redirect to logout page |
-| 4 | A not registered user click register's button | To be redirect to register page |
-| 5 | A user click on Cart Button | To be redirect to the cart page |
-| 6 | Click products's navbar button | Open a dropdown with all products options|
+| 1 | Click account's navbar button | Open a dropdown with three options if logged and supper user and two options with not superuser or not logged|
+| 2 | A registered user click login's button | To be redirected to login page |
+| 3 | A registered user click logout's button | To be redirected to logout page |
+| 4 | A not registered user click register's button | To be redirected to registration page |
+| 5 | A user click on Cart Button | To be redirected to the cart page |
+| 6 | Click products navbar button | Open a dropdown with all products options|
 
 ### **Footer** 
 
@@ -175,7 +175,7 @@ Exploratory Test Session Goals
 |:----:|:----:|:----:|
 | 1 | Click subscribe newsletter button| To be redirected to subscribe to the store newsletter. |
 | 2 | Click on the LinkedIn button| To be directed to the developer's LinkedIn page. |
-| 3 | Click on the Github button | To be directed to the developer's GitHub page.|
+| 3 | Click on the Github button | To be redirected to the developer's GitHub page.|
 | 4 | Click on the Facebook button | To be directed to the store Facebook page.|
 
 ### **Login**
@@ -183,27 +183,27 @@ Exploratory Test Session Goals
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
 | 1 | Enter login credentials and click on the Login button| To be directed to the home page|
-| 2 | Enter invalid login credentials and click on the Login button| To be presented to an error message for each invalid field|
+| 2 | Enter invalid login credentials and click on the Login button| To be presented to an error message for each weak field|
 
 ### **Logout**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | A registered user click logout's button | To be redirect to logout page |
-| 2 | Click on Logout Button| To be redirect to home page and a message about logout session|
+| 1 | A registered user click logout's button | To be redirected to logout page |
+| 2 | Click on Logout Button| To be redirected to the home page and a message about logout session|
 
 ### **Register**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | Enter all register data and click on the Sign Up button| To be directed to the home page, presented to a success message and already logged in|
+| 1 | Enter all registered data and click on the Sign-Up button| To be directed to the home page, presented to a success message and already logged in|
 | 2 | Enter invalid register data in any field and click on the Login button| To be given to an error message|
 
 ### ** Boxes Page**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | A user on boxes page | To be presented to all available boxes with image, description, price and 2 option buttons|
+| 1 | A user on boxes page | To be presented to all available boxes with image, description, price and two option buttons|
 | 2 | Click on Add to cart button| Add chosen product to user's cart|
 | 3 | Click on Details button| To be redirected to product details page|
 
@@ -213,18 +213,18 @@ Exploratory Test Session Goals
 |:----:|:----:|:----:|
 | 1 | A user on box detail page | To be presented to all box details|
 | 2 | Choose 5 product options to add to user's box | Add chosen products to user's box|
-| 3 | Click on Add to cart button| Add chosen bxes with selectable prducts chosen to user's cart|
-| 4 | Click on Back button| To be redirect to the last visited page|
+| 3 | Click on Add to cart button| Add desired boxes with selectable products chosen to user's cart|
+| 4 | Click on Back button| To be redirected to the last visited page|
 
 ### ** Profile Page**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | A user on profile page | To be presented to all previous orders and their details.|
-| 2 | Click in one of the numbers of previous order | Be redirected to order detail page with all informaton about it|
-| 3 | Click on Add to cart button| Add chosen bxes with selectable prducts chosen to user's cart|
-| 4 | Click on Back button| To be redirect to the last visited page|
-| 5 | Click in Add default shipping or billing address | To be redirect to change address page |
+| 1 | A user on profile page | To be presented to all previous orders and details.|
+| 2 | Click in one of the numbers of prior order | Be redirected to order detail page with all information about it|
+| 3 | Click on Add to cart button| Add chosen boxes with selectable products chosen to user's cart|
+| 4 | Click on Back button| To be redirected to the last visited page|
+| 5 | Click in Add default shipping or billing address | To be redirected to change address page |
 | 6 | Change shipping or billing address and confirm on button | Save default addresses |
 
 ### ** Management Page ** 
@@ -232,7 +232,7 @@ Exploratory Test Session Goals
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
 | 1 | click on add products/boxes/products on box button | To be redirected to the respective page with all fields|
-| 2 | After add all information, click on add product/box/ product on box | To be redirected to products/box list |
+| 2 | After adding all information, click on add product/box/ product on box | To be redirected to products/box list |
 | 3 | on products/boxes list page and click in delete button| Delete product/box and be redirected to list page |
 
 ## Python (PEP8) Validation
@@ -246,9 +246,9 @@ Exploratory Test Session Goals
 
 ## HTML Code Validation
 
-All Html pages were validated using W3 tool. 
+All Html pages were validated using the W3 tool. 
 
-All results can be foound here
+All results can be found here.
 
 <img src="" width="400" height="200" alt=""/>
 
@@ -270,7 +270,7 @@ All results can be foound here
 
 <details>
 
- <summary>All pages were tested using Wave accessibility tool and the results can be checked here:</summary>
+ <summary>All pages were tested using the Wave accessibility tool, and the results can be checked here:</summary>
 
   + Home 
 
@@ -395,8 +395,8 @@ On this test, a checklist was developed to guide the user along with all pages a
 ========================================================================================
 ### Desktop
 
-Plataform was tested on Mozilla Firefox Developers and Google Chrome and everything was working as expected.
+The platform was tested on Mozilla Firefox Developers and Google Chrome, and everything was working as expected.
 
 ### Mobile
 
-  Tested with Xiomi Mi6, Xiomi Mi8 and Samsumg Gallaxy S21 ans all features were working as expected. 
+  Tested with Xiaomi Mi6, Xiaomi Mi8 and Samsung Gallaxy S21, and all features were working as expected. 
