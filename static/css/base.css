@@ -161,6 +161,10 @@ input:focus {
     padding-bottom: 2vh !important;
 }
 
+.product-image {
+    height: 20vh;
+}
+
 .checked {
     color: rgb(214, 125, 62);
 }
