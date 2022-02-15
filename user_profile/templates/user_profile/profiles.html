@@ -1,115 +1,118 @@
 {% extends "base.html" %}
+
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/profile.css' %}">
-{% endblock %}
-
-{% block extra_title %}Profile{% endblock %}
+<!-- Page title-->
+{% block extra_title %} Profile{% endblock %}
 
 {% block content %}
-<!--Profile Container-->
-<div class="container mt-5 px-1">
-    <div class="row">
-        <div class="col-lg-8 col-md-10 col-11 mx-auto mb-3">
-            <div class="card p-3">
-                <h1 class="logo-font mb-4 text-center"><i class="fas fa-user-circle"></i> My
-                    Profile</h1>
-                <hr>
-                <div>
-                    <!--Personal Details -->
-                    <h2 class="lead fw-bolder">My personal details</h2>
-                    <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
-                    <p>Name: {{ customer.first_name }} {{ customer.last_name }}</p>
-                    <hr>
-                    <div class="row" itemscope itemtype="https://schema.org/address">
-                        <!--Shipping Address Details -->
-                        <div class="col-md-6 mx-auto text-center" itemprop="shippingaddress">
-                            {% if not shipping_address.address1  %}
-                            <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
-                                <a href="{% url 'update_profile'%}" aria-label="add shipping address"><i class="p-2 text-black fas fa-lg fa-edit" ></i>
-                                </a>
-                            </p>
-                            {% else %}
-                            <p class="lead fw-bolder"><i class="fas fa-truck"></i> Default Shipping Address
-                                <a href="{% url 'update_profile'%}" aria-label="shipping address"><i class=" p-2 text-black fas fa-lg fa-edit" ></i>
-                                </a>
-                            </p>
-                            <p>{{shipping_address.address1}},</p>
-                            <p>{{shipping_address.address2}}</p>
-                            <p>{{shipping_address.county}}, {{shipping_address.country}}</p>
-                            <p>EirCode:{{shipping_address.eircode}}</p>
-                            {% endif %}
+    <section>
+        <!--Profile Container-->
+        <div class="container mt-5 px-1">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 col-11 mx-auto mb-3">
+                    <div class="card p-3">
+                        <h1 class="logo-font mb-4 text-center">
+                            <i class="fas fa-user-circle"></i> My Profile
+                        </h1>
+                        <hr>
+                        <div>
+                            <!--Personal Details -->
+                            <h2 class="lead fw-bolder">My personal details</h2>
+                            <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
+                            <p>Name: {{ customer.first_name }} {{ customer.last_name }}</p>
+                            <hr>
+                            <div class="row" itemscope itemtype="https://schema.org/address">
+                                <!--Shipping Address Details -->
+                                <div class="col-md-6 mx-auto text-center" itemprop="shippingaddress">
+                                    {% if not shipping_address.address1  %}
+                                        <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
+                                            <a href="{% url 'update_profile'%}" aria-label="add shipping address">
+                                                <i class="p-2 text-black fas fa-lg fa-edit" ></i>
+                                            </a>
+                                        </p>
+                                    {% else %}
+                                        <p class="lead fw-bolder"><i class="fas fa-truck"></i> Default Shipping Address
+                                            <a href="{% url 'update_profile'%}" aria-label="shipping address">
+                                                <i class=" p-2 text-black fas fa-lg fa-edit" ></i>
+                                            </a>
+                                        </p>
+                                        <p>{{shipping_address.address1}},</p>
+                                        <p>{{shipping_address.address2}}</p>
+                                        <p>{{shipping_address.county}}, {{shipping_address.country}}</p>
+                                        <p>EirCode:{{shipping_address.eircode}}</p>
+                                    {% endif %}
+                                </div>
+                                <!--Billing Address Details -->
+                                <div class="col-md-6 mx-auto text-center" itemprop="billingaddress">
+                                    {% if not billing_address.address1  %}
+                                        <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
+                                            <a href="{% url 'update_profile'%}" aria-label="add shipping address">
+                                                <i class="p-2 text-black fas fa-lg fa-edit"></i>
+                                            </a>
+                                        </p>
+                                    {% else %}
+                                        <p class="lead fw-bolder">
+                                            <i class="fas fa-file-invoice"></i> Default Billing Address
+                                            <a href="{% url 'update_profile'%}" aria-label="edit billing address">
+                                                <i class="p-2 text-black fas fa-lg fa-edit edit-billing"></i>
+                                            </a>
+                                        </p>
+                                        <p>{{billing_address.address1}},</p>
+                                        <p>{{billing_address.address2}}</p>
+                                        <p>{{billing_address.county}}, {{billing_address.country}}</p>
+                                        <p>EirCode: {{billing_address.eircode}}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
-                        <!--Billing Address Details -->
-                        <div class="col-md-6 mx-auto text-center" itemprop="billingaddress">
-                            {% if not billing_address.address1  %}
-                            <p class="lead fw-bolder"><i class="fas fa-truck"></i> Add your Default Shipping Address
-                                <a href="{% url 'update_profile'%}" aria-label="add shipping address"><i class="p-2 text-black fas fa-lg fa-edit"></i>
+                    </div>
+                </div>
+                <!-- Orders history container-->
+                <div class="col-lg-4 col-md-7 col-11 mx-auto" itemscope itemtype="https://schema.org/Order">
+                    <div class="card p-3" itemprop="orderedItem">
+                        <h3 class="fw-bold"> My previous orders</h3>
+                        <hr>
+                        {% if order_ctxt %}
+                            <table class="table table-sm table-borderless text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Order No</th>
+                                        <th>Qt</th>
+                                        <th>Shipping</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in order_ctxt|slice:10 %}
+                                    <tr>
+                                        <td><a class="text-black fw-bold"
+                                                href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
+                                        </td>
+                                        <td>{{ order.itemsCount }}</td>
+                                        <td>€ {{order.shipping}}.00</td>
+                                        <td>€ {{order.get_cart_total}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p class="lead"> You don't have any previous order.</p>
+                            <div class="text-center">
+                                <a class="btn btn-dark btn-block btn m-4" href="{% url 'boxes' %}" data-mdb-ripple-color="dark">
+                                    <i class="fas fa-store p-2" itemprop="url"></i>Order Now
                                 </a>
-                            </p>
-                            {% else %}
-                            <p class="lead fw-bolder">
-                                <i class="fas fa-file-invoice"></i> Default Billing Address
-                                <a href="{% url 'update_profile'%}" aria-label="edit billing address"><i
-                                        class="p-2 text-black fas fa-lg fa-edit edit-billing" ></i>
-                                </a>
-                            </p>
-                            <p>{{billing_address.address1}},</p>
-                            <p>{{billing_address.address2}}</p>
-                            <p>{{billing_address.county}}, {{billing_address.country}}</p>
-                            <p>EirCode: {{billing_address.eircode}}</p>
-                            {% endif %}
-                        </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Orders history container-->
-        <div class="col-lg-4 col-md-7 col-11 mx-auto" itemscope itemtype="https://schema.org/Order">
-            <div class="card p-3" itemprop="orderedItem">
-                <h3 class="fw-bold"> My previous orders</h3>
-                <hr>
-                {% if order_ctxt %}
-                    <table class="table table-sm table-borderless text-center">
-                        <thead>
-                            <tr>
-                                <th>Order No</th>
-                                <th>Qt</th>
-                                <th>Shipping</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for order in order_ctxt|slice:10 %}
-                            <tr>
-                                <td><a class="text-black fw-bold"
-                                        href="{% url 'order_detail' order.order_id %}">{{ order.order_id }}</a>
-                                </td>
-                                <td>{{ order.itemsCount }}</td>
-                                <td>€ {{order.shipping}}.00</td>
-                                <td>€ {{order.get_cart_total}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                {% else %}
-                    <p class="lead"> You don't have any previous order.</p>
-                    <div class="text-center">
-                        <a class="btn btn-dark btn-block btn m-4" href="{% url 'boxes' %}" data-mdb-ripple-color="dark">
-                            <i class="fas fa-store p-2" itemprop="url"></i>Order Now
-                        </a>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+    </section>
 {% endblock %}
 
+<!-- Customizible JS-->
 {% block postloadjs %}
 <script src="{% static 'js/countryfield.js' %}"></script>
-
 {% endblock %}
