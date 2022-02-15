@@ -107,6 +107,39 @@ Order and payment functionality was finished on this sprint and unit testes were
 
 **Note:** The lines highlited in red were not covered in unittests are related to Stripe exceptions and were tested manually after the end of this sprint. 
 
+  
+### Sprint 5 - 30/01/2022 - 06/02/2022
+
+User profile was created on this sprint and manual tests were conducted to ensure all functionality was working as expected.  
+
+| Test Case Id | Description | Expect result|
+|:----:|:----:|:----:|
+| 1 | Click on profile option on accouonts dropdown menu| To be redirect to profiles page|
+| 2 | Click in Add default shipping or billing address | To be redirect to change address page |
+| 3 | Change shipping or billing address and confirm on button | Save default addresses |
+
+
+### Sprint 6 - 07/02/2022 - 14/02/2022
+
+Create a feature to user can add selectable products on the box and a product management page to an admin user can have all CRUD functonaluty from the fronten.
+Manual tests were conducted to ensure all features were working as expected. 
+
++ Box details page 
+| Test Case Id | Description | Expect result|
+|:----:|:----:|:----:|
+| 1 | Go to the box detaisl page and find checkbox selectable products list | Can choose maximum on 5 different products|
+| 2 | After choose products, click on add to cart button | The box option with selected products list will be add to the cart |
+| 3 | Try to click on 6 products | only allows to click in 5 products. |
+
++ Product Management page
+
+| Test Case Id | Description | Expect result|
+|:----:|:----:|:----:|
+| 1 | click on add products/boxes/products on box button | To be redirected to the respective page with all fields|
+| 2 | After add all information, click on add product/box/ product on box | To be redirected to products/box list |
+| 3 | on products/boxes list page and click in delete button| Delete product/box and be redirected to list page |
+
+
 ### Unit Tests conducted
 
 Exploratory Test Session Goals
@@ -140,7 +173,7 @@ Exploratory Test Session Goals
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | Add email on inputbox and click subscribe| SUbscribe to the store newsletter. |
+| 1 | Click subscribe newsletter button| To be redirected to subscribe to the store newsletter. |
 | 2 | Click on the LinkedIn button| To be directed to the developer's LinkedIn page. |
 | 3 | Click on the Github button | To be directed to the developer's GitHub page.|
 | 4 | Click on the Facebook button | To be directed to the store Facebook page.|
@@ -166,22 +199,41 @@ Exploratory Test Session Goals
 | 1 | Enter all register data and click on the Sign Up button| To be directed to the home page, presented to a success message and already logged in|
 | 2 | Enter invalid register data in any field and click on the Login button| To be given to an error message|
 
-### ** All Produts Page**
+### ** Boxes Page**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | A user on all products page | To be presented to all available products with image, description, price and 2 option buttons|
+| 1 | A user on boxes page | To be presented to all available boxes with image, description, price and 2 option buttons|
 | 2 | Click on Add to cart button| Add chosen product to user's cart|
 | 3 | Click on Details button| To be redirected to product details page|
 
-### ** Produt Detail Page**
+### ** Box Detail Page**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
-| 1 | A user on product detail page | To be presented to all product details|
-| 2 | Choose 5 product options to add to user's box and click on submit your choices button| Add chosen products to user's box|
-| 3 | Click on Add to cart button| Add chosen product to user's cart|
+| 1 | A user on box detail page | To be presented to all box details|
+| 2 | Choose 5 product options to add to user's box | Add chosen products to user's box|
+| 3 | Click on Add to cart button| Add chosen bxes with selectable prducts chosen to user's cart|
 | 4 | Click on Back button| To be redirect to the last visited page|
+
+### ** Profile Page**
+
+| Test Case Id | Description | Expect result|
+|:----:|:----:|:----:|
+| 1 | A user on profile page | To be presented to all previous orders and their details.|
+| 2 | Click in one of the numbers of previous order | Be redirected to order detail page with all informaton about it|
+| 3 | Click on Add to cart button| Add chosen bxes with selectable prducts chosen to user's cart|
+| 4 | Click on Back button| To be redirect to the last visited page|
+| 5 | Click in Add default shipping or billing address | To be redirect to change address page |
+| 6 | Change shipping or billing address and confirm on button | Save default addresses |
+
+### ** Management Page ** 
+
+| Test Case Id | Description | Expect result|
+|:----:|:----:|:----:|
+| 1 | click on add products/boxes/products on box button | To be redirected to the respective page with all fields|
+| 2 | After add all information, click on add product/box/ product on box | To be redirected to products/box list |
+| 3 | on products/boxes list page and click in delete button| Delete product/box and be redirected to list page |
 
 ## Python (PEP8) Validation
 
@@ -343,20 +395,8 @@ On this test, a checklist was developed to guide the user along with all pages a
 ========================================================================================
 ### Desktop
 
-
+Plataform was tested on Mozilla Firefox Developers and Google Chrome and everything was working as expected.
 
 ### Mobile
 
-  Tested with **PLACEHOLDER** 
-
-### WAVE Accessibility validation
-
-**PLACEHOLDER WAVE analysis**
-    
-<p>
-    <img  src="" width="60%" alt="Home Page WAVE Results"/>
-</p>
-
-# Unfixed bugs
-
-- 
+  Tested with Xiomi Mi6, Xiomi Mi8 and Samsumg Gallaxy S21 ans all features were working as expected. 
