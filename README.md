@@ -145,7 +145,11 @@ Test cases were linked with every User story presented above, and can be found i
 
 * Sprint 7 - 13/02/2022 - 20/02/2022
 
-  + 
+  + User acceptance
+    - As a user I want to use all features on platform without major issues
+
+  + Validation
+    - As a site owner I want to make sure that all files are validateds
 
 
 </details>
@@ -193,6 +197,10 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 ## Existing Features
 
+<details>
+
+<summary> Here you can find a description of all features availabe on the platform. </summary>
+
 ### **Navbar** 
 
 + Fixed Navbar allow the user easy access to all pages. 
@@ -226,6 +234,12 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 3. Collapsed navbar on smaller devices to wrap in all options and assure better navbar design.
 
 <img width="300" src="media/readme/features_ss/collapsed navbar.jpg">
+
+### **Footer** 
+
++ Sticky footer present in all pages with link to susbcribe to newsletter and social media links. 
+
+<img width="800" src="media/readme/features_ss/footer.png">
 
 ### **Homepage** 
 
@@ -310,15 +324,68 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 ### **Payment Page** 
 
-1. Credit card only payments are available on this age
+1. Credit card only payments are available on this page
 
-<img width="400" src="">
+<img width="400" src="media/readme/features_ss/payment.png">
+
+### **Management Page** 
+
+1. On his page, admin user can find all options to add, edit or delete products, boxes and products on boxes, and also check all sent newsletters or send a new one. 
+
+<img width="700" src="media/readme/features_ss/management.png">
+
+  1.1 Send newsletter 
+
+  + Admin user can send newsletter to all user or just chose some of them .
+
+<img width="700" src="media/readme/features_ss/send_newsletter.png">
+
+  1.2 Newsletters sent 
+
+  + Display a list of all sent newsletters
+
+<img width="700" src="media/readme/features_ss/sent_newsletter.png">
+
+  1.3 Add box, product and product on box 
+
+  + Admin user can add all products in database from frontend.
+
+<p float="left">
+<img width="400" src="media/readme/features_ss/add_box.png">  
+<img width="400" src="media/readme/features_ss/add_products.png">
+<img width="400" src="media/readme/features_ss/add_products_on_the_box.png">
+</p>
+
+  1.4 Box, product and product on box list to edit or delte
+
+ + Admin user can edit or delete or all products in database from frontend.
+
+<p float="left">
+<img width="400" src="media/readme/features_ss/boxes_list.png">  
+<img width="400" src="media/readme/features_ss/products_list.png">
+<img width="400" src="media/readme/features_ss/products_on_box_list.png">
+</p>
+
+  1.5 Edit box, product and product on box 
+
+ + Admin user can edit or all products info in database from frontend.
+
+<p float="left">
+<img width="400" src="media/readme/features_ss/edit_box.png">  
+<img width="400" src="media/readme/features_ss/edit_products.png">
+<img width="400" src="media/readme/features_ss/edit_producst_on_boxes.png">
+</p>
+
+</details>
 
 ## Future Features
 
-I would like to ...
-
-1. 
+1. Paginate Box, Products and Products on boxes list to show the admin user only 20 items per page;
+2. Create a seach feature to management page to make easier find boxes, products and products on boxes;
+3. Store all orders ins a json file to have all data even if boxes or products were deleted;
+4. Create a wishlist in user profile;
+5. Display all users comments on profile page;
+6. Only alow user to comment on prduct if they already bought it. 
 
 
 ## Languages Used
@@ -348,6 +415,7 @@ All testing and code validation details are described in a separate file called 
 | Bugs              | Solutions |
 | ---               | --------- |
 | Cart count item just works when user add product to the cart, do to cart, come back to the previous page and refresh | Change functon on context and add cart count on it |
+| Get cart total function stotp works when ordered box are deleted | Create a exclude item on this property  |
 
 ## Deployment 
 
@@ -389,7 +457,7 @@ This App is deployed using Heroku.
     
     <img src="media/readme/deployment/heroku_dashboard_deploy.png">
     
-    2.8. Click in Connect to Github and search for 'nandabritto' GitHub account and 'search_your_brand' repository
+    2.8. Click in Connect to Github and search for 'nandabritto' GitHub account and 'PP5' repository
     
     <img src="media/readme/deployment/heroku_github_deploy.png">
     
