@@ -44,10 +44,10 @@
                         <!-- Products options -->
                         <h2 class="text-center small-text mt-2 fw-bolder"> Customize your optional products:</h2>
                         <div class="d-flex justify-content-center" itemscope itemtype="https://schema.org/GroceryStore">
-                            <form class="product_options px-4" method="post" itemprop="product choices">
+                            <form class="product_options px-4 " method="post" itemprop="product choices">
                                 <fildset>
                                     {% csrf_token %}
-                                    <small>
+                                    <small class="text-capitalize">
                                         {{form|crispy }}
                                     </small>
                                 </fildset>
