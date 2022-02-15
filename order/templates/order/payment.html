@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+
 {% load static %}
 
+<!-- Page title -->
 {% block extra_title %} Payment{% endblock %}
 
 {% block content %}
@@ -13,17 +15,17 @@
                     <h1 class="my-2 h2 text-center">Payment</h1>
                     <hr>
                     {% if card %}
-                    <div>
-                        <div class="custom-control custom-checkbox" itemprop="category">
-                            <input type="checkbox" class="custom-control-input" name="use_default_card"
-                                id="use_default_card">
-                            <label class="custom-control-label" for="use_default_card">Use default card:
-                                **** **** **** {{ card.last4 }}
-                                <span>Exp: {{ card.exp_month }}/{{ card.exp_year }}</span></label>
+                        <div>
+                            <div class="custom-control custom-checkbox" itemprop="category">
+                                <input type="checkbox" class="custom-control-input" name="use_default_card"
+                                    id="use_default_card">
+                                <label class="custom-control-label" for="use_default_card">Use default card:
+                                    **** **** **** {{ card.last4 }}
+                                    <span>Exp: {{ card.exp_month }}/{{ card.exp_year }}</span>
+                                </label>
+                            </div>
                         </div>
-                    </div>
                     {% endif %}
-
                     <div class="current-card-form" itemprop="category">
                         <form action="." method="post" class="stripe-form">
                             {% csrf_token %}
@@ -45,7 +47,8 @@
                                 <div id="card-element">
                                     <div>
                                         <iframe title="Secure payment input frame"></iframe><input aria-hidden="true"
-                                            aria-label=" " maxlength="1"></div>
+                                            aria-label=" " maxlength="1">
+                                    </div>
                                 </div>
                             </div>
                             <!-- Submit payment -->
@@ -61,13 +64,11 @@
         </div>
     </div>
 </main>
-
 {% endblock content %}
 
+<!-- Stripe JS-->
 {% block postloadjs %}
-<!-- Stripe -->
 <script src="{% static 'js/stripe_elements.js' %}"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 {% endblock %}

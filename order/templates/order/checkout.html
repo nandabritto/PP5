@@ -8,89 +8,93 @@
 {% block extra_title %} Checkout{% endblock %}
 
 {% block content %}
-
-
-<div class="container mt-5 px-5">
-
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card p-3">
-
-                <h1>Confirm your order and address</h1>
-                <hr>
-                <!-- Shipping address details form -->
-
-                <form method="POST">
-                    {% csrf_token %}
-                    <h2>Shipping Address</h2>
-                    <div class='hideable_shipping_form'>
-                        {{ form.shipping_address1|as_crispy_field  }}
-                        {{ form.shipping_address2|as_crispy_field  }}
-                        {{ form.shipping_county|as_crispy_field  }}
-                        {{ form.shipping_country|as_crispy_field  }}
-                        {{ form.shipping_eircode|as_crispy_field  }}
-                    </div>
-                    {% if default_shipping_address %}
-                    {{ form.use_default_shipping|as_crispy_field  }}
-                    {% endif %}
-
-                    {% if not default_shipping_address %}
-                    {{ form.set_default_shipping|as_crispy_field  }}
-                    {% endif %}
-                    {{ form.same_billing_address|as_crispy_field  }}
-
-                    <h2>Billing Address</h2>
-                    <div class='hideable_billing_form'>
-                        {{ form.billing_address1|as_crispy_field  }}
-                        {{ form.billing_address2|as_crispy_field  }}
-                        {{ form.billing_county|as_crispy_field  }}
-                        {{ form.billing_country|as_crispy_field  }}
-                        {{ form.billing_eircode|as_crispy_field  }}
-                    </div>
-
-                    <div class='hideable_user_default_billing'>
-                        {% if default_billing_address %}
-                        {{ form.use_default_billing|as_crispy_field  }}
-                        {% endif %}
-                        {% if not default_billing_address %}
-                        {{ form.set_default_billing|as_crispy_field  }}
-                        {% endif %}
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-lg btn-success" type="submit"><i class="fas fa-credit-card p-2"></i>Next</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <!-- Order details -->
-            <div class="card card-blue p-3 text-black mb-3">
-                <h3 class=" lead fw-bolder mb-0 text-muted p-3">Order Summary</h3>
-                <p class=" text-end mb-0 text-muted">{{order.get_cart_items}} item(s)</p>
-                <ul class="list-group mb-3">
-                    {% for item in items %}
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h4 class="small-text my-0">Box: {{ item.box.box_name}}</h4>
-                            <small class="text-muted">Quantity: {{ item.quantity}}</small>
+<section>
+    <!-- Checkout container-->
+    <div class="container mt-5 px-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card p-3">
+                    <h1>Confirm your order and address</h1>
+                    <hr>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <!-- Shipping address details form -->
+                        <h2>Shipping Address</h2>
+                        <div class='hideable_shipping_form'>
+                            {{ form.shipping_address1|as_crispy_field  }}
+                            {{ form.shipping_address2|as_crispy_field  }}
+                            {{ form.shipping_county|as_crispy_field  }}
+                            {{ form.shipping_country|as_crispy_field  }}
+                            {{ form.shipping_eircode|as_crispy_field  }}
                         </div>
-                        <span class="text-muted">€ {{item.quantity | mul:item.box.box_price}}</span>
-                    </li>
-                    {% endfor %}
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Delivery</span>
-                        € 0
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total</span>
-                        <strong>€ {{order.get_cart_total|floatformat:2}}</strong>
-                    </li>
-                </ul>
+                        <!-- Default shipping address checkout box -->
+                        {% if default_shipping_address %}
+                            {{ form.use_default_shipping|as_crispy_field  }}
+                        {% endif %}
+                        <!-- Save shipping address checkout box -->
+                        {% if not default_shipping_address %}
+                            {{ form.set_default_shipping|as_crispy_field  }}
+                        {% endif %}
+                        <!-- Billing address details form -->
+                        <h2>Billing Address</h2>
+                        {{ form.same_billing_address|as_crispy_field  }}
+                        <div class='hideable_billing_form'>
+                            {{ form.billing_address1|as_crispy_field  }}
+                            {{ form.billing_address2|as_crispy_field  }}
+                            {{ form.billing_county|as_crispy_field  }}
+                            {{ form.billing_country|as_crispy_field  }}
+                            {{ form.billing_eircode|as_crispy_field  }}
+                        </div>
+                        <div class='hideable_user_default_billing'>
+                            {% if default_billing_address %}
+                                <!-- Use default billing address checkout box -->
+                                {{ form.use_default_billing|as_crispy_field  }}
+                            {% endif %}
+                            {% if not default_billing_address %}
+                                <!-- Save default billing address checkout box -->
+                                {{ form.set_default_billing|as_crispy_field  }}
+                            {% endif %}
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-lg btn-success" type="submit">
+                                <i class="fas fa-credit-card p-2"></i>Next
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Order details container -->
+            <div class="col-md-4">
+                <div class="card card-blue p-3 text-black mb-3">
+                    <h3 class=" lead fw-bolder mb-0 text-muted p-3">Order Summary</h3>
+                    <p class=" text-end mb-0 text-muted">{{order.get_cart_items}} item(s)</p>
+                    <ul class="list-group mb-3">
+                        <!-- Items list -->
+                        {% for item in items %}
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h4 class="small-text my-0">Box: {{ item.box.box_name}}</h4>
+                                    <small class="text-muted">Quantity: {{ item.quantity}}</small>
+                                </div>
+                                <span class="text-muted">€ {{item.quantity | mul:item.box.box_price}}</span>
+                            </li>
+                        {% endfor %}
+                        <!-- Delivery cost -->
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Delivery</span>
+                            € 0
+                        </li>
+                        <!-- Total order cost -->
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total</span>
+                            <strong>€ {{order.get_cart_total|floatformat:2}}</strong>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+</section>
 {% endblock %}
 
 
