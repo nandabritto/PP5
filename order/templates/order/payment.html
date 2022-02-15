@@ -12,62 +12,60 @@
 {% block content %}
 <!--Payment Container -->
 <main>
-  <div class="container my-5">
-    <div class="row">
-      <div class="col-4 text-center mx-auto">
-        <div class="card" itemscope itemtype="https://schema.org/PaymentCard">
-          <h1 class="my-2 h2 text-center">Payment</h1>
-          <hr>
-          {% if card %}
-          <div>
-            <div class="custom-control custom-checkbox" itemprop="category">
-              <input type="checkbox" class="custom-control-input" name="use_default_card" id="use_default_card">
-              <label class="custom-control-label" for="use_default_card">Use default card:
-                **** **** **** {{ card.last4 }}
-                <span>Exp: {{ card.exp_month }}/{{ card.exp_year }}</span></label>
-            </div>
-          </div>
-          {% endif %}
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-4 text-center mx-auto">
+                <div class="card" itemscope itemtype="https://schema.org/PaymentCard">
+                    <h1 class="my-2 h2 text-center">Payment</h1>
+                    <hr>
+                    {% if card %}
+                    <div>
+                        <div class="custom-control custom-checkbox" itemprop="category">
+                            <input type="checkbox" class="custom-control-input" name="use_default_card"
+                                id="use_default_card">
+                            <label class="custom-control-label" for="use_default_card">Use default card:
+                                **** **** **** {{ card.last4 }}
+                                <span>Exp: {{ card.exp_month }}/{{ card.exp_year }}</span></label>
+                        </div>
+                    </div>
+                    {% endif %}
 
-          <div class="current-card-form" itemprop="category">
-            <form action="." method="post" class="stripe-form">
-              {% csrf_token %}
-              <input type="hidden" name="use_default" value="true">
-              <div class="stripe-form-row">
-                <button class=" btn btn-lg  btn-success">Submit Payment</button>
-              </div>
-              <div class="card-errors" role="alert"></div>
-            </form>
-          </div>
-          <!--Cart input Container -->
-          <div class="new-card-form" itemprop="category">
-            <form action="." method="post" class="stripe-form" id="stripe-form">
-              {% csrf_token %}
-              <div class="stripe-form-row" id="creditCard">
-                <label class="stripeBtnLabel">
-                  Credit or debit card
-                </label>
-                <div id="card-element">
-                  <div>
-                    <iframe title="Secure payment input frame"></iframe><input aria-hidden="true" aria-label=" "
-                      maxlength="1"></div>
+                    <div class="current-card-form" itemprop="category">
+                        <form action="." method="post" class="stripe-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="use_default" value="true">
+                            <div class="stripe-form-row">
+                                <button class=" btn btn-lg  btn-success">Submit Payment</button>
+                            </div>
+                            <div class="card-errors" role="alert"></div>
+                        </form>
+                    </div>
+                    <!--Cart input Container -->
+                    <div class="new-card-form" itemprop="category">
+                        <form action="." method="post" class="stripe-form" id="stripe-form">
+                            {% csrf_token %}
+                            <div class="stripe-form-row" id="creditCard">
+                                <label class="stripeBtnLabel">
+                                    Credit or debit card
+                                </label>
+                                <div id="card-element">
+                                    <div>
+                                        <iframe title="Secure payment input frame"></iframe><input aria-hidden="true"
+                                            aria-label=" " maxlength="1"></div>
+                                </div>
+                            </div>
+                            <!-- Submit payment -->
+                            <div class="stripe-form-row my-3">
+                                <button class="stripeBtn btn-success">Submit Payment</button>
+                            </div>
+                            <!--Payment alerts -->
+                            <div id="card-errors" class ="text-white" role="alert"></div>
+                        </form>
+                    </div>
                 </div>
-              </div>
-              <!-- Submit payment -->
-              <div class="stripe-form-row my-3">
-                <button class="stripeBtn btn-success">Submit Payment</button>
-              </div>
-              <!--Payment alerts -->
-              <div id="card-errors" role="alert"></div>
-            </form>
-          </div>
+            </div>
         </div>
-      </div>
-
-
     </div>
-
-  </div>
 </main>
 
 {% endblock content %}
