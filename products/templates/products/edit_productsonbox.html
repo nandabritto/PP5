@@ -7,32 +7,30 @@
 {% block extra_title %} Edit Products on Box{% endblock %}
 
 {% block content %}
-
-<!-- Product Management container -->
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-10 col-lg-10 col-11 mx-auto">
-            <div class="card p-3">
-                <h1 class="text-center"><strong>Product Management</strong></h1>
-                <hr>
-                <h2> <i class="fas fa-box-open"></i> Edit Product {{productonbox.product.product_name|title}} on box {{productonbox.box.box_name|title}}</h2>
-                <!-- Edit Box Details form -->
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form | crispy}}
-                    <div class="text-center">
-                        <a href="{% url 'productsonbox_list' %}" class="btn btn-lg btn-dark mx-3"> <i
-                                class="fas fa-arrow-circle-left"></i> Back</a>                         
-                        <button class="btn btn-lg btn-warning mx-3" type="submit">Update Product</button>
+    <section>
+        <!-- Product Management container -->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-10 col-lg-10 col-11 mx-auto">
+                    <div class="card p-3">
+                        <h1 class="text-center"><strong>Product Management</strong></h1>
+                        <hr>
+                        <h2> <i class="fas fa-box-open"></i> Edit Product {{productonbox.product.product_name|title}} on box
+                            {{productonbox.box.box_name|title}}</h2>
+                        <!-- Edit Box Details form -->
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form | crispy}}
+                            <div class="text-center">
+                                <a href="{% url 'productsonbox_list' %}" class="btn btn-lg btn-dark mx-3">
+                                    <i class="fas fa-arrow-circle-left"></i> Back
+                                </a>
+                                <button class="btn btn-lg btn-warning mx-3" type="submit">Update Product</button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-{% endblock %}
-
-
-{% block postloadjs %}
+    </section>
 {% endblock %}
