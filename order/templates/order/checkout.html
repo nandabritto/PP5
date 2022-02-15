@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<!-- bbbootstrap.com inspirated template -->
+
 <div class="container mt-5 px-5">
 
     <div class="row">
@@ -95,9 +95,5 @@
 
 
 {% block postloadjs %}
-{{ block.super }}
-{{ stripe_public_key|json_script:"id_stripe_public_key" }}
-{{ client_secret|json_script:"id_client_secret" }}
-<script src="{% static 'js/stripe_elements.js' %}"></script>
 <script src="{% static 'js/checkout.js' %}"></script>
 {% endblock %}

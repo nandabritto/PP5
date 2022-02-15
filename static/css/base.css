@@ -28,9 +28,10 @@ h5 {
 }
 
 
-.small-text{
-    font-size: 15px!important;
+.small-text {
+    font-size: 15px !important;
 }
+
 p,
 a {
     font-family: 'Lato', sans-serif !important;
@@ -48,14 +49,12 @@ a {
     color: var(--red) !important;
 }
 
-
 /* Buttons */
 
 .btn-danger {
     background-color: var(--red) !important;
     border-color: var(--red) !important;
 }
-
 
 .btn-success {
     background-color: var(--green) !important;
@@ -73,13 +72,6 @@ a {
     font-weight: 600;
 }
 
-input:focus {
-    outline: none !important;
-    border-color: none !important;
-    box-shadow: 0 0 0 1px gray !important;
-    /*change this color */
-}
-
 /* Alerts */
 
 .alert-box {
@@ -93,82 +85,25 @@ input:focus {
     right: 0;
 }
 
-/* Form control colors */ 
+/* Form control colors */
+
+input:focus {
+    outline: none !important;
+    border-color: none !important;
+    box-shadow: 0 0 0 1px gray !important;
+}
 
 .form-control:focus {
     border-color: var(--orange);
     box-shadow: var(--orange);
-} 
+}
 
-
-.form-check-input:checked{
+.form-check-input:checked {
     background-color: var(--green);
     border-color: var(--black);
 }
 
-/* cart */ 
-
-.chg-quantity{
-	width: 12px;
-	cursor: pointer;
-	display: block;
-	margin-top: 5px;
-	transition:.1s;
-}
-
-.box_image {
-	height: 150px!important;
-	width:150px!important;
-}
-
-.cart-item-quantity{
-	flex:1!important;
-}
-
-/* checkout */ 
-img {
-    width: 20px!important;
-}
-
-.StripeElement,
-.stripe-style-input {
-  box-sizing: border-box;
-  height: 40px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  background-color: white;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-}
-
-.StripeElement--focus,
-.stripe-style-input:focus,
-.stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
-}
-
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
-
-.stripe-style-input::placeholder {
-    color: #aab7c4;
-}
-
-.fieldset-label {
-    position: relative;
-    right: .5rem;
-}
-
-#payment-form .form-control,
-#card-element {
-    color: #000;
-    border: 1px solid #000;
-}
-
-/* navbar */
+/* Navbar */
 
 .jumbotron-img {
     height: 30vh;
@@ -179,7 +114,7 @@ img {
 .nav-link.active {
     font-weight: bolder !important;
     background-color: var(--yellow) !important;
-
+    
 }
 
 .navbar-light .navbar-nav .nav-link:focus,
@@ -189,20 +124,15 @@ img {
     font-weight: bolder;
 }
 
-.dropdown-item.active, .dropdown-item:active, .dropdown-item:hover {
+.dropdown-item.active,
+.dropdown-item:active,
+.dropdown-item:hover {
     color: var(--black);
-    background-color: var(--yellow)!important;
+    background-color: var(--yellow) !important;
     font-weight: bolder;
 }
 
-/* order */
-
-.order_detail_img{
-    height: 10vw;
-    width: 10vh;
-}
-
-/* index */
+/* Index Page */
 
 
 .card {
@@ -216,48 +146,60 @@ img {
     transform: translateX(-50%) translateY(-50%);
 }
 
-/* payment */ 
+/* Products page */
 
-.__PrivateStripeElement {
-    margin: 0px !important;
-    padding: 0px !important;
-    border: none !important;
-    display: block !important;
-    background: transparent !important;
-    position: relative !important;
-    opacity: 1 !important;
-  }
-  
-  .__privateStripeFrame5 {
-    border: none !important;
-    margin: 0px !important;
-    padding: 0px !important;
-    width: 1px !important;
-    min-width: 100% !important;
-    overflow: hidden !important;
-    display: block !important;
-    height: 19.2px;
-  }
-  
-  .__PrivateStripeElement-input {
-    border: none !important;
-    display: block !important;
-    position: absolute !important;
-    height: 1px !important;
-    top: 0px !important;
-    left: 0px !important;
-    padding: 0px !important;
-    margin: 0px !important;
-    width: 100% !important;
-    opacity: 0 !important;
-    background: transparent !important;
-    pointer-events: none !important;
-    font-size: 16px !important;
-  }
-  
-  /* css from just django*/
-  
-  #stripeBtnLabel {
+.card-body-list {
+    height: 100px;
+}
+
+.products-container {
+    width: 70%;
+    margin-top: 2%;
+}
+
+.products-container {
+    padding-bottom: 2vh !important;
+}
+
+.checked {
+    color: rgb(214, 125, 62);
+}
+
+/* Cart Page */
+
+.chg-quantity {
+    width: 12px;
+    cursor: pointer;
+    display: block;
+    margin-top: 5px;
+    transition: .1s;
+}
+
+.box_image {
+    height: 150px !important;
+    width: 150px !important;
+}
+
+.cart-item-quantity {
+    flex: 1 !important;
+}
+
+/* Checkout Page */
+
+.img-checkout {
+    width: 20px !important;
+}
+
+/* Order Page */
+
+.order_detail_img {
+    height: 10vw;
+    width: 10vh;
+}
+
+/* Payment Page - css from just django*/
+
+#stripeBtnLabel {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 16px;
     font-variant: normal;
@@ -266,9 +208,9 @@ img {
     -webkit-font-smoothing: antialiased;
     font-weight: 500;
     display: block;
-  }
-  
-  #stripeBtn {
+}
+
+#stripeBtn {
     border: none;
     border-radius: 4px;
     outline: none;
@@ -289,102 +231,58 @@ img {
     transition: all 150ms ease;
     float: left;
     width: 100%
-  }
-  
-  button:hover {
+}
+
+button:hover {
     transform: translateY(-1px);
     box-shadow: 0 7px 14px rgba(50, 50, 93, .10), 0 3px 6px rgba(0, 0, 0, .08);
     background-color: #43458b;
-  }
-  
-  .stripe-form {
+}
+
+.stripe-form {
     padding: 5px 30px;
-  }
-  
-  #card-errors {
+}
+
+#card-errors {
     height: 20px;
     padding: 4px 0;
     color: #fa755a;
-  }
-  
-  .stripe-form-row {
+}
+
+.stripe-form-row {
     width: 100%;
     float: left;
     margin-top: 5px;
     margin-bottom: 5px;
-  }
-  
-  /**
-     * The CSS shown here will not be introduced in the Quickstart guide, but shows
-     * how you can use CSS to style your Element's container.
-     */
-  .StripeElement {
+}
+
+.StripeElement {
     box-sizing: border-box;
-  
     height: 40px;
-  
     padding: 10px 12px;
-  
     border: 1px solid transparent;
     border-radius: 4px;
     background-color: white;
-  
     box-shadow: 0 1px 3px 0 #e6ebf1;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
-  }
-  
-  .StripeElement--focus {
+}
+
+.StripeElement--focus {
     box-shadow: 0 1px 3px 0 #cfd7df;
-  }
-  
-  .StripeElement--invalid {
+}
+
+.StripeElement--invalid {
     border-color: #fa755a;
-  }
-  
-  .StripeElement--webkit-autofill {
+}
+
+.StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
-  }
-  
-  .current-card-form {
+}
+
+.current-card-form {
     display: none;
-  }
-
-
-  /* products */
-
-
-/*Producs container */
-.card-body-list{
-    height:100px;
 }
-.product-image {
-    height: 20vh;
-}
-/* 
-.box-image-detail{
-    max-height: 30vh;
-    max-width: 20vw;
-} */
-
-.products-container {
-    width: 70%;
-    margin-top:2%;
-}
-
-.product-image {
-    width: 200px;
-    height: 200px;
-}
-
-.products-container {
-    padding-bottom: 2vh !important;
-}
-
-.checked {
-    color: rgb(214, 125, 62);
-}
-
 
 /*Media queries*/
 
@@ -399,8 +297,6 @@ img {
     }
 
     .container-box-home {
-        /* position: absolute; */
-        /* top: 40%; */
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
     }
@@ -422,8 +318,8 @@ img {
         width: 100% !important;
     }
 
-    .card-body-list{
-        height:fit-content;
+    .card-body-list {
+        height: fit-content;
     }
 
 }
