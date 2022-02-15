@@ -1,61 +1,60 @@
 {% extends "base.html" %}
+
 {% load static %}
 {% load crispy_forms_tags %}
 
+<!-- Page title-->
 {% block extra_title %} Newsletter List{% endblock %}
 
 {% block content %}
-<div class="container mt-5 px-1" itemscope>
-    <div class="row">
-        <div class="col-md-10 col-lg-10 col-11 mx-auto">
-            <div class="card p-3" itemscope itemtype="https://schema.org/EmailMessage">
-                <h1 class="text-center"><strong>Sent Newsletters </strong></h1>
-
-                {% if object_list %}
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col" itemprop="datesent">Send Date</th>
-                            <th scope="col" itemprop="subject">Subject</th>
-                            <th scope="col" itemprop="message">Body</th>
-                            <th scope="col" itemprop="status">Status</th>
-                            <th scope="col" itemprop="updatedate">Update date</th>
-
-                        </tr>
-                    </thead>
-                    {% for newsletter in object_list %}
-                    <tbody>
-                        <tr>
-                            <th scope="row"></th>
-                            <td>{{ newsletter.created}} </td>
-                            <td>{{ newsletter.subject|slice:32 }}</td>
-                            <td>{{ newsletter.body|slice:30 }}(...)</td>
-                            <td>{{ newsletter.status }}</td>
-                            <td>{{ newsletter.updated }}</td>
-                            
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-
-                </table>
-
-                {% else %}
-                <div class="text-center m-4">
-                    There's no newsletter. Send the first one <a href="{% url 'send' %}" class="text-success fw-bold">
-                        here.
-                    </a>
-                </div>
-                {% endif %}
-
-          
-                <div class="text-center">
-                    <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2"> <i
-                            class="fas fa-arrow-circle-left"></i> Back</a>
+    <section>
+        <!-- Newsletter list container -->
+        <div class="container mt-5 px-1" itemscope>
+            <div class="row">
+                <div class="col-md-10 col-lg-10 col-11 mx-auto">
+                    <!-- Newsletter list table -->
+                    <div class="card p-3" itemscope itemtype="https://schema.org/EmailMessage">
+                        <h1 class="text-center"><strong>Sent Newsletters </strong></h1>
+                        {% if object_list %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col" itemprop="datesent">Send Date</th>
+                                        <th scope="col" itemprop="subject">Subject</th>
+                                        <th scope="col" itemprop="message">Body</th>
+                                        <th scope="col" itemprop="status">Status</th>
+                                        <th scope="col" itemprop="updatedate">Update date</th>
+                                    </tr>
+                                </thead>
+                                {% for newsletter in object_list %}
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td>{{ newsletter.created}} </td>
+                                            <td>{{ newsletter.subject|slice:32 }}</td>
+                                            <td>{{ newsletter.body|slice:30 }}(...)</td>
+                                            <td>{{ newsletter.status }}</td>
+                                            <td>{{ newsletter.updated }}</td>
+                                        </tr>
+                                    </tbody>
+                            {% endfor %}
+                            </table>
+                        {% else %}
+                            <!-- No newsletter container -->
+                            <div class="text-center m-4">
+                                There's no newsletter. Send the first one
+                                <a href="{% url 'send' %}" class="text-success fw-bold">here.</a>
+                            </div>
+                        {% endif %}
+                        <div class="text-center">
+                            <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2">
+                                <i class="fas fa-arrow-circle-left"></i> Back
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
+    </section>
 {% endblock %}
