@@ -64,6 +64,15 @@ function getvalues() {
 
 $('input[type=checkbox]').change(function(e){
     if ($('input[type=checkbox]:checked').length > 5) {
-         $(this).prop('checked', false);
+         $(this).prop('checked', false), swal({
+            title: "Sorry!",
+            text: "You can only choose 5 products",
+            type: "warning",
+            timer: 2000,
+            showConfirmButton: true
+          }, function(){
+            swal.close ();
+          });
+
     }
  })
