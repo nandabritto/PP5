@@ -84,6 +84,7 @@ def update_profile(request):
                 eircode=default_address.eircode,
                 address_type=default_address.address_type,
             )
+            
             if not default_address_qs.exists():
                 address_qs = Address.objects.filter(
                     customer=default_address.customer,
