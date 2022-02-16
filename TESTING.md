@@ -422,17 +422,6 @@ A session was held with an end-user. The feedback obtained is listed below:
 	
 ### **Response to the user experience test:**
 
-
-
-### Final User Testing (Beta)
-
-On this test, a checklist was developed to guide the user along with all pages and features on the platform. This checklist and the results can be viewed here: 
-
-[Features]() <br>
-[Pages]()
-
-### **Response to the user experience test:**
-
 + The majority of user feedback and bugs found was incorporated and fixes on the platform except by points: 
 
 | Items numbers | Situation | Response|
@@ -444,6 +433,17 @@ On this test, a checklist was developed to guide the user along with all pages a
 + CNR - Cannot Reproduce
 + NAB - Not a Bug
 + WNF - Will not fix
+
+
+### Final User Testing (Beta)
+
+On this test, a checklist was developed to guide the user along with all pages and features on the platform. This checklist and the results can be viewed here: 
+
+[Features]() <br>
+[Pages]()
+
+### **Response to the user experience test:**
+
 
 ## Manual Testing
 ========================================================================================

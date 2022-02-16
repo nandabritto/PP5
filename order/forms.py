@@ -52,14 +52,14 @@ class CheckoutForm(forms.Form):
         label="Billing address is the same as my shipping address",
         widget=forms.CheckboxInput(), required=False)
     set_default_shipping = forms.BooleanField(
-        label="Save default shipping address",
+        label="Save this address as my default for shipping",
         required=False)
     use_default_shipping = forms.BooleanField(
-        label="Use default shipping address",
+        label="Use my default shipping address",
         required=False)
     set_default_billing = forms.BooleanField(
-        label="Set default billing address",
+        label="Save this address as my default for billing",
         required=False)
     use_default_billing = forms.BooleanField(
-        label="Use default billing address",
+        label="Use my default billing address",
         required=False)

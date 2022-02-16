@@ -134,6 +134,14 @@ class CheckoutView(View):
                             'set_default_shipping')
                         if set_default_shipping:
                             shipping_address.default = True
+
+                            address_qs = Address.objects.filter(
+                                customer=self.request.user,
+                                address_type='S')
+
+                            if address_qs.exists():
+                                address_qs.update(default=False)
+
                             shipping_address.save()
                     else:
                         messages.info(
