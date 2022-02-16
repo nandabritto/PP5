@@ -276,7 +276,7 @@ class PaymentView(View):
             order.payment = payment
             order.save()
             messages.success(
-                self.request, "Your order was successful")
+                self.request, "Your order was successful! You will receive a confirmation email.")
             return redirect("success", order.pk)
 
         except stripe.error.CardError as e:
