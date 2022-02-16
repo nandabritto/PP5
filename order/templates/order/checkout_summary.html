@@ -8,72 +8,71 @@
 {% block extra_title %} Checkout Summary{% endblock %}
 
 {% block content %}
-    <section>
-        <!-- Checkout Summary container-->
-        <div class="container mt-5 px-5">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="card p-3">
-                        <h1>Confirm your order and address</h1>
-                        <hr>
-                        <!-- Shipping address details -->
-                        <h2>Shipping Address</h2>
-                        <div>
-                            <p>{{order.shipping_address.address1 }}</p>
-                            <p>{{order.shipping_address.address2 }}</p>
-                            <p>{{order.shipping_address.county }}</p>
-                            <p>{{order.shipping_address.country }}</p>
-                            <p>{{order.shipping_address.eircode }}</p>
-                        </div>
-                        <!-- Shipping address details -->
-                        <h2>Billing Address</h2>
-                        <div>
-                            <p>{{order.billing_address.address1 }}</p>
-                            <p>{{order.billing_address.address2 }}</p>
-                            <p>{{order.billing_address.county }}</p>
-                            <p>{{order.billing_address.country }}</p>
-                            <p>{{order.billing_address.eircode }}</p>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-lg btn-dark mx-2" onclick="history.back()">
-                                <i class="fas fa-arrow-circle-left"></i> Go Back
-                            </button>
-                            <a class="btn btn-lg btn-success mx-2" href="{%url 'payment'%}">
-                                <i class="fas fa-credit-card px-2"></i>Payment
-                            </a>
-                        </div>
+<section>
+    <!-- Checkout Summary container-->
+    <div class="container mt-5 px-5">
+        <div class="row">
+            <div class="col-8">
+                <div class="card p-3 ">
+                    <h1>Confirm your order and address</h1>
+                    <hr>
+                    <!-- Shipping address details -->
+                    <h2 class="text-center">Shipping Address</h2>
+                    <div class="mb-2 mx-auto ">
+                        <p class=m-0>{{order.shipping_address.address1 }}</p>
+                        <p class=m-0>{{order.shipping_address.address2 }}</p>
+                        <p class=m-0>{{order.shipping_address.county }} - {{order.shipping_address.country }}</p>
+                        <p class=m-0>{{order.shipping_address.eircode }}</p>
                     </div>
-                </div>
-                <!-- Order details container -->
-                <div class="col-md-4">
-                    <div class="card card-blue p-3 text-black mb-3">
-                        <h3 class=" lead fw-bolder mb-0 text-muted p-3">Order Summary</h3>
-                        <p class=" text-end mb-0 text-muted">{{order.get_cart_items}} item(s)</p>
-                        <ul class="list-group mb-3">
-                            <!-- Items list -->
-                            {% for item in items %}
-                                <li class="list-group-item d-flex justify-content-between lh-sm">
-                                    <div>
-                                        <h4 class="small-text my-0">Box: {{ item.box.box_name}}</h4>
-                                        <small class="text-muted">Quantity: {{ item.quantity}}</small>
-                                    </div>
-                                    <span class="text-muted">€ {{item.quantity | mul:item.box.box_price}}</span>
-                                </li>
-                            {% endfor %}
-                            <!-- Delivery cost -->
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Delivery</span>
-                                € {{order.shipping}}
-                            </li>
-                            <!-- Total order cost -->
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Total</span>
-                                <strong>€ {{order.get_cart_total|floatformat:2}}</strong>
-                            </li>
-                        </ul>
+
+                    <!-- Shipping address details -->
+                    <h2 class="text-center">Billing Address</h2>
+                    <div class="mb-2 mx-auto">
+                        <p class="m-0">{{order.billing_address.address1 }}</p>
+                        <p class="m-0">{{order.billing_address.address2 }}</p>
+                        <p class="m-0">{{order.billing_address.county }} - {{order.billing_address.country }}</p>
+                        <p class="m-0">{{order.billing_address.eircode }}</p>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-lg btn-dark mx-2" onclick="history.back()">
+                            <i class="fas fa-arrow-circle-left"></i> Go Back
+                        </button>
+                        <a class="btn btn-lg btn-success mx-2" href="{%url 'payment'%}">
+                            <i class="fas fa-credit-card px-2"></i>Payment
+                        </a>
                     </div>
                 </div>
             </div>
+            <!-- Order details container -->
+            <div class="col-md-4">
+                <div class="card card-blue p-3 text-black mb-3">
+                    <h3 class=" lead fw-bolder mb-0 text-muted p-3">Order Summary</h3>
+                    <p class=" text-end mb-0 text-muted">{{order.get_cart_items}} item(s)</p>
+                    <ul class="list-group mb-3">
+                        <!-- Items list -->
+                        {% for item in items %}
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h4 class="small-text my-0">Box: {{ item.box.box_name}}</h4>
+                                <small class="text-muted">Quantity: {{ item.quantity}}</small>
+                            </div>
+                            <span class="text-muted">€ {{item.quantity | mul:item.box.box_price}}</span>
+                        </li>
+                        {% endfor %}
+                        <!-- Delivery cost -->
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Delivery</span>
+                            € {{order.shipping}}
+                        </li>
+                        <!-- Total order cost -->
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total</span>
+                            <strong>€ {{order.get_cart_total|floatformat:2}}</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}

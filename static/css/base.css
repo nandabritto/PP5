@@ -78,8 +78,7 @@ a {
     width: 30% !important;
     border-left-color: darkorange;
     border-left-width: 10px;
-    background-color: white !important;
-    z-index: 90000;
+    background-color: white !important; 
     position: absolute;
     opacity: 0.95;
     right: 0;

@@ -35,7 +35,7 @@ class Order(models.Model):
         Creates national or international shipping
         """
         national_shipping = settings.STANDART_SHIPPING_NATIONAL
-        international_shipping = settings.STANDART_SHIPPING_NATIONAL
+        international_shipping = settings.STANDART_SHIPPING_INTERNATIONAL
 
         if self.shipping_address is not None:
             shipping_address = self.shipping_address

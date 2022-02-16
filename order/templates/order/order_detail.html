@@ -17,12 +17,16 @@
                         </h2>
                         <hr>
                         <div>
-                            <!-- Boxes details-->
+                            <!-- Boxes details--> 
                             <div class="row d-flex align-items-center" itemscope itemtype="https://schema.org/Order">
                                 {% for order in order_ctxt %}
-                                        {% if object.id == order.order_id %}
-                                            <p class="lead fw-bold" itemprop="productID">Order number: {{ order.order_id }}</p>
-                                            {% for item in order.items %}
+                                
+                                
+                                {% if object.id == order.order_id %}
+                                {{ order.shipping_address}}
+                                <p class="lead fw-bold" itemprop="productID">Order number: {{ order.order_id }}</p>
+                                {% for item in order.items %}
+                                            
                                                 <div class="col-4 p-3" itemscope itemtype="https://schema.org/Order">
                                                     <img class="img-fluid" src="{{ item.box.box_image.url }}" itemprop="image"
                                                         alt="{{ item.box_name }}">
@@ -40,6 +44,8 @@
                                                     <p class="text-end" itemprop="price">Unit Price:
                                                         €{{ item.box.box_price |title}}</p>
                                                 </div>
+
+                                                
                                             {% endfor %}
                                             <!-- Order details -->
                                             <div class="text-end">

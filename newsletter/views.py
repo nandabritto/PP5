@@ -45,10 +45,13 @@ def newsletter_signup(request):
             message.attach_alternative(html_template, "text/html")
             message.send()
             # Message
-            messages.warning(request, 'You have already signed up')
+            messages.warning(request, 'Your email is already in our Newsletter database. ')
+            return redirect('home')
+
         else:
             instance.save()
-            messages.success(request, 'You have signed up.')
+            messages.success(request, 'Thank you for your subscription in our Newsletter.')
+            return redirect('home')
 
     context = {
         'form': form,
@@ -79,9 +82,10 @@ def newsletter_unsubscribe(request):
                 fail_silently=False
                 )
             # Message
-            messages.warning(request, 'Unsubscription completed.')
+            messages.warning(request, 'Unsubscription completed. Sorry to see you go :(')
+            return redirect('home')
         else:
-            messages.warning(request, 'Sorry, We did not find your email.')
+            messages.warning(request, 'Sorry, We did not find your email. Can your try again?')
 
     context = {
         'form': form,

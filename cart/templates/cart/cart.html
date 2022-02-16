@@ -16,9 +16,9 @@
                             <div class="card-body p-0">
                                 <div class="row g-0">
                                     <div class="col-lg-8">
-                                        <div class="p-5">
+                                        <div class="px-5 py-2">
                                             <!-- Shopping cart card -->
-                                            <div class="d-flex justify-content-between align-items-center mb-5" itemscope
+                                            <div class="d-flex justify-content-between align-items-center" itemscope
                                                 itemtype="https://schema.org/Store">
                                                 <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
                                                 <h6 class="mb-0 text-muted">{{order.get_cart_items}} item(s)</h6>
@@ -31,10 +31,10 @@
                                                         <img src="{{ item.box.box_image.url }}" class="rounded-3 w-100 "
                                                             alt="{{ item.box_image }}">
                                                     </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                                    <div class="col-md-3 col-lg-3 col-xl-3 text-center">
                                                         <!-- Box name and descritption -->
                                                         <h6 class="text-black" itemprop="name">Box: {{ item.box|title}}</h6>
-                                                        <p class="small text-muted mb-0" itemprop="description">
+                                                        <p class="small text-muted mb-0 " itemprop="description">
                                                             {{ item.box.box_description}}</p>
                                                     </div>
                                                     <div class="cart-item-quantity">
@@ -51,8 +51,8 @@
                                                             src="{{MEDIA_URL}}arrow-down.png" alt="Arrow down">
                                                     </div>
                                                     <!-- Item total price -->
-                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" itemprop="price">
-                                                        <h6 class="mb-0"> € {{item.quantity | mul:item.box.box_price}}</h6>
+                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 text-center" itemprop="price">
+                                                        <h6 class="mt-2 mb-0"> Price: € {{item.quantity | mul:item.box.box_price}}</h6>
                                                     </div>
                                                 </div>
                                                 <p><strong>Selected Products:</strong> {{item.selected_products}}</p>
@@ -61,9 +61,9 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 bg-grey">
-                                        <div class="p-5">
+                                        <div class="px-5">
                                             <!-- Summary column -->
-                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                            <h3 class="fw-bold mt-2 pt-1">Summary</h3>
                                             <hr class="my-4">
                                             <!-- Total items and price -->
                                             <div class="d-flex justify-content-between mb-4">
