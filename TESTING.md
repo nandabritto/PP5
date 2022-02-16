@@ -422,7 +422,7 @@ A session was held with an end-user. The feedback obtained is listed below:
 	
 ### **Response to the user experience test:**
 
-+ 
+
 
 ### Final User Testing (Beta)
 
@@ -433,7 +433,17 @@ On this test, a checklist was developed to guide the user along with all pages a
 
 ### **Response to the user experience test:**
 
-+ 
++ The majority of user feedback and bugs found was incorporated and fixes on the platform except by points: 
+
+| Items numbers | Situation | Response|
+|:----:|:----:|:----:|
+|  2.1 | WNF  | By design |
+| 2.2 | CNR -NAB | Error couldnt be reproduce in several computers and probably its NAB|
+| 6.1| CNR-NAB | Error couldnt be reproduce in several computers and probably its NAB|
+
++ CNR - Cannot Reproduce
++ NAB - Not a Bug
++ WNF - Will not fix
 
 ## Manual Testing
 ========================================================================================
