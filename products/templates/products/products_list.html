@@ -34,6 +34,9 @@
                                         <td itemprop="description">{{products.product_description|slice:30}}(...)</td>
                                         <td itemprop="price">{{products.product_price}}</td>
                                         <td class="text-end">
+                                            <a href="{% url 'product_details' products.id %}"
+                                                class="btn btn-success fw-bold mx-2">Details
+                                            </a>
                                             <a href="{% url 'edit_product' products.id %}"
                                                 class="btn btn-warning fw-bold mx-2">Edit
                                             </a>
