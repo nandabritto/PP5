@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import auth
-from products.models import Box
+from products.models import Box, Product, Product_On_Box
 
 
 class SetupViewTestCase(TestCase):
@@ -24,7 +24,10 @@ class SetupViewTestCase(TestCase):
             category='Test Category',
             box_description='test Description',
             box_image='testimage.jpg')
-
+        self.product = Product.objects.create(product_name='ProductTest')
+        self.product_on_box = Product_On_Box.objects.create(
+            product=self.product, box=self.box, product_selectable=True)
+       
 
 class TestCart(SetupViewTestCase):
     """
@@ -61,7 +64,7 @@ class TestUpdateCart(SetupViewTestCase):
         """
         Test if products are loadng in shopping cart
         """
-        payload = {'box_id': self.box.id, 'action': 'add'}
+        payload = {'box_id': self.box.id, 'action': 'add', 'prod_selected_ids': [self.product_on_box.id]}
         response = self.client.post(
             reverse('update_cart'),
             data=payload,

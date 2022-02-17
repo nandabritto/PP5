@@ -141,7 +141,9 @@ Manual tests were conducted to ensure all features were working as expected.
 
 ### Sprint 7 - 
 
-Unittests were developed for remain funcitons on newsletter App
+Unittests were developed for remain funcitons on newsletter App, Index, Cart*
+
+*Cart - Just update unittest with product_selectable variable
 
 + Functions tested: 
 
@@ -149,8 +151,19 @@ Unittests were developed for remain funcitons on newsletter App
 |:---:|:---:|:---:|
 | Newsletter | Models | NesletterUser |
 | Newsletter | Models | Nesletter |
+| Home | Views | index |
+| Cart | Views | update_cart |
+
 
 + Newsletter Models
+
+<img width= "500" src="">
+
++ Home Views
+
+<img width= "500" src="">
+
++ Cart Views
 
 <img width= "500" src="">
 
