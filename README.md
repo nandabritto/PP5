@@ -284,17 +284,17 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
   + A brief explanation about how the store works
 
-<img width="400" src="">
+<img width="700" src="media/readme/features_ss/howitworks.jpg">
 
 ### **Boxes Page** 
 
 1. Cards with all available boxes are present on this page with images, descriptions and prices. 
 
-<img width="400" src="">
+<img width="700" src="media/readme/features_ss/boxes_page.jpg">
 
 2. Buttons are available on each card to lead the user to add the box directly to the cart or customize it
 
-<img width="400" src="">
+<img width="200" src="media/readme/features_ss/boxes_cards_buttons.jpg">
 
 ### **Boxes Details Page** 
 
@@ -390,9 +390,9 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
  + Admin users can edit or delete all products in the database from the frontend.
 
 <p float="left">
-<img width="400" src="media/readme/features_ss/boxes_list.png">  
 <img width="400" src="media/readme/features_ss/products_list.png">
 <img width="400" src="media/readme/features_ss/products_on_box_list.png">
+<img width="400" src="media/readme/features_ss/boxes_list.png">  
 </p>
 
   1.5 Edit box, product and product on the box 
