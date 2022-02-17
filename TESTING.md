@@ -139,6 +139,20 @@ Manual tests were conducted to ensure all features were working as expected.
 | 2 | After adding all information, click on add product/box/ product on box | To be redirected to products/box list |
 | 3 | on products/boxes list page and click in delete button| Delete product/box and be redirected to list page |
 
+### Sprint 7 - 
+
+Unittests were developed for remain funcitons on newsletter App
+
++ Functions tested: 
+
+| App | File | Class/Function Name |
+|:---:|:---:|:---:|
+| Newsletter | Models | NesletterUser |
+| Newsletter | Models | Nesletter |
+
++ Newsletter Models
+
+<img width= "500" src="">
 
 ### Unit Tests conducted
 

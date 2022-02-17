@@ -14,13 +14,6 @@ class NewsLetterUserSignUpForm(forms.ModelForm):
         model = NewsletterUser
         fields = ['email']
 
-        def clean_email(self):
-            """"
-            Return user email
-            """
-            email = self.cleaned_data.get('email')
-            return email
-
 
 class NewsletterCreationForm(forms.ModelForm):
     """
