@@ -22,7 +22,7 @@
                     </div>
                     <hr>
                     <!-- Update profile form -->
-                    <form class="row g-3 shipping" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    <form class="row g-3 shipping" action="{% url 'update_profile' %}" method="POST" id="profile-update-form">
                         {% csrf_token %}
                         <h2 class="lead fw-bolder">My Default Shipping Address</h2>
                         <!-- Shipping address form -->
@@ -48,13 +48,13 @@
                             </div>
                         </div>
                         <div class="col-12 text-center m-3">
-                            <button class="btn btn-warning">Update Shipping Address</button>
+                            <button class="btn btn-warning" type="submit">Update Shipping Address</button>
                         </div>
                     </form>
                     <hr>
                     <h3 class="lead fw-bolder">My Default Billing Address</h3>
                     <!-- Billing address form -->
-                    <form class="row g-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    <form class="row g-3" action="{% url 'update_profile' %}" method="POST" id="profile-update-form">
                         {% csrf_token %}
                         <div class="col-12">
                             {{ billing_address_form.address1|as_crispy_field }}
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                         <div class="col-12 text-center m-3">
-                            <button class="btn btn-warning">Update Billing Address</button>
+                            <button class="btn btn-warning" type="submit">Update Billing Address</button>
                         </div>
                     </form>
                 </div>

@@ -37,15 +37,15 @@ class Box(models.Model):
         """ Return box name string """
         return str(self.box_name).lower()
 
-    def save(self):
-        super().save()
+    # def save(self):
+    #     super().save()
 
-        img = Image.open(self.box_image)
+    #     img = Image.open(self.box_image)
 
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.box_image)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.box_image)
 
 
 class Product_On_Box(models.Model):

@@ -1,6 +1,6 @@
 """ System Module """
 from django.test import TestCase
-from .models import Product, Box, zz
+from .models import Product, Box, Product_On_Box
 import logging
 
 class TestProduct(TestCase):

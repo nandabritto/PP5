@@ -1,5 +1,5 @@
 """ System Module """
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from order.models import Order, Address
@@ -83,7 +83,7 @@ def update_profile(request):
                 country=default_address.country,
                 eircode=default_address.eircode,
                 address_type=default_address.address_type,
-            )
+            )            
             if not default_address_qs.exists():
                 address_qs = Address.objects.filter(
                     customer=default_address.customer,
@@ -94,6 +94,7 @@ def update_profile(request):
 
                 default_address.save()
                 messages.success(request, 'Profile was updated.')
+                return redirect('profile')
             else:
                 messages.success(request, 'Profile address unchanged.')
 

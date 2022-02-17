@@ -82,6 +82,7 @@ a {
     position: absolute;
     opacity: 0.95;
     right: 0;
+    z-index:9000;
 }
 
 /* Form control colors */
@@ -104,6 +105,9 @@ input:focus {
 
 /* Navbar */
 
+.dropdown-menu{
+    z-index:99999;
+}
 .jumbotron-img {
     height: 30vh;
     width: 100%;
