@@ -144,7 +144,7 @@ Manual tests were conducted to ensure all features were working as expected.
 Unittests were developed for remain funcitons on newsletter App, Index, Cart*, Product_review**
 
 *Cart - Just update unittest with product_selectable variable
-*Product_review - Finished unitest string function
+*Product_review - Done unitest string function
 
 + Functions tested: 
 
@@ -155,6 +155,7 @@ Unittests were developed for remain funcitons on newsletter App, Index, Cart*, P
 | Home | Views | index |
 | Cart | Views | update_cart |
 | Product_review | Models | BoxReview |
+| User_profile | Models | UserProfile |
 
 + Newsletter Models
 
@@ -167,6 +168,15 @@ Unittests were developed for remain funcitons on newsletter App, Index, Cart*, P
 + Cart Views
 
 <img width= "500" src="">
+
++ Product_review Models
+
+<img width= "500" src="">
+
++ User Profile Models
+
+<img width= "500" src="">
+
 
 ### Unit Tests conducted
 
