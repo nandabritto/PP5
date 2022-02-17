@@ -141,10 +141,11 @@ Manual tests were conducted to ensure all features were working as expected.
 
 ### Sprint 7 - 
 
-Unittests were developed for remain funcitons on newsletter App, Index, Cart*, Product_review**
+Unittests were developed for remain funcitons on newsletter App, Index, Cart*, Product_review**, Order***
 
 *Cart - Just update unittest with product_selectable variable
 *Product_review - Done unitest string function
+***Order - Add shipping unittest
 
 + Functions tested: 
 
@@ -156,6 +157,10 @@ Unittests were developed for remain funcitons on newsletter App, Index, Cart*, P
 | Cart | Views | update_cart |
 | Product_review | Models | BoxReview |
 | User_profile | Models | UserProfile |
+| User_profile | Views | get_customer_address |
+| User_profile | Views | profile |
+| User_profile | Views | update_profile |
+| Order | Models | shipping |
 
 + Newsletter Models
 
@@ -177,16 +182,13 @@ Unittests were developed for remain funcitons on newsletter App, Index, Cart*, P
 
 <img width= "500" src="">
 
++ User Profile Views
 
-### Unit Tests conducted
+<img width= "500" src="">
 
-Exploratory Test Session Goals
++ Order Models
 
-  * I want to confirm that the base templates load as expected
-  * I want to confirm that the homepage load as expected
-  * I want to confirm that the registration, login and logout works as expected
-  * I want to confirm that all User Stories are done to my satisfaction
-  * I want to identify any potential test cases for automation
+<img width= "500" src="">
 
 ## Integration Test Case
 

@@ -1,5 +1,6 @@
 """ System Module """
 from django.test import TestCase
+from decimal import Decimal
 from django.contrib.auth.models import User
 from products.models import Box
 from .models import Order, OrderBox, Address, Payment
@@ -33,8 +34,17 @@ class SetupModelTestCase(TestCase):
             address1='Apartment 2',
             address2='Parnell Street 2',
             county='Dublin 2',
-            country='Ie',
+            country='IE',
             eircode='123456',
+            address_type='S'
+        )
+        self.shipping_address2 = Address.objects.create(
+            customer=self.user,
+            address1='Apartment 21',
+            address2='Street 2',
+            county='Rio de Janeiro',
+            country='BR',
+            eircode='654321',
             address_type='S'
         )
         self.payment1 = Payment.objects.create(
@@ -105,3 +115,22 @@ class OrderBoxGetTotalTestCase(SetupModelTestCase):
         Test get total property
         """
         self.assertEqual(self.orderbox1.get_total, float('99.98'))
+
+
+class OrderBoxGetShipping(SetupModelTestCase):
+    """
+    Test get shipping
+    """
+    def test_get_shipping(self):
+        """
+        Test get shipping property
+        """
+        self.order1.shipping_address = self.shipping_address2      
+        self.assertEqual(self.order1.get_cart_total, Decimal('114.98'))
+
+    def test_get_shipping_none(self):
+        """
+        Test get shipping property when its none
+        """
+        self.order1.shipping_address = None     
+        self.assertEqual(self.order1.get_cart_total, Decimal('99.98'))
