@@ -41,4 +41,4 @@ class BoxReviewTestCase(SetupModelTestCase):
         """
         Test if order is returning correct string
         """
-        self.assertEqual(str(self.box1.box_name), 'testBox1')
+        self.assertEqual(str(self.review), 'testBox1')

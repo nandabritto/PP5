@@ -64,7 +64,6 @@ def update_cart(request):
 
     if action == 'add':
         order_box.quantity = (order_box.quantity + 1)
-        print(f'len: {order_box.selected_products.__len__()}')
         if prod_selected_names.__len__() > 0:
             order_box.selected_products = prod_selected_names
         else:

@@ -139,16 +139,56 @@ Manual tests were conducted to ensure all features were working as expected.
 | 2 | After adding all information, click on add product/box/ product on box | To be redirected to products/box list |
 | 3 | on products/boxes list page and click in delete button| Delete product/box and be redirected to list page |
 
+### Sprint 7 - 
 
-### Unit Tests conducted
+Unittests were developed for remain funcitons on newsletter App, Index, Cart*, Product_review**, Order***
 
-Exploratory Test Session Goals
+*Cart - Just update unittest with product_selectable variable
+*Product_review - Done unitest string function
+***Order - Add shipping unittest
 
-  * I want to confirm that the base templates load as expected
-  * I want to confirm that the homepage load as expected
-  * I want to confirm that the registration, login and logout works as expected
-  * I want to confirm that all User Stories are done to my satisfaction
-  * I want to identify any potential test cases for automation
++ Functions tested: 
+
+| App | File | Class/Function Name |
+|:---:|:---:|:---:|
+| Newsletter | Models | NesletterUser |
+| Newsletter | Models | Nesletter |
+| Home | Views | index |
+| Cart | Views | update_cart |
+| Product_review | Models | BoxReview |
+| User_profile | Models | UserProfile |
+| User_profile | Views | get_customer_address |
+| User_profile | Views | profile |
+| User_profile | Views | update_profile |
+| Order | Models | shipping |
+
++ Newsletter Models
+
+<img width= "500" src="">
+
++ Home Views
+
+<img width= "500" src="">
+
++ Cart Views
+
+<img width= "500" src="">
+
++ Product_review Models
+
+<img width= "500" src="">
+
++ User Profile Models
+
+<img width= "500" src="">
+
++ User Profile Views
+
+<img width= "500" src="">
+
++ Order Models
+
+<img width= "500" src="">
 
 ## Integration Test Case
 

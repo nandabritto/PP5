@@ -5,7 +5,6 @@ from django.contrib import messages
 from order.models import Order, Address
 from .forms import UserAddressForm
 from .models import UserProfile
-# from django.contrib.auth.models import User
 
 
 def get_customer_address(customer, address_type):
@@ -20,9 +19,7 @@ def get_customer_address(customer, address_type):
         )
     if address_qs.exists():
         address_qs = address_qs.last()
-        print(address_qs.__dict__)
         user_address = address_qs
-        print("address exists")
     return user_address
 
 

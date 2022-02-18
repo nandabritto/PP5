@@ -39,7 +39,7 @@ class Address(models.Model):
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100)
     county = models.CharField(max_length=20)
-    country = CountryField(multiple=False)
+    country = CountryField(multiple=False, blank_label='Select Country*')
     eircode = models.CharField(max_length=7)
     address_type = models.CharField(
         max_length=1,
@@ -47,21 +47,6 @@ class Address(models.Model):
         default='S')
     default = models.BooleanField(default=False)
 
-    # def save(self, *args, **kwargs):
-    #     previous_address = self.objects.filter(
-    #         customer=self.customer,
-    #         address1 = self.address1,
-    #         address2 = self.address2,
-    #         county = self.county,
-    #         country = self.country,
-    #         eircode = self.eircode,
-    #         address_type = self.address_type
-    #         )
-    #     if previous_address.exists():
-    #         previous_address = self.default
-    #         super(Address, previous_address).update(*args, **kwargs)
-    #     else:
-    #         super(Address, self).save(*args, **kwargs)
 
     def __str__(self):
         """
