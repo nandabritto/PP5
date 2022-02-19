@@ -251,14 +251,14 @@ class EditProductOnBoxTestCase(SetupModelTestCase):
         Test edit product on box post if form is valid
         """
         payload = {
-           'product':'1',
-           'box':'1',
-           'product_selectable':self.productonboxtest.product_selectable
+           'product':self.productonboxtest.product.id,
+           'box':self.productonboxtest.box.id,
+           'product_selectable':'off'
         }
 
         response = self.client.post(reverse('editproductonbox', kwargs={
             'pk': self.productonboxtest.id}), payload)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
     def test_product_on_box_post_if_form_is_invalid(self):
         """
