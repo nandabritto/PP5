@@ -380,7 +380,6 @@ def edit_review(request, pk):
                 context = {
                     'review': review,
                 }
-                # return render(request, 'products/box_details.html', args=[pk])
                 return redirect(reverse('box_details', args=[review.box.pk]))
             else:
                 messages.error(request, 'Failed to edit your product.\
@@ -414,7 +413,6 @@ def delete_review(request, pk):
         except:
             messages.error(request, 'Something went wrong.\
                 Your review was not deleted .')
-            # return redirect(reverse('box_details', args=[pk]))
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')

@@ -39,6 +39,12 @@ class SetupModelTestCase(TestCase):
             box=self.boxtest,
             product_selectable=True,
             )
+        self.boxreview = BoxReview.objects.create(
+            customer=self.user,
+           box=self.boxtest,
+           review_text='Review Text Sample',
+           review_rating='5',
+        )
 
 class TestViews(SetupModelTestCase):
     """
@@ -234,3 +240,158 @@ class AddProductOnBoxTestCase(SetupModelTestCase):
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('add_product_box'))
         self.assertEqual(response.status_code, 200)
+
+
+class EditBoxTestCase(SetupModelTestCase):
+    """
+    Test Edit Box page
+    """
+    def test_edit_box_post_if_form_is_valid(self):
+        """
+        Test edit box post if form is valid
+        """
+        payload = {
+           'box_name':'Name',
+           'box_price':self.boxtest.box_price,
+           'category':self.boxtest.category,
+           'box_description': self.boxtest.box_description,
+           'box_image':self.boxtest.box_image
+        }
+        response = self.client.post(reverse('edit_box', kwargs={
+            'pk': self.boxtest.id}), payload)
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_edit_box_post_if_form_is_invalid(self):
+        """
+        Test edit box post if form is invalid
+        """
+        payload = {
+           'box_name':'',
+           'box_price':self.boxtest.box_price,
+           'category':self.boxtest.category,
+           'box_description': self.boxtest.box_description,
+           'box_image':self.boxtest.box_image
+        }
+        response = self.client.post(reverse('edit_box', kwargs={
+            'pk': self.boxtest.id}), payload)
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_edit_box_form(self):
+        """
+        Test add edit box get right form
+        """
+        response = self.client.get(reverse('edit_box', kwargs={
+            'pk': self.boxtest.id}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_edit_box_form_customer_user(self):
+        """
+        Test edit box form as customer user
+        """
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.client.login(username='jim', password='12345')
+        response = self.client.get(reverse('edit_box', kwargs={
+            'pk': self.boxtest.id}))
+        self.assertEqual(response.status_code, 200)
+
+
+class EditProductTestCase(SetupModelTestCase):
+    """
+    Test Edit product page
+    """
+    def test_edit_product_post_if_form_is_valid(self):
+        """
+        Test edit product post if form is valid
+        """
+        payload = {
+           'product_name':'Name',
+           'product_price':self.producttest.product_price,
+           'product_description': self.producttest.product_description,
+           'product_image':''
+        }
+        response = self.client.post(reverse('edit_product', kwargs={
+            'pk': self.producttest.id}), payload)
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_edit_box_post_if_form_is_invalid(self):
+        """
+        Test edit box post if form is invalid
+        """
+        payload = {
+           'product_name':'',
+           'product_price':self.producttest.product_price,
+           'product_description': self.producttest.product_description,
+           'product_image':''
+        }
+        response = self.client.post(reverse('edit_product', kwargs={
+            'pk': self.producttest.id}), payload)
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_edit_product_form(self):
+        """
+        Test add edit product get right form
+        """
+        response = self.client.get(reverse('edit_product', kwargs={
+            'pk': self.producttest.id}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_edit_product_form_customer_user(self):
+        """
+        Test edit product form as customer user
+        """
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.client.login(username='jim', password='12345')
+        response = self.client.get(reverse('edit_product', kwargs={
+            'pk': self.producttest.id}))
+        self.assertEqual(response.status_code, 200)
+
+
+class EditReviewTestCase(SetupModelTestCase):
+    """
+    Test edit review page
+    """
+    def test_edit_review_post_form_valid(self):
+        """
+        Test if user is authenticated and edit review with valid form
+        """
+        self.client.login(username='joe', password='12345')
+        payload = {
+           'review_text':'Review Text 3',
+           'review_rating':'5',
+        }
+        response = self.client.post(reverse('edit_review', kwargs={
+            'pk': self.boxreview.id}), payload)
+        self.assertEqual(response.status_code, 302)
+
+    def test_edit_review_post_form_invalid(self):
+        """
+        Test if user is authenticated and edit review form invalid
+        """
+        self.client.login(username='joe', password='12345')
+        payload = {
+           'review_text':'',
+           'review_rating':'5',
+        }
+        response = self.client.post(reverse('edit_review', kwargs={
+            'pk': self.boxreview.id}), payload)
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_edit_revie_form(self):
+        """
+        Test add edit review get right form
+        """
+        response = self.client.get(reverse('edit_review', kwargs={
+            'pk': self.boxreview.id}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_edit_review_form__wrong_customer(self):
+        """
+        Test edit product form as customer user
+        """
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.client.login(username='jim', password='12345')
+        response = self.client.get(reverse('edit_review', kwargs={
+            'pk': self.boxreview.id}))
+        self.assertEqual(response.status_code, 302)
