@@ -52,7 +52,7 @@ class TestViews(SetupModelTestCase):
     """
     def test_boxes_view(self):
         """
-        Test if render template and objects is correct
+        Test if render boxes template and objects is correct
         """
         response = self.client.get(reverse('boxes'))
         self.assertEqual(response.status_code, 200)
@@ -148,7 +148,7 @@ class AddBoxTestCase(SetupModelTestCase):
         self.assertEqual(response.status_code, 200)
 
 
-class AddProducTestCase(SetupModelTestCase):
+class AddProductTestCase(SetupModelTestCase):
     """
     Test Add produc page
     """
@@ -200,17 +200,17 @@ class AddProductOnBoxTestCase(SetupModelTestCase):
     """
     Test Add product on box page
     """
-    # def test_post_if_form_is_valid(self):
-    #     """
-    #     Test add product on box post if form is valid
-    #     """
-    #     payload = {
-    #        'product':self.producttest.id,
-    #        'box':self.boxtest.id,
-    #        'product_selectable':'on'
-    #     }
-    #     response = self.client.post(reverse('add_product_box'), payload)
-    #     self.assertEqual(response.status_code, 200)
+    def test_post_if_form_is_valid(self):
+        """
+        Test add product on box post if form is valid
+        """
+        payload = {
+           'product':self.producttest.id,
+           'box':self.boxtest.id,
+           'product_selectable':'on'
+        }
+        response = self.client.post(reverse('add_product_box'), payload)
+        self.assertEqual(response.status_code, 200)
 
     def test_post_if_form_is_invalid(self):
         """
@@ -241,6 +241,56 @@ class AddProductOnBoxTestCase(SetupModelTestCase):
         response = self.client.get(reverse('add_product_box'))
         self.assertEqual(response.status_code, 200)
 
+
+class EditProductOnBoxTestCase(SetupModelTestCase):
+    """
+    Test Edit product on box page
+    """
+    def test_edit_on_box_post_if_form_is_valid(self):
+        """
+        Test edit product on box post if form is valid
+        """
+        payload = {
+           'product':'1',
+           'box':'1',
+           'product_selectable':self.productonboxtest.product_selectable
+        }
+
+        response = self.client.post(reverse('editproductonbox', kwargs={
+            'pk': self.productonboxtest.id}), payload)
+        self.assertEqual(response.status_code, 200)
+
+    def test_product_on_box_post_if_form_is_invalid(self):
+        """
+        Test edit box post if form is invalid
+        """
+        payload = {
+           'product':self.productonboxtest.id,
+           'box':'',
+           'product_selectable':self.productonboxtest.product_selectable
+        }
+       
+        response = self.client.post(reverse('editproductonbox', kwargs={
+            'pk': self.productonboxtest.id}), payload)
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_edit_product_on_box_form(self):
+        """
+        Test edit product on box get right form
+        """
+        response = self.client.get(reverse('editproductonbox', kwargs={
+            'pk': self.productonboxtest.id}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_edit_product_on_box_form_customer_user(self):
+        """
+        Test edit product form as customer user
+        """
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.client.login(username='jim', password='12345')
+        response = self.client.get(reverse('editproductonbox', kwargs={
+            'pk': self.productonboxtest.id}))
+        self.assertEqual(response.status_code, 200)
 
 class EditBoxTestCase(SetupModelTestCase):
     """
@@ -378,7 +428,7 @@ class EditReviewTestCase(SetupModelTestCase):
             'pk': self.boxreview.id}), payload)
         self.assertEqual(response.status_code, 200)
 
-    def test_get_edit_revie_form(self):
+    def test_get_edit_review_form(self):
         """
         Test add edit review get right form
         """
@@ -395,3 +445,137 @@ class EditReviewTestCase(SetupModelTestCase):
         response = self.client.get(reverse('edit_review', kwargs={
             'pk': self.boxreview.id}))
         self.assertEqual(response.status_code, 302)
+
+
+class DeleteReviewTestCase(SetupModelTestCase):
+    """
+    Test delete review 
+    """
+    def test_edit_review_post_form_valid(self):
+        """
+        Test if user is authenticated and delete review
+        """
+        self.client.login(username='joe', password='12345')
+        payload = {
+           'review_text':'Review Text 3',
+           'review_rating':'5',
+        }
+        response = reverse('delete_review', kwargs={
+            'pk': self.boxreview.id})
+        self.client.delete(response)
+
+    def test_delete_review_wrong_user(self):
+        """
+        Test if user is authenticated and delete review
+        """
+        self.username = 'jim'
+        self.password = '12345'
+        self.user = User.objects.create_user(
+            username=self.username,
+            email='jim@doe.com',
+            password=self.password)
+        self.client.login(username='jim', password='12345')
+    
+        response = self.client.get(reverse('delete_review', kwargs={
+            'pk': self.boxreview.id}))
+        self.client.delete(response)
+        self.assertEqual(response.status_code, 302)
+
+
+class DeleteBoxTestCase(SetupModelTestCase):
+    """
+    Test delete box 
+    """
+    def test_delete_box_post_form_valid(self):
+        """
+        Test if user is authenticated and delete box
+        """
+        self.client.login(username='joe', password='12345')
+        response = reverse('delete_box', kwargs={
+            'pk': self.boxtest.id})
+        self.client.delete(response)
+
+    def test_delete_box_not_staff_user(self):
+        """
+        Test if user is not staff and try to delete box
+        """
+        self.username = 'jim'
+        self.password = '12345'
+        self.user = User.objects.create_user(
+            username=self.username,
+            email='jim@doe.com',
+            password=self.password)
+        self.user.is_staff = False 
+        self.user.save()
+        self.client.login(username='jim', password='12345')
+    
+        response = self.client.get(reverse('delete_box', kwargs={
+            'pk': self.boxtest.id}))
+        self.client.delete(response)
+        self.assertEqual(response.status_code, 200)
+
+
+class DeleteProductTestCase(SetupModelTestCase):
+    """
+    Test delete product 
+    """
+    def test_delete_product_post_form_valid(self):
+        """
+        Test if user is authenticated and delete product
+        """
+        self.client.login(username='joe', password='12345')
+        response = reverse('delete_product', kwargs={
+            'pk': self.producttest.id})
+        self.client.delete(response)
+
+    def test_delete_product_not_staff_user(self):
+        """
+        Test if user is not staff and try to delete product
+        """
+        self.username = 'jim'
+        self.password = '12345'
+        self.user = User.objects.create_user(
+            username=self.username,
+            email='jim@doe.com',
+            password=self.password)
+        self.user.is_staff = False 
+        self.user.save()
+        self.client.login(username='jim', password='12345')
+    
+        response = self.client.get(reverse('delete_product', kwargs={
+            'pk': self.producttest.id}))
+        self.client.delete(response)
+        self.assertEqual(response.status_code, 200)
+
+
+class DeleteProductOnBoxTestCase(SetupModelTestCase):
+    """
+    Test delete product on box
+    """
+    def test_delete_product_on_box_post_form_valid(self):
+        """
+        Test if user is authenticated and delete product on box
+        """
+        self.client.login(username='joe', password='12345')
+        response = reverse('deleteproductonbox', kwargs={
+            'pk': self.productonboxtest.id})
+        self.client.delete(response)
+
+    def test_delete_product_on_box_not_staff_user(self):
+        """
+        Test if user is not staff and try to delete product on box
+        """
+        self.username = 'jim'
+        self.password = '12345'
+        self.user = User.objects.create_user(
+            username=self.username,
+            email='jim@doe.com',
+            password=self.password)
+        self.user.is_staff = False 
+        self.user.save()
+        self.client.login(username='jim', password='12345')
+    
+        response = self.client.get(reverse('deleteproductonbox', kwargs={
+            'pk': self.productonboxtest.id}))
+        self.client.delete(response)
+        self.assertEqual(response.status_code, 200)

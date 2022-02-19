@@ -134,7 +134,6 @@ def add_product_on_boxes(request):
     if request.user.is_staff:
         if request.method == 'POST':
             form = ProductOnBoxForm(request.POST, request.FILES)
-            print(form.data)
             if form.is_valid():
                 product_on_box = form.save()
                 messages.success(request, 'Your product was added on the box')
@@ -322,7 +321,6 @@ def delete_productonbox(request, pk):
         except:
             messages.error(request, 'Something went wrong.\
                 Your product was not deleted from the box.')
-            # return redirect(reverse('box_details', args=[pk]))
     else:
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
@@ -358,8 +356,6 @@ class ListProductsOnBox(StaffRequiredMixin, ListView):
     template_name = 'products/productsonbox_list.html'
     paginate_by = 20
     ordering = ['-box']
-
-
 
 
 @login_required

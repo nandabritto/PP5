@@ -167,7 +167,18 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 | Order | Views | TestOrderDetailView |
 | Products | Views | BoxDetailTestCase |
 | Products | Views | ProductDetailTestCase |
+| Products | Views | TestViews |
+| Products | Views | AddBoxTestCase |
+| Products | Views | AddProductTestCase |
+| Products | Views | AddProductOnBoxTestCase |
+| Products | Views | EditProductTestCase |
+| Products | Views | EditReviewTestCase |
+| Products | Views | DeleteReviewTestCase |
+| Products | Views | DeleteBoxTestCase |
 | Products | Views |  |
+| Products | Views |  |
+
+
 
 
 + Newsletter Models
@@ -176,7 +187,7 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 
 + Newsletter Views
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_newsletter_views.jpg">
 
 + Home Views
 
@@ -204,7 +215,7 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 
 + Order Views
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_order_views.jpg">
 
 
 ## Integration Test Case
@@ -423,8 +434,6 @@ All results can be found here.
    
 
  </details>
-
-
 
 ## Exploratory Testing
 ========================================================================================
