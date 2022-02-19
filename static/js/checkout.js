@@ -30,7 +30,7 @@ same_billing_address.addEventListener('change', function() {
       hideable_user_default_billing.hide();
     } else {
       hideable_billing_form.show();
-      hideable_user_default_billing.hide();
+      hideable_user_default_billing.show();
     }
   })
   

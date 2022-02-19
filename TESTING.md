@@ -135,9 +135,9 @@ Manual tests were conducted to ensure all features were working as expected.
 | 2 | After adding all information, click on add product/box/ product on box | To be redirected to products/box list |
 | 3 | on products/boxes list page and click in delete button| Delete product/box and be redirected to list page |
 
-### Sprint 7 - 
+### Sprint 7 - 13/02/2022 - 22/02/2022
 
-Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Product_review**, Order***
+Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Product_review**, Order*** and all funtions on Products App Views.
 
 *Cart - Just update unittest with product_selectable variable
 
@@ -175,11 +175,9 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 | Products | Views | EditReviewTestCase |
 | Products | Views | DeleteReviewTestCase |
 | Products | Views | DeleteBoxTestCase |
-| Products | Views |  |
-| Products | Views |  |
-
-
-
+| Products | Views | DeleteProductOnBoxTestCase |
+| Products | Views | DeleteProductTestCase|
+| Products | Views | DeleteBoxTestCase|
 
 + Newsletter Models
 
@@ -267,7 +265,7 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 | 1 | Enter all registered data and click on the Sign-Up button| To be directed to the home page, presented to a success message and already logged in|
 | 2 | Enter invalid register data in any field and click on the Login button| To be given to an error message|
 
-### ** Boxes Page**
+### **Boxes Page**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
@@ -275,7 +273,7 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 | 2 | Click on Add to cart button| Add chosen product to user's cart|
 | 3 | Click on Details button| To be redirected to product details page|
 
-### ** Box Detail Page**
+### **Box Detail Page**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
@@ -284,7 +282,7 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 | 3 | Click on Add to cart button| Add desired boxes with selectable products chosen to user's cart|
 | 4 | Click on Back button| To be redirected to the last visited page|
 
-### ** Profile Page**
+### **Profile Page**
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
@@ -295,7 +293,7 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 | 5 | Click in Add default shipping or billing address | To be redirected to change address page |
 | 6 | Change shipping or billing address and confirm on button | Save default addresses |
 
-### ** Management Page ** 
+### **Management Page** 
 
 | Test Case Id | Description | Expect result|
 |:----:|:----:|:----:|
