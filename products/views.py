@@ -9,6 +9,7 @@ from product_review.forms import AddReviewForm
 from product_review.models import BoxReview
 from .models import Box, Product, Product_On_Box
 from .forms import ProductChoicesForm, BoxForm, ProductForm, ProductOnBoxForm
+from home.views import StaffRequiredMixin
 
 
 def boxes(request):
@@ -72,7 +73,7 @@ def add_box(request):
     """
     Add box to the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         if request.method == 'POST':
             form = BoxForm(request.POST, request.FILES)
             if form.is_valid():
@@ -101,7 +102,7 @@ def add_product(request):
     """
     Add product to the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         if request.method == 'POST':
             form = ProductForm(request.POST, request.FILES)
             if form.is_valid():
@@ -130,7 +131,7 @@ def add_product_on_boxes(request):
     """
     Add product on boxes to the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         if request.method == 'POST':
             form = ProductOnBoxForm(request.POST, request.FILES)
             if form.is_valid():
@@ -159,7 +160,7 @@ def edit_box(request, pk):
     """
     Edit box on the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         box = get_object_or_404(Box, pk=pk)
         if request.method == 'POST':
             form = BoxForm(request.POST, request.FILES, instance=box)
@@ -194,7 +195,7 @@ def delete_box(request, pk):
     """
     Delete product on the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         try:
             box = get_object_or_404(Box, pk=pk)
             box.delete()
@@ -215,7 +216,7 @@ def edit_product(request, pk):
     """
     Edit products on the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         product = get_object_or_404(Product, pk=pk)
         if request.method == 'POST':
             form = ProductForm(request.POST, request.FILES, instance=product)
@@ -252,7 +253,7 @@ def delete_product(request, pk):
     """
     Delete product on the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         try:
             product = get_object_or_404(Product, pk=pk)
             product.delete()
@@ -273,7 +274,7 @@ def edit_product_on_box(request, pk):
     """
     Edit products on box on the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         productonbox = get_object_or_404(Product_On_Box, pk=pk)
         if request.method == 'POST':
             form = ProductOnBoxForm(request.POST, request.FILES, instance=productonbox)
@@ -311,7 +312,7 @@ def delete_productonbox(request, pk):
     """
     Delete product on box on the store
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         try:
             productonbox = get_object_or_404(Product_On_Box, pk=pk)
             productonbox.delete()
@@ -327,15 +328,8 @@ def delete_productonbox(request, pk):
         return render(request, 'home/index.html')
 
 
-class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
-    """
-    Create super user only class
-    """
-    def test_func(self):
-        return self.request.user.is_superuser
 
-
-class ListBoxes(SuperUserRequiredMixin, ListView):
+class ListBoxes(StaffRequiredMixin, ListView):
     """
     Creates a list of all boxes to admin
     """
@@ -345,7 +339,7 @@ class ListBoxes(SuperUserRequiredMixin, ListView):
     ordering = ['id']
 
 
-class ListProducts(SuperUserRequiredMixin, ListView):
+class ListProducts(StaffRequiredMixin, ListView):
     """
     Creates a list of all boxes to admin
     """
@@ -355,7 +349,7 @@ class ListProducts(SuperUserRequiredMixin, ListView):
     ordering = ['id']
 
 
-class ListProductsOnBox(SuperUserRequiredMixin, ListView):
+class ListProductsOnBox(StaffRequiredMixin, ListView):
     """
     Creates a list of all boxes to admin
     """

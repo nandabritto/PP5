@@ -9,14 +9,7 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from .models import NewsletterUser, Newsletter
 from .forms import NewsLetterUserSignUpForm, NewsletterCreationForm
-
-
-class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
-    """
-    Create super user only class
-    """
-    def test_func(self):
-        return self.request.user.is_superuser
+from home.views import StaffRequiredMixin
 
 
 def newsletter_signup(request):
@@ -98,7 +91,7 @@ def send_newsletter(request):
     """
     Save newsletter and send to the  user if form is valid
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         if request.method == 'POST':
             form = NewsletterCreationForm(request.POST or None)
 
@@ -142,12 +135,10 @@ def send_newsletter(request):
             'newsletter/send_newsletter.html',
             {'form': form})
     else:
-        messages.error(request, 'Sorry, you do not have permittion \
-            to access this page')
-        return render(request, 'home/index.html')
+        return render(request, '403.html')
 
 
-class NewsletterList(SuperUserRequiredMixin, ListView):
+class NewsletterList(StaffRequiredMixin, ListView):
     """
     Create a list of sent newsletters for admin only
     """
