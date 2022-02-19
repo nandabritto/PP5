@@ -278,3 +278,28 @@ class TestGetCheckoutView(SetupModelTestCase):
         """
         response = self.client.get(reverse('checkout'))
         self.assertEqual(response.status_code, 200)
+
+
+class TestGetCheckoutSummaryView(SetupModelTestCase):
+    """
+    Checkout summary test class using payload from setup model class
+    """
+    def test_get_view(self):
+        """
+        Check if checkout summary view  is correct
+        """
+        response = self.client.get(reverse('checkout_summary'))
+        self.assertEqual(response.status_code, 200)
+
+
+class TestOrderDetailView(SetupModelTestCase):
+    """
+    OrderDetailView test class using payload from setup model class
+    """
+    def test_get_view(self):
+        """
+        Check if order detail view is correct
+        """
+        response = self.client.get(reverse('order_detail', kwargs={
+            'pk': self.order1.id}))
+        self.assertEqual(response.status_code, 200)

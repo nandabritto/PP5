@@ -151,6 +151,9 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 |:---:|:---:|:---:|
 | Newsletter | Models | NesletterUser |
 | Newsletter | Models | Nesletter |
+| Newsletter | Views | newsletter_signup |
+| Newsletter | Views | newsletter_unsubscribe |
+| Newsletter | Views | send_newsletter |
 | Home | Views | index |
 | Home | Views | StaffRequiredMixin |
 | Cart | Views | update_cart |
@@ -160,10 +163,16 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 | User_profile | Views | profile |
 | User_profile | Views | update_profile |
 | Order | Models | shipping |
+| Order | Views | TestGetCheckoutSummaryView |
+| Order | Views | TestOrderDetailView |
 
 + Newsletter Models
 
 <img width= "500" src="media/readme/unittests/sprint7/unittest_newsletter_models.jpg">
+
++ Newsletter Views
+
+<img width= "500" src="">
 
 + Home Views
 
@@ -188,6 +197,11 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 + Order Models
 
 <img width= "500" src="media/readme/unittests/sprint7/unittest_ordermodels.jpg">
+
++ Order Views
+
+<img width= "500" src="">
+
 
 ## Integration Test Case
 
