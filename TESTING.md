@@ -137,9 +137,9 @@ Manual tests were conducted to ensure all features were working as expected.
 
 ### Sprint 7 - 13/02/2022 - 22/02/2022
 
-Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Product_review**, Order*** and all funtions on Products App Views.
+Unittests were developed for remaining functions on Newsletter, Home, Cart*, Product_review**, Order*** and all functions on Products App Views.
 
-*Cart - Just update unittest with product_selectable variable
+*Cart - Update unittest with product_selectable variable
 
 *Product_review - Done unitest string function
 
@@ -215,6 +215,19 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 
 <img width= "500" src="media/readme/unittests/sprint7/unittest_order_views.jpg">
 
++ Products Views
+
+<img width= "500" src="media/readme/unittests/sprint7/unittest_products_views.jpg">
+
++ Unittests All
+
+<img width= "500" src="media/readme/unittests/sprint7/unittest_all_sprint7.jpg">
+
++ Sprint 4 Unittest Coverage - Final
+
+<img width= "500" src="media/readme/unittests/sprint7/coverage_all_sprint7.jpg">
+
+**Note:** The lines highlighted in red were not covered in unittests related to edition exceptions on the management page and were tested manually during this sprint. 
 
 ## Integration Test Case
 
@@ -441,58 +454,58 @@ All results can be found here.
 A session was held with an end-user. The feedback obtained is listed below:
 
 1. How it works page 
-   1.1 Includes  info about need to be a logged user to add items in the cart	
+   1.1 Includes  info about the need to be a logged user to add items in the cart 
 
 2.  Box details page
 
-   2.1 Redirect login page - Add hiperlink to user doent need to wait 2 seconds;
+   2.1 Redirect login page - Add a hyperlink to the user don't need to wait 2 seconds;
    2.2 Add review took me some clicks to open. After refresh modal opened ;
-   2.3 Info pop up when user select more than 5 items; 
+   2.3 Info pop up when user select more than five items; 
    2.4 Customizable products are not capitalized. 
-		
+      
 3. Login page
    
-   3.1 Use bold or different color on signup link;
-   3.2 Income email subject - "[example.com] Please Confirm Your E-mail Address".
+   3.1 Use a bold or different colour on the signup link;
+   3.2 Income e-mail subject - "[example.com] Please Confirm Your E-mail Address".
 
 4. Checkout page
 
-   4.1 Change some labels to names more suitables;
-   4.2 When I use checkboxes to "Save default shipping address", "Billing address is the same as my shipping address", "Set default billing address" the addresses fields are not omited.
-	
+   4.1 Change some labels to names more suitable;
+   4.2 When I use checkboxes to "Save default shipping address", "Billing address is the same as my shipping address", "Set default billing address" the addresses fields are not omitted.
+   
 5. Checkout Summary page
 
    5.1 Reduce spacing between address fields to make them seems like address tag ;
    5.2 Delivery to PT(international) was 10 euro.
 
 6. Payment page
-	
-   6.1 Format seems wrong. No much information/visual aid to fill details. Seem some figure is missing;
-   6.2 After payment: "Your order was successful" Messages keep long and overlays, blocking Account menu.     
+   
+   6.1 Format seems wrong. Not much information/visual aid to fill details. Seem some figure is missing;
+   6.2 After payment: "Your order was successful" Messages keep long and overlays, blocking the Account menu.     
 
 7. Order page
 
-   7.1 I can't see addresses chosen to delivery or see any delivery estimates.
+   7.1 I can't see addresses chosen to deliver or see any delivery estimates.
 
 
 8. Profiles page
 
    8.1 There are two "Add your Default Shipping Address" (no billing);
-   8.2 Even after setting Default Address, I can't find them listed in profile page or Update Profile page.
-	
+   8.2 Even after setting Default Address, I can't find them listed on the profile page or Update Profile page.
+   
 9. Subscribe page
 
-   8.1 After I subscribe, I should be redirected to another page, otherwise it seems it failed.
-	
+   8.1 After I subscribe, I should be redirected to another page; otherwise, it seems it failed.
+   
 ### **Response to the user experience test:**
 
-+ The majority of user feedback and bugs found was incorporated and fixes on the platform except by points: 
++ The majority of user feedback and bugs found was incorporated and fixed on the platform except by points: 
 
 | Items numbers | Situation | Response|
 |:----:|:----:|:----:|
 |  2.1 | WNF  | By design |
-| 2.2 | CNR -NAB | Error couldnt be reproduce in several computers and probably its NAB|
-| 6.1| CNR-NAB | Error couldnt be reproduce in several computers and probably its NAB|
+| 2.2 | CNR -NAB | Error couldn't be reproduced in several computers, and probably its NAB|
+| 6.1| CNR-NAB | Error couldn't be reproduced in several computers, and probably its NAB|
 
 + CNR - Cannot Reproduce
 + NAB - Not a Bug
