@@ -98,36 +98,29 @@ def send_newsletter(request):
             if form.is_valid():
                 instance = form.save()
                 newsletter = Newsletter.objects.get(id=instance.id)
-                if newsletter.status == 'Published':
-                    # Send email
-                    subject = newsletter.subject
-                    body = newsletter.body
-                    from_email = settings.EMAIL_HOST_USER
-                    for email in newsletter.email.all():
-                        send_mail(
-                            subject=subject,
-                            from_email=from_email,
-                            recipient_list=[email],
-                            message=body,
-                            fail_silently=True
-                            )
-                    # Message
-                    messages.success(
-                        request, 'Your newsletter was sent.')
-                    return redirect('newsletters')
-                else:
-                    messages.warning(request, 'SomeThing Went Wrong...')
-                return redirect('send')
+                # Send email
+                subject = newsletter.subject
+                body = newsletter.body
+                from_email = settings.EMAIL_HOST_USER
+                for email in newsletter.email.all():
+                    send_mail(
+                        subject=subject,
+                        from_email=from_email,
+                        recipient_list=[email],
+                        message=body,
+                        fail_silently=True
+                        )
+                # Message
+                messages.success(
+                    request, 'Your newsletter was sent.')
+                return redirect('newsletters')
             else:
-                form = NewsletterCreationForm(instance=newsletter)
-
-                context = {
-                    'form': form,
-                }
+                messages.error(request, 'Sorry, Your form is invalid. Please, check your data.')
                 return render(
-                    request,
-                    'newsletter/send_newsletter.html',
-                    context)
+            request,
+            'newsletter/send_newsletter.html',
+            {'form': form})
+
         else:
             form = NewsletterCreationForm()
         return render(

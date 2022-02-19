@@ -14,7 +14,6 @@ class SetupModelTestCase(TestCase):
         self.email = 'joe@email.com'
         self.subject = 'Test Subject'
         self.body = 'Test Body'
-        self.status = 'Published'
         self.nlu = NewsletterUser.objects.create(email=self.email)
 
 
@@ -40,6 +39,6 @@ class NewsletterTestCase(SetupModelTestCase):
         news = Newsletter.objects.create(
             subject=self.subject,
             body=self.body,
-            status=self.status)
+            )
 
         self.assertEqual(str(news), 'Test Subject')

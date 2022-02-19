@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from django.views.generic import TemplateView
 
 
+
 def index(request):
     """
     A view to return index page
@@ -14,7 +15,7 @@ def index(request):
 
 class StaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     """
-    Create super user only class
+    Create staff user only class
     """
     def test_func(self):
         return self.request.user.is_staff

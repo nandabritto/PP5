@@ -56,10 +56,6 @@ Unittest was done to ensure all products, cart, and order functionality develope
 
 <img width= "500" src="media/readme/unittests/sprint2/coverage_all_sprint2.jpg">
 
-### User Stories
-
-<img width= "80%" src="media/Readme/sprints/sprint_1.jpeg">
-
 ### Sprint 3 - 17/01/2022 - 24/01/2022
 
 Order and payment functionality begin to be developed during this sprint. Still, all unit tests will be created at sprint 4 when these features are complete and working as expected. 
@@ -141,10 +137,12 @@ Manual tests were conducted to ensure all features were working as expected.
 
 ### Sprint 7 - 
 
-Unittests were developed for remain funcitons on newsletter App, Index, Cart*, Product_review**, Order***
+Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Product_review**, Order***
 
 *Cart - Just update unittest with product_selectable variable
+
 *Product_review - Done unitest string function
+
 ***Order - Add shipping unittest
 
 + Functions tested: 
@@ -154,6 +152,7 @@ Unittests were developed for remain funcitons on newsletter App, Index, Cart*, P
 | Newsletter | Models | NesletterUser |
 | Newsletter | Models | Nesletter |
 | Home | Views | index |
+| Home | Views | StaffRequiredMixin |
 | Cart | Views | update_cart |
 | Product_review | Models | BoxReview |
 | User_profile | Models | UserProfile |
@@ -164,31 +163,31 @@ Unittests were developed for remain funcitons on newsletter App, Index, Cart*, P
 
 + Newsletter Models
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_newsletter_models.jpg">
 
 + Home Views
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_home_views.jpg">
 
 + Cart Views
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_cart_views.jpg">
 
 + Product_review Models
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_product_review_models.jpg">
 
 + User Profile Models
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_user_profile_models.jpg">
 
 + User Profile Views
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_user_profile_views.jpg">
 
 + Order Models
 
-<img width= "500" src="">
+<img width= "500" src="media/readme/unittests/sprint7/unittest_ordermodels.jpg">
 
 ## Integration Test Case
 
