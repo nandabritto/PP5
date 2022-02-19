@@ -28,6 +28,5 @@ class NewsletterCreationForm(forms.ModelForm):
         fields = [
             'subject',
             'body',
-            'email',
-            'status',
+            'email'            
         ]

@@ -9,14 +9,7 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from .models import NewsletterUser, Newsletter
 from .forms import NewsLetterUserSignUpForm, NewsletterCreationForm
-
-
-class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
-    """
-    Create super user only class
-    """
-    def test_func(self):
-        return self.request.user.is_superuser
+from home.views import StaffRequiredMixin
 
 
 def newsletter_signup(request):
@@ -98,43 +91,36 @@ def send_newsletter(request):
     """
     Save newsletter and send to the  user if form is valid
     """
-    if request.user.is_superuser:
+    if request.user.is_staff:
         if request.method == 'POST':
             form = NewsletterCreationForm(request.POST or None)
 
             if form.is_valid():
                 instance = form.save()
                 newsletter = Newsletter.objects.get(id=instance.id)
-                if newsletter.status == 'Published':
-                    # Send email
-                    subject = newsletter.subject
-                    body = newsletter.body
-                    from_email = settings.EMAIL_HOST_USER
-                    for email in newsletter.email.all():
-                        send_mail(
-                            subject=subject,
-                            from_email=from_email,
-                            recipient_list=[email],
-                            message=body,
-                            fail_silently=True
-                            )
-                    # Message
-                    messages.success(
-                        request, 'Your newsletter was sent.')
-                    return redirect('newsletters')
-                else:
-                    messages.warning(request, 'SomeThing Went Wrong...')
-                return redirect('send')
+                # Send email
+                subject = newsletter.subject
+                body = newsletter.body
+                from_email = settings.EMAIL_HOST_USER
+                for email in newsletter.email.all():
+                    send_mail(
+                        subject=subject,
+                        from_email=from_email,
+                        recipient_list=[email],
+                        message=body,
+                        fail_silently=True
+                        )
+                # Message
+                messages.success(
+                    request, 'Your newsletter was sent.')
+                return redirect('newsletters')
             else:
-                form = NewsletterCreationForm(instance=newsletter)
-
-                context = {
-                    'form': form,
-                }
+                messages.error(request, 'Sorry, Your form is invalid. Please, check your data.')
                 return render(
-                    request,
-                    'newsletter/send_newsletter.html',
-                    context)
+            request,
+            'newsletter/send_newsletter.html',
+            {'form': form})
+
         else:
             form = NewsletterCreationForm()
         return render(
@@ -142,12 +128,10 @@ def send_newsletter(request):
             'newsletter/send_newsletter.html',
             {'form': form})
     else:
-        messages.error(request, 'Sorry, you do not have permittion \
-            to access this page')
-        return render(request, 'home/index.html')
+        return render(request, '403.html')
 
 
-class NewsletterList(SuperUserRequiredMixin, ListView):
+class NewsletterList(StaffRequiredMixin, ListView):
     """
     Create a list of sent newsletters for admin only
     """
