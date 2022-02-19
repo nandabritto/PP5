@@ -195,7 +195,6 @@ class AddProductTestCase(SetupModelTestCase):
         self.assertEqual(response.status_code, 200)
 
 
-
 class AddProductOnBoxTestCase(SetupModelTestCase):
     """
     Test Add product on box page
