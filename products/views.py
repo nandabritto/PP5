@@ -134,10 +134,11 @@ def add_product_on_boxes(request):
     if request.user.is_staff:
         if request.method == 'POST':
             form = ProductOnBoxForm(request.POST, request.FILES)
+            print(form.data)
             if form.is_valid():
                 product_on_box = form.save()
                 messages.success(request, 'Your product was added on the box')
-                # return redirect(reverse('box_details', args=[box.id]))
+                return redirect(reverse('box_details', args=[product_on_box.box.id]))
             else:
                 messages.error(request, 'Error adding your product on box.\
                     Please, ensure your form is valid')

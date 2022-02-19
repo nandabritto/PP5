@@ -165,6 +165,10 @@ Unittests were developed for remain funcitons on Newsletter, Home, Cart*, Produc
 | Order | Models | shipping |
 | Order | Views | TestGetCheckoutSummaryView |
 | Order | Views | TestOrderDetailView |
+| Products | Views | BoxDetailTestCase |
+| Products | Views | ProductDetailTestCase |
+| Products | Views |  |
+
 
 + Newsletter Models
 
