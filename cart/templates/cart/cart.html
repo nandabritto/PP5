@@ -21,7 +21,7 @@
                                             <div class="d-flex justify-content-between align-items-center" itemscope
                                                 itemtype="https://schema.org/Store">
                                                 <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                                                <h6 class="mb-0 text-muted">{{order.get_cart_items}} item(s)</h6>
+                                                <h2 class="mb-0 text-muted small-text">{{order.get_cart_items}} item(s)</h2>
                                             </div>
                                             <!-- Shopping cart items -->
                                             {% for item in items %}
@@ -33,13 +33,13 @@
                                                     </div>
                                                     <div class="col-md-3 col-lg-3 col-xl-3 text-center">
                                                         <!-- Box name and descritption -->
-                                                        <h6 class="text-black" itemprop="name">Box: {{ item.box|title}}</h6>
+                                                        <h3 class="text-black small-text" itemprop="name">Box: {{ item.box|title}}</h3>
                                                         <p class="small text-muted mb-0 " itemprop="description">
                                                             {{ item.box.box_description}}</p>
                                                     </div>
                                                     <div class="cart-item-quantity">
                                                         <!-- Box quantity -->
-                                                        <p class="text-center">Quantity</p>
+                                                        <h4 class="text-center small-text">Quantity</h4>
                                                         <img data-box="{{item.box.id}}" data-action="add"
                                                             class="chg-quantity update-cart mx-auto" src="{{MEDIA_URL}}arrow-up.png"
                                                             alt="Arrow up">
@@ -52,7 +52,7 @@
                                                     </div>
                                                     <!-- Item total price -->
                                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 text-center" itemprop="price">
-                                                        <h6 class="mt-2 mb-0"> Price: € {{item.quantity | mul:item.box.box_price}}</h6>
+                                                        <h5 class="mt-2 mb-0 small-text"><strong>Price:</strong><br> €{{item.quantity | mul:item.box.box_price}}</h5>
                                                     </div>
                                                 </div>
                                                 <p><strong>Selected Products:</strong> {{item.selected_products}}</p>
@@ -63,7 +63,7 @@
                                     <div class="col-lg-4 bg-grey">
                                         <div class="px-5">
                                             <!-- Summary column -->
-                                            <h3 class="fw-bold mt-2 pt-1">Summary</h3>
+                                            <h2 class="fw-bold mt-2 pt-1">Summary</h2>
                                             <hr class="my-4">
                                             <!-- Total items and price -->
                                             <div class="d-flex justify-content-between mb-4">

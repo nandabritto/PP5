@@ -7,87 +7,87 @@
 {% block extra_title %} Update Profile{% endblock %}
 
 {% block content %}
-<section>
-    <!-- Update profile container-->
-    <div class="container mt-5 px-1">
-        <div class="row">
-            <div class="col-md-10 col-lg-10 col-11 mx-auto">
-                <div class="card p-3">
-                    <h1 class="logo-font mb-2 text-center fw-bold">Update Profile</h1>
-                    <hr>
-                    <div>
-                        <h2 class="lead fw-bolder">My personal details</h2>
-                        <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
-                        <p>Name: {{ customer.first_name }} {{ customer.last_name }}</p>
+    <section>
+        <!-- Update profile container-->
+        <div class="container mt-5 px-1">
+            <div class="row">
+                <div class="col-md-10 col-lg-10 col-11 mx-auto">
+                    <div class="card p-3">
+                        <h1 class="logo-font mb-2 text-center fw-bold">Update Profile</h1>
+                        <hr>
+                        <div>
+                            <h2 class="lead fw-bolder">My personal details</h2>
+                            <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
+                            <p>Name: {{ customer.first_name }} {{ customer.last_name }}</p>
+                        </div>
+                        <hr>
+                        <!-- Update profile form -->
+                        <form class="row g-3 shipping" action="{% url 'update_profile' %}" method="POST" id="shipping_address_form">
+                            {% csrf_token %}
+                            <h2 class="lead fw-bolder">My Default Shipping Address</h2>
+                            <!-- Shipping address form -->
+                            <div class="col-12">
+                                {{ shipping_address_form.address1|as_crispy_field }}
+                                {{ shipping_address_form.address2|as_crispy_field }}
+                            </div>
+                            <div class="col-md-5 my-0 ">
+                                {{ shipping_address_form.county|as_crispy_field }}
+                            </div>
+                            <div class="col-md-5 my-0">
+                                {{ shipping_address_form.country|as_crispy_field }}
+                            </div>
+                            <div class="col-md-2 my-0">
+                                {{ shipping_address_form.eircode|as_crispy_field }}
+                            </div>
+                            <div class="col-md-5 my-0">
+                                <div id="div_id_address_type" class="mb-3 d-none">
+                                    <select name="address_type" class="col-md-6 select form-select"
+                                        id="id_address_type">
+                                        <option value="S" selected="">Shipping</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center m-3">
+                                <button class="btn btn-warning" type="submit">Update Shipping Address</button>
+                            </div>
+                        </form>
+                        <hr>
+                        <h3 class="lead fw-bolder">My Default Billing Address</h3>
+                        <!-- Billing address form -->
+                        <form class="row g-3" action="{% url 'update_profile' %}" method="POST" id="billing_address_form">
+                            {% csrf_token %}
+                            <div class="col-12">
+                                {{ billing_address_form.address1|as_crispy_field }}
+                                {{ billing_address_form.address2|as_crispy_field }}
+                            </div>
+                            <div class="col-md-5 my-0">
+                                {{ billing_address_form.county|as_crispy_field }}
+                            </div>
+                            <div class="col-md-5 my-0">
+                                {{ billing_address_form.country|as_crispy_field }}
+                            </div>
+                            <div class="col-md-2 my-0">
+                                {{ billing_address_form.eircode|as_crispy_field }}
+                            </div>
+                            <div class="col-md-5 my-0">
+                                <div id="div_id_address_type" class="mb-3 d-none">
+                                    <select name="address_type" class="col-md-6 select form-select"
+                                        id="id_address_type">
+                                        <option value="B" selected="">Billing</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center m-3">
+                                <button class="btn btn-warning" type="submit">Update Billing Address</button>
+                            </div>
+                        </form>
                     </div>
-                    <hr>
-                    <!-- Update profile form -->
-                    <form class="row g-3 shipping" action="{% url 'update_profile' %}" method="POST" id="profile-update-form">
-                        {% csrf_token %}
-                        <h2 class="lead fw-bolder">My Default Shipping Address</h2>
-                        <!-- Shipping address form -->
-                        <div class="col-12">
-                            {{ shipping_address_form.address1|as_crispy_field }}
-                            {{ shipping_address_form.address2|as_crispy_field }}
-                        </div>
-                        <div class="col-md-5 my-0">
-                            {{ shipping_address_form.county|as_crispy_field }}
-                        </div>
-                        <div class="col-md-5 my-0">
-                            {{ shipping_address_form.country|as_crispy_field }}
-                        </div>
-                        <div class="col-md-2 my-0">
-                            {{ shipping_address_form.eircode|as_crispy_field }}
-                        </div>
-                        <div class="col-md-5 my-0">
-                            <div id="div_id_address_type" class="mb-3 d-none">
-                                <select name="address_type" placeholder="Address *" class="col-md-6 select form-select"
-                                    id="id_address_type">
-                                    <option value="S" selected="">Shipping</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center m-3">
-                            <button class="btn btn-warning" type="submit">Update Shipping Address</button>
-                        </div>
-                    </form>
-                    <hr>
-                    <h3 class="lead fw-bolder">My Default Billing Address</h3>
-                    <!-- Billing address form -->
-                    <form class="row g-3" action="{% url 'update_profile' %}" method="POST" id="profile-update-form">
-                        {% csrf_token %}
-                        <div class="col-12">
-                            {{ billing_address_form.address1|as_crispy_field }}
-                            {{ billing_address_form.address2|as_crispy_field }}
-                        </div>
-                        <div class="col-md-5 my-0">
-                            {{ billing_address_form.county|as_crispy_field }}
-                        </div>
-                        <div class="col-md-5 my-0">
-                            {{ billing_address_form.country|as_crispy_field }}
-                        </div>
-                        <div class="col-md-2 my-0">
-                            {{ billing_address_form.eircode|as_crispy_field }}
-                        </div>
-                        <div class="col-md-5 my-0">
-                            <div id="div_id_address_type" class="mb-3 d-none">
-                                <select name="address_type" placeholder="Address *" class="col-md-6 select form-select"
-                                    id="id_address_type">
-                                    <option value="B" selected="">Billing</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center m-3">
-                            <button class="btn btn-warning" type="submit">Update Billing Address</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}
 
 {% block postloadjs %}
-<script src="{% static 'js/countryfield.js' %}"></script>
+    <script src="{% static 'js/countryfield.js' %}"></script>
 {% endblock %}

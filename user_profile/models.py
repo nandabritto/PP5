@@ -47,7 +47,6 @@ class Address(models.Model):
         default='S')
     default = models.BooleanField(default=False)
 
-
     def __str__(self):
         """
         Return a string to billing address
@@ -63,6 +62,9 @@ class Address(models.Model):
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
+    """
+    Create or Update user profile
+    """
     if created:
         UserProfile.objects.create(customer=instance)
     instance.userprofile.save()

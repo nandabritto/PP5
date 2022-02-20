@@ -58,8 +58,5 @@ class TestGetProfile(SetupModelTestCase):
             'eircode': '123457',
             'address_type': 'S',
         }
-        
         response = self.client.post(reverse('update_profile'), payload)
         self.assertEqual(response.status_code, 200)
-
-    

@@ -22,11 +22,12 @@ class CheckoutForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={'placeholder': 'Dublin'}))
     shipping_country = CountryField(
-        blank_label='(select country)'
+        blank_label='(Select Country)'
         ).formfield(required=False)
     shipping_eircode = forms.CharField(
         label="EirCode",
-        required=False)
+        required=False, 
+        widget=forms.TextInput(attrs={'placeholder': '123456'}))
 
     # Billing address fields
     billing_address1 = forms.CharField(
@@ -43,9 +44,10 @@ class CheckoutForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={'placeholder': 'Dublin'}))
     billing_country = CountryField(
-        blank_label='(select country)'
+        blank_label='(Select Country)'
         ).formfield(required=False,)
-    billing_eircode = forms.CharField(required=False,)
+    billing_eircode = forms.CharField(required=False,
+    widget=forms.TextInput(attrs={'placeholder': '123456'}))
 
     # Options fields
     same_billing_address = forms.BooleanField(

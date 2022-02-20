@@ -4,12 +4,11 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
+from home.views import StaffRequiredMixin
 from .models import NewsletterUser, Newsletter
 from .forms import NewsLetterUserSignUpForm, NewsletterCreationForm
-from home.views import StaffRequiredMixin
 
 
 def newsletter_signup(request):
@@ -25,8 +24,10 @@ def newsletter_signup(request):
             subject = "Thank you for joining our newsletter"
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
-            with open("newsletter/templates/newsletter/subscribe_email.txt") as f:
-                subscribe_message = f.read()
+            with open(
+                     "newsletter/templates/newsletter/subscribe_email.txt"
+                    ) as file:
+                subscribe_message = file.read()
             message = EmailMultiAlternatives(
                 subject=subject,
                 body=subscribe_message,
@@ -38,12 +39,14 @@ def newsletter_signup(request):
             message.attach_alternative(html_template, "text/html")
             message.send()
             # Message
-            messages.warning(request, 'Your email is already in our Newsletter database. ')
+            messages.warning(
+                request, 'Your email is already in our Newsletter database. ')
             return redirect('home')
 
         else:
             instance.save()
-            messages.success(request, 'Thank you for your subscription in our Newsletter.')
+            messages.success(
+                request, 'Thank you for your subscription in our Newsletter.')
             return redirect('home')
 
     context = {
@@ -75,10 +78,14 @@ def newsletter_unsubscribe(request):
                 fail_silently=False
                 )
             # Message
-            messages.warning(request, 'Unsubscription completed. Sorry to see you go :(')
+            messages.warning(
+                request,
+                'Unsubscription completed. Sorry to see you go :(')
             return redirect('home')
         else:
-            messages.warning(request, 'Sorry, We did not find your email. Can your try again?')
+            messages.warning(
+                request,
+                'Sorry, We did not find your email. Can your try again?')
 
     context = {
         'form': form,
@@ -115,11 +122,13 @@ def send_newsletter(request):
                     request, 'Your newsletter was sent.')
                 return redirect('newsletters')
             else:
-                messages.error(request, 'Sorry, Your form is invalid. Please, check your data.')
+                messages.error(
+                    request,
+                    'Sorry, Your form is invalid. Please, check your data.')
                 return render(
-            request,
-            'newsletter/send_newsletter.html',
-            {'form': form})
+                    request,
+                    'newsletter/send_newsletter.html',
+                    {'form': form})
 
         else:
             form = NewsletterCreationForm()

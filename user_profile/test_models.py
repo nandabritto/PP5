@@ -1,7 +1,6 @@
 """ System Module """
 from django.test import TestCase
 from django.contrib.auth.models import User
-from products.models import Box
 from .models import UserProfile, Address
 
 
@@ -37,6 +36,7 @@ class SetupModelTestCase(TestCase):
             eircode='123456',
             address_type='S'
         )
+
 
 class UserProfileTestCase(SetupModelTestCase):
     """

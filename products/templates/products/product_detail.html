@@ -7,44 +7,43 @@
 {% block extra_title %}Product Details{% endblock %}
 
 {% block content %}
-<section>
-    <!-- Details page card -->
-    <div class="card col-11 col-md-4 d-flex mx-auto m-4 products-container">
-        <!-- Box title -->
-        <div class="row g-0 justify-content-center" itemscope itemtype="https://schema.org/Store">
-            <h1 class="card-title text-center text-green w-100 m-2 fw-bolder"><strong itemprop="name">
-                    {{ product.product_name|title}}</strong>
-            </h1>
-            <hr>
-            <!-- Box image -->
-            <figure class="col-md-5 col-lg-5 col-xl-3 col-8 d-flex align-items-center px-2 mr-0 ">
-                <img src="{{ product.product_image.url }}" class="rounded-3 w-100 box-image-detail mx-auto"
-                    alt="{{ product.product_image }}" itemprop="image">
-            </figure>
-            <div class="col-md-5 col-lg-5 mr-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                <div class="card-body ">
-                    <!-- Box description -->
-                    <p class="card-text text-center lead px-5 " itemprop="description">{{ product.product_description }}
-                    </p>
-                    <p class="card-text text-center mb-0" itemprop="note"><small>{{ product.product_note1 }}</small></p>
-                    <p class="card-text text-center" itemprop="note"><small>{{ product.product_note2 }}</small></p>
-                </div>
-                <!-- Box price -->
-                <div itemscope itemtype="https://schema.org/PriceSpecification">
-                    <h2 class="card-text text-center">
-                        <i class="fa fa-eur text-muted" aria-hidden="true" itemprop="price" content="EU"></i>
-                        {{ product.product_price }}
-                    </h2>
-                </div>
-                <div class="text-center" itemscope itemtype="https://schema.org/url">
-                    <a class="btn btn-lg btn-dark fw-bold m-2" itemprop="url" href="{% url 'products_list' %}">
-                        <i class="fas fa-arrow-circle-left"></i> Back
-                    </a>
+    <section>
+        <!-- Details page card -->
+        <div class="card col-11 col-md-4 d-flex mx-auto m-4 products-container">
+            <!-- Box title -->
+            <div class="row g-0 justify-content-center" itemscope itemtype="https://schema.org/Store">
+                <h1 class="card-title text-center text-green w-100 m-2 fw-bolder">
+                    <strong itemprop="name">{{ product.product_name|title}}</strong>
+                </h1>
+                <hr>
+                <!-- Box image -->
+                <figure class="col-md-5 col-lg-5 col-xl-3 col-8 d-flex align-items-center px-2 mr-0 ">
+                    <img src="{{ product.product_image.url }}" class="rounded-3 w-100 box-image-detail mx-auto"
+                        alt="{{ product.product_image }}" itemprop="image">
+                </figure>
+                <div class="col-md-5 col-lg-5 mr-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <div class="card-body ">
+                        <!-- Box description -->
+                        <p class="card-text text-center lead px-5 " itemprop="description">{{ product.product_description }}</p>
+                        <p class="card-text text-center mb-0" itemprop="note"><small>{{ product.product_note1 }}</small></p>
+                        <p class="card-text text-center" itemprop="note"><small>{{ product.product_note2 }}</small></p>
+                    </div>
+                    <!-- Box price -->
+                    <div itemscope itemtype="https://schema.org/PriceSpecification">
+                        <h2 class="card-text text-center">
+                            <i class="fa fa-eur text-muted" aria-hidden="true" itemprop="price" content="EU"></i>
+                            {{ product.product_price }}
+                        </h2>
+                    </div>
+                    <div class="text-center" itemscope itemtype="https://schema.org/url">
+                        <a class="btn btn-lg btn-dark fw-bold m-2" itemprop="url" href="{% url 'products_list' %}">
+                            <i class="fas fa-arrow-circle-left"></i> Back
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 {% endblock %}
 

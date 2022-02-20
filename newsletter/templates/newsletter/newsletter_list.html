@@ -19,24 +19,20 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col"></th>
                                         <th scope="col" itemprop="datesent">Send Date</th>
                                         <th scope="col" itemprop="subject">Subject</th>
-                                        <th scope="col" itemprop="message">Body</th>                                        
+                                        <th scope="col" itemprop="message">Body</th>
                                     </tr>
                                 </thead>
                                 {% for newsletter in object_list %}
                                     <tbody>
                                         <tr>
-                                            <th scope="row"></th>
                                             <td>{{ newsletter.created}} </td>
                                             <td>{{ newsletter.subject|slice:20 }}</td>
-                                            <td>{{ newsletter.body }}</td>
-                                            <td>{{ newsletter.status }}</td>
-                                            <td>{{ newsletter.updated }}</td>
+                                            <td>{{ newsletter.body|slice:70 }}...</td>
                                         </tr>
                                     </tbody>
-                            {% endfor %}
+                                {% endfor %}
                             </table>
                         {% else %}
                             <!-- No newsletter container -->
