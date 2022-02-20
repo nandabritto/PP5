@@ -18,7 +18,7 @@ class SetupModelTestCase(TestCase):
             email='joe@doe.com',
             password=self.password)
         self.client.login(username='joe', password='12345')
-               
+
         # Box creation
         self.box1 = Box.objects.create(
             box_name='testBox1',
