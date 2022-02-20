@@ -26,7 +26,6 @@
                                 {{ order.shipping_address}}
                                 <p class="lead fw-bold" itemprop="productID">Order number: {{ order.order_id }}</p>
                                 {% for item in order.items %}
-
                                 <div class="col-4 p-3" itemscope itemtype="https://schema.org/Order">
                                     <img class="img-fluid" src="{{ item.box.box_image.url }}" itemprop="image"
                                         alt="{{ item.box_name }}">
@@ -34,7 +33,7 @@
                                 <div class="col-4" itemscope itemtype="https://schema.org/Order">
                                     <div class="row" itemprop="orderedItem">
                                         <p>{{ item.box |title}}</p>
-                                    </div>
+                                    </div>                                   
                                     <div class="row" itemscope itemtype="https://schema.org/Order">
                                         <p class="text-muted" itemprop="quantity">{{ item.quantity }} unit(s)
                                         </p>
@@ -44,8 +43,6 @@
                                     <p class="text-end" itemprop="price">Unit Price:
                                         €{{ item.box.box_price |title}}</p>
                                 </div>
-
-
                                 {% endfor %}
                                 <!-- Order details -->
                                 <div class="text-end">

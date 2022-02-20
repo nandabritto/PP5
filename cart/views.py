@@ -63,9 +63,7 @@ def update_cart(request):
     if action == 'add':
         order_box.quantity = (order_box.quantity + 1)
         if prod_selected_names.__len__() > 0:
-            order_box.selected_products = prod_selected_names
-        else:
-            order_box.selected_products = surprise_products
+            order_box.selected_products = prod_selected_names      
     elif action == 'remove':
         order_box.quantity = (order_box.quantity - 1)
     order_box.save()
