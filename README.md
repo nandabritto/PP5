@@ -359,6 +359,10 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 <img width="400" src="media/readme/features_ss/payment.png">
 
+2. When payment is confirmed, user will receive an email about it. 
+
+<img width="400" src="media/readme/features_ss/order_confirmation_email.png">
+
 ### **Management Page** 
 
 1. On his page, the admin user can find all options to add, edit or delete products, boxes and products on boxes, and check all sent newsletters or send a new one. 
