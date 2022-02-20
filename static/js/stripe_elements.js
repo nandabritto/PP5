@@ -1,4 +1,4 @@
-var stripe = Stripe('pk_test_51K75GAG6kIgu2TAlxJkRLrcFkmAOeJFZUpLb3Q5Ok32oWot4xTuDWOfMBPkzLSwFZBCRO0XQ8nhXZdDUq4JvRw3z00MPFQuV1C')
+var stripe = Stripe('pk_test_51K75GAG6kIgu2TAlxJkRLrcFkmAOeJFZUpLb3Q5Ok32oWot4xTuDWOfMBPkzLSwFZBCRO0XQ8nhXZdDUq4JvRw3z00MPFQuV1C');
 
 // Create an instance of Elements.
 var elements = stripe.elements();
@@ -30,6 +30,7 @@ card.mount('#card-element');
 
 // Handle real-time validation errors from the card Element.
 card.addEventListener('change', function (event) {
+  'use strict';
     var displayError = document.getElementById('card-errors');
     if (event.error) {
         displayError.textContent = event.error.message;
@@ -41,6 +42,7 @@ card.addEventListener('change', function (event) {
 // Handle form submission.
 var form = document.getElementById('stripe-form');
 form.addEventListener('submit', function (event) {
+  'use strict';
     event.preventDefault();
 
     stripe.createToken(card).then(function (result) {
@@ -57,6 +59,7 @@ form.addEventListener('submit', function (event) {
 
 // Submit the form with the token ID.
 function stripeTokenHandler(token) {
+  'use strict';
     var form = document.getElementById('stripe-form');
     var hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');

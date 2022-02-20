@@ -316,36 +316,242 @@ Unittests were developed for remaining functions on Newsletter, Home, Cart*, Pro
 
 ## Python (PEP8) Validation
 
-###  **PLACEHOLDER App** 
+### Home App
+<p float="left">
+   <img src="media/readme/validation/pep8/home_test_views.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/home_urls.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/home_views.jpg" width="300" height="200"/>   
+</p>
+
+### Cart App
 
 <p float="left">
-        <img src="" width="400" height="200" alt=""/>
-       
+   <img src="media/readme/validation/pep8/cart_admin_pep8.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/cart_contexts_pep8.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/cart_test_views_pep8.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/cart_urls_pep8.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/cart_views_pep8.jpg" width="300" height="200"/>       
 </p>
+
+### Newsletter App
+
+<p float="left">
+   <img src="media/readme/validation/pep8/newsletter_admin.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/newsletter_apps.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/newsletter_forms.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/newsletter_models.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/newsletter_test_models.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/newsletter_test_views.jpg" width="300" height="200"/> 
+   <img src="media/readme/validation/pep8/newsletter_urls.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/newsletter_views.jpg" width="300" height="200"/> 
+
+### Product Review App
+
+<p float="left">
+   <img src="media/readme/validation/pep8/product_review_admin.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/product_review_apps.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/product_review_forms.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/product_review_models.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/product_review_test_models.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/product_review_urls.jpg" width="300" height="200"/> 
+</p>
+
+### Product App
+
+<p float="left">
+   <img src="media/readme/validation/pep8/products_admin.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/products_apps.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/products_forms.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/products_models.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/products_test_models.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/products_test_views.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/products_urls.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/products_views.jpg" width="300" height="200"/> 
+</p>
+
+### User Profile App
+
+<p float="left">
+   <img src="media/readme/validation/pep8/update_profile_admin.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/update_profile_apps.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/update_profile_forms.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/update_profile_models.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/update_profile_test_models.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/update_profile_test_views.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/update_profile_views.jpg" width="300" height="200"/>
+</p>
+
+### Store App
+
+<p float="left">
+   <img src="media/readme/validation/pep8/store_asgi.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/store_forms.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/store_urls.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/store_views.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/store_wsgi.jpg" width="300" height="200"/>
+   <img src="media/readme/validation/pep8/store_settings.jpg" width="300" height="200"/>
+</p>
+
+<p> The error found on settings are related to 4 links:
+
+<img src="media/readme/validation/pep8/store_settings_error.jpg" width="300" height="200"/>
 
 ## HTML Code Validation
 
 All Html pages were validated using the W3 tool. 
 
-All results can be found here.
+### Home app
+<details>
+<summary>Expand for test results:</summary>
 
-<img src="" width="400" height="200" alt=""/>
+[Home](media/readme/validation/html/home.png)
 
-## CSS Code Validation
+[How it works](media/readme/validation/html/how_it_works.png)
 
-<p float="left">
-        <img src="" width="40%" alt="W23C css validation"/>
-</p>
+[Management](media/readme/validation/html/management.png)
+</details>
+
+### Cart app
+<details>
+<summary>Expand for test results:</summary>
+
+[Cart](media/readme/validation/html/cart.png)
+
+</details>
+
+### Newsletter app
+<details>
+<summary>Expand for test results:</summary>
+
+[Newsletter List](media/readme/validation/html/newsletterlist.png)
+
+[Send Newsletter](media/readme/validation/html/sendnewsletter.png)
+
+</details>
+
+### Order app
+<details>
+<summary>Expand for test results:</summary>
+
+[Checkout](media/readme/validation/html/order_checkout.png)
+
+[Checkout Summary](media/readme/validation/html/order_checkout_summary.png)
+
+[Payment](media/readme/validation/html/order_payment.png)
+
+[Order details](media/readme/validation/html/order_order_detail.png)
+
+</details>
+
+### Product Review app
+<details>
+<summary>Expand for test results:</summary>
+
+[Edit review](media/readme/validation/html/product_review_edit_review.png)
+</details>
+
+### Product app
+<details>
+<summary>Expand for test results:</summary>
+
+[Add Box](media/readme/validation/html/products_add_box.png)
+
+[Add Product on Box](media/readme/validation/html/products_add_product_on_box.png)
+
+[Add Product](media/readme/validation/html/products_add_product.png)
+
+[Box detail](media/readme/validation/html/products_box_detail.png)
+
+[Box detail](media/readme/validation/html/products_box_detail.png)
+
+[Box list](media/readme/validation/html/products_boxes_list.png)
+
+[Edit Boxes](media/readme/validation/html/products_edit_boxes.png)
+
+[Edit Products](media/readme/validation/html/products_edit_products.png)
+
+[Products details](media/readme/validation/html/products_product_detail.png)
+
+[Products List](media/readme/validation/html/products_products_list.png)
+
+[Products](media/readme/validation/html/products_products.png)
+
+[Products on Box List](media/readme/validation/html/products_productsonbox_list.png)
+
+</details>
+
+
+### All auth templates
+<details>
+<summary>Expand for test results:</summary>
+
+[Login](media/readme/validation/html/login_page.png)
+
+[Logout](media/readme/validation/html/products_add_product_on_box.png)
+
+[Account Inactive](media/readme/validation/html/account_inative.png)
+
+[Password reset Done](media/readme/validation/html/password_reset_done_page.png)
+
+[Password reset](media/readme/validation/html/password_reset_page.png)
+
+[Confirm email](media/readme/validation/html/confirm_email.png)
+
+[Change Password](media/readme/validation/html/changepassword.png)
+
+[Chaged Password](media/readme/validation/html/changed_password_page.png)
+
+[Register](media/readme/validation/html/register_page.png)
+
+[Set Password](media/readme/validation/html/set_password_page.png)
+
+</details>
+
+### User Profile app
+<details>
+<summary>Expand for test results:</summary>
+
+[Profiles](media/readme/validation/html/user_profile_profiles.png)
+
+[Update Profile](media/readme/validation/html/user_profile_update_profile.png)
+</details>
+
 
 ## JavaScript Code Validation
 
-### **PLACEHOLDER** 
+### Cart_js
+<p>
+   <img src= "media/readme/validation/js validation/cart_js_validation.png" width="40%"/>
+</p>
 
-   <img src= "" width="40%" alt="JShint validation - before"/>
+### Checkout_js
+<p>
+   <img src= "media/readme/validation/js validation/checkout_js_validation.png" width="40%"/>
+</p>
+
+### Countryfield_js
+<p>
+   <img src= "media/readme/validation/js validation/countryfield_js_validation.png" width="40%"/>
+</p>
+
+### Stripe_elements_js
+<p>
+   <img src= "media/readme/validation/js validation/stripe_elements_js_validation.png" width="40%"/>
+</p>
+
+## Css Validation
+
+### Base.css
+
+No errors were found on base css. The warnings found are related to border and background colour. 
+<p>
+   <img src= "media/readme/validation/cssvalidation/css_validation.png" width="40%"/>
+</p>
+<p>
+   <img src= "media/readme/validation/cssvalidation/css_warnings_validation.png" width="40%"/>
 </p>
 
 ## Accessibility Testing
-
 
 <details>
 
@@ -355,13 +561,17 @@ All results can be found here.
 
   <img src="media/readme/wave/wave_home.png" width="400" height="200">
 
+   + Register
+
+  <img src="media/readme/wave/wave_register.png" width="400" height="200">
+
   + Login
 
-  <img src="" width="400" height="200">
+  <img src="media/readme/wave/wave_login.png" width="400" height="200">
 
   + Logout
 
-  <img src="" width="400" height="200">
+  <img src="media/readme/wave/wave_logout.png" width="400" height="200">
 
   + How it works
 
@@ -399,6 +609,10 @@ All results can be found here.
 
   <img src="media/readme/wave/wave_products_list.png" width="400" height="200">
 
+   + Products on box List
+
+  <img src="media/readme/wave/wave_products_on_box_list.png" width="400" height="200">
+
   + Boxes List
 
   <img src="media/readme/wave/wave_box_list.png" width="400" height="200">
@@ -417,15 +631,15 @@ All results can be found here.
 
   + Edit box 
 
-  <img src="" width="400" height="200">
+  <img src="media/readme/wave/wave_edit_box.png" width="400" height="200">
 
   + Edit product
 
-  <img src="" width="400" height="200">
+  <img src="media/readme/wave/wave_edit_product.png" width="400" height="200">
 
   + Edit Product on Box
 
-  <img src="" width="400" height="200">
+  <img src="media/readme/wave/wave_edit_product_on_box.png" width="400" height="200">
 
   + Send newsletter 
 
@@ -441,9 +655,11 @@ All results can be found here.
 
   + Update Profile
 
-  <img src="" width="400" height="200">
+  <img src="media/readme/wave/wave_update_profile.png" width="400" height="200">
    
-
+   <p> Accessibility errors on ths page are related a design choice of no labels on form. Instead, its possible to find placeholders. </p>
+   
+   <img src="media/readme/wave/wave_update_profile_errors.png" width="400" height="200">
  </details>
 
 ## Exploratory Testing
