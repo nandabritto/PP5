@@ -8,23 +8,26 @@ var same_billing_address = document.querySelector("input[name=same_billing_addre
 
 if(use_default_shipping){
 use_default_shipping.addEventListener('change', function() {
+  'use strict';
   if (this.checked) {
     hideable_shipping_form.hide();
   } else {
     hideable_shipping_form.show();
   }
-})}
+});}
 
 if(use_default_billing){
 use_default_billing.addEventListener('change', function() {
+  'use strict';
   if (this.checked) {
     hideable_billing_form.hide();
   } else {
     hideable_billing_form.show();
   }
-})}
+});}
 
 same_billing_address.addEventListener('change', function() {
+  'use strict';
     if (this.checked) {
       hideable_billing_form.hide();
       hideable_user_default_billing.hide();
@@ -32,5 +35,5 @@ same_billing_address.addEventListener('change', function() {
       hideable_billing_form.show();
       hideable_user_default_billing.show();
     }
-  })
+  });
   
