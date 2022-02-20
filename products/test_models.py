@@ -1,6 +1,6 @@
 """ System Module """
 from django.test import TestCase
-from .models import Product, Box, Product_On_Box
+from .models import Product, Box, ProductOnBox
 import logging
 
 class TestProduct(TestCase):
@@ -43,7 +43,7 @@ class TestBox(TestCase):
 
 class TestProductOnBox(TestCase):
     """
-    Test Product_On_Box model function
+    Test ProductOnBox model function
     """
     def test_product_on_box(self):
         """
@@ -60,6 +60,6 @@ class TestProductOnBox(TestCase):
         """
         self.box = Box.objects.create(box_name='BoxName')
         self.product = Product.objects.create(product_name='ProductTest')
-        self.product_on_box = Product_On_Box.objects.create(
+        self.product_on_box = ProductOnBox.objects.create(
             product=self.product, box=self.box, product_selectable=True)
         self.assertEqual(str(str(self.product_on_box)), f"{self.box.box_name} | {self.product.product_name}")

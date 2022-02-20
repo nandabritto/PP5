@@ -48,7 +48,7 @@ class Box(models.Model):
     #         img.save(self.box_image)
 
 
-class Product_On_Box(models.Model):
+class ProductOnBox(models.Model):
     """
     Link products to their boxes
     """
