@@ -4,7 +4,7 @@ from . import views
 from .views import ListBoxes, ListProducts, ListProductsOnBox
 
 urlpatterns = [
-    path('', views.boxes, name='boxes'),
+    path('boxes', views.boxes, name='boxes'),
     path("box_details/<int:pk>/",
          views.box_detail, name="box_details"),
     path("product_details/<int:pk>/",
