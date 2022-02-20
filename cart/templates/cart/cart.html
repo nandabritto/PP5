@@ -55,7 +55,11 @@
                                                         <h5 class="mt-2 mb-0 small-text"><strong>Price:</strong><br> €{{item.quantity | mul:item.box.box_price}}</h5>
                                                     </div>
                                                 </div>
+                                                {% if item.selected_products %}
                                                 <p><strong>Selected Products:</strong> {{item.selected_products}}</p>
+                                                {% else %}
+                                                <p><strong>Selected Products:</strong> Surprise items will be added on your box.</p>
+                                                {% endif %}
                                                 <hr class="my-4">
                                             {% endfor %}
                                         </div>
