@@ -98,8 +98,10 @@ def update_profile(request):
         else:
             messages.error(request, ' Form invalid')
 
-    shipping_address_form = UserAddressForm(instance=cust_shipping_address)
-    billing_address_form = UserAddressForm(instance=cust_billing_address)
+    shipping_address_form = UserAddressForm(
+        auto_id="id_sh_%s", instance=cust_shipping_address)
+    billing_address_form = UserAddressForm(
+        auto_id="id_bl_%s", instance=cust_billing_address)
     customer = request.user
     ordered_boxes = Order.objects.filter(customer=request.user)
 
