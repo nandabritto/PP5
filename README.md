@@ -97,6 +97,8 @@ Create an e-commerce app that allows people (users) who lives out of their home 
 
 All functionality and development of this project were managed using [Jira](https://bestbeer.atlassian.net)
 
+<img width= "100%" src="media/readme/jira_roadmap.jpg">
+
 * Credentials to this management tool will be provided during submission.
 
 <details>

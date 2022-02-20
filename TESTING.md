@@ -392,7 +392,7 @@ Unittests were developed for remaining functions on Newsletter, Home, Cart*, Pro
    <img src="media/readme/validation/pep8/store_settings.jpg" width="300" height="200"/>
 </p>
 
-<p> The error found on settings are related to 4 links:
+<p> The error found on settings are related to 4 links:</p>
 
 <img src="media/readme/validation/pep8/store_settings_error.jpg" width="300" height="200"/>
 
@@ -659,7 +659,9 @@ No errors were found on base css. The warnings found are related to border and b
    
    <p> Accessibility errors on ths page are related a design choice of no labels on form. Instead, its possible to find placeholders. </p>
    
-   <img src="media/readme/wave/wave_update_profile_errors.png" width="400" height="200">
+   <img src="media/readme/wave/wave_update_profile_errors.png" width="200">
+
+
  </details>
 
 ## Exploratory Testing
