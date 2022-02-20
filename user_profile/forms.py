@@ -1,6 +1,6 @@
 """ System Module """
 from django import forms
-from .models import UserProfile, Address
+from .models import Address
 
 
 class UserAddressForm(forms.ModelForm):
@@ -20,8 +20,6 @@ class UserAddressForm(forms.ModelForm):
             'eircode': 'Eircode',
             'address_type': 'Address',
         }
-        
-
         self.fields['address1'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field != 'country':
