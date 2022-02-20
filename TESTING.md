@@ -345,7 +345,7 @@ All results can be found here.
 </p>
 
 ## Accessibility Testing
-========================================================================================
+
 
 <details>
 
@@ -447,7 +447,6 @@ All results can be found here.
  </details>
 
 ## Exploratory Testing
-========================================================================================
 
 ### Initial User Testing (Alpha)
 
@@ -523,7 +522,7 @@ On this test, a checklist was developed to guide the user along with all pages a
 
 
 ## Manual Testing
-========================================================================================
+
 ### Desktop
 
 The platform was tested on Mozilla Firefox Developers and Google Chrome, and everything was working as expected.

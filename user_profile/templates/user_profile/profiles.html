@@ -40,7 +40,7 @@
                                         </p>
                                         <p>{{shipping_address.address1}},</p>
                                         <p>{{shipping_address.address2}}</p>
-                                        <p>{{shipping_address.county}}, {{shipping_address.country}}</p>
+                                        <p>{{shipping_address.county|title}}, {{shipping_address.country}}</p>
                                         <p>EirCode:{{shipping_address.eircode}}</p>
                                     {% endif %}
                                 </div>
@@ -61,10 +61,16 @@
                                         </p>
                                         <p>{{billing_address.address1}},</p>
                                         <p>{{billing_address.address2}}</p>
-                                        <p>{{billing_address.county}}, {{billing_address.country}}</p>
+                                        <p>{{billing_address.county|title}}, {{billing_address.country}}</p>
                                         <p>EirCode: {{billing_address.eircode}}</p>
                                     {% endif %}
                                 </div>
+                            </div>
+                            <hr>
+                            <div class="m-0 text-center">
+                                <p class="lead m-0 fw-bold">The Regional Taste Newsletter</p>
+                                                              
+                                <p><small class="m-0"><a href= "{% url 'subscribe' %}" class="text-muted">Subscription </a> | <a href= "{% url 'unsubscribe' %}" class="text-muted">Unsubscription </a></small></p>
                             </div>
                         </div>
                     </div>
