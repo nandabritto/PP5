@@ -1,6 +1,6 @@
 """ System Module """
 from django import forms
-from .models import Product, Box, Product_On_Box
+from .models import Product, Box, ProductOnBox
 
 
 class ProductChoicesForm(forms.Form):
@@ -12,9 +12,9 @@ class ProductChoicesForm(forms.Form):
         Get objects on prooducts model, filter by box and create checkboxes
         """
         super(ProductChoicesForm, self).__init__(*args, **kwargs)
-        query = Product.objects.filter(product_on_box__box_id=pk)
+        query = Product.objects.filter(productonbox__box_id=pk)
         selectables_query = query.filter(
-            product_on_box__product_selectable=True)
+            productonbox__product_selectable=True)
         self.fields['selected_product'] = forms.ModelChoiceField(
             queryset=selectables_query.all(),
             widget=forms.CheckboxSelectMultiple,
@@ -64,5 +64,5 @@ class ProductOnBoxForm(forms.ModelForm):
         """
         Get Product on Box model
         """
-        model = Product_On_Box
+        model = ProductOnBox
         fields = '__all__'

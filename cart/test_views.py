@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import auth
-from products.models import Box, Product, Product_On_Box
+from products.models import Box, Product, ProductOnBox
 
 
 class SetupViewTestCase(TestCase):
@@ -25,7 +25,7 @@ class SetupViewTestCase(TestCase):
             box_description='test Description',
             box_image='testimage.jpg')
         self.product = Product.objects.create(product_name='ProductTest')
-        self.product_on_box = Product_On_Box.objects.create(
+        self.product_on_box = ProductOnBox.objects.create(
             product=self.product, box=self.box, product_selectable=True)
        
 

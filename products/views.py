@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from product_review.forms import AddReviewForm
 from product_review.models import BoxReview
-from .models import Box, Product, Product_On_Box
+from .models import Box, Product, ProductOnBox
 from .forms import ProductChoicesForm, BoxForm, ProductForm, ProductOnBoxForm
 from home.views import StaffRequiredMixin
 
@@ -42,7 +42,7 @@ def box_detail(request, pk):
     reviews = BoxReview.objects.filter(box=box.id).order_by('-date_added')[:2]
 
 
-    product_on_box = Product_On_Box.objects.filter(box=box.id)
+    product_on_box = ProductOnBox.objects.filter(box=box.id)
 
     context = {
         'box': box,
@@ -275,13 +275,13 @@ def edit_product_on_box(request, pk):
     Edit products on box on the store
     """
     if request.user.is_staff:
-        productonbox = get_object_or_404(Product_On_Box, pk=pk)
+        productonbox = get_object_or_404(ProductOnBox, pk=pk)
         if request.method == 'POST':
             form = ProductOnBoxForm(request.POST, request.FILES, instance=productonbox)
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your product on box was edited')
-                productonbox = get_object_or_404(Product_On_Box, pk=pk)
+                productonbox = get_object_or_404(ProductOnBox, pk=pk)
                 context = {
                     'productonbox': productonbox,
                 }
@@ -314,7 +314,7 @@ def delete_productonbox(request, pk):
     """
     if request.user.is_staff:
         try:
-            productonbox = get_object_or_404(Product_On_Box, pk=pk)
+            productonbox = get_object_or_404(ProductOnBox, pk=pk)
             productonbox.delete()
             messages.success(request, 'Product was deleted from box')
             return redirect(reverse('productsonbox_list'))
@@ -352,7 +352,7 @@ class ListProductsOnBox(StaffRequiredMixin, ListView):
     """
     Creates a list of all boxes to admin
     """
-    model = Product_On_Box
+    model = ProductOnBox
     template_name = 'products/productsonbox_list.html'
     paginate_by = 20
     ordering = ['-box']
