@@ -27,7 +27,7 @@ class SetupViewTestCase(TestCase):
         self.product = Product.objects.create(product_name='ProductTest')
         self.product_on_box = ProductOnBox.objects.create(
             product=self.product, box=self.box, product_selectable=True)
-       
+
 
 class TestCart(SetupViewTestCase):
     """
@@ -64,7 +64,11 @@ class TestUpdateCart(SetupViewTestCase):
         """
         Test if products are loadng in shopping cart
         """
-        payload = {'box_id': self.box.id, 'action': 'add', 'prod_selected_ids': [self.product_on_box.id]}
+        payload = {
+            'box_id': self.box.id,
+            'action': 'add',
+            'prod_selected_ids': [self.product_on_box.id]
+            }
         response = self.client.post(
             reverse('update_cart'),
             data=payload,

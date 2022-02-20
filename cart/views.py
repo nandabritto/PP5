@@ -16,9 +16,7 @@ def cart(request):
             customer=customer, ordered=False)
         items = order.orderbox_set.all()
         cart_items = order.get_cart_items
-
         request.session['cart_items'] = cart_items
-
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
@@ -68,10 +66,8 @@ def update_cart(request):
             order_box.selected_products = prod_selected_names
         else:
             order_box.selected_products = surprise_products
-
     elif action == 'remove':
         order_box.quantity = (order_box.quantity - 1)
-
     order_box.save()
 
     if order_box.quantity <= 0:

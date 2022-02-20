@@ -1,9 +1,7 @@
 """ System Module """
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth import logout
 from django.views.generic import TemplateView
-
 
 
 def index(request):
@@ -23,8 +21,8 @@ class StaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
 
 class Management(StaffRequiredMixin, TemplateView):
     """
-    A view to return management page
-    """    
+    A view to return management page for staff users
+    """
     template_name = 'home/management.html'
 
 

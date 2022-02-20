@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
-
 class TestViews(TestCase):
     """
     Test if url is loading correctly
@@ -17,16 +16,17 @@ class TestViews(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+
 class TestStaffUser(TestCase):
     """
     Test if user is staff
     """
     def test_staff_user(self):
         """
-        Test if logged user is staff
+        Test if logged user is staff and access management page
         """
-        user = User.objects.create_user('joe', 'joe@example.com', '12345')  
-        user.is_staff = True 
+        user = User.objects.create_user('joe', 'joe@example.com', '12345')
+        user.is_staff = True
         user.save()
         self.client.login(username='joe', password='12345')
         response = self.client.get(reverse('management'))
@@ -34,9 +34,9 @@ class TestStaffUser(TestCase):
 
     def test_customer_user_access_page(self):
         """
-        Test if logged user is staff
+        Test if customer can access staff only page
         """
-        user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        user = User.objects.create_user('jim', 'jim@example.com', '12345')
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('management'))
         self.assertEqual(response.status_code, 403)

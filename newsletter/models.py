@@ -10,18 +10,17 @@ class NewsletterUser(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.email
+        return str(self.email)
 
 
 class Newsletter(models.Model):
     """
     Permit send newletter from admin to users
     """
-   
     subject = models.CharField(max_length=250)
     body = models.TextField()
     email = models.ManyToManyField(NewsletterUser)
     created = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.subject
+        return str(self.subject)

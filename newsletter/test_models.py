@@ -30,15 +30,14 @@ class NewsletterUserTestCase(SetupModelTestCase):
 
 class NewsletterTestCase(SetupModelTestCase):
     """
-    Test Newsletter model function
+    Test Newsletter models function
     """
     def test__str__(self):
         """
-        Test if newsletter  is returning correct string
+        Test if newsletter is returning correct string
         """
         news = Newsletter.objects.create(
             subject=self.subject,
             body=self.body,
             )
-
         self.assertEqual(str(news), 'Test Subject')

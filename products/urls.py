@@ -21,6 +21,5 @@ urlpatterns = [
     path('boxes_list/', ListBoxes.as_view(), name='boxes_list'),
     path('products_list/', ListProducts.as_view(), name='products_list'),
     path('productsonbox_list/', ListProductsOnBox.as_view(), name='productsonbox_list'),
-
 ]
 
