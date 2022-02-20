@@ -228,10 +228,6 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 ## Existing Features
 
-<details>
-
-<summary> Here, you can find a description of all features available on the platform. </summary>
-
 ### **Navbar** 
 
 + Fixed Navbar allow the user easy access to all pages. 
@@ -357,6 +353,22 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 
 1. Credit card only payments are available on this page
 
+<details>
+<summary>Click here to check how to test payment with stripe testing card</summary>
+
++ To test payment use:
+
+Card number: 4242 4242 4242 4242
+
+MM/YY: 04/24
+
+CVC: 424
+
+Zipcode: 42424
+
+</details>
+<br>
+
 <img width="400" src="media/readme/features_ss/payment.png">
 
 2. When payment is confirmed, user will receive an email about it. 
@@ -411,7 +423,6 @@ The chosen fonts were Roboto for headings and navbar and Lato for links, buttons
 <img width="400" src="media/readme/features_ss/edit_producst_on_boxes.png">
 </p>
 
-</details>
 
 ## Future Features
 
