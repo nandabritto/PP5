@@ -531,7 +531,7 @@ All Html pages were validated using the W3 tool.
 
 ### Countryfield_js
 <p>
-   <img src= "media/readme/validation/js validation/countryfield_js_validation.png" width="40%"/>
+   <img src= "media/readme/validation/js validation/coutryfield_js_validation.png" width="40%"/>
 </p>
 
 ### Stripe_elements_js

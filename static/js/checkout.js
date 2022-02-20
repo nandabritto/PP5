@@ -8,7 +8,6 @@ var same_billing_address = document.querySelector("input[name=same_billing_addre
 
 if(use_default_shipping){
 use_default_shipping.addEventListener('change', function() {
-  'use strict';
   if (this.checked) {
     hideable_shipping_form.hide();
   } else {
@@ -18,7 +17,6 @@ use_default_shipping.addEventListener('change', function() {
 
 if(use_default_billing){
 use_default_billing.addEventListener('change', function() {
-  'use strict';
   if (this.checked) {
     hideable_billing_form.hide();
   } else {
@@ -27,7 +25,6 @@ use_default_billing.addEventListener('change', function() {
 });}
 
 same_billing_address.addEventListener('change', function() {
-  'use strict';
     if (this.checked) {
       hideable_billing_form.hide();
       hideable_user_default_billing.hide();

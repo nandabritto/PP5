@@ -2,7 +2,6 @@ var updateBtns = document.getElementsByClassName("update-cart");
 
 for (var i = 0; i < updateBtns.length; i++) {
     updateBtns[i].addEventListener("click", function () {
-      'use strict';
         var box_id = this.dataset.box;
         var action = this.dataset.action;
         if (user == "AnonymousUser") {
@@ -21,7 +20,6 @@ for (var i = 0; i < updateBtns.length; i++) {
     });
 }
 function updateUserOrder(box_id, action, prod_selected_ids=getvalues()) {
-  'use strict';  
   var url = "/cart/update_cart/";
 
     fetch(url, {
@@ -43,7 +41,6 @@ function updateUserOrder(box_id, action, prod_selected_ids=getvalues()) {
 }
 
 function getvalues() {
-    'use strict';
     var selected = [];
     var chkbox = document.querySelectorAll("[id*='id_selected_product_']");
     console.log(selected);
@@ -61,7 +58,6 @@ function getvalues() {
 // Limit checkbox selection only to 5
 
 $("input[type=checkbox]").change(function(e){
-    'use strict';
     if ($("input[type=checkbox]:checked").length > 5) {
          $(this).prop("checked", false), swal({
             title: "Sorry!",
