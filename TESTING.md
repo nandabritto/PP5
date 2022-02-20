@@ -671,8 +671,17 @@ No errors were found on base css. The warnings found are related to border and b
    
    <img src="media/readme/wave/wave_update_profile_errors.png" width="200">
 
-
  </details>
+
+<p> Lighthouse tools have also been used to ensure SEO and achieve high performance on the platform. . </p>
+
++ Desktop
+
+<img src="media/readme/validation/lighthouse_report_desktop.jpg" width="500">
+
++ Mobile
+
+<img src="media/readme/validation/lighthouse_report_mobile.jpg" width="500">
 
 ## Exploratory Testing
 
