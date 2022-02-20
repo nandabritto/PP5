@@ -23,7 +23,7 @@
                             <div class="mb-2 mx-auto ">
                                 <p class=m-0>{{order.shipping_address.address1 }}</p>
                                 <p class=m-0>{{order.shipping_address.address2 }}</p>
-                                <p class=m-0>{{order.shipping_address.county }} - {{order.shipping_address.country }}
+                                <p class=m-0>{{order.shipping_address.county|title }} - {{order.shipping_address.country }}
                                 </p>
                                 <p class=m-0>{{order.shipping_address.eircode }}</p>
                             </div>
@@ -34,7 +34,7 @@
                             <div class="mb-2">
                                 <p class="m-0">{{order.billing_address.address1 }}</p>
                                 <p class="m-0">{{order.billing_address.address2 }}</p>
-                                <p class="m-0">{{order.billing_address.county }} - {{order.billing_address.country }}
+                                <p class="m-0">{{order.billing_address.county|title }} - {{order.billing_address.country }}
                                 </p>
                                 <p class="m-0">{{order.billing_address.eircode }}</p>
                             </div>
