@@ -516,6 +516,16 @@ All Html pages were validated using the W3 tool.
 [Update Profile](media/readme/validation/html/user_profile_update_profile.png)
 </details>
 
+### Error handling pages
+<details>
+<summary>Expand for test results:</summary>
+
+[404](media/readme/validation/html/404validation.png)
+
+[403](media/readme/validation/html/403validation.png)
+
+[403 CSRF](media/readme/validation/html/403_csrf_validation.png)
+</details>
 
 ## JavaScript Code Validation
 
