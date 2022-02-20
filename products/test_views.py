@@ -2,8 +2,8 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Box, Product, ProductOnBox
 from product_review.models import BoxReview
+from .models import Box, Product, ProductOnBox
 
 
 class SetupModelTestCase(TestCase):
@@ -20,7 +20,7 @@ class SetupModelTestCase(TestCase):
             username=self.username,
             email='joe@doe.com',
             password=self.password)
-        self.user.is_staff = True 
+        self.user.is_staff = True
         self.user.save()
         self.client.login(username='joe', password='12345')
         self.boxtest = Box.objects.create(
@@ -41,10 +41,11 @@ class SetupModelTestCase(TestCase):
             )
         self.boxreview = BoxReview.objects.create(
             customer=self.user,
-           box=self.boxtest,
-           review_text='Review Text Sample',
-           review_rating='5',
+            box=self.boxtest,
+            review_text='Review Text Sample',
+            review_rating='5',
         )
+
 
 class TestViews(SetupModelTestCase):
     """
@@ -67,6 +68,7 @@ class TestViews(SetupModelTestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+
 class BoxDetailTestCase(SetupModelTestCase):
     """
     Test post review in box_detail page
@@ -76,10 +78,10 @@ class BoxDetailTestCase(SetupModelTestCase):
         Test if user is authenticated and add review
         """
         payload = {
-           'customer':self.user,
+           'customer': self.user,
            'box': self.boxtest,
-           'review_text':'Review Text',
-           'review_rating':'5',
+           'review_text': 'Review Text',
+           'review_rating': '5',
         }
         response = self.client.post(reverse('box_details', kwargs={
             'pk': self.boxtest.id}), payload)
@@ -108,11 +110,11 @@ class AddBoxTestCase(SetupModelTestCase):
         Test add box post if form is valid
         """
         payload = {
-           'box_name':self.boxtest.box_name,
-           'box_price':self.boxtest.box_price,
-           'category':self.boxtest.category,
+           'box_name': self.boxtest.box_name,
+           'box_price': self.boxtest.box_price,
+           'category': self.boxtest.category,
            'box_description': self.boxtest.box_description,
-           'box_image':self.boxtest.box_image
+           'box_image': self.boxtest.box_image
         }
         response = self.client.post(reverse('add_box'), payload)
         self.assertEqual(response.status_code, 302)
@@ -122,11 +124,11 @@ class AddBoxTestCase(SetupModelTestCase):
         Test add box post if form is invalid
         """
         payload = {
-           'box_name':self.boxtest.box_name,
-           'box_price':self.boxtest.box_price,
-           'category':'',
+           'box_name': self.boxtest.box_name,
+           'box_price': self.boxtest.box_price,
+           'category': '',
            'box_description': self.boxtest.box_description,
-           'box_image':''
+           'box_image': ''
         }
         response = self.client.post(reverse('add_box'), payload)
         self.assertEqual(response.status_code, 200)
@@ -142,7 +144,7 @@ class AddBoxTestCase(SetupModelTestCase):
         """
         Test add box form as customer user
         """
-        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('add_box'))
         self.assertEqual(response.status_code, 200)
@@ -157,10 +159,10 @@ class AddProductTestCase(SetupModelTestCase):
         Test add product post if form is valid
         """
         payload = {
-           'product_name':self.producttest.product_name,
-           'product_price':self.producttest.product_price,
+           'product_name': self.producttest.product_name,
+           'product_price': self.producttest.product_price,
            'product_description': self.producttest.product_description,
-           'product_image':self.producttest.product_image
+           'product_image': self.producttest.product_image
         }
         response = self.client.post(reverse('add_product'), payload)
         self.assertEqual(response.status_code, 302)
@@ -170,10 +172,10 @@ class AddProductTestCase(SetupModelTestCase):
         Test add box post if form is invalid
         """
         payload = {
-           'product_name':'',
-           'product_price':self.producttest.product_price,
+           'product_name': '',
+           'product_price': self.producttest.product_price,
            'product_description': self.producttest.product_description,
-           'product_image':''
+           'product_image': ''
         }
         response = self.client.post(reverse('add_product'), payload)
         self.assertEqual(response.status_code, 200)
@@ -189,7 +191,7 @@ class AddProductTestCase(SetupModelTestCase):
         """
         Test add product form as customer user
         """
-        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('add_product'))
         self.assertEqual(response.status_code, 200)
@@ -204,9 +206,9 @@ class AddProductOnBoxTestCase(SetupModelTestCase):
         Test add product on box post if form is valid
         """
         payload = {
-           'product':self.producttest.id,
-           'box':self.boxtest.id,
-           'product_selectable':'on'
+           'product': self.producttest.id,
+           'box': self.boxtest.id,
+           'product_selectable': 'on'
         }
         response = self.client.post(reverse('add_product_box'), payload)
         self.assertEqual(response.status_code, 200)
@@ -216,10 +218,10 @@ class AddProductOnBoxTestCase(SetupModelTestCase):
         Test add box post if form is invalid
         """
         payload = {
-           'product_name':'',
-           'product_price':self.producttest.product_price,
+           'product_name': '',
+           'product_price': self.producttest.product_price,
            'product_description': self.producttest.product_description,
-           'product_image':''
+           'product_image': ''
         }
         response = self.client.post(reverse('add_product_box'), payload)
         self.assertEqual(response.status_code, 200)
@@ -235,7 +237,7 @@ class AddProductOnBoxTestCase(SetupModelTestCase):
         """
         Test add product form as customer user
         """
-        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('add_product_box'))
         self.assertEqual(response.status_code, 200)
@@ -250,9 +252,9 @@ class EditProductOnBoxTestCase(SetupModelTestCase):
         Test edit product on box post if form is valid
         """
         payload = {
-           'product':self.productonboxtest.product.id,
-           'box':self.productonboxtest.box.id,
-           'product_selectable':'off'
+           'product': self.productonboxtest.product.id,
+           'box': self.productonboxtest.box.id,
+           'product_selectable': 'off'
         }
 
         response = self.client.post(reverse('editproductonbox', kwargs={
@@ -264,11 +266,11 @@ class EditProductOnBoxTestCase(SetupModelTestCase):
         Test edit box post if form is invalid
         """
         payload = {
-           'product':self.productonboxtest.id,
-           'box':'',
-           'product_selectable':self.productonboxtest.product_selectable
+           'product': self.productonboxtest.id,
+           'box': '',
+           'product_selectable': self.productonboxtest.product_selectable
         }
-       
+
         response = self.client.post(reverse('editproductonbox', kwargs={
             'pk': self.productonboxtest.id}), payload)
         self.assertEqual(response.status_code, 200)
@@ -285,11 +287,12 @@ class EditProductOnBoxTestCase(SetupModelTestCase):
         """
         Test edit product form as customer user
         """
-        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('editproductonbox', kwargs={
             'pk': self.productonboxtest.id}))
         self.assertEqual(response.status_code, 200)
+
 
 class EditBoxTestCase(SetupModelTestCase):
     """
@@ -300,27 +303,26 @@ class EditBoxTestCase(SetupModelTestCase):
         Test edit box post if form is valid
         """
         payload = {
-           'box_name':'Name',
-           'box_price':self.boxtest.box_price,
-           'category':self.boxtest.category,
+           'box_name': 'Name',
+           'box_price': self.boxtest.box_price,
+           'category': self.boxtest.category,
            'box_description': self.boxtest.box_description,
-           'box_image':self.boxtest.box_image
+           'box_image': self.boxtest.box_image
         }
         response = self.client.post(reverse('edit_box', kwargs={
             'pk': self.boxtest.id}), payload)
         self.assertEqual(response.status_code, 200)
-
 
     def test_edit_box_post_if_form_is_invalid(self):
         """
         Test edit box post if form is invalid
         """
         payload = {
-           'box_name':'',
-           'box_price':self.boxtest.box_price,
-           'category':self.boxtest.category,
+           'box_name': '',
+           'box_price': self.boxtest.box_price,
+           'category': self.boxtest.category,
            'box_description': self.boxtest.box_description,
-           'box_image':self.boxtest.box_image
+           'box_image': self.boxtest.box_image
         }
         response = self.client.post(reverse('edit_box', kwargs={
             'pk': self.boxtest.id}), payload)
@@ -338,7 +340,7 @@ class EditBoxTestCase(SetupModelTestCase):
         """
         Test edit box form as customer user
         """
-        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('edit_box', kwargs={
             'pk': self.boxtest.id}))
@@ -354,25 +356,24 @@ class EditProductTestCase(SetupModelTestCase):
         Test edit product post if form is valid
         """
         payload = {
-           'product_name':'Name',
-           'product_price':self.producttest.product_price,
+           'product_name': 'Name',
+           'product_price': self.producttest.product_price,
            'product_description': self.producttest.product_description,
-           'product_image':''
+           'product_image': ''
         }
         response = self.client.post(reverse('edit_product', kwargs={
             'pk': self.producttest.id}), payload)
         self.assertEqual(response.status_code, 200)
-
 
     def test_edit_box_post_if_form_is_invalid(self):
         """
         Test edit box post if form is invalid
         """
         payload = {
-           'product_name':'',
-           'product_price':self.producttest.product_price,
+           'product_name': '',
+           'product_price': self.producttest.product_price,
            'product_description': self.producttest.product_description,
-           'product_image':''
+           'product_image': ''
         }
         response = self.client.post(reverse('edit_product', kwargs={
             'pk': self.producttest.id}), payload)
@@ -390,7 +391,7 @@ class EditProductTestCase(SetupModelTestCase):
         """
         Test edit product form as customer user
         """
-        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('edit_product', kwargs={
             'pk': self.producttest.id}))
@@ -407,8 +408,8 @@ class EditReviewTestCase(SetupModelTestCase):
         """
         self.client.login(username='joe', password='12345')
         payload = {
-           'review_text':'Review Text 3',
-           'review_rating':'5',
+           'review_text': 'Review Text 3',
+           'review_rating': '5',
         }
         response = self.client.post(reverse('edit_review', kwargs={
             'pk': self.boxreview.id}), payload)
@@ -420,8 +421,8 @@ class EditReviewTestCase(SetupModelTestCase):
         """
         self.client.login(username='joe', password='12345')
         payload = {
-           'review_text':'',
-           'review_rating':'5',
+           'review_text': '',
+           'review_rating': '5',
         }
         response = self.client.post(reverse('edit_review', kwargs={
             'pk': self.boxreview.id}), payload)
@@ -439,7 +440,7 @@ class EditReviewTestCase(SetupModelTestCase):
         """
         Test edit product form as customer user
         """
-        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')  
+        self.user = User.objects.create_user('jim', 'jim@example.com', '12345')
         self.client.login(username='jim', password='12345')
         response = self.client.get(reverse('edit_review', kwargs={
             'pk': self.boxreview.id}))
@@ -448,7 +449,7 @@ class EditReviewTestCase(SetupModelTestCase):
 
 class DeleteReviewTestCase(SetupModelTestCase):
     """
-    Test delete review 
+    Test delete review
     """
     def test_edit_review_post_form_valid(self):
         """
@@ -456,8 +457,8 @@ class DeleteReviewTestCase(SetupModelTestCase):
         """
         self.client.login(username='joe', password='12345')
         payload = {
-           'review_text':'Review Text 3',
-           'review_rating':'5',
+           'review_text': 'Review Text 3',
+           'review_rating': '5',
         }
         response = reverse('delete_review', kwargs={
             'pk': self.boxreview.id})
@@ -474,7 +475,7 @@ class DeleteReviewTestCase(SetupModelTestCase):
             email='jim@doe.com',
             password=self.password)
         self.client.login(username='jim', password='12345')
-    
+
         response = self.client.get(reverse('delete_review', kwargs={
             'pk': self.boxreview.id}))
         self.client.delete(response)
@@ -483,7 +484,7 @@ class DeleteReviewTestCase(SetupModelTestCase):
 
 class DeleteBoxTestCase(SetupModelTestCase):
     """
-    Test delete box 
+    Test delete box
     """
     def test_delete_box_post_form_valid(self):
         """
@@ -504,10 +505,10 @@ class DeleteBoxTestCase(SetupModelTestCase):
             username=self.username,
             email='jim@doe.com',
             password=self.password)
-        self.user.is_staff = False 
+        self.user.is_staff = False
         self.user.save()
         self.client.login(username='jim', password='12345')
-    
+
         response = self.client.get(reverse('delete_box', kwargs={
             'pk': self.boxtest.id}))
         self.client.delete(response)
@@ -516,7 +517,7 @@ class DeleteBoxTestCase(SetupModelTestCase):
 
 class DeleteProductTestCase(SetupModelTestCase):
     """
-    Test delete product 
+    Test delete product
     """
     def test_delete_product_post_form_valid(self):
         """
@@ -537,10 +538,10 @@ class DeleteProductTestCase(SetupModelTestCase):
             username=self.username,
             email='jim@doe.com',
             password=self.password)
-        self.user.is_staff = False 
+        self.user.is_staff = False
         self.user.save()
         self.client.login(username='jim', password='12345')
-    
+
         response = self.client.get(reverse('delete_product', kwargs={
             'pk': self.producttest.id}))
         self.client.delete(response)
@@ -570,10 +571,10 @@ class DeleteProductOnBoxTestCase(SetupModelTestCase):
             username=self.username,
             email='jim@doe.com',
             password=self.password)
-        self.user.is_staff = False 
+        self.user.is_staff = False
         self.user.save()
         self.client.login(username='jim', password='12345')
-    
+
         response = self.client.get(reverse('deleteproductonbox', kwargs={
             'pk': self.productonboxtest.id}))
         self.client.delete(response)

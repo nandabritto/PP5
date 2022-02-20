@@ -172,6 +172,9 @@ input:focus {
     color: rgb(214, 125, 62);
 }
 
+.review-box{
+    height: 120px!important;
+}
 /* Cart Page */
 
 .chg-quantity {
@@ -185,6 +188,11 @@ input:focus {
 .box_image {
     height: 150px !important;
     width: 150px !important;
+}
+
+.box-image-detail {
+    height: 300px !important;
+    width: 300px !important;
 }
 
 .cart-item-quantity {
@@ -329,6 +337,15 @@ button:hover {
         height: fit-content;
     }
 
+    .box-image-detail {
+        height: 200px !important;
+        width: 200px !important;
+    }
+
+    .review-box{
+        height: auto!important;
+    }
+
 }
 
 
@@ -338,10 +355,6 @@ button:hover {
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
-    }
-
-    .products-container {
-        margin-bottom: 15vh !important;
     }
 
 }

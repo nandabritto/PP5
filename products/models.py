@@ -37,15 +37,15 @@ class Box(models.Model):
         """ Return box name string """
         return str(self.box_name).lower()
 
-    # def save(self):
-    #     super().save()
+    def save(self):
+        super().save()
 
-    #     img = Image.open(self.box_image)
+        img = Image.open(self.box_image)
 
-    #     if img.height > 300 or img.width > 300:
-    #         output_size = (300, 300)
-    #         img.thumbnail(output_size)
-    #         img.save(self.box_image)
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.box_image)
 
 
 class ProductOnBox(models.Model):
@@ -61,10 +61,11 @@ class ProductOnBox(models.Model):
     def __str__(self):
         """ Return product name string """
         return f"{self.box.box_name} | {self.product.product_name}"
-    
+
     class Meta:
         constraints = [
-            UniqueConstraint(fields=['product', 'box'],
+            UniqueConstraint(
+                fields=['product', 'box'],
                 name='productsunique',
             ),
         ]

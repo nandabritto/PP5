@@ -1,7 +1,6 @@
 """ System Module """
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -23,7 +22,7 @@ def boxes(request):
 def box_detail(request, pk):
     """
     Get and filter objects from Box model and render box detail view
-    """ 
+    """
     box = get_object_or_404(Box, pk=pk)
 
     if request.method == "POST" and request.user.is_authenticated:
@@ -41,18 +40,16 @@ def box_detail(request, pk):
     review_form = AddReviewForm
     reviews = BoxReview.objects.filter(box=box.id).order_by('-date_added')[:2]
 
-
     product_on_box = ProductOnBox.objects.filter(box=box.id)
 
     context = {
         'box': box,
         'review_form': review_form,
         'reviews': reviews,
-        'product_on_box':product_on_box,
+        'product_on_box': product_on_box,
     }
     context['form'] = ProductChoicesForm(pk)
     return render(request, 'products/box_detail.html', context)
-
 
 
 def product_detail(request, pk):
@@ -137,7 +134,8 @@ def add_product_on_boxes(request):
             if form.is_valid():
                 product_on_box = form.save()
                 messages.success(request, 'Your product was added on the box')
-                return redirect(reverse('box_details', args=[product_on_box.box.id]))
+                return redirect(
+                    reverse('box_details', args=[product_on_box.box.id]))
             else:
                 messages.error(request, 'Error adding your product on box.\
                     Please, ensure your form is valid')
@@ -277,7 +275,8 @@ def edit_product_on_box(request, pk):
     if request.user.is_staff:
         productonbox = get_object_or_404(ProductOnBox, pk=pk)
         if request.method == 'POST':
-            form = ProductOnBoxForm(request.POST, request.FILES, instance=productonbox)
+            form = ProductOnBoxForm(
+                request.POST, request.FILES, instance=productonbox)
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your product on box was edited')
@@ -293,7 +292,8 @@ def edit_product_on_box(request, pk):
             form = ProductOnBoxForm(instance=productonbox)
             messages.info(
                 request,
-                f'You are editing Product {productonbox.product.product_name} on Box {productonbox.box.box_name}')
+                f'You are editing Product {productonbox.product.product_name}\
+                     on Box {productonbox.box.box_name}')
 
         context = {
             'form': form,
@@ -304,7 +304,6 @@ def edit_product_on_box(request, pk):
         messages.error(request, 'Sorry, you do not have permition \
             to access this page')
         return render(request, 'home/index.html')
-
 
 
 @login_required
@@ -325,7 +324,6 @@ def delete_productonbox(request, pk):
         messages.error(request, 'Sorry, you do not have permittion \
             to access this page')
         return render(request, 'home/index.html')
-
 
 
 class ListBoxes(StaffRequiredMixin, ListView):
@@ -381,7 +379,7 @@ def edit_review(request, pk):
                 messages.error(request, 'Failed to edit your product.\
                     Please, ensure your form is valid')
         else:
-            form = AddReviewForm(instance=review)        
+            form = AddReviewForm(instance=review)
 
         context = {
             'form': form,
@@ -391,7 +389,6 @@ def edit_review(request, pk):
     else:
         messages.info(request, 'Sorry, you cannot change this review.')
         return redirect(reverse('box_details', args=[review.box.pk]))
-
 
 
 @login_required

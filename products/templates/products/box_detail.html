@@ -9,7 +9,7 @@
 {% block content %}
     <section>
         <!-- Details box container -->
-        <div class="card col-11 col-md-8 d-flex mx-auto m-4 products-container">
+        <div class="card col-11 col-md-8 d-flex mx-auto m-3 products-container">
             <!-- Box title -->
             <div class="row g-0 justify-content-center" itemscope itemtype="https://schema.org/Store">
                 <h1 class="card-title text-center text-green w-100 m-2 fw-bolder"><strong>
@@ -28,29 +28,27 @@
                         <p class="card-text text-center mb-0" itemprop="note"><small>{{ box.box_note1 }}</small></p>
                         <p class="card-text text-center" itemprop="note"><small>{{ box.box_note2 }}</small></p>
                         <div class="my-2 text-center">
-                            <small>
-                                <fieldset>
-                                    <h2>
-                                        <legend class="m-2 small-text fw-bolder">Standard products on this box (every box will have them):</legend>
-                                    </h2>
+                            <fieldset>                                                                  
+                                    <legend class="m-2 small-text fw-bolder"><h2><small>Standard products on this box (every box will have them):</small></h2></legend>
+                                <small>
                                     {% for products in product_on_box%}
-                                    {% if products.product_selectable == False %}
-                                    | {{ products.product.product_name|title }}
-                                    {% endif%}
+                                        {% if products.product_selectable == False %}
+                                            | {{ products.product.product_name|title }}
+                                        {% endif%}
                                     {% endfor %} |
-                                </fieldset>
-                            </small>
+                                </small>
+                            </fieldset>
                         </div>
                         <!-- Products options -->
                         <h2 class="text-center small-text mt-2 fw-bolder"> Customize your optional products:</h2>
                         <div class="d-flex justify-content-center" itemscope itemtype="https://schema.org/GroceryStore">
                             <form class="product_options px-4 " method="post" itemprop="product choices">
-                                <fildset>
+                                <fieldset>
                                     {% csrf_token %}
-                                    <small class="text-capitalize">
+                                    <div class="text-capitalize small">
                                         {{form|crispy }}
-                                    </small>
-                                </fildset>
+                                    </div>
+                                </fieldset>
                             </form>
                         </div>
                         <!-- Submited box products options -->
@@ -76,7 +74,7 @@
             </div>
         </div>
         <!-- User's review container-->
-        <div class="card col-11 col-md-8 d-flex mx-auto products-container mx-0">
+        <div class="card col-11 col-md-8 d-flex mx-auto products-container my-0">
             <div class="row">
                 <div class="col-md-4 col-lg-4 col-12 d-flex align-items-center" itemscope
                     itemtype="https://schema.org/Review">
@@ -91,21 +89,21 @@
                                 </button>
                             </div>
                         </div>
-                        {% else %}
-                            <div class="text-center mx-auto p-3" itemprop="review">
-                                <h3> Login to review</h3>
-                                <div>
-                                    <a href="{% url 'account_login' %}" class="btn btn-warning m-2">Go to Login</a>
-                                </div>
+                    {% else %}
+                        <div class="text-center mx-auto p-3" itemprop="review">
+                            <h3> Login to review</h3>
+                            <div>
+                                <a href="{% url 'account_login' %}" class="btn btn-warning m-2">Go to Login</a>
                             </div>
+                        </div>
                     {% endif %}
                 </div>
                 <!-- User reviews list -->
-                <div class="col-md-8 col-lg-8 col-12 mx-0" itemscope itemtype="https://schema.org/Review">
+                <div class="col-md-8 col-lg-8 col-12 my-0" itemscope itemtype="https://schema.org/Review">
                     <h2 class="text-center my-2 mx-0" itemprop="review">Users reviews</h2>
                     <div class="container">
                         <div class="row">
-                            <div class="col">
+                            <div class="col overflow-auto review-box">
                                 {% if reviews %}
                                     {% for review in reviews %}
                                         <div class="bg-light border rounded border-dark my-3">
