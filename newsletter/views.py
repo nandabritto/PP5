@@ -20,7 +20,14 @@ def newsletter_signup(request):
     if form.is_valid():
         instance = form.save(commit=False)
         if NewsletterUser.objects.filter(email=instance.email).exists():
-            # Send email
+            # Message
+            messages.warning(
+                request, 'Your email is already in our Newsletter database.')
+            return redirect('home')
+
+        else:
+            instance.save()
+             # Send email
             subject = "Thank you for joining our newsletter"
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
@@ -37,13 +44,6 @@ def newsletter_signup(request):
                 "newsletter/subscribe_email.html").render()
             message.attach_alternative(html_template, "text/html")
             message.send()
-            # Message
-            messages.warning(
-                request, 'Your email is already in our Newsletter database.')
-            return redirect('home')
-
-        else:
-            instance.save()
             messages.success(
                 request, 'Thank you for your subscription in our Newsletter.')
             return redirect('home')
