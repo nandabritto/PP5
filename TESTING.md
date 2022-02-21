@@ -752,8 +752,7 @@ A session was held with an end-user. The feedback obtained is listed below:
 
 On this test, a checklist was developed to guide the user along with all pages and features on the platform. This checklist and the results can be viewed here: 
 
-[Features]() <br>
-[Pages]()
+<img src="media/readme/user_acceptance_final.jpg" width="100%">
 
 ### **Response to the user experience test:**
 
