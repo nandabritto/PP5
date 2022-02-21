@@ -29,7 +29,7 @@
                         <p class="card-text text-center" itemprop="note"><small>{{ box.box_note2 }}</small></p>
                         <div class="my-2 text-center">
                             <fieldset>                                                                  
-                                    <legend class="m-2 small-text fw-bolder"><h2><small>Standard products on this box (every box will have them):</small></h2></legend>
+                                    <legend class="m-2"><h2 class="small-text fw-bolder mb-0">Standard products on this box (every box will have them):</h2></legend>
                                 <small>
                                     {% for products in product_on_box%}
                                         {% if products.product_selectable == False %}
