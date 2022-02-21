@@ -110,4 +110,7 @@ class Payment(models.Model):
         """
         Return a string to payment
         """
-        return self.customer.username
+        if self.customer:
+            return str(self.customer.username)
+        else:
+            return str(self.stripe_charge_id)
