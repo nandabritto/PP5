@@ -12,6 +12,7 @@ html {
 }
 
 .body {
+    padding-bottom: 100px !important;
     background-image: url(/media/background-lights.jpg);
     background-size: cover;
 }
@@ -321,7 +322,6 @@ button:hover {
 @media only screen and (max-width: 600px) {
 
     body {
-        padding-bottom: 100px !important;
         background-position: center;
     }
 
