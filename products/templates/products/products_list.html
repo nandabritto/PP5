@@ -16,14 +16,14 @@
                         <hr>
                         <h2 class="text-center"><strong>Products</strong></h2>
                         <!-- Products List table -->
-                        <table class="table">
+                        <table class="table table-responsive align-middle">
                             <thead>
                                 <tr>
                                     <th scope="col" itemprop="elementID">Id</th>
                                     <th scope="col" itemprop="name">Box</th>
                                     <th scope="col" itemprop="description">Description</th>
                                     <th scope="col" itemprop="price">Price</th>
-                                    <th scope="col">Optionss</th>
+                                    <th scope="col" class="text-end">Options</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,7 +31,7 @@
                                     <tr>
                                         <td itemprop="elementID">{{products.id}}</td>
                                         <td itemprop="name">{{products|title}}</td>
-                                        <td itemprop="description">{{products.product_description|slice:30}}(...)</td>
+                                        <td itemprop="description">{{products.product_description}}</td>
                                         <td itemprop="price">{{products.product_price}}</td>
                                         <td class="text-end">
                                             <a href="{% url 'product_details' products.id %}"
