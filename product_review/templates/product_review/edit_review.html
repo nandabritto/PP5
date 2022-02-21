@@ -9,21 +9,21 @@
 {% block content %}
     <!-- Edit review container-->
     <section>
-        <div class="container mt-5 px-5">
+        <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col-md-8 justify-content-center">
+                <div class="col-md-8 col-11 justify-content-center">
                     <div class="card p-3 text-center ">
                         <h2 class="fw-bold">Edit Review</h2>
                         <hr>
-                        <div class="col-md-6 mx-auto">
+                        <div class="col-md-8 col-11 mx-auto">
                             <!-- Edit review form-->
                             <form method="POST">
                                 {% csrf_token%}
                                 {{form| crispy}}
-                                <button class="btn btn-lg btn-dark mx-3" onclick="history.back()">
+                                <button class="btn btn-lg btn-dark m-2" onclick="history.back()">
                                     <i class="fas fa-arrow-circle-left"></i> Go Back
                                 </button>
-                                <button class="btn btn-lg btn-warning" type="submit">Update review</button>
+                                <button class="btn btn-lg btn-warning m-2" type="submit">Update review</button>
                             </form>
                         </div>
                     </div>
