@@ -332,7 +332,7 @@ class ListBoxes(StaffRequiredMixin, ListView):
     """
     model = Box
     template_name = 'products/boxes_list.html'
-    paginate_by = 20
+    paginate_by = 10
     ordering = ['id']
 
 
@@ -342,7 +342,8 @@ class ListProducts(StaffRequiredMixin, ListView):
     """
     model = Product
     template_name = 'products/products_list.html'
-    ordering = ['id']
+    paginate_by = 10
+    ordering = ['-product_name']
 
 
 class ListProductsOnBox(StaffRequiredMixin, ListView):
@@ -351,6 +352,7 @@ class ListProductsOnBox(StaffRequiredMixin, ListView):
     """
     model = ProductOnBox
     template_name = 'products/productsonbox_list.html'
+    paginate_by = 10
     ordering = ['-box']
 
 
