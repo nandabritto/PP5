@@ -50,7 +50,6 @@ function getvalues() {
       }
     }
     if (selected.length > 0) {
-      document.getElementById("displayvalues").innerHTML = selected;
       return selected;
     }
   }

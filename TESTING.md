@@ -758,13 +758,14 @@ On this test, a checklist was developed to guide the user along with all pages a
 
 | Items numbers | Situation |User comment | Developer Response|
 |:----:|:----:|:----:|:----:|
-| 4.2 | WNF - Future fix | Product numbers are shown quickly while adding to cart | This is related to Get value JS to add products to the cart. Will be fixed in a future release. |
+| 4.2 | VF | Product numbers are shown quickly while adding to cart | -- |
 | 5.1 | VF | Selected products are lost after increasing box amount| --
 | 10.1| VF | The Selected products for box are not displayed| --
 | 11.5| VF | Could not test as I cannot find product in edit list| Paginate removed from function|
 |11.11| VF | Could not test as I cannot find product in edit list| Paginate removed from function|
 |11.11| VF | no email sent, just message | --
 
+VF - Verified Fixed. 
 
 
 ## Manual Testing
