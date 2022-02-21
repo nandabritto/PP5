@@ -20,7 +20,7 @@ class UserAddressForm(forms.ModelForm):
             'eircode': 'Eircode',
             'address_type': 'Address',
         }
-        self.fields['address1'].widget.attrs['autofocus'] = True
+        self.fields['address1'].widget.attrs['autofocus'] = False
         for field in self.fields:
             if field != 'country':
                 if self.fields[field].required:
