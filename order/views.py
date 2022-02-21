@@ -114,9 +114,10 @@ class CheckoutView(View):
                         'shipping_eircode')
 
                     if is_valid_form([
-                        shipping_address1,
-                        shipping_country,
-                        shipping_eircode]):
+                                     shipping_address1,
+                                     shipping_country,
+                                     shipping_eircode
+                                     ]):
                         shipping_address = Address(
                             customer=self.request.user,
                             address1=shipping_address1,
@@ -193,9 +194,10 @@ class CheckoutView(View):
                         'billing_eircode')
 
                     if is_valid_form([
-                        billing_address1,
-                        billing_country,
-                        billing_eircode]):
+                                      billing_address1,
+                                      billing_country,
+                                      billing_eircode
+                                      ]):
                         billing_address = Address(
                             customer=self.request.user,
                             address1=billing_address1,
@@ -284,7 +286,9 @@ class PaymentView(View):
             order.payment = payment
             order.save()
             messages.success(
-                self.request, "Your order was successful! You will receive a confirmation email.")
+                self.request,
+                "Your order was successful! You will receive a\
+                    confirmation email.")
             return redirect("success", order.pk)
 
         except stripe.error.CardError as e:

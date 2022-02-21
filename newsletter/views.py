@@ -27,7 +27,7 @@ def newsletter_signup(request):
 
         else:
             instance.save()
-             # Send email
+            # Send email
             subject = "Thank you for joining our newsletter"
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]

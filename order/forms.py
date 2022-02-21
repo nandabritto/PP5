@@ -26,7 +26,7 @@ class CheckoutForm(forms.Form):
         ).formfield(required=False)
     shipping_eircode = forms.CharField(
         label="EirCode",
-        required=False, 
+        required=False,
         widget=forms.TextInput(attrs={'placeholder': '123456'}))
 
     # Billing address fields
@@ -46,8 +46,9 @@ class CheckoutForm(forms.Form):
     billing_country = CountryField(
         blank_label='(Select Country)'
         ).formfield(required=False,)
-    billing_eircode = forms.CharField(required=False,
-    widget=forms.TextInput(attrs={'placeholder': '123456'}))
+    billing_eircode = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': '123456'}))
 
     # Options fields
     same_billing_address = forms.BooleanField(

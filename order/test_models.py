@@ -125,12 +125,12 @@ class OrderBoxGetShipping(SetupModelTestCase):
         """
         Test get shipping property
         """
-        self.order1.shipping_address = self.shipping_address2      
+        self.order1.shipping_address = self.shipping_address2
         self.assertEqual(self.order1.get_cart_total, Decimal('114.98'))
 
     def test_get_shipping_none(self):
         """
         Test get shipping property when its none
         """
-        self.order1.shipping_address = None     
+        self.order1.shipping_address = None
         self.assertEqual(self.order1.get_cart_total, Decimal('99.98'))
