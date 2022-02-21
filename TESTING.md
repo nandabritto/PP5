@@ -752,10 +752,19 @@ A session was held with an end-user. The feedback obtained is listed below:
 
 On this test, a checklist was developed to guide the user along with all pages and features on the platform. This checklist and the results can be viewed here: 
 
-[Features]() <br>
-[Pages]()
+<img src="media/readme/user_acceptance_final.jpg" width="100%">
 
 ### **Response to the user experience test:**
+
+| Items numbers | Situation |User comment | Developer Response|
+|:----:|:----:|:----:|:----:|
+| 4.2 | WNF - Future fix | Product numbers are shown quickly while adding to cart | This is related to Get value JS to add products to the cart. Will be fixed in a future release. |
+| 5.1 | VF | Selected products are lost after increasing box amount| --
+| 10.1| VF | The Selected products for box are not displayed| --
+| 11.5| VF | Could not test as I cannot find product in edit list| Paginate removed from function|
+|11.11| VF | Could not test as I cannot find product in edit list| Paginate removed from function|
+|11.11| VF | no email sent, just message | --
+
 
 
 ## Manual Testing

@@ -20,6 +20,11 @@
                             <p>Username: {{ customer.username }} | Email: {{ customer.email}}</p>
                             <p>Name: {{ customer.first_name }} {{ customer.last_name }}</p>
                         </div>
+                        <div class="text-end">
+                            <button class="btn btn-sm btn-dark" onclick="history.back()">
+                                <i class="fas fa-arrow-circle-left"></i> Go Back
+                            </button>
+                        </div>
                         <hr>
                         <!-- Update profile form -->
                         <form class="row g-3 shipping" action="{% url 'update_profile' %}" method="POST" id="shipping_address_form">
@@ -47,7 +52,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-12 text-center m-3">
+                            <div class="col-12 text-center my-3 mx-auto">
                                 <button class="btn btn-warning" type="submit">Update Shipping Address</button>
                             </div>
                         </form>
@@ -77,7 +82,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-12 text-center m-3">
+                            <div class="col-12 text-center my-3 mx-auto">
                                 <button class="btn btn-warning" type="submit">Update Billing Address</button>
                             </div>
                         </form>

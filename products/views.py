@@ -13,7 +13,7 @@ from home.views import StaffRequiredMixin
 
 def boxes(request):
     """
-    Get objects from box modeland render boxes view
+    Get objects from box model and render boxes view
     """
     boxes = Box.objects.all()
     return render(request, 'products/products.html', {'boxes': boxes})
@@ -75,11 +75,11 @@ def add_box(request):
             form = BoxForm(request.POST, request.FILES)
             if form.is_valid():
                 box = form.save()
-                messages.success(request, 'Your box was added')
+                messages.success(request, 'Your box was added.')
                 return redirect(reverse('box_details', args=[box.id]))
             else:
                 messages.error(request, 'Error adding your box.\
-                    Please, ensure your form is valid')
+                    Please, ensure your form is valid.')
         else:
             form = BoxForm
 
@@ -90,7 +90,7 @@ def add_box(request):
 
     else:
         messages.error(request, 'Sorry, you do not have permittion \
-            to access this page')
+            to access this page.')
         return render(request, 'home/index.html')
 
 
@@ -104,11 +104,11 @@ def add_product(request):
             form = ProductForm(request.POST, request.FILES)
             if form.is_valid():
                 product = form.save()
-                messages.success(request, 'Your product was added')
+                messages.success(request, 'Your product was added.')
                 return redirect(reverse('product_details', args=[product.id]))
             else:
                 messages.error(request, 'Error adding your product.\
-                    Please, ensure your form is valid')
+                    Please, ensure your form is valid.')
         else:
             form = ProductForm
 
@@ -119,7 +119,7 @@ def add_product(request):
 
     else:
         messages.error(request, 'Sorry, you do not have permittion \
-            to access this page')
+            to access this page.')
         return render(request, 'home/index.html')
 
 
@@ -133,12 +133,12 @@ def add_product_on_boxes(request):
             form = ProductOnBoxForm(request.POST, request.FILES)
             if form.is_valid():
                 product_on_box = form.save()
-                messages.success(request, 'Your product was added on the box')
+                messages.success(request, 'Your product was added on the box.')
                 return redirect(
                     reverse('box_details', args=[product_on_box.box.id]))
             else:
                 messages.error(request, 'Error adding your product on box.\
-                    Please, ensure your form is valid')
+                    Please, ensure your form is valid.')
         else:
             form = ProductOnBoxForm
 
@@ -149,7 +149,7 @@ def add_product_on_boxes(request):
 
     else:
         messages.error(request, 'Sorry, you do not have permittion \
-            to access this page')
+            to access this page.')
         return render(request, 'home/index.html')
 
 
@@ -164,7 +164,7 @@ def edit_box(request, pk):
             form = BoxForm(request.POST, request.FILES, instance=box)
             if form.is_valid():
                 form.save()
-                messages.success(request, 'Your box was edited')
+                messages.success(request, 'Your box was edited.')
                 box = get_object_or_404(Box, pk=pk)
                 context = {
                     'box': box,
@@ -172,7 +172,7 @@ def edit_box(request, pk):
                 return render(request, 'products/box_detail.html', context)
             else:
                 messages.error(request, 'Failed to edit your box.\
-                    Please, ensure your form is valid')
+                    Please, ensure your form is valid.')
         else:
             form = BoxForm(instance=box)
             messages.info(request, f'You are editing Box {box.box_name}')
@@ -184,7 +184,7 @@ def edit_box(request, pk):
         return render(request, 'products/edit_boxes.html', context)
     else:
         messages.error(request, 'Sorry, you do not  have permition \
-            to access this page')
+            to access this page.')
         return render(request, 'home/index.html')
 
 
@@ -197,7 +197,7 @@ def delete_box(request, pk):
         try:
             box = get_object_or_404(Box, pk=pk)
             box.delete()
-            messages.success(request, 'Box was deleted')
+            messages.success(request, 'Box was deleted.')
             return redirect(reverse('boxes'))
         except:
             messages.error(request, 'Something went wrong.\
@@ -205,7 +205,7 @@ def delete_box(request, pk):
             return redirect(reverse('box_details', args=[pk]))
     else:
         messages.error(request, 'Sorry, you do not have permittion \
-            to access this page')
+            to access this page.')
         return render(request, 'home/index.html')
 
 
@@ -220,7 +220,7 @@ def edit_product(request, pk):
             form = ProductForm(request.POST, request.FILES, instance=product)
             if form.is_valid():
                 form.save()
-                messages.success(request, 'Your product was edited')
+                messages.success(request, 'Your product was edited.')
                 product = get_object_or_404(Product, pk=pk)
                 context = {
                     'product': product,
@@ -228,7 +228,7 @@ def edit_product(request, pk):
                 return render(request, 'products/product_detail.html', context)
             else:
                 messages.error(request, 'Failed to edit your product.\
-                    Please, ensure your form is valid')
+                    Please, ensure your form is valid.')
         else:
             form = ProductForm(instance=product)
             messages.info(
@@ -242,7 +242,7 @@ def edit_product(request, pk):
         return render(request, 'products/edit_products.html', context)
     else:
         messages.error(request, 'Sorry, you do not have permition \
-            to access this page')
+            to access this page.')
         return render(request, 'home/index.html')
 
 
@@ -263,7 +263,7 @@ def delete_product(request, pk):
             return redirect(reverse('box_details', args=[pk]))
     else:
         messages.error(request, 'Sorry, you do not have permittion \
-            to access this page')
+            to access this page.')
         return render(request, 'home/index.html')
 
 
@@ -279,7 +279,7 @@ def edit_product_on_box(request, pk):
                 request.POST, request.FILES, instance=productonbox)
             if form.is_valid():
                 form.save()
-                messages.success(request, 'Your product on box was edited')
+                messages.success(request, 'Your product on box was edited.')
                 productonbox = get_object_or_404(ProductOnBox, pk=pk)
                 context = {
                     'productonbox': productonbox,
@@ -287,7 +287,7 @@ def edit_product_on_box(request, pk):
                 return redirect(reverse('productsonbox_list'))
             else:
                 messages.error(request, 'Failed to edit your product on box.\
-                    Please, ensure your form is valid')
+                    Please, ensure your form is valid.')
         else:
             form = ProductOnBoxForm(instance=productonbox)
             messages.info(
@@ -302,7 +302,7 @@ def edit_product_on_box(request, pk):
         return render(request, 'products/edit_productsonbox.html', context)
     else:
         messages.error(request, 'Sorry, you do not have permition \
-            to access this page')
+            to access this page.')
         return render(request, 'home/index.html')
 
 
@@ -315,7 +315,7 @@ def delete_productonbox(request, pk):
         try:
             productonbox = get_object_or_404(ProductOnBox, pk=pk)
             productonbox.delete()
-            messages.success(request, 'Product was deleted from box')
+            messages.success(request, 'Product was deleted from box.')
             return redirect(reverse('productsonbox_list'))
         except:
             messages.error(request, 'Something went wrong.\

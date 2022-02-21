@@ -11,12 +11,12 @@
         <!-- Newsletter list container -->
         <div class="container mt-5 px-1" itemscope>
             <div class="row">
-                <div class="col-md-10 col-lg-10 col-11 mx-auto">
+                <div class="col-md-10 col-lg-10 col-11 mx-auto m-2">
                     <!-- Newsletter list table -->
                     <div class="card p-3" itemscope itemtype="https://schema.org/EmailMessage">
                         <h1 class="text-center"><strong>Sent Newsletters </strong></h1>
                         {% if object_list %}
-                            <table class="table">
+                            <table class="table table-responsive align-middle">
                                 <thead>
                                     <tr>
                                         <th scope="col" itemprop="datesent">Send Date</th>
@@ -27,9 +27,9 @@
                                 {% for newsletter in object_list %}
                                     <tbody>
                                         <tr>
-                                            <td>{{ newsletter.created}} </td>
-                                            <td>{{ newsletter.subject|slice:20 }}</td>
-                                            <td>{{ newsletter.body|slice:70 }}...</td>
+                                            <td>{{ newsletter.created }} </td>
+                                            <td>{{ newsletter.subject }}</td>
+                                            <td>{{ newsletter.body }}</td>
                                         </tr>
                                     </tbody>
                                 {% endfor %}

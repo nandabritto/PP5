@@ -25,9 +25,8 @@ def newsletter_signup(request):
             from_email = settings.EMAIL_HOST_USER
             to_email = [instance.email]
             with open(
-                     "newsletter/templates/newsletter/subscribe_email.txt"
-                    ) as file:
-                subscribe_message = file.read()
+                 "newsletter/templates/newsletter/subscribe_email.txt") as f:
+                subscribe_message = f.read()
             message = EmailMultiAlternatives(
                 subject=subject,
                 body=subscribe_message,
@@ -40,7 +39,7 @@ def newsletter_signup(request):
             message.send()
             # Message
             messages.warning(
-                request, 'Your email is already in our Newsletter database. ')
+                request, 'Your email is already in our Newsletter database.')
             return redirect('home')
 
         else:
@@ -146,5 +145,4 @@ class NewsletterList(StaffRequiredMixin, ListView):
     """
     model = Newsletter
     template_name = 'newsletters_list.html'
-    paginate_by = 10
     ordering = ['-created']

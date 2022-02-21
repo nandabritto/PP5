@@ -1,10 +1,8 @@
-from django.contrib import admin
+""" System Module """
 from django.urls import path
 from . import views
 
 urlpatterns = [
     path('', views.profile, name='profile'),
     path('update_profile', views.update_profile, name='update_profile'),
-    # path('update_billing', views.update_profile, name='update_billing'),
 ]
-
