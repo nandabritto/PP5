@@ -10,16 +10,16 @@
 {% block content %}
     <section>
         <!-- Checkout container-->
-        <div class="container mt-5 px-5">
+        <div class="container mt-5">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 col-12 mx-auto mb-3">
                     <div class="card p-3">
                         <h1>Add your address</h1>
                         <hr>
                         <form method="POST">
                             {% csrf_token %}
                             <div class="row">
-                                <div class="col-md-6 col-12 my-2 ">
+                                <div class="col-lg-6 col-12 my-2 ">
                                     <!-- Shipping address details form -->
                                     <h2>Shipping Address</h2>
                                     <!-- Default shipping address checkout box -->
@@ -38,7 +38,7 @@
                                         {{ form.set_default_shipping|as_crispy_field  }}
                                     {% endif %}
                                 </div>
-                                <div class="col-md-6 col-12 my-2">
+                                <div class="col-lg-6 col-12 my-2">
                                     <!-- Billing address details form -->
                                     <h2>Billing Address</h2>
                                     {{ form.same_billing_address|as_crispy_field  }}

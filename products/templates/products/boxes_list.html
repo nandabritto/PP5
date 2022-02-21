@@ -23,7 +23,7 @@
                                     <th scope="col" itemprop="name">Box</th>
                                     <th scope="col" itemprop="description">Description</th>
                                     <th scope="col" itemprop="price">Price</th>
-                                    <th scope="col">Options</th>
+                                    <th scope="col" class="text-end">Options</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,10 +35,10 @@
                                         <td itemprop="price">{{boxes.box_price}}</td>
                                         <td class="text-end">
                                             <a href="{% url 'edit_box' boxes.id %}"
-                                                class="btn btn-warning fw-bold mx-2">Edit
+                                                class="btn btn-warning fw-bold m-1">Edit
                                             </a>
                                             <a href="{% url 'delete_box' boxes.id %}"
-                                                class="btn btn-danger fw-bold mx-2">Delete
+                                                class="btn btn-danger fw-bold m-1">Delete
                                             </a>
                                         </td>
                                     </tr>
@@ -46,7 +46,7 @@
                             </tbody>
                         </table>
                         <div class="text-center">
-                            <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2">
+                            <a href="{% url 'management' %}" class="btn btn-lg btn-dark m-2">
                                 <i class="fas fa-arrow-circle-left"></i> Back
                             </a>
                         </div>

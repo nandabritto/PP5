@@ -21,10 +21,10 @@
                             {% csrf_token %}
                             {{ form | crispy}}
                             <div class="text-center">
-                                <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2">
+                                <a href="{% url 'management' %}" class="btn btn-lg btn-dark m-3">
                                     <i class="fas fa-arrow-circle-left"></i> Back
                                 </a>
-                                <button class="btn btn-lg btn-warning mx-3" type="submit">
+                                <button class="btn btn-lg btn-warning m-3" type="submit">
                                     <i class="fas fa-box-open"></i>
                                     Add Product to the box
                                 </button>

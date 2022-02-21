@@ -9,7 +9,7 @@
         <!-- Products on box list -->
         <div class="container mt-5 px-1" itemscope>
             <div class="row">
-                <div class="col-md-10 col-lg-10 col-11 mx-auto">
+                <div class="col-md-11 col-lg-10 col-11 mx-auto">
                     <div class="card p-3" itemscope itemtype="https://schema.org/ItemList">
                         <h1 class="text-center"><strong>Product Management</strong></h1>
                         <hr>
@@ -34,10 +34,10 @@
                                         <td itemprop="name">{{productsonbox.product_selectable|title}}</td>
                                         <td class="text-end">
                                             <a href="{% url 'editproductonbox' productsonbox.id %}"
-                                                class="btn btn-warning fw-bold mx-2">Edit
+                                                class="btn btn-warning fw-bold m-1">Edit
                                             </a>
                                             <a href="{% url 'deleteproductonbox' productsonbox.id %}"
-                                                class="btn btn-danger fw-bold mx-2">Delete
+                                                class="btn btn-danger fw-bold m-1">Delete
                                             </a>
                                         </td>
                                     </tr>
@@ -45,7 +45,7 @@
                             </tbody>
                         </table>
                         <div class="text-center">
-                            <a href="{% url 'management' %}" class="btn btn-lg btn-dark mx-2">
+                            <a href="{% url 'management' %}" class="btn btn-lg btn-dark m-2">
                                 <i class="fas fa-arrow-circle-left"></i> Back
                             </a>
                         </div>
