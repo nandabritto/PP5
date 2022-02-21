@@ -146,5 +146,4 @@ class NewsletterList(StaffRequiredMixin, ListView):
     """
     model = Newsletter
     template_name = 'newsletters_list.html'
-    paginate_by = 10
     ordering = ['-created']

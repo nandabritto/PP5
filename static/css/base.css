@@ -25,8 +25,7 @@ h4,
 h5 {
     font-family: 'Roboto Slab', serif !important;
 }
-
-
+ 
 .small-text {
     font-size: 15px !important;
 }
@@ -134,7 +133,6 @@ input:focus {
 
 /* Index Page */
 
-
 .card {
     border: none
 }
@@ -172,6 +170,7 @@ input:focus {
 .review-box{
     height: 120px!important;
 }
+
 /* Cart Page */
 
 .chg-quantity {
